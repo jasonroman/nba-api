@@ -1,0 +1,19 @@
+{
+    "name": "jasonroman/nba-stats-api",
+    "description": "PHP library to access the NBA Stats API",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jason Roman",
+            "email": "j@jayroman.com",
+            "homepage": "http://jayroman.com"
+        }
+    ]
+}
