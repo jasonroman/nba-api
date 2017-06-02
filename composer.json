@@ -3,6 +3,7 @@
     "description": "PHP library to access the NBA Stats API",
     "type": "library",
     "require": {
+        "php": "^7.0",
         "guzzlehttp/guzzle": "~6.0"
     },
     "require-dev": {
@@ -15,5 +16,15 @@
             "email": "j@jayroman.com",
             "homepage": "http://jayroman.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "JasonRoman\\NbaApi\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
 }
