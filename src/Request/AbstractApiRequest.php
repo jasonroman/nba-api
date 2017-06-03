@@ -15,7 +15,7 @@ abstract class AbstractApiRequest
      */
     public function getEndpoint()
     {
-        return (new \ReflectionClass($this))->getShortName();
+        return strtolower((new \ReflectionClass($this))->getShortName());
     }
 
     /**

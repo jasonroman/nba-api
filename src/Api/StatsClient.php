@@ -2,6 +2,7 @@
 
 namespace JasonRoman\NbaApi\Api;
 
+use GuzzleHttp\Client as GuzzleClient;
 use JasonRoman\NbaApi\Request\Stats\AbstractStatsApiRequest;
 use JasonRoman\NbaApi\Request\Stats\TeamInfoCommon;
 use Psr\Http\Message\ResponseInterface;
@@ -38,14 +39,19 @@ class StatsClient extends ApiClient
         'headers'         => self::HEADERS,
     ];
 
+    public function __construct(array $config = [])
+    {
+        parent::__construct(new GuzzleClient(array_merge(self::CONFIG, $config)));
+    }
+
     /**
      * @param AbstractStatsApiRequest $request
      * @param array $config
      * @return ResponseInterface|null
      */
-    public function apiRequest(AbstractStatsApiRequest $request, $config = [])
+    public function request(AbstractStatsApiRequest $request, array $config = [])
     {
-        return $this->guzzle->request(
+        return $this->apiRequest(
             'GET',
             $request->getEndpoint(),
             array_merge(
@@ -57,10 +63,11 @@ class StatsClient extends ApiClient
 
     /**
      * @param TeamInfoCommon $request
+     * @param array $config
      * @return ResponseInterface|null
      */
-    public function getTeamInfoCommon(TeamInfoCommon $request)
+    public function getTeamInfoCommon(TeamInfoCommon $request, array $config = [])
     {
-        return $this->apiRequest($request);
+        return $this->request($request, $config);
     }
 }

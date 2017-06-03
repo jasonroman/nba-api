@@ -1,2 +1,2 @@
-# nba-stats-api-php
+# nba-stats-api
 PHP Library to access the NBA Stats API
