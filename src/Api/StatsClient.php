@@ -4,6 +4,7 @@ namespace JasonRoman\NbaApi\Api;
 
 use GuzzleHttp\Client as GuzzleClient;
 use JasonRoman\NbaApi\Request\Stats\AbstractStatsApiRequest;
+use JasonRoman\NbaApi\Request\Stats\CommonAllPlayers;
 use JasonRoman\NbaApi\Request\Stats\TeamInfoCommon;
 use Psr\Http\Message\ResponseInterface;
 
@@ -59,6 +60,16 @@ class StatsClient extends ApiClient
                 $config
             )
         );
+    }
+
+    /**
+     * @param CommonAllPlayers $request
+     * @param array $config
+     * @return ResponseInterface|null
+     */
+    public function getCommonAllPlayers(CommonAllPlayers $request, array $config = [])
+    {
+        return $this->request($request, $config);
     }
 
     /**
