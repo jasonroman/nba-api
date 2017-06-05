@@ -2,6 +2,6 @@
 
 namespace JasonRoman\NbaApi\Types;
 
-class EndPeriod extends Period
+class Season4DigitYear extends Year
 {
 }

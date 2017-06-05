@@ -69,7 +69,9 @@ class TeamId
     const WASHINGTON_WIZARDS     = '1610612764';
 
     /**
-     * var int
+     * Value between 0 and 2147483647 (4-byte integer).
+     *
+     * @var int
      */
     public $value;
 }

@@ -2,12 +2,6 @@
 
 namespace JasonRoman\NbaApi\Types;
 
-class StartPeriod
+class StartPeriod extends Period
 {
-    /**
-     * Value between 0 and 14
-     *
-     * @var int
-     */
-    public $value;
 }
