@@ -5,18 +5,10 @@ namespace JasonRoman\NbaApi\Request;
 abstract class AbstractApiRequest
 {
     /**
-     * The API endpoint in the URL.
-     * For example: http://stats.nba.com/stats/boxscoremiscv2 would have an endpoint of 'boxscoremiscv2'
-     *
-     * If not overridden, this defaults to a lowercase string of the class's short name.
-     * For example: \JasonRoman\NbaApi\Request\Stats\BoxScoreMiscV2 would return 'boxscoremiscv2'
-     *
-     * @return mixed
+     * Retrieve the endpoint in the URL that gets added to the base URL.
+     * @return string
      */
-    public function getEndpoint()
-    {
-        return strtolower((new \ReflectionClass($this))->getShortName());
-    }
+    abstract public function getEndpoint();
 
     /**
      * Convert an API Request to an array that can be passed as a Guzzle 'query'.
@@ -35,7 +27,7 @@ abstract class AbstractApiRequest
     public static function fromArray(array $array)
     {
         $calledClass = get_called_class();
-        $class = new $calledClass;
+        $class       = new $calledClass;
 
         foreach ($array as $key => $value) {
             $class->$key = $value;

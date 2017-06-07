@@ -12,6 +12,13 @@ class LeagueId
     const WNBA     = '10';
     const D_LEAGUE = '20';
 
+    const LEAGUE_IDS = [
+        self::NBA,
+        self::ABA,
+        self::WNBA,
+        self::D_LEAGUE,
+    ];
+
     /**
      * @var string
      */

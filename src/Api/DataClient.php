@@ -3,17 +3,15 @@
 namespace JasonRoman\NbaApi\Api;
 
 use GuzzleHttp\Client as GuzzleClient;
-use JasonRoman\NbaApi\Request\Stats\AbstractStatsApiRequest;
-use JasonRoman\NbaApi\Request\Stats\CommonAllPlayers;
-use JasonRoman\NbaApi\Request\Stats\CommonPlayerInfo;
-use JasonRoman\NbaApi\Request\Stats\CommonTeamYears;
-use JasonRoman\NbaApi\Request\Stats\TeamInfoCommon;
+use JasonRoman\NbaApi\Request\Data\AbstractDataApiRequest;
+use JasonRoman\NbaApi\Request\Data\AbstractStatsApiRequest;
+use JasonRoman\NbaApi\Request\Data\FullPlayByPlay;
 use Psr\Http\Message\ResponseInterface;
 
-class StatsClient extends ApiClient
+class DataClient extends ApiClient
 {
     // defaults
-    const BASE_URI        = 'http://stats.nba.com/stats/';
+    const BASE_URI        = 'http://data.nba.com/data/';
     const TIMEOUT         = 3;
     const CONNECT_TIMEOUT = 3;
 
@@ -24,10 +22,10 @@ class StatsClient extends ApiClient
             'AppleWebKit/537.36 (KHTML, like Gecko) '.
             'Chrome/58.0.3029.110 '.
             'Safari/537.36',
-        'Origin'          => 'http://stats.nba.com',
+        'Origin'          => 'http://data.nba.com',
         'Accept'          => 'application/json, text/plain, */*',
         // optional headers
-        'Referer'         => 'http://stats.nba.com',
+        'Referer'         => 'http://data.nba.com',
         'Content-Type'    => 'application/json',
         'Accept-Language' => 'en-US',
         'Connection'      => 'keep-alive',
@@ -47,11 +45,11 @@ class StatsClient extends ApiClient
     }
 
     /**
-     * @param AbstractStatsApiRequest $request
+     * @param AbstractDataApiRequest $request
      * @param array $config
      * @return ResponseInterface|null
      */
-    public function request(AbstractStatsApiRequest $request, array $config = [])
+    public function request(AbstractDataApiRequest $request, array $config = [])
     {
         return $this->apiRequest(
             'GET',
@@ -64,41 +62,11 @@ class StatsClient extends ApiClient
     }
 
     /**
-     * @param CommonAllPlayers $request
+     * @param FullPlayByPlay $request
      * @param array $config
      * @return ResponseInterface|null
      */
-    public function getCommonAllPlayers(CommonAllPlayers $request, array $config = [])
-    {
-        return $this->request($request, $config);
-    }
-
-    /**
-     * @param CommonPlayerInfo $request
-     * @param array $config
-     * @return ResponseInterface|null
-     */
-    public function getCommonPlayerInfo(CommonPlayerInfo $request, array $config = [])
-    {
-        return $this->request($request, $config);
-    }
-
-    /**
-     * @param CommonTeamYears $request
-     * @param array $config
-     * @return ResponseInterface|null
-     */
-    public function getCommonTeamYears(CommonTeamYears $request, array $config = [])
-    {
-        return $this->request($request, $config);
-    }
-
-    /**
-     * @param TeamInfoCommon $request
-     * @param array $config
-     * @return ResponseInterface|null
-     */
-    public function getTeamInfoCommon(TeamInfoCommon $request, array $config = [])
+    public function getFullPlayByPlay(FullPlayByPlay $request, array $config = [])
     {
         return $this->request($request, $config);
     }
