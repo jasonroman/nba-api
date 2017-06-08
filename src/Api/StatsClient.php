@@ -10,7 +10,7 @@ use JasonRoman\NbaApi\Request\Stats\CommonTeamYears;
 use JasonRoman\NbaApi\Request\Stats\TeamInfoCommon;
 use Psr\Http\Message\ResponseInterface;
 
-class StatsClient extends ApiClient
+class StatsClient extends AbstractApiClient
 {
     const BASE_URI = 'http://stats.nba.com/stats/';
 

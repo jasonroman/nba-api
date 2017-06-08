@@ -8,7 +8,7 @@ use JasonRoman\NbaApi\Request\Data\AbstractStatsApiRequest;
 use JasonRoman\NbaApi\Request\Data\FullPlayByPlay;
 use Psr\Http\Message\ResponseInterface;
 
-class DataClient extends ApiClient
+class DataClient extends AbstractApiClient
 {
     const BASE_URI = 'http://data.nba.com/data/';
 

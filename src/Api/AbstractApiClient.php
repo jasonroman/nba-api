@@ -8,7 +8,7 @@ use GuzzleHttp\Exception\ClientException;
 /**
  * Abstract class that other API clients can extend from.
  */
-abstract class ApiClient
+abstract class AbstractApiClient
 {
     const TIMEOUT         = 5;
     const CONNECT_TIMEOUT = 3;
