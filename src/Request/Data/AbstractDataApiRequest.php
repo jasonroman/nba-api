@@ -7,7 +7,7 @@ use JasonRoman\NbaApi\Request\AbstractApiRequest;
 abstract class AbstractDataApiRequest extends AbstractApiRequest
 {
     // hack way to force all classes that extend this to declare an ENDPOINT constant
-    const ENDPOINT = self::ENDPOINT;
+    //const ENDPOINT = self::ENDPOINT;
 
     const REGEX_GET_ENDPOINT_VARS = '/{\K[^}]*(?=})/m';
 
@@ -19,7 +19,7 @@ abstract class AbstractDataApiRequest extends AbstractApiRequest
         $endpoint = static::ENDPOINT;
 
         // get the endpoint variables that need replacing
-        preg_match_all('/{\K[^}]*(?=})/m', static::ENDPOINT, $endpointVars);
+        preg_match_all(self::REGEX_GET_ENDPOINT_VARS, static::ENDPOINT, $endpointVars);
 
         // remove duplicates
         $endpointVars = array_unique($endpointVars[0]);

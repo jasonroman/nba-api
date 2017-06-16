@@ -8,6 +8,7 @@ use JasonRoman\NbaApi\Request\Stats\CommonAllPlayers;
 use JasonRoman\NbaApi\Request\Stats\CommonPlayerInfo;
 use JasonRoman\NbaApi\Request\Stats\CommonTeamYears;
 use JasonRoman\NbaApi\Request\Stats\TeamInfoCommon;
+use JasonRoman\NbaApi\Request\Stats\VideoStatus;
 use Psr\Http\Message\ResponseInterface;
 
 class StatsClient extends AbstractApiClient
@@ -93,6 +94,18 @@ class StatsClient extends AbstractApiClient
      * @return ResponseInterface|null
      */
     public function getTeamInfoCommon(TeamInfoCommon $request, array $config = [])
+    {
+        return $this->request($request, $config);
+    }
+
+
+
+    /**
+     * @param VideoStatus $request
+     * @param array $config
+     * @return ResponseInterface|null
+     */
+    public function getVideoStatus(VideoStatus $request, array $config = [])
     {
         return $this->request($request, $config);
     }
