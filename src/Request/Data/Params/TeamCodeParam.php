@@ -2,7 +2,7 @@
 
 namespace JasonRoman\NbaApi\Request\Data\Params;
 
-class TeamCodeParam
+class TeamCodeParam extends AbstractDataParam
 {
     // nba team codes by abbreviation
     const ATL = 'hawks';

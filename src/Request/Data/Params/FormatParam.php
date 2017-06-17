@@ -2,7 +2,7 @@
 
 namespace JasonRoman\NbaApi\Request\Data\Params;
 
-class FormatParam
+class FormatParam extends AbstractDataParam
 {
     const JSON = 'json';
     const XML  = 'xml';

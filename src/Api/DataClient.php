@@ -2,11 +2,14 @@
 
 namespace JasonRoman\NbaApi\Api;
 
+use Doctrine\Common\Annotations\AnnotationRegistry;
 use GuzzleHttp\Client as GuzzleClient;
 use JasonRoman\NbaApi\Request\Data\AbstractDataApiRequest;
 use JasonRoman\NbaApi\Request\Data\AbstractStatsApiRequest;
 use JasonRoman\NbaApi\Request\Data\FullPlayByPlay;
+use JasonRoman\NbaApi\Request\Data\FullPlayByPlayRequest;
 use Psr\Http\Message\ResponseInterface;
+use Symfony\Component\Validator\Validation;
 
 class DataClient extends AbstractApiClient
 {
@@ -50,6 +53,27 @@ class DataClient extends AbstractApiClient
      */
     public function request(AbstractDataApiRequest $request, array $config = [])
     {
+        /*AnnotationRegistry::registerAutoloadNamespace(
+            "Symfony\Component\Validator\Constraints",
+            '/home/vagrant/dev/projects/nbasense/vendor/symfony/symfony/src'
+        );*/
+
+        /*AnnotationRegistry::registerAutoloadNamespaces([
+            "Symfony\Component\Validator\Constraints" => '/home/vagrant/dev/projects/nbasense/vendor/symfony/symfony/src1',
+            "JasonRoman\NbaApi\Constraints", '/home/vagrant/dev/projects/nbasense/vendor/jasonroman/nba-stats-api/src1'
+        ]);*/
+
+        $validator = Validation::createValidatorBuilder()
+            ->enableAnnotationMapping()
+            ->getValidator()
+        ;
+
+        $violations = $validator->validate($request);
+        foreach ($violations as $violation) {
+            dump($violation->getMessage());
+        }
+        dump($violations);
+
         return $this->apiRequest(
             'GET',
             $request->getEndpoint(),
@@ -61,11 +85,11 @@ class DataClient extends AbstractApiClient
     }
 
     /**
-     * @param FullPlayByPlay $request
+     * @param FullPlayByPlayRequest $request
      * @param array $config
      * @return ResponseInterface|null
      */
-    public function getFullPlayByPlay(FullPlayByPlay $request, array $config = [])
+    public function getFullPlayByPlay(FullPlayByPlayRequest $request, array $config = [])
     {
         return $this->request($request, $config);
     }

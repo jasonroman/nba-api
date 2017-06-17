@@ -3,6 +3,8 @@ declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Request;
 
+use JasonRoman\NbaApi\Request\Params\AbstractParam;
+
 abstract class AbstractApiRequest
 {
     const DEFAULT_METHOD_PREFIX = 'getDefault';
@@ -45,6 +47,7 @@ abstract class AbstractApiRequest
             // use the property if it was passed in from the array
             if (isset($array[$propertyName])) {
                 $class->$propertyName = $array[$propertyName];
+
                 continue;
             }
 
@@ -53,6 +56,7 @@ abstract class AbstractApiRequest
 
             if (method_exists($class, $defaultMethod)) {
                 $class->$propertyName = $class->$defaultMethod();
+
                 continue;
             }
 
@@ -65,10 +69,13 @@ abstract class AbstractApiRequest
 
             $paramsClass = new $paramsClassFqcn;
 
-            if (method_exists($paramsClass, self::PARAMS_DEFAULT_METHOD)) {
-                $class->$propertyName = $paramsClass->{self::PARAMS_DEFAULT_METHOD}();
+            // make sure the class is a param type
+            if (!$paramsClass instanceof AbstractParam) {
                 continue;
             }
+
+            // call the method to get the default value for this property
+            $class->$propertyName = $paramsClass->{self::PARAMS_DEFAULT_METHOD}();
         }
 
         return $class;

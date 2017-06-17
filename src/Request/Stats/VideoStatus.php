@@ -20,6 +20,7 @@ class VideoStatus extends AbstractStatsApiRequest
     public $gameDate;
 
     /**
+     * do some sort of default game date that resets at a particular time, like seasons and august
      * @return \DateTime
      */
     /*public function getDefaultGameDate()

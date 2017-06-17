@@ -2,7 +2,7 @@
 
 namespace JasonRoman\NbaApi\Request\Data\Params;
 
-class DateParam
+class DateParam extends AbstractDataParam
 {
     public function getDefaultValue()
     {
