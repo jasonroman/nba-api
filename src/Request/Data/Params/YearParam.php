@@ -6,6 +6,8 @@ use JasonRoman\NbaApi\Request\Params\SeasonParam;
 
 class YearParam extends SeasonParam
 {
+    const FORMAT = '/^\d{4}$/';
+
     /**
      * @return string
      */

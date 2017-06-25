@@ -2,37 +2,8 @@
 
 namespace JasonRoman\NbaApi\Request\Data;
 
-use JasonRoman\NbaApi\Request\AbstractApiRequest;
+use JasonRoman\NbaApi\Request\AbstractUrlPlaceholderApiRequest;
 
-abstract class AbstractDataApiRequest extends AbstractApiRequest
+abstract class AbstractDataApiRequest extends AbstractUrlPlaceholderApiRequest
 {
-    // hack way to force all classes that extend this to declare an ENDPOINT constant
-    //const ENDPOINT = self::ENDPOINT;
-
-    const REGEX_GET_ENDPOINT_VARS = '/{\K[^}]*(?=})/m';
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getEndpoint()
-    {
-        $endpoint = static::ENDPOINT;
-
-        // get the endpoint variables that need replacing
-        preg_match_all(self::REGEX_GET_ENDPOINT_VARS, static::ENDPOINT, $endpointVars);
-
-        // remove duplicates
-        $endpointVars = array_unique($endpointVars[0]);
-
-        // loop through each endpoint variable and replace the class member value in the endpoint string
-        foreach ($endpointVars as $endpointVar) {
-            if (is_null($this->$endpointVar)) {
-                throw new \Exception(sprintf("Missing class member value '%s' for request", $endpointVar));
-            }
-
-            $endpoint = str_replace('{'.$endpointVar.'}', $this->$endpointVar, $endpoint);
-        }
-
-        return $endpoint;
-    }
 }

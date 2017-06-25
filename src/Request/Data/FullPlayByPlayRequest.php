@@ -8,7 +8,6 @@ use JasonRoman\NbaApi\Request\Data\Params\FormatParam;
 use JasonRoman\NbaApi\Request\Params\GameIdParam;
 use JasonRoman\NbaApi\Request\Params\YearParam;
 
-
 class FullPlayByPlayRequest extends AbstractDataApiRequest
 {
     const ENDPOINT = '/v2015/{format}/mobile_teams/nba/{year}/scores/pbp/{gameId}_full_pbp.{format}';
@@ -21,12 +20,13 @@ class FullPlayByPlayRequest extends AbstractDataApiRequest
 
     /**
      * @ApiAssert\ApiRegex(pattern = YearParam::FORMAT)
+     * @Assert\Range(min = 1946, minMessage = "Minimum year is {{ limit }}")
      * @var int
      */
     public $year;
 
     /**
-     * @Assert\Regex(pattern = GameIdParam::FORMAT)
+     * @ApiAssert\ApiRegex(pattern = GameIdParam::FORMAT)
      * @var string
      */
     public $gameId;
