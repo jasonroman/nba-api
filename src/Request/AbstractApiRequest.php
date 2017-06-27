@@ -9,21 +9,27 @@ abstract class AbstractApiRequest
 {
     const DEFAULT_METHOD_PREFIX = 'getDefault';
     const PARAMS_DEFAULT_METHOD = 'getDefaultValue';
-    const PARAMS_DIR            = 'Params';
+    const PARAMS_DIR = 'Params';
     const PARAMS_SUFFIX         = 'Param';
 
     /**
      * Retrieve the endpoint in the URL that gets added to the base URL.
+     *
      * @return string
      */
-    abstract public function getEndpoint();
+    abstract public function getEndpoint() : string;
+
+    /**
+     * Get the request type - essentially where the request is coming from ('Data', 'Nba', 'Stats',)
+     */
+    abstract public function getRequestType() : string;
 
     /**
      * Convert an API Request to an array that can be passed as a Guzzle 'query'.
      *
      * @return array
      */
-    public function toArray()
+    public function toArray() : array
     {
         return (array) $this;
     }
@@ -32,7 +38,7 @@ abstract class AbstractApiRequest
      * @param array $array
      * @return AbstractApiRequest
      */
-    public static function fromArray(array $array)
+    public static function fromArray(array $array) : self
     {
         $calledClass = get_called_class();
         $class       = new $calledClass;
@@ -48,7 +54,7 @@ abstract class AbstractApiRequest
             if (isset($array[$propertyName])) {
                 $class->$propertyName = $array[$propertyName];
 
-                continue;
+                //continue;
             }
 
             // otherwise, check if the request class has a getDefault<PropertyName>() method and use that
@@ -57,11 +63,11 @@ abstract class AbstractApiRequest
             if (method_exists($class, $defaultMethod)) {
                 $class->$propertyName = $class->$defaultMethod();
 
-                continue;
+                //continue;
             }
 
             // otherwise, check if the property has its own corresponding param class and use that default
-            $paramsClassFqcn = self::getParamsClass($reflectionClass, $propertyName);
+            $paramsClassFqcn = self::getParamsClass($reflectionClass, $class->getRequestType(), $propertyName);
 
             if (!class_exists($paramsClassFqcn)) {
                 continue;
@@ -71,7 +77,7 @@ abstract class AbstractApiRequest
 
             // make sure the class is a param type
             if (!$paramsClass instanceof AbstractParam) {
-                continue;
+                //continue;
             }
 
             // call the method to get the default value for this property
@@ -82,6 +88,16 @@ abstract class AbstractApiRequest
     }
 
     /**
+     * @param \ReflectionObject $class
+     * @param string $propertyName
+     * @return string
+     */
+    private static function getParamsClass1(\ReflectionObject $class, string $propertyName) : string
+    {
+        return $class->getNamespaceName().'\\'.self::PARAMS_DIR.'\\'.ucfirst($propertyName).self::PARAMS_SUFFIX;
+    }
+
+    /**
      * Get the Params class associated with a particular property.
      * The params class is one level up, contains the property name, and ends with the parameters suffix
      *
@@ -89,8 +105,11 @@ abstract class AbstractApiRequest
      * @param string $propertyName
      * @return string
      */
-    private static function getParamsClass(\ReflectionObject $class, string $propertyName)
+    private static function getParamsClass(\ReflectionObject $class, $requestType, string $propertyName) : string
     {
+        $paramNamespace = str_replace('Request', 'Params', __NAMESPACE__);
+        dump($paramNamespace.'\\'.$requestType);
+        //return $paramNamespace.'\\'.$class->getRequestType();
         return $class->getNamespaceName().'\\'.self::PARAMS_DIR.'\\'.ucfirst($propertyName).self::PARAMS_SUFFIX;
     }
 }

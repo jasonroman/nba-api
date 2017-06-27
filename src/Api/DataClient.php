@@ -6,8 +6,7 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 use GuzzleHttp\Client as GuzzleClient;
 use JasonRoman\NbaApi\Request\Data\AbstractDataApiRequest;
 use JasonRoman\NbaApi\Request\Data\AbstractStatsApiRequest;
-use JasonRoman\NbaApi\Request\Data\FullPlayByPlay;
-use JasonRoman\NbaApi\Request\Data\FullPlayByPlayRequest;
+use JasonRoman\NbaApi\Request\Data\Game\FullPlayByPlayRequest;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Validator\Validation;
 
@@ -73,6 +72,7 @@ class DataClient extends AbstractApiClient
             dump($violation->getMessage());
         }
         dump($violations);
+        dump((string) $violations);
 
         return $this->apiRequest(
             'GET',

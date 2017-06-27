@@ -9,7 +9,7 @@ namespace JasonRoman\NbaApi\Request;
 abstract class AbstractUrlPlaceholderApiRequest extends AbstractApiRequest
 {
     // hack way to force all classes that extend this to declare an ENDPOINT constant
-    const ENDPOINT = self::ENDPOINT;
+    //const ENDPOINT = self::ENDPOINT;
 
     // default implementation uses {<param>} as a placeholder;
     // for example /data/{gameId}/scores will replace {gameId} with the value of $gameId in the request class
@@ -24,7 +24,7 @@ abstract class AbstractUrlPlaceholderApiRequest extends AbstractApiRequest
     /**
      * {@inheritdoc}
      */
-    public function getEndpoint()
+    public function getEndpoint() : string
     {
         // get the endpoint from the request class
         $endpoint = static::ENDPOINT;

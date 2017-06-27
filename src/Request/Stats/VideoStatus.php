@@ -2,7 +2,7 @@
 
 namespace JasonRoman\NbaApi\Request\Stats;
 
-use Symfony\Component\Validator\Constraint as Assert;
+use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Request\Stats\Params\LeagueId;
 
 class VideoStatus extends AbstractStatsApiRequest
