@@ -17,8 +17,8 @@ class FormatParam extends AbstractDataParam
      * {@inheritdoc}
      * @return string
      */
-    public function getDefaultValue() : string
+    public static function getDefaultValue() : string
     {
-        return self::JSON;
+        return 'heynow';
     }
 }

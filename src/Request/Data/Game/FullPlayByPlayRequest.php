@@ -2,10 +2,10 @@
 
 namespace JasonRoman\NbaApi\Request\Data\Game;
 
+use JasonRoman\NbaApi\Params\YearParam;
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\Data\FormatParam;
-use JasonRoman\NbaApi\Params\Data\GameDateParam;
 use JasonRoman\NbaApi\Params\GameIdParam;
 use JasonRoman\NbaApi\Request\Data\AbstractDataApiRequest;
 
@@ -14,7 +14,7 @@ use JasonRoman\NbaApi\Request\Data\AbstractDataApiRequest;
  */
 class FullPlayByPlayRequest extends AbstractDataApiRequest
 {
-    const ENDPOINT = '/v2015/{format}/mobile_teams/nba/{year}/scores/pbp/{gameId}_full_pbp.{format}';
+    const ENDPOINT = '/data/v2015/{format}/mobile_teams/nba/{year}/scores/pbp/{gameId}_full_pbp.{format}';
 
     /**
      * @Assert\NotBlank()

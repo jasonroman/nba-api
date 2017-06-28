@@ -13,7 +13,7 @@ use JasonRoman\NbaApi\Request\Data\AbstractDataApiRequest;
  */
 class PreviewArticleRequest extends AbstractDataApiRequest
 {
-    const ENDPOINT = '/data/10s/prod/v1/{gameDate}/{gameId}_preview_article.json';
+    const ENDPOINT = '/data/prod/v1/{gameDate}/{gameId}_preview_article.json';
 
     /**
      * @Assert\NotBlank()

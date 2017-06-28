@@ -8,7 +8,7 @@ use JasonRoman\NbaApi\Request\Params\YearParam;
 
 class TeamsRequest extends AbstractDataApiRequest
 {
-    const ENDPOINT = '/data/10s/prod/v1/{year}/teams.json';
+    const ENDPOINT = '/data/prod/v1/{year}/teams.json';
 
     /**
      * @Assert\NotBlank()

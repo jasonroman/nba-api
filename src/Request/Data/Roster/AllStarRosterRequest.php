@@ -10,7 +10,7 @@ use JasonRoman\NbaApi\Request\Data\AbstractDataApiRequest;
  */
 class AllStarRosterRequest extends AbstractDataApiRequest
 {
-    const ENDPOINT = '/data/10s/prod/v1/allstar/{year}/AS_roster.json';
+    const ENDPOINT = '/data/prod/v1/allstar/{year}/AS_roster.json';
 
     /**
      * @Assert\NotBlank()

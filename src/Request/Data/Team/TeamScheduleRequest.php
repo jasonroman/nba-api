@@ -12,7 +12,7 @@ use JasonRoman\NbaApi\Params\Data\TeamUrlCodeParam;
  */
 class TeamScheduleRequest extends AbstractDataApiRequest
 {
-    const ENDPOINT = '/data/10s/prod/v1/{year}/teams/{teamUrlCode}/schedule.json';
+    const ENDPOINT = '/data/prod/v1/{year}/teams/{teamUrlCode}/schedule.json';
 
     /**
      * @Assert\NotBlank()

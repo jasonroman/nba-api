@@ -13,7 +13,7 @@ use JasonRoman\NbaApi\Request\Data\AbstractDataApiRequest;
  */
 class MiniBoxscoreRequest extends AbstractDataApiRequest
 {
-    const ENDPOINT = '/data/10s/prod/v1/{ganmeDate}/{gameId}_mini_boxscore.json';
+    const ENDPOINT = '/data/prod/v1/{ganmeDate}/{gameId}_mini_boxscore.json';
 
     /**
      * @Assert\NotBlank()

@@ -10,7 +10,7 @@ use JasonRoman\NbaApi\Request\Data\AbstractDataApiRequest;
  */
 class PlayerUberStatsRequest extends AbstractDataApiRequest
 {
-    const ENDPOINT = '/data/10s/prod/v1/{year}/players/{personId}_profile.json';
+    const ENDPOINT = '/data/prod/v1/{year}/players/{playerId}_profile.json';
 
     /**
      * @Assert\NotBlank()
@@ -24,9 +24,9 @@ class PlayerUberStatsRequest extends AbstractDataApiRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = 1)
+     * @Assert\Range(min = 1, max = 2147483647)
      *
      * @var int
      */
-    public $personId;
+    public $playerId;
 }

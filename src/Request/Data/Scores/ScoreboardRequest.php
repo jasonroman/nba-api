@@ -11,7 +11,7 @@ use JasonRoman\NbaApi\Request\Data\AbstractDataApiRequest;
  */
 class ScoreboardRequest extends AbstractDataApiRequest
 {
-    const ENDPOINT = '/data/10s/prod/v1/{gameDate}/scoreboard.json';
+    const ENDPOINT = '/data/prod/v1/{gameDate}/scoreboard.json';
 
     /**
      * @Assert\NotBlank()

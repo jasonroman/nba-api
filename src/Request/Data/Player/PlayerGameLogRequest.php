@@ -10,7 +10,7 @@ use JasonRoman\NbaApi\Request\Data\AbstractDataApiRequest;
  */
 class PlayerGameLogRequest extends AbstractDataApiRequest
 {
-    const ENDPOINT = '/data/10s/prod/v1/{year}/players/{personId}_gamelog.json';
+    const ENDPOINT = '/data/prod/v1/{year}/players/{playerId}_gamelog.json';
 
     /**
      * @Assert\NotBlank()
@@ -24,9 +24,9 @@ class PlayerGameLogRequest extends AbstractDataApiRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = 1)
+     * @Assert\Range(min = 1, max = 2147483647)
      *
      * @var int
      */
-    public $personId;
+    public $playerId;
 }

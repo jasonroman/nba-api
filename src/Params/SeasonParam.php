@@ -34,13 +34,13 @@ class SeasonParam extends AbstractParam
     /**
      * Get the current season's year in format YYYY.
      *
-     * @return string
+     * @return int
      */
-    public static function currentSeasonStartYear() : string
+    public static function currentSeasonStartYear() : int
     {
         // if September or earlier, the season started from the previous year
         // NBA has a gap, where it considered a season ending on the last day of the NBA finals
         // but the season start is October 1st; might want to handle this more specifically in the future
-        return (date('n') < 10) ? (string) (date('Y') - 1) : date('Y');
+        return (date('n') < 10) ?  (int) (date('Y') - 1) : (int) date('Y');
     }
 }

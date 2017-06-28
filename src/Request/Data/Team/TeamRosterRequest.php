@@ -12,7 +12,7 @@ use JasonRoman\NbaApi\Params\Data\TeamUrlCodeParam;
  */
 class TeamRosterRequest extends AbstractDataApiRequest
 {
-    const ENDPOINT = '/data/10s/prod/v1/{year}/teams/{teamUrlCode}/roster.json';
+    const ENDPOINT = '/data/prod/v1/{year}/teams/{teamUrlCode}/roster.json';
 
     /**
      * @Assert\NotBlank()

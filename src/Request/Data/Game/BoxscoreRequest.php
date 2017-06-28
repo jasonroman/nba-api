@@ -13,7 +13,7 @@ use JasonRoman\NbaApi\Request\Data\AbstractDataApiRequest;
  */
 class BoxscoreRequest extends AbstractDataApiRequest
 {
-    const ENDPOINT = '/data/10s/prod/v1/{gameDate}/{gameId}_boxscore.json';
+    const ENDPOINT = '/data/prod/v1/{gameDate}/{gameId}_boxscore.json';
 
     /**
      * @Assert\NotBlank()

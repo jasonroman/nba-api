@@ -8,9 +8,9 @@ class YearParam extends SeasonParam
 
     /**
      * {@inheritdoc}
-     * @return string
+     * @return int
      */
-    public function getDefaultValue()
+    public static function getDefaultValue() : int
     {
         return SeasonParam::currentSeasonStartYear();
     }

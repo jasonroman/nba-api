@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class LeagueScheduleRequest extends AbstractDataApiRequest
 {
-    const ENDPOINT = '/data/10s/prod/v1/{year}/schedule.json';
+    const ENDPOINT = '/data/prod/v1/{year}/schedule.json';
 
     /**
      * @Assert\NotBlank()

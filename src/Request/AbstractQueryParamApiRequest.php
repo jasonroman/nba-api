@@ -17,7 +17,7 @@ abstract class AbstractQueryParamApiRequest extends AbstractApiRequest
      *
      * @return mixed
      */
-    public function getEndpoint()
+    public function getEndpoint() : string
     {
         return strtolower((new \ReflectionClass($this))->getShortName());
     }

@@ -14,7 +14,7 @@ use JasonRoman\NbaApi\Request\Data\AbstractDataApiRequest;
  */
 class GameBookPdfRequest extends AbstractDataApiRequest
 {
-    const ENDPOINT = '/data/10s/prod/v1/{gameDate}/{gameId}_Book.pdf';
+    const ENDPOINT = '/data/prod/v1/{gameDate}/{gameId}_Book.pdf';
 
     /**
      * @Assert\NotBlank()

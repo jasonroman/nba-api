@@ -12,7 +12,7 @@ use JasonRoman\NbaApi\Request\Data\AbstractDataApiRequest;
  */
 class TodaysScoresRequest extends AbstractDataApiRequest
 {
-    const ENDPOINT = '/data/5s/v2015/json/mobile_teams/nba/{year}/scores/{leagueId}_todays_scores.json';
+    const ENDPOINT = '/data/v2015/json/mobile_teams/nba/{year}/scores/{leagueId}_todays_scores.json';
 
     /**
      * @Assert\NotBlank()

@@ -9,5 +9,5 @@ use JasonRoman\NbaApi\Request\Data\AbstractDataApiRequest;
  */
 class LeagueMiniStandingsRequest extends AbstractDataApiRequest
 {
-    const ENDPOINT = '/data/10s/prod/v1/current/standings_all_no_sort_keys.json';
+    const ENDPOINT = '/data/prod/v1/current/standings_all_no_sort_keys.json';
 }

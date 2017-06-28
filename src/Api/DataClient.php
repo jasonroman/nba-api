@@ -61,7 +61,6 @@ class DataClient extends AbstractApiClient
             "Symfony\Component\Validator\Constraints" => '/home/vagrant/dev/projects/nbasense/vendor/symfony/symfony/src1',
             "JasonRoman\NbaApi\Constraints", '/home/vagrant/dev/projects/nbasense/vendor/jasonroman/nba-stats-api/src1'
         ]);*/
-
         $validator = Validation::createValidatorBuilder()
             ->enableAnnotationMapping()
             ->getValidator()
@@ -73,6 +72,11 @@ class DataClient extends AbstractApiClient
         }
         dump($violations);
         dump((string) $violations);
+
+        dump($request);
+        $request->convertParamsToString();
+dump($request);
+
 
         return $this->apiRequest(
             'GET',

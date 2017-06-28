@@ -13,7 +13,7 @@ use JasonRoman\NbaApi\Request\Data\AbstractDataApiRequest;
  */
 class FullScheduleRequest extends AbstractDataApiRequest
 {
-    const ENDPOINT = '/v2015/{format}/mobile_teams/nba/{year}/league/{leagueId}_full_schedule.{format}';
+    const ENDPOINT = '/data/v2015/{format}/mobile_teams/nba/{year}/league/{leagueId}_full_schedule.{format}';
 
     /**
      * @Assert\NotBlank()

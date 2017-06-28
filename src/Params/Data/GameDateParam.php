@@ -43,8 +43,8 @@ class GameDateParam extends AbstractDataParam
      * {@inheritdoc}
      * @return \DateTime
      */
-    public function getDefaultValue() : \DateTime
+    public static function getDefaultValue() : \DateTime
     {
-        return new \DateTime();
+        return new \DateTime('tomorrow');
     }
 }

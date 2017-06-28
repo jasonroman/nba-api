@@ -11,7 +11,7 @@ use JasonRoman\NbaApi\Request\Params\YearParam;
  */
 class TeamsConfigRequest extends AbstractDataApiRequest
 {
-    const ENDPOINT = '/data/1h/prod/{year}/teams_config.json';
+    const ENDPOINT = '/data/prod/{year}/teams_config.json';
 
     /**
      * @Assert\NotBlank()

@@ -9,5 +9,5 @@ use JasonRoman\NbaApi\Request\Data\AbstractDataApiRequest;
  */
 class CalendarRequest extends AbstractDataApiRequest
 {
-    const ENDPOINT = '/data/10s/prod/v1/calendar.json';
+    const ENDPOINT = '/data/prod/v1/calendar.json';
 }

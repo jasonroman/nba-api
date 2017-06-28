@@ -10,7 +10,7 @@ use JasonRoman\NbaApi\Request\Data\AbstractDataApiRequest;
  */
 class PlayoffsBracketRequest extends AbstractDataApiRequest
 {
-    const ENDPOINT = '/data/10s/prod/v1/{year}/playoffsBracket.json';
+    const ENDPOINT = '/data/prod/v1/{year}/playoffsBracket.json';
 
     /**
      * @Assert\NotBlank()
