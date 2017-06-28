@@ -19,6 +19,6 @@ class FormatParam extends AbstractDataParam
      */
     public static function getDefaultValue() : string
     {
-        return 'heynow';
+        return self::JSON;
     }
 }

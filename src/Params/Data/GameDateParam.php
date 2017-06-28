@@ -31,11 +31,16 @@ class GameDateParam extends AbstractDataParam
     /**
      * Take a \DateTime value and convert it to the string date format that the API expects.
      *
-     * @param \DateTime $dateTime
+     * @param \DateTime|mixed $dateTime
      * @return string
      */
-    public static function getStringValue(\DateTime $dateTime) : string
+    public static function getStringValue($dateTime) : string
     {
+        // until a mixed type is supported for type-hints, check the value here
+        if (!$dateTime instanceof \DateTime) {
+            return parent::getStringValue($dateTime);
+        }
+
         return $dateTime->format(self::DATE_FORMAT);
     }
 

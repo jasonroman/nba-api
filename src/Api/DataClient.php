@@ -6,6 +6,7 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 use GuzzleHttp\Client as GuzzleClient;
 use JasonRoman\NbaApi\Request\Data\AbstractDataApiRequest;
 use JasonRoman\NbaApi\Request\Data\AbstractStatsApiRequest;
+use JasonRoman\NbaApi\Request\Data\Game\BoxscoreRequest;
 use JasonRoman\NbaApi\Request\Data\Game\FullPlayByPlayRequest;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Validator\Validation;
@@ -86,6 +87,17 @@ dump($request);
                 $config
             )
         );
+    }
+
+
+    /**
+     * @param BoxscoreRequest $request
+     * @param array $config
+     * @return ResponseInterface|null
+     */
+    public function getBoxScore(BoxscoreRequest $request, array $config = [])
+    {
+        return $this->request($request, $config);
     }
 
     /**
