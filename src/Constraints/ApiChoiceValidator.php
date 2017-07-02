@@ -4,6 +4,7 @@ namespace JasonRoman\NbaApi\Constraints;
 
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
+use Symfony\Component\Validator\Exception\ConstraintDefinitionException;
 
 /**
  * Custom Validator class based on Symfony Choice validator.

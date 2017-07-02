@@ -1,0 +1,54 @@
+<?php
+
+namespace JasonRoman\NbaApi\Request\Data\MobileTeams\Scores;
+
+use Symfony\Component\Validator\Constraints as Assert;
+use JasonRoman\NbaApi\Constraints as ApiAssert;
+use JasonRoman\NbaApi\Params\Data\LeagueSlugParam;
+use JasonRoman\NbaApi\Params\FormatParam;
+use JasonRoman\NbaApi\Params\LeagueIdParam;
+use JasonRoman\NbaApi\Request\AbstractDataRequest;
+
+/**
+ * Get the scores for today. Makes no sense to put a season year other than current, as it will never have data.
+ */
+class TodaysScoresRequest extends AbstractDataRequest
+{
+    const ENDPOINT = '/v2015/{format}/mobile_teams/{leagueSlug}/{year}/scores/{leagueId}_todays_scores.{format}';
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @ApiAssert\ApiChoice(FormatParam::OPTIONS)
+     *
+     * @var string
+     */
+    public $format;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @ApiAssert\ApiChoice(choices = LeagueSlugParam::OPTIONS)
+     *
+     * @var string
+     */
+    public $leagueSlug;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("int")
+     * @Assert\Range(min = 2015)
+     *
+     * @var int
+     */
+    public $year;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @ApiAssert\ApiChoice(LeagueIdParam::OPTIONS_NBA)
+     *
+     * @var string
+     */
+    public $leagueId;
+}

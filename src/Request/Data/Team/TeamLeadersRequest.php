@@ -4,15 +4,15 @@ namespace JasonRoman\NbaApi\Request\Data\Team;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
-use JasonRoman\NbaApi\Request\Data\AbstractDataApiRequest;
-use JasonRoman\NbaApi\Params\Data\TeamUrlCodeParam;
+use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Params\Data\TeamSlugParam;
 
 /**
  * Get statistical leaders of a team for a given season. Available from 2015.
  */
-class TeamLeadersRequest extends AbstractDataApiRequest
+class TeamLeadersRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/data/prod/v1/{year}/teams/{teamUrlCode}/leaders.json';
+    const ENDPOINT = '/data/prod/v1/{year}/teams/{teamSlug}/leaders.json';
 
     /**
      * @Assert\NotBlank()
@@ -26,9 +26,9 @@ class TeamLeadersRequest extends AbstractDataApiRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(TeamUrlCodeParam::OPTIONS)
+     * @ApiAssert\ApiChoice(TeamSlugParam::OPTIONS)
      *
      * @var string
      */
-    public $teamUrlCode;
+    public $teamSlug;
 }

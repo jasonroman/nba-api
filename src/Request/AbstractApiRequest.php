@@ -5,27 +5,73 @@ namespace JasonRoman\NbaApi\Request;
 
 use JasonRoman\NbaApi\Params\AbstractParam;
 
-abstract class AbstractApiRequest
+abstract class AbstractApiRequest implements ApiRequestInterface
 {
     const PARAM_DEFAULT_METHOD     = 'getDefaultValue';
     const CONVERT_TO_STRING_METHOD = 'getStringValue';
 
-    /**
-     * Retrieve the endpoint in the URL that gets added to the base URL.
-     *
-     * @return string
-     */
-    abstract public function getEndpoint() : string;
+    // default implementation uses {<param>} as a placeholder;
+    // for example /data/{gameId}/scores will replace {gameId} with the value of $gameId in the request class
+    const PLACEHOLDER_START = '{';
+    const PLACEHOLDER_END   = '}';
+
+    // default regex looks like the following: /{\K[^}]*(?=})/m
+    const REGEX_GET_ENDPOINT_VARS = '/'.
+    self::PLACEHOLDER_START.'\K[^'.self::PLACEHOLDER_END.']*(?='.self::PLACEHOLDER_END.')'.
+    '/m';
 
     /**
-     * Get the request type - essentially where the request is coming from ('Data', 'Nba', 'Stats',)
+     * {@inheritdoc}
      */
-    abstract public function getRequestType() : string;
+    public function getMethod() : string
+    {
+        return 'GET';
+    }
 
     /**
-     * Get the default parameter values for this request.
-     *
-     * @return array
+     * {@inheritdoc}
+     */
+    public function getRequestType() : string
+    {
+        return static::REQUEST_TYPE;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getResponseType() : string
+    {
+        return static::RESPONSE_TYPE;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getEndpoint() : string
+    {
+        // get the endpoint from the request class
+        $endpoint = static::ENDPOINT;
+
+        // get all endpoint variables that need replacing
+        preg_match_all(self::REGEX_GET_ENDPOINT_VARS, static::ENDPOINT, $endpointVars);
+
+        // remove duplicates
+        $endpointVars = array_unique($endpointVars[0]);
+
+        // loop through each endpoint variable and replace the class member value in the endpoint string
+        foreach ($endpointVars as $endpointVar) {
+            if (is_null($this->$endpointVar)) {
+                throw new \Exception(sprintf("Missing class member value '%s' for request", $endpointVar));
+            }
+
+            $endpoint = str_replace('{'.$endpointVar.'}', $this->$endpointVar, $endpoint);
+        }
+
+        return $endpoint;
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function getDefaultValues() : array
     {
@@ -33,20 +79,9 @@ abstract class AbstractApiRequest
     }
 
     /**
-     * Convert an API Request to an array that can be passed as a Guzzle 'query'.
-     *
-     * @return array
+     * {@inheritdoc}
      */
-    public function toArray() : array
-    {
-        return (array) $this;
-    }
-
-    /**
-     * @param array $array
-     * @return AbstractApiRequest
-     */
-    public static function fromArray(array $array) : self
+    public static function fromArray(array $array = []) : ApiRequestInterface
     {
         $calledClass = get_called_class();
 
@@ -77,7 +112,8 @@ abstract class AbstractApiRequest
 
                 continue;
             }
-
+dump($class);
+            dump($class->getDefaultValues());
             // use the property if it exists in the getDefaultValues() method of the request class
             $requestClassDefaultValues = $class->getDefaultValues();
 
@@ -123,6 +159,17 @@ abstract class AbstractApiRequest
         return $class;
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function toArray() : array
+    {
+        return (array) $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function convertParamsToString()
     {
         // get the reflection class and all public properties of the class

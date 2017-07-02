@@ -4,15 +4,15 @@ namespace JasonRoman\NbaApi\Request\Data\Team;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
-use JasonRoman\NbaApi\Request\Data\AbstractDataApiRequest;
-use JasonRoman\NbaApi\Params\Data\TeamUrlCodeParam;
+use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Params\Data\TeamSlugParam;
 
 /**
  * Get the schedule of a team for a given season. Available from 2015. Includes scores if the game has been played.
  */
-class TeamScheduleRequest extends AbstractDataApiRequest
+class TeamScheduleRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/data/prod/v1/{year}/teams/{teamUrlCode}/schedule.json';
+    const ENDPOINT = '/data/prod/v1/{year}/teams/{teamSlug}/schedule.json';
 
     /**
      * @Assert\NotBlank()
@@ -26,9 +26,9 @@ class TeamScheduleRequest extends AbstractDataApiRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(TeamUrlCodeParam::OPTIONS)
+     * @ApiAssert\ApiChoice(TeamSlugParam::OPTIONS)
      *
      * @var string
      */
-    public $teamUrlCode;
+    public $teamSlug;
 }

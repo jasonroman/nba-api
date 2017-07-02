@@ -4,13 +4,13 @@ namespace JasonRoman\NbaApi\Request\Data\Team;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
-use JasonRoman\NbaApi\Request\Data\AbstractDataApiRequest;
+use JasonRoman\NbaApi\Request\AbstractDataRequest;
 use JasonRoman\NbaApi\Request\Params\TeamIdParam;
 
 /**
  * Get players on a team for a given season. Same as other request except uses team id, available from 2016.
  */
-class TeamRoster2Request extends AbstractDataApiRequest
+class TeamRoster2Request extends AbstractDataRequest
 {
     const ENDPOINT = '/data/prod/v1/{year}/teams/{teamId}/roster.json';
 

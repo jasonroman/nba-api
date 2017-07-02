@@ -9,7 +9,7 @@ use JasonRoman\NbaApi\Request\Params\YearParam;
 /**
  * Links to Android/iOS apps, TicketMaster tickets, team website/tickets
  */
-class TeamsConfigRequest extends AbstractDataApiRequest
+class TeamsConfigRequest extends AbstractDataRequest
 {
     const ENDPOINT = '/data/prod/{year}/teams_config.json';
 
