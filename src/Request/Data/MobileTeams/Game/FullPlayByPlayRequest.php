@@ -19,7 +19,7 @@ class FullPlayByPlayRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(choices = FormatParam::OPTIONS)
+     * @ApiAssert\ApiChoice(FormatParam::OPTIONS)
      *
      * @var string
      */
@@ -28,7 +28,7 @@ class FullPlayByPlayRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(choices = LeagueSlugParam::OPTIONS)
+     * @ApiAssert\ApiChoice(LeagueSlugParam::OPTIONS)
      *
      * @var string
      */

@@ -3,14 +3,13 @@
 namespace JasonRoman\NbaApi\Response;
 
 use GuzzleHttp;
-use GuzzleHttp\Psr7\Response as GuzzleResponse;
 use Psr\Http\Message\ResponseInterface;
 
 /**
  * Guzzle Response wrapper class, making it easier to work with returned results.
  * Might want to look into Guzzle MiddleWare later, but the concept is general seems overly complex.
  */
-class ApiResponse extends GuzzleResponse
+class ApiResponse
 {
     /**
      * @var ResponseInterface
@@ -31,6 +30,11 @@ class ApiResponse extends GuzzleResponse
      */
     public function getFromJsonBody($toArray = false)
     {
+        try {
+            $json = GuzzleHttp\json_decode($this->response->getBody(), $toArray);
+        } catch (\InvalidArgumentException $e) {
+            return null;
+        }
         return GuzzleHttp\json_decode($this->response->getBody(), $toArray);
     }
 
@@ -51,7 +55,7 @@ class ApiResponse extends GuzzleResponse
     }
 
     /**
-     * @return \SimpleXMLElement
+     * @return \SimpleXMLElement|false
      */
     public function getXml()
     {

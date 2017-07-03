@@ -28,7 +28,7 @@ class FullScheduleRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(choices = LeagueSlugParam::OPTIONS)
+     * @ApiAssert\ApiChoice(LeagueSlugParam::OPTIONS)
      *
      * @var string
      */
@@ -46,7 +46,7 @@ class FullScheduleRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(LeagueIdParam::NBA)
+     * @ApiAssert\ApiChoice(choices = {LeagueIdParam::NBA})
      *
      * @var string
      */

@@ -41,6 +41,11 @@ abstract class AbstractApiRequest implements ApiRequestInterface
      */
     public function getResponseType() : string
     {
+        // if the format parameter exists, use that as the response type, otherwise use the request's default
+        if (isset($this->format)) {
+            return $this->format;
+        }
+
         return static::RESPONSE_TYPE;
     }
 
@@ -112,8 +117,7 @@ abstract class AbstractApiRequest implements ApiRequestInterface
 
                 continue;
             }
-dump($class);
-            dump($class->getDefaultValues());
+
             // use the property if it exists in the getDefaultValues() method of the request class
             $requestClassDefaultValues = $class->getDefaultValues();
 

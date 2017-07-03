@@ -10,7 +10,7 @@ class ResponseType
 
     const ACCEPT_JSON = 'application/json';
     const ACCEPT_PDF  = 'application/pdf';
-    const ACCEPT_XML  = 'application/xml';
+    const ACCEPT_XML  = 'application/xml, text/xml';
 
     const TYPES = [
         self::JSON,

@@ -26,7 +26,7 @@ class PlayoffSeriesLeaders extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @ApiAssert\ApiChoice(choices = PlayoffSeriesIdParam::OPTIONS)
+     * @ApiAssert\ApiChoice(PlayoffSeriesIdParam::OPTIONS)
      *
      * @var int
      */

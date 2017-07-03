@@ -5,6 +5,7 @@ namespace JasonRoman\NbaApi\Params;
 class FormatParam extends AbstractParam
 {
     const JSON = 'json';
+    const PDF  = 'pdf';
     const XML  = 'xml';
 
     // standard allowed options

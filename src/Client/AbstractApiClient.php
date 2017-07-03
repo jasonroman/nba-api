@@ -135,6 +135,7 @@ abstract class AbstractApiClient
                     dump($stats->getTransferTime());
                     dump($stats->getHandlerStats());
                     dump($stats->getRequest());
+                    dump($stats->getResponse());
 
                     if ($stats->hasResponse()) {
                         dump($stats->getResponse()->getStatusCode());
