@@ -27,14 +27,10 @@ class ApiResponse
     /**
      * @param bool $toArray
      * @return object|array
+     * @throws \InvalidArgumentException
      */
     public function getFromJson($toArray = false)
     {
-        try {
-            $json = GuzzleHttp\json_decode($this->response->getBody(), $toArray);
-        } catch (\InvalidArgumentException $e) {
-            return null;
-        }
         return GuzzleHttp\json_decode($this->response->getBody(), $toArray);
     }
 
