@@ -28,7 +28,7 @@ class ApiResponse
      * @param bool $toArray
      * @return object|array
      */
-    public function getFromJsonBody($toArray = false)
+    public function getFromJson($toArray = false)
     {
         try {
             $json = GuzzleHttp\json_decode($this->response->getBody(), $toArray);
@@ -41,17 +41,17 @@ class ApiResponse
     /**
      * @return object
      */
-    public function getObject()
+    public function getObjectFromJson()
     {
-        return $this->getFromJsonBody(false);
+        return $this->getFromJson(false);
     }
 
     /**
      * @return array
      */
-    public function getArray()
+    public function getArrayFromJson()
     {
-        return $this->getFromJsonBody(true);
+        return $this->getFromJson(true);
     }
 
     /**
