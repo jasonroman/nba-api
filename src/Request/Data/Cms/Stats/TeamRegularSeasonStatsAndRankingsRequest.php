@@ -1,23 +1,23 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Data\Prod\Team;
+namespace JasonRoman\NbaApi\Request\Data\Cms\Stats;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
 use JasonRoman\NbaApi\Params\Data\TeamSlugParam;
+use JasonRoman\NbaApi\Request\AbstractDataRequest;
 
 /**
- * Get players on a team for a given season. Available from 2015.
+ * Get team regular season overall stats and rankings.
  */
-class TeamRosterRequest extends AbstractDataRequest
+class TeamRegularSeasonStatsAndRankingsRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/data/prod/v1/{year}/teams/{teamSlug}/roster.json';
+    const ENDPOINT = '/json/cms/{year}/statistics/{teamSlug}/regseason_stats_and_rankings.json';
 
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = 2015)
+     * @Assert\Range(min = 2011)
      *
      * @var int
      */

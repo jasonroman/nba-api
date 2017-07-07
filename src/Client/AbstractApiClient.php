@@ -102,7 +102,7 @@ abstract class AbstractApiClient
     /**
      * @param ApiRequestInterface $request
      * @param array $config
-     * @return ResponseInterface|null
+     * @return ResponseInterface
      */
     public function doRequest(ApiRequestInterface $request, array $config = [])
     {

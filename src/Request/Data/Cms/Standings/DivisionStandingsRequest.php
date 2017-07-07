@@ -8,7 +8,7 @@ use JasonRoman\NbaApi\Request\AbstractDataRequest;
 /**
  * Get the division standings used by the CMS.
  */
-class DivStandingsRequest extends AbstractDataRequest
+class DivisionStandingsRequest extends AbstractDataRequest
 {
     const ENDPOINT = '/json/cms/{year}/standings/division.json';
 

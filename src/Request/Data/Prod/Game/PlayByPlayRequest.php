@@ -9,16 +9,16 @@ use JasonRoman\NbaApi\Params\GameIdParam;
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 
 /**
- * Get the recap article for a game. Valid from 2014-2015 preseason and later.
+ * Get the play-by-play for a specific period of a game. Valid from 2014-2015 season and later.
  */
-class RecapArticleRequest extends AbstractDataRequest
+class PlayByPlayRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/data/prod/v1/{gameDate}/{gameId}_recap_article.json';
+    const ENDPOINT = '/data/prod/v1/{gameDate}/{gameId}_pbp_{period}.json';
 
     /**
      * @Assert\NotBlank()
      * @Assert\Date()
-     * @Assert\Range(min = GameDateParam::START_DATE_PRE_SEASON_2014)
+     * @Assert\Range(min = GameDateParam::MIN_DATE)
      *
      * @var \DateTime
      */
@@ -32,4 +32,13 @@ class RecapArticleRequest extends AbstractDataRequest
      * @var string
      */
     public $gameId;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("int")
+     * @Assert\Range(min = 1)
+     *
+     * @var int
+     */
+    public $period;
 }

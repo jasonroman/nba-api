@@ -9,16 +9,27 @@ use JasonRoman\NbaApi\Params\GameIdParam;
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 
 /**
- * Get the play-by-play for a specific period of a game used by the CMS. Valid from 2012-2013 preseason and later.
+ * This seems to get current per-game averages of all players involved with the specified game.
+ * The averages appear to be player averages for the current season/type (ex: 2016 regular season).
+ * @TODO figure out earliest game later
  */
-class PbpRequest extends AbstractDataRequest
+class PlayersPerGameRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/data/prod/v1/{gameDate}/{gameId}_pbp_{period}.json';
+    const ENDPOINT = '/json/cms/{year}/game/{gameDate}/{gameId}/playersPerGame.json';
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("int")
+     * @Assert\Range()
+     *
+     * @var int
+     */
+    public $year;
 
     /**
      * @Assert\NotBlank()
      * @Assert\Date()
-     * @Assert\Range(min = GameDateParam::START_DATE_PRE_SEASON_2012)
+     * @Assert\Range()
      *
      * @var \DateTime
      */
@@ -32,13 +43,4 @@ class PbpRequest extends AbstractDataRequest
      * @var string
      */
     public $gameId;
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Type("int")
-     * @Assert\Range(min = 1)
-     *
-     * @var int
-     */
-    public $period;
 }

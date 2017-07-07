@@ -10,7 +10,7 @@ use JasonRoman\NbaApi\Request\AbstractDataRequest;
  */
 class StandingsRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/data/json/cms/{year}/league/standings.json';
+    const ENDPOINT = '/json/cms/{year}/league/standings.json';
 
     /**
      * @Assert\NotBlank()

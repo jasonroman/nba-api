@@ -8,7 +8,7 @@ use JasonRoman\NbaApi\Request\AbstractDataRequest;
 /**
  * Get the conference standings used by the CMS.
  */
-class ConfStandingsRequest extends AbstractDataRequest
+class ConferenceStandingsRequest extends AbstractDataRequest
 {
     const ENDPOINT = '/json/cms/{year}/standings/conference.json';
 

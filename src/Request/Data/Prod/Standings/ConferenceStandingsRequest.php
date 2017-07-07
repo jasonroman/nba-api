@@ -7,7 +7,7 @@ use JasonRoman\NbaApi\Request\AbstractDataRequest;
 /**
  * Get the league conference standings.
  */
-class LeagueConfStandingsRequest extends AbstractDataRequest
+class ConferenceStandingsRequest extends AbstractDataRequest
 {
     const ENDPOINT = '/data/prod/v1/current/standings_conference.json';
 }

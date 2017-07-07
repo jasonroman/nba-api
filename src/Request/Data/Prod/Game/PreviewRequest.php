@@ -9,16 +9,16 @@ use JasonRoman\NbaApi\Params\GameIdParam;
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 
 /**
- * Get the play-by-play for a specific period of a game. Valid from 2014-2015 season and later.
+ * Get the preview article for a game. Valid from 2014-2015 regular season and later.
  */
-class PbpRequest extends AbstractDataRequest
+class PreviewRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/data/prod/v1/{gameDate}/{gameId}_pbp_{period}.json';
+    const ENDPOINT = '/data/prod/v1/{gameDate}/{gameId}_preview_article.json';
 
     /**
      * @Assert\NotBlank()
      * @Assert\Date()
-     * @Assert\Range(min = GameDateParam::MIN_DATE)
+     * @Assert\Range(min = GameDateParam::START_DATE_PRE_SEASON_2014)
      *
      * @var \DateTime
      */
@@ -32,13 +32,4 @@ class PbpRequest extends AbstractDataRequest
      * @var string
      */
     public $gameId;
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Type("int")
-     * @Assert\Range(min = 1)
-     *
-     * @var int
-     */
-    public $period;
 }

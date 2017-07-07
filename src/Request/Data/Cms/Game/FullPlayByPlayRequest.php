@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Data\Prod\Game;
+namespace JasonRoman\NbaApi\Request\Data\Cms\Game;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
@@ -9,16 +9,17 @@ use JasonRoman\NbaApi\Params\GameIdParam;
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 
 /**
- * Get the preview article for a game. Valid from 2014-2015 regular season and later.
+ * Get the full play-by-play for a game used by the CMS. Valid from xxxx-xxxx preseason and later.
+ * @TODO find when valid from
  */
-class PreviewArticleRequest extends AbstractDataRequest
+class FullPlayByPlayRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/data/prod/v1/{gameDate}/{gameId}_preview_article.json';
+    const ENDPOINT = '/json/cms/noseason/game/{gameDate}/{gameId}/pbp_all.json';
 
     /**
      * @Assert\NotBlank()
      * @Assert\Date()
-     * @Assert\Range(min = GameDateParam::START_DATE_PRE_SEASON_2014)
+     * @Assert\Range(min = GameDateParam::START_DATE_PRE_SEASON_2012)
      *
      * @var \DateTime
      */

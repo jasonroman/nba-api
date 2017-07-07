@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Data\Scores;
+namespace JasonRoman\NbaApi\Request\Data\Cms\Scores;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Params\Data\GameDateParam;

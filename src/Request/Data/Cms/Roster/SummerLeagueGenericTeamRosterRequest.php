@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Data\Prod\Team;
+namespace JasonRoman\NbaApi\Request\Data\Cms\Roster;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
@@ -8,20 +8,11 @@ use JasonRoman\NbaApi\Request\AbstractDataRequest;
 use JasonRoman\NbaApi\Params\Data\TeamSlugParam;
 
 /**
- * Get players on a team for a given season. Available from 2015.
+ * Get a team's generic summer league roster - not tied to a league; could be inaccurate; prefer the other endpoint.
  */
-class TeamRosterRequest extends AbstractDataRequest
+class SummerLeagueGenericTeamRosterRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/data/prod/v1/{year}/teams/{teamSlug}/roster.json';
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Type("int")
-     * @Assert\Range(min = 2015)
-     *
-     * @var int
-     */
-    public $year;
+    const ENDPOINT = '/json/sl/cms/noseason/team/{teamSlug}/roster.json';
 
     /**
      * @Assert\NotBlank()

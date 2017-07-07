@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Data\Prod\Team;
+namespace JasonRoman\NbaApi\Request\Data\Cms\Schedule;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
@@ -8,11 +8,11 @@ use JasonRoman\NbaApi\Request\AbstractDataRequest;
 use JasonRoman\NbaApi\Params\Data\TeamSlugParam;
 
 /**
- * Get players on a team for a given season. Available from 2015.
+ * Get a team's schedule - preseason, regular season, and playoffs.
  */
-class TeamRosterRequest extends AbstractDataRequest
+class ScheduleRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/data/prod/v1/{year}/teams/{teamSlug}/roster.json';
+    const ENDPOINT = '/json/cms/{year}/team/{teamSlug}/schedule.json';
 
     /**
      * @Assert\NotBlank()
