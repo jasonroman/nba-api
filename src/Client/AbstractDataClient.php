@@ -2,14 +2,10 @@
 
 namespace JasonRoman\NbaApi\Client;
 
-use Psr\Http\Message\ResponseInterface;
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
-use JasonRoman\NbaApi\Request\Data\AbstractStatsApiRequest;
-use JasonRoman\NbaApi\Request\Data\MobileTeams\Game\FullPlayByPlayRequest;
-use JasonRoman\NbaApi\Request\Data\Prod\Game\BoxscoreRequest;
-use JasonRoman\NbaApi\Response\ApiResponse;
+use JasonRoman\NbaApi\Response\NbaApiResponseInterface;
 
-class AbstractDataClient extends AbstractApiClient
+abstract class AbstractDataClient extends AbstractClient
 {
     // it appears data.nba.com could also be used;
     const BASE_URI = 'http://data.nba.net/';
@@ -36,7 +32,7 @@ class AbstractDataClient extends AbstractApiClient
     /**
      * @param AbstractDataRequest $request
      * @param array $config
-     * @return ResponseInterface|null
+     * @return NbaApiResponseInterface
      */
     public function request(AbstractDataRequest $request, array $config = [])
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Params;
+namespace JasonRoman\NbaApi\Params;
 
 class TeamIdParam extends AbstractDataParam
 {

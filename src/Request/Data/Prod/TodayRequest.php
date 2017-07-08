@@ -7,5 +7,5 @@ namespace JasonRoman\NbaApi\Request\Data\Prod;
  */
 class TodayRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/data/prod/v3/today.json';
+    const ENDPOINT = '/prod/v3/today.json';
 }

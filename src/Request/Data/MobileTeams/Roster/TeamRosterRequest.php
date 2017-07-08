@@ -13,7 +13,7 @@ use JasonRoman\NbaApi\Params\FormatParam;
  */
 class TeamRosterRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/data/v2015/{format}/mobile_teams/{leagueSlug}/{year}/teams/{teamSlug}_roster.{format}';
+    const ENDPOINT = '/v2015/{format}/mobile_teams/{leagueSlug}/{year}/teams/{teamSlug}_roster.{format}';
 
     /**
      * @Assert\NotBlank()

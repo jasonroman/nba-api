@@ -12,7 +12,7 @@ use JasonRoman\NbaApi\Request\AbstractDataRequest;
  */
 class PlayoffSeriesLeaders extends AbstractDataRequest
 {
-    const ENDPOINT = '/data/prod/v1/{year}/playoffs_{playoffSeriesId}_leaders.json';
+    const ENDPOINT = '/prod/v1/{year}/playoffs_{playoffSeriesId}_leaders.json';
 
     /**
      * @Assert\NotBlank()

@@ -2,7 +2,7 @@
 
 namespace JasonRoman\NbaApi\Params\Data;
 
-use JasonRoman\NbaApi\Request\Params\SeasonParam;
+use JasonRoman\NbaApi\Params\SeasonParam;
 
 class PlayoffSeriesIdParam extends SeasonParam
 {

@@ -9,5 +9,5 @@ use JasonRoman\NbaApi\Request\AbstractDataRequest;
  */
 class DivisionStandingsRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/data/prod/v1/current/standings_division.json';
+    const ENDPOINT = '/prod/v1/current/standings_division.json';
 }

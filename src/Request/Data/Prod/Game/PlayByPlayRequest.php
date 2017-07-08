@@ -13,7 +13,7 @@ use JasonRoman\NbaApi\Request\AbstractDataRequest;
  */
 class PlayByPlayRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/data/prod/v1/{gameDate}/{gameId}_pbp_{period}.json';
+    const ENDPOINT = '/prod/v1/{gameDate}/{gameId}_pbp_{period}.json';
 
     /**
      * @Assert\NotBlank()

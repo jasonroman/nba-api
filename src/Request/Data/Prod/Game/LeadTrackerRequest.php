@@ -14,7 +14,7 @@ use JasonRoman\NbaApi\Request\AbstractDataRequest;
  */
 class LeadTrackerRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/data/prod/v1/{gameDate}/{gameId}_lead_tracker_{period}.json';
+    const ENDPOINT = '/prod/v1/{gameDate}/{gameId}_lead_tracker_{period}.json';
 
     /**
      * @Assert\NotBlank()

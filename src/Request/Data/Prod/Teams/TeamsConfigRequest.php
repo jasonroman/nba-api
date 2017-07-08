@@ -3,21 +3,19 @@
 namespace JasonRoman\NbaApi\Request\Data\Prod\Teams;
 
 use Symfony\Component\Validator\Constraints as Assert;
-use JasonRoman\NbaApi\Constraints as ApiAssert;
-use JasonRoman\NbaApi\Request\Params\YearParam;
+use JasonRoman\NbaApi\Request\AbstractDataRequest;
 
 /**
- * Links to Android/iOS apps, TicketMaster tickets, team website/tickets
+ * Links to Android/iOS apps, TicketMaster tickets, team website/tickets.
  */
 class TeamsConfigRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/data/prod/{year}/teams_config.json';
+    const ENDPOINT = '/prod/{year}/teams_config.json';
 
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
      * @Assert\Range(min = 2015)
-     * @ApiAssert\ApiRegex(YearParam::FORMAT)
      *
      * @var int
      */

@@ -10,7 +10,7 @@ use JasonRoman\NbaApi\Request\AbstractDataRequest;
  */
 class TeamStatsLastFiveGamesRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/data/prod/v1/{year}/team_stats_last_five_games.json';
+    const ENDPOINT = '/prod/v1/{year}/team_stats_last_five_games.json';
 
     /**
      * @Assert\NotBlank()

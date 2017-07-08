@@ -10,7 +10,7 @@ use JasonRoman\NbaApi\Request\AbstractDataRequest;
  */
 class LeagueRosterCoachesRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/data/prod/v1/{year}/coaches.json';
+    const ENDPOINT = '/prod/v1/{year}/coaches.json';
 
     /**
      * @Assert\NotBlank()

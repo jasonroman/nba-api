@@ -7,6 +7,7 @@ use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\Data\LeagueSlugParam;
 use JasonRoman\NbaApi\Params\Data\SeasonTypeCodeParam;
 use JasonRoman\NbaApi\Params\FormatParam;
+use JasonRoman\NbaApi\Params\PlayerIdParam;
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 
 /**
@@ -14,7 +15,7 @@ use JasonRoman\NbaApi\Request\AbstractDataRequest;
  */
 class PlayerCardRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/data/v2015/{format}/mobile_teams/{leagueSlug}/{year}/players/playercard_{playerId}_{seasonTypeCode}.{format}';
+    const ENDPOINT = '/v2015/{format}/mobile_teams/{leagueSlug}/{year}/players/playercard_{playerId}_{seasonTypeCode}.{format}';
 
     /**
      * @Assert\NotBlank()
@@ -46,7 +47,7 @@ class PlayerCardRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = 1, max = 2147483647)
+     * @Assert\Range(min = PlayerIdParam::MIN, max = PlayerIdParam::MAX)
      *
      * @var int
      */

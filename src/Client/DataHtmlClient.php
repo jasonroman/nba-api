@@ -3,7 +3,7 @@
 namespace JasonRoman\NbaApi\Client;
 
 use JasonRoman\NbaApi\Request\Data\Html\Game\GameBookRequest;
-use JasonRoman\NbaApi\Response\ApiResponse;
+use JasonRoman\NbaApi\Response\NbaApiResponseInterface;
 
 /**
  * Client that accesses data.nba.com and endpoints which contain /html in them.
@@ -14,7 +14,7 @@ class DataHtmlClient extends AbstractDataClient
     /**
      * @param GameBookRequest $request
      * @param array $config
-     * @return ApiResponse
+     * @return NbaApiResponseInterface
      */
     public function getGameBook(GameBookRequest $request, array $config = [])
     {

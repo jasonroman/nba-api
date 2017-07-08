@@ -4,6 +4,8 @@ namespace JasonRoman\NbaApi\Params;
 
 class LeagueIdParam extends AbstractParam
 {
+    const FORMAT = '/^\d{2}$/';
+
     const NBA            = '00';
     const ABA            = '01';
     const WNBA           = '10';
@@ -33,6 +35,11 @@ class LeagueIdParam extends AbstractParam
     const OPTIONS_NBA_WNBA = [
         self::NBA,
         self::WNBA,
+    ];
+
+    const OPTIONS_NBA_G_LEAGUE = [
+        self::NBA,
+        self::G_LEAGUE,
     ];
 
     /**

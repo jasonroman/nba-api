@@ -3,6 +3,7 @@
 namespace JasonRoman\NbaApi\Request\Data\Prod\Player;
 
 use Symfony\Component\Validator\Constraints as Assert;
+use JasonRoman\NbaApi\Params\PlayerIdParam;
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 
 /**
@@ -10,7 +11,7 @@ use JasonRoman\NbaApi\Request\AbstractDataRequest;
  */
 class PlayerProfileRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/data/prod/v1/{year}/players/{playerId}_profile.json';
+    const ENDPOINT = '/prod/v1/{year}/players/{playerId}_profile.json';
 
     /**
      * @Assert\NotBlank()
@@ -24,7 +25,7 @@ class PlayerProfileRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = 1, max = 2147483647)
+     * @Assert\Range(min = PlayerIdParam::MIN, max = PlayerIdParam::MAX)
      *
      * @var int
      */

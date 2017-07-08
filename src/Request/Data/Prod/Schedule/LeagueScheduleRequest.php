@@ -6,11 +6,11 @@ use JasonRoman\NbaApi\Request\AbstractDataRequest;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Get the league schedule for a given year.
+ * Get the league schedule for a given season, starting with preseason. If summer league, gets that schedule.
  */
 class LeagueScheduleRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/data/prod/v1/{year}/schedule.json';
+    const ENDPOINT = '/prod/v1/{year}/schedule.json';
 
     /**
      * @Assert\NotBlank()

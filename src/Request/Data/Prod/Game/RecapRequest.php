@@ -13,7 +13,7 @@ use JasonRoman\NbaApi\Request\AbstractDataRequest;
  */
 class RecapRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/data/prod/v1/{gameDate}/{gameId}_recap_article.json';
+    const ENDPOINT = '/prod/v1/{gameDate}/{gameId}_recap_article.json';
 
     /**
      * @Assert\NotBlank()

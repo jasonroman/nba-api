@@ -4,7 +4,7 @@ namespace JasonRoman\NbaApi\Request;
 
 use JasonRoman\NbaApi\Response\ResponseType;
 
-abstract class AbstractNbaRequest extends AbstractApiRequest
+abstract class AbstractNbaRequest extends AbstractNbaApiRequest
 {
     const REQUEST_TYPE = 'Nba';
 

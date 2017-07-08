@@ -7,7 +7,7 @@ use JasonRoman\NbaApi\Response\ResponseType;
 /**
  * Base class which any Data API-specific requests must extend from.
  */
-abstract class AbstractDataRequest extends AbstractApiRequest
+abstract class AbstractDataRequest extends AbstractNbaApiRequest
 {
     const REQUEST_TYPE  = 'Data';
 

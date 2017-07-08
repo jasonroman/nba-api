@@ -5,11 +5,11 @@ namespace JasonRoman\NbaApi\Client;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Game\FullPlayByPlayRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Game\GameDetailRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Roster\TeamRosterRequest;
-use JasonRoman\NbaApi\Request\Data\MobileTeams\Schedule\FullScheduleRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Schedule\LeagueScheduleRequest;
+use JasonRoman\NbaApi\Request\Data\MobileTeams\Schedule\LeagueScheduleMonthRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Scores\PlayerCardRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Scores\TodaysScoresRequest;
-use JasonRoman\NbaApi\Response\ApiResponse;
+use JasonRoman\NbaApi\Response\NbaApiResponseInterface;
 
 /**
  * Client that accesses data.nba.com and endpoints which contain /mobile_teams in them.
@@ -20,7 +20,7 @@ class DataMobileTeamsClient extends AbstractDataClient
     /**
      * @param FullPlayByPlayRequest $request
      * @param array $config
-     * @return ApiResponse
+     * @return NbaApiResponseInterface
      */
     public function getFullPlayByPlay(FullPlayByPlayRequest $request, array $config = [])
     {
@@ -30,7 +30,7 @@ class DataMobileTeamsClient extends AbstractDataClient
     /**
      * @param GameDetailRequest $request
      * @param array $config
-     * @return ApiResponse
+     * @return NbaApiResponseInterface
      */
     public function getGameDetail(GameDetailRequest $request, array $config = [])
     {
@@ -40,7 +40,7 @@ class DataMobileTeamsClient extends AbstractDataClient
     /**
      * @param PlayerCardRequest $request
      * @param array $config
-     * @return ApiResponse
+     * @return NbaApiResponseInterface
      */
     public function getPlayerCard(PlayerCardRequest $request, array $config = [])
     {
@@ -50,7 +50,7 @@ class DataMobileTeamsClient extends AbstractDataClient
     /**
      * @param TeamRosterRequest $request
      * @param array $config
-     * @return ApiResponse
+     * @return NbaApiResponseInterface
      */
     public function getTeamRoster(TeamRosterRequest $request, array $config = [])
     {
@@ -58,19 +58,9 @@ class DataMobileTeamsClient extends AbstractDataClient
     }
 
     /**
-     * @param FullScheduleRequest $request
-     * @param array $config
-     * @return ApiResponse
-     */
-    public function getFullSchedule(FullScheduleRequest $request, array $config = [])
-    {
-        return $this->request($request, $config);
-    }
-
-    /**
      * @param LeagueScheduleRequest $request
      * @param array $config
-     * @return ApiResponse
+     * @return NbaApiResponseInterface
      */
     public function getLeagueSchedule(LeagueScheduleRequest $request, array $config = [])
     {
@@ -78,9 +68,19 @@ class DataMobileTeamsClient extends AbstractDataClient
     }
 
     /**
+     * @param LeagueScheduleMonthRequest $request
+     * @param array $config
+     * @return NbaApiResponseInterface
+     */
+    public function getLeagueScheduleMonth(LeagueScheduleMonthRequest $request, array $config = [])
+    {
+        return $this->request($request, $config);
+    }
+
+    /**
      * @param TodaysScoresRequest $request
      * @param array $config
-     * @return ApiResponse
+     * @return NbaApiResponseInterface
      */
     public function getTodaysScores(TodaysScoresRequest $request, array $config = [])
     {

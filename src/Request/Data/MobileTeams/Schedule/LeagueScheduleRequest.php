@@ -5,19 +5,16 @@ namespace JasonRoman\NbaApi\Request\Data\MobileTeams\Schedule;
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\Data\LeagueSlugParam;
-use JasonRoman\NbaApi\Params\Data\MonthNumParam;
 use JasonRoman\NbaApi\Params\FormatParam;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 
 /**
- * Get the league schedule for a given month of the year. Note that games from January through the end
- * of the season will still have the season year, not the actual year (year 2016 month 05 would get games in May 2017).
+ * Get the full league schedule for a given season (includes preseason for NBA).
  */
 class LeagueScheduleRequest extends AbstractDataRequest
 {
-    const ENDPOINT =
-        '/v2015/{format}/mobile_teams/{leagueSlug}/{year}/league/{leagueId}_league_schedule_{monthNum}.{format}';
+    const ENDPOINT = '/v2015/{format}/mobile_teams/{leagueSlug}/{year}/league/{leagueId}_full_schedule.{format}';
 
     /**
      * @Assert\NotBlank()
@@ -40,20 +37,11 @@ class LeagueScheduleRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = 2014)
+     * @Assert\Range(min = 2015)
      *
      * @var int
      */
     public $year;
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(MonthNumParam::OPTIONS)
-     *
-     * @var int
-     */
-    public $monthNum;
 
     /**
      * @Assert\NotBlank()
