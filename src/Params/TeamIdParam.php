@@ -4,6 +4,10 @@ namespace JasonRoman\NbaApi\Params;
 
 class TeamIdParam extends AbstractDataParam
 {
+    // normally would not have '_VALUE' attached, but team Minnesota trumps that here...go figure
+    const MIN_VALUE = 1;
+    const MAX_VALUE = 2147483647;
+
     // nba team ids by abbreviation
     const ATL = 1610612737;
     const BOS = 1610612738;

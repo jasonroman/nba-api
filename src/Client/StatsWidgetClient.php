@@ -4,6 +4,7 @@ namespace JasonRoman\NbaApi\Client;
 
 use JasonRoman\NbaApi\Request\Stats\Widges\Scores\ScoresLeadersRequest;
 use JasonRoman\NbaApi\Request\Stats\Widges\Scores\ScoresSidebarRequest;
+use JasonRoman\NbaApi\Request\Stats\Widges\Stats\HustleLeadersRequest;
 use JasonRoman\NbaApi\Response\NbaApiResponseInterface;
 
 /**
@@ -12,6 +13,16 @@ use JasonRoman\NbaApi\Response\NbaApiResponseInterface;
  */
 class StatsWidgetClient extends AbstractStatsClient
 {
+    /**
+     * @param HustleLeadersRequest $request
+     * @param array $config
+     * @return NbaApiResponseInterface
+     */
+    public function getHustleLeaders(HustleLeadersRequest $request, array $config = [])
+    {
+        return $this->request($request, $config);
+    }
+
     /**
      * @param ScoresLeadersRequest $request
      * @param array $config
