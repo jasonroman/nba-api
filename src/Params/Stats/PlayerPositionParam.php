@@ -1,0 +1,34 @@
+<?php
+declare(strict_types = 1);
+
+namespace JasonRoman\NbaApi\Params\Stats;
+
+class PlayerPositionParam extends AbstractStatsParam
+{
+    const CENTER         = 'C';
+    const FORWARD        = 'F';
+    const GUARD          = 'G';
+
+    // it seems like these return errors even though the regular expression is matched
+    const CENTER_FORWARD = 'C-F';
+    const FORWARD_CENTER = 'F-C';
+    const FORWARD_GUARD  = 'F-G';
+    const GUARD_FORWARD  = 'G-F';
+
+    // alternate using abbreviations
+    const C = 'C';
+    const F = 'F';
+    const G = 'G';
+
+    // alternate using abbreivations; it seems like these return errors even though the regular expression is matched
+    const C_F = 'C-F';
+    const F_C = 'F-C';
+    const F_G = 'F-G';
+    const G_F = 'G-F';
+
+    const OPTIONS = [
+        self::CENTER,
+        self::FORWARD,
+        self::GUARD,
+    ];
+}

@@ -16,4 +16,9 @@ class GameScopeParam extends AbstractStatsParam
         self::SEASON,
         self::YESTERDAY,
     ];
+
+    const OPTIONS_LAST_10_YESTERDAY = [
+        self::LAST_10,
+        self::YESTERDAY,
+    ];
 }

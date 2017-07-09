@@ -33,7 +33,7 @@ class PlayerCareerStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = LeagueIdParam::OPTIONS_NBA_G_LEAGUE)
+     * @ApiAssert\ApiChoice(LeagueIdParam::OPTIONS_NBA_G_LEAGUE)
      *
      * @var string
      */

@@ -4,6 +4,9 @@ namespace JasonRoman\NbaApi\Params;
 
 class TeamIdParam extends AbstractDataParam
 {
+    // some endpoints require this, but '0' indicates all teams; why not just make it not required? who knows...
+    const MIN_ALL = 0;
+
     // normally would not have '_VALUE' attached, but team Minnesota trumps that here...go figure
     const MIN_VALUE = 1;
     const MAX_VALUE = 2147483647;

@@ -9,7 +9,6 @@ use JasonRoman\NbaApi\Params\SeasonYearParam;
 use JasonRoman\NbaApi\Params\Stats\OverallPickParam;
 use JasonRoman\NbaApi\Params\Stats\RoundNumParam;
 use JasonRoman\NbaApi\Params\Stats\RoundPickParam;
-use JasonRoman\NbaApi\Params\Stats\TopXParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
@@ -69,7 +68,7 @@ class DraftHistoryRequest extends AbstractStatsRequest
 
     /**
      * @Assert\Type("int")
-     * @Assert\Range(min = TopXParam::MIN, TopXParam::MAX)
+     * @Assert\Range(min = OverallPickParam::MIN, OverallPickParam::MAX)
      *
      * @var int
      */
