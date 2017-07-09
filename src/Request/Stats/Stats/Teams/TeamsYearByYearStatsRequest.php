@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Stats\Stats\Stats;
+namespace JasonRoman\NbaApi\Request\Stats\Stats\Teams;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
@@ -13,7 +13,7 @@ use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 /**
  * Get a team's year by year stats since the team's inception.
  */
-class TeamYearByYearStatsRequest extends AbstractStatsRequest
+class TeamsYearByYearStatsRequest extends AbstractStatsRequest
 {
     const ENDPOINT = '/stats/teamyearbyyearstats';
 

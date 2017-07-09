@@ -1,15 +1,16 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Stats\Stats\Stats;
+namespace JasonRoman\NbaApi\Request\Stats\Stats\Teams;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
 use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Params\SeasonParam;
+use JasonRoman\NbaApi\Params\Stats\ClosestDefenderDistanceParam;
 use JasonRoman\NbaApi\Params\Stats\ConferenceParam;
-use JasonRoman\NbaApi\Params\Stats\DefenseCategoryParam;
 use JasonRoman\NbaApi\Params\Stats\DivisionParam;
+use JasonRoman\NbaApi\Params\Stats\DribbleRangeParam;
 use JasonRoman\NbaApi\Params\Stats\GameSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\LastNGamesParam;
 use JasonRoman\NbaApi\Params\Stats\MonthParam;
@@ -18,12 +19,16 @@ use JasonRoman\NbaApi\Params\Stats\PeriodParam;
 use JasonRoman\NbaApi\Params\Stats\PORoundParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
+use JasonRoman\NbaApi\Params\Stats\ShotClockRangeParam;
+use JasonRoman\NbaApi\Params\Stats\ShotDistanceRangeParam;
+use JasonRoman\NbaApi\Params\Stats\ShotRangeParam;
+use JasonRoman\NbaApi\Params\Stats\TouchTimeRangeParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 
-class TeamDefenseStatsRequest extends AbstractDataRequest
+class TeamsShotStatsRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/stats/leaguedashptteamdefend';
+    const ENDPOINT = '/stats/leaguedashteamptshot';
 
     /**
      * @Assert\NotBlank()
@@ -35,7 +40,6 @@ class TeamDefenseStatsRequest extends AbstractDataRequest
     public $perMode;
 
     /**
-     * @Assert\NotBlank()
      * @Assert\Type("string")
      * @ApiAssert\ApiRegex(pattern = LeagueIdParam::FORMAT)
      *
@@ -68,6 +72,54 @@ class TeamDefenseStatsRequest extends AbstractDataRequest
      * @var int
      */
     public $poRound;
+
+    /**
+     * @Assert\Type("int")
+     * @ApiAssert\ApiChoice(ClosestDefenderDistanceParam::OPTIONS)
+     *
+     * @var string
+     */
+    public $closeDefDistRange;
+
+    /**
+     * @Assert\Type("int")
+     * @ApiAssert\ApiChoice(ShotClockRangeParam::OPTIONS)
+     *
+     * @var string
+     */
+    public $shotClockRange;
+
+    /**
+     * @Assert\Type("int")
+     * @ApiAssert\ApiChoice(ShotDistanceRangeParam::OPTIONS
+     *
+     * @var string
+     */
+    public $shotDistRange;
+
+    /**
+     * @Assert\Type("int")
+     * @ApiAssert\ApiChoice(TouchTimeRangeParam::OPTIONS)
+     *
+     * @var string
+     */
+    public $touchTimeRange;
+
+    /**
+     * @Assert\Type("int")
+     * @ApiAssert\ApiChoice(DribbleRangeParam::OPTIONS)
+     *
+     * @var string
+     */
+    public $dribbleRange;
+
+    /**
+     * @Assert\Type("int")
+     * @ApiAssert\ApiChoice(ShotRangeParam::OPTIONS)
+     *
+     * @var string
+     */
+    public $generalRange;
 
     /**
      * @Assert\Type("int")
@@ -190,28 +242,19 @@ class TeamDefenseStatsRequest extends AbstractDataRequest
     public $lastNGames;
 
     /**
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(DefenseCategoryParam::OPTIONS)
-     *
-     * @var string
-     */
-    public $defenseCategory;
-
-    /**
      * {@inheritdoc}
      */
     public function getDefaultValues(): array
     {
         return [
-            'perMode'         => PerModeParam::PER_GAME,
-            'seasonType'      => SeasonTypeParam::REGULAR_SEASON,
-            'poRound'         => PORoundParam::MIN_ALL,
-            'teamId'          => TeamIdParam::MIN_ALL,
-            'month'           => MonthParam::MIN_ALL,
-            'opponentTeamId'  => TeamIdParam::MIN_ALL,
-            'period'          => PeriodParam::MIN_ALL,
-            'lastNGames'      => LastNGamesParam::MIN_ALL,
-            'defenseCategory' => DefenseCategoryParam::OVERALL,
+            'perMode'        => PerModeParam::PER_GAME,
+            'poRound'        => PORoundParam::MIN_ALL,
+            'generalRange'   => ShotRangeParam::OVERALL,
+            'teamId'         => TeamIdParam::MIN_ALL,
+            'month'          => MonthParam::MIN_ALL,
+            'opponentTeamId' => TeamIdParam::MIN_ALL,
+            'period'         => PeriodParam::MIN_ALL,
+            'lastNGames'     => LastNGamesParam::MIN_ALL,
         ];
     }
 }

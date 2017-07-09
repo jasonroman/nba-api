@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Stats\Stats\Stats;
+namespace JasonRoman\NbaApi\Request\Stats\Stats\Players;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
@@ -9,7 +9,7 @@ use JasonRoman\NbaApi\Params\PlayerIdParam;
 use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 
-class PlayerCareerStatsRequest extends AbstractDataRequest
+class PlayersCareerStatsRequest extends AbstractDataRequest
 {
     const ENDPOINT = '/stats/playercareerstats';
 

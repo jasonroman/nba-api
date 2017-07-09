@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Stats\Stats\Stats;
+namespace JasonRoman\NbaApi\Request\Stats\Stats\Teams;
 
 use JasonRoman\NbaApi\Params\Stats\PointDiffParam;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -29,7 +29,7 @@ use JasonRoman\NbaApi\Params\Stats\StarterBenchParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 
-class TeamClutchStatsRequest extends AbstractDataRequest
+class TeamsClutchStatsRequest extends AbstractDataRequest
 {
     const ENDPOINT = '/stats/leaguedashteamclutch';
 

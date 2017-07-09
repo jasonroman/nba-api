@@ -1,34 +1,37 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Stats\Stats\Stats;
+namespace JasonRoman\NbaApi\Request\Stats\Stats\Players;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
+use JasonRoman\NbaApi\Params\PlayerIdParam;
 use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Params\SeasonParam;
-use JasonRoman\NbaApi\Params\Stats\ClosestDefenderDistanceParam;
 use JasonRoman\NbaApi\Params\Stats\ConferenceParam;
+use JasonRoman\NbaApi\Params\Stats\DefenseCategoryParam;
 use JasonRoman\NbaApi\Params\Stats\DivisionParam;
-use JasonRoman\NbaApi\Params\Stats\DribbleRangeParam;
+use JasonRoman\NbaApi\Params\Stats\DraftPickParam;
 use JasonRoman\NbaApi\Params\Stats\GameSegmentParam;
+use JasonRoman\NbaApi\Params\Stats\HeightParam;
 use JasonRoman\NbaApi\Params\Stats\LastNGamesParam;
 use JasonRoman\NbaApi\Params\Stats\MonthParam;
 use JasonRoman\NbaApi\Params\Stats\OutcomeParam;
 use JasonRoman\NbaApi\Params\Stats\PeriodParam;
+use JasonRoman\NbaApi\Params\Stats\PlayerExperienceParam;
+use JasonRoman\NbaApi\Params\Stats\PlayerPositionParam;
 use JasonRoman\NbaApi\Params\Stats\PORoundParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
-use JasonRoman\NbaApi\Params\Stats\ShotClockRangeParam;
-use JasonRoman\NbaApi\Params\Stats\ShotDistanceRangeParam;
-use JasonRoman\NbaApi\Params\Stats\ShotRangeParam;
-use JasonRoman\NbaApi\Params\Stats\TouchTimeRangeParam;
+use JasonRoman\NbaApi\Params\Stats\StarterBenchParam;
+use JasonRoman\NbaApi\Params\Stats\WeightParam;
+use JasonRoman\NbaApi\Params\SeasonYearParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 
-class TeamShotStatsRequest extends AbstractDataRequest
+class PlayersDefenseStatsRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/stats/leaguedashteamptshot';
+    const ENDPOINT = '/stats/leaguedashptdefend';
 
     /**
      * @Assert\NotBlank()
@@ -40,6 +43,7 @@ class TeamShotStatsRequest extends AbstractDataRequest
     public $perMode;
 
     /**
+     * @Assert\NotBlank()
      * @Assert\Type("string")
      * @ApiAssert\ApiRegex(pattern = LeagueIdParam::FORMAT)
      *
@@ -75,51 +79,11 @@ class TeamShotStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\Type("int")
-     * @ApiAssert\ApiChoice(ClosestDefenderDistanceParam::OPTIONS)
+     * @Assert\Range(min = PlayerIdParam::MIN, max = PlayerIdParam::MAX)
      *
-     * @var string
+     * @var int
      */
-    public $closeDefDistRange;
-
-    /**
-     * @Assert\Type("int")
-     * @ApiAssert\ApiChoice(ShotClockRangeParam::OPTIONS)
-     *
-     * @var string
-     */
-    public $shotClockRange;
-
-    /**
-     * @Assert\Type("int")
-     * @ApiAssert\ApiChoice(ShotDistanceRangeParam::OPTIONS
-     *
-     * @var string
-     */
-    public $shotDistRange;
-
-    /**
-     * @Assert\Type("int")
-     * @ApiAssert\ApiChoice(TouchTimeRangeParam::OPTIONS)
-     *
-     * @var string
-     */
-    public $touchTimeRange;
-
-    /**
-     * @Assert\Type("int")
-     * @ApiAssert\ApiChoice(DribbleRangeParam::OPTIONS)
-     *
-     * @var string
-     */
-    public $dribbleRange;
-
-    /**
-     * @Assert\Type("int")
-     * @ApiAssert\ApiChoice(ShotRangeParam::OPTIONS)
-     *
-     * @var string
-     */
-    public $generalRange;
+    public $playerId;
 
     /**
      * @Assert\Type("int")
@@ -242,19 +206,98 @@ class TeamShotStatsRequest extends AbstractDataRequest
     public $lastNGames;
 
     /**
+     * @Assert\Type("string")
+     * @Assert\Range(min = SeasonYearParam::FIRST_DRAFT_SEASON_YEAR)
+     *
+     * @var string
+     */
+    public $draftYear;
+
+    /**
+     * @Assert\Type("string")
+     * @ApiAssert\ApiChoice(DraftPickParam::OPTIONS)
+     *
+     * @var string
+     */
+    public $draftPick;
+
+    /**
+     * @Assert\Type("string")
+     *
+     * @var string
+     */
+    public $college;
+
+    /**
+     * @Assert\Type("string")
+     *
+     * @var string
+     */
+    public $country;
+
+    /**
+     * @Assert\Type("string")
+     * @ApiAssert\ApiChoice(HeightParam::OPTIONS)
+     *
+     * @var string
+     */
+    public $height;
+
+    /**
+     * @Assert\Type("string")
+     * @ApiAssert\ApiChoice(WeightParam::OPTIONS)
+     *
+     * @var string
+     */
+    public $weight;
+
+    /**
+     * @Assert\Type("string")
+     * @ApiAssert\ApiChoice(PlayerExperienceParam::OPTIONS)
+     *
+     * @var string
+     */
+    public $playerExperience;
+
+    /**
+     * @Assert\Type("string")
+     * @ApiAssert\ApiChoice(PlayerPositionParam::OPTIONS)
+     *
+     * @var string
+     */
+    public $playerPosition;
+
+    /**
+     * @Assert\Type("string")
+     * @ApiAssert\ApiChoice(StarterBenchParam::OPTIONS)
+     *
+     * @var string
+     */
+    public $starterBench;
+
+    /**
+     * @Assert\Type("string")
+     * @ApiAssert\ApiChoice(DefenseCategoryParam::OPTIONS)
+     *
+     * @var string
+     */
+    public $defenseCategory;
+
+    /**
      * {@inheritdoc}
      */
     public function getDefaultValues(): array
     {
         return [
-            'perMode'        => PerModeParam::PER_GAME,
-            'poRound'        => PORoundParam::MIN_ALL,
-            'generalRange'   => ShotRangeParam::OVERALL,
-            'teamId'         => TeamIdParam::MIN_ALL,
-            'month'          => MonthParam::MIN_ALL,
-            'opponentTeamId' => TeamIdParam::MIN_ALL,
-            'period'         => PeriodParam::MIN_ALL,
-            'lastNGames'     => LastNGamesParam::MIN_ALL,
+            'perMode'         => PerModeParam::PER_GAME,
+            'seasonType'      => SeasonTypeParam::REGULAR_SEASON,
+            'poRound'         => PORoundParam::MIN_ALL,
+            'teamId'          => TeamIdParam::MIN_ALL,
+            'month'           => MonthParam::MIN_ALL,
+            'opponentTeamId'  => TeamIdParam::MIN_ALL,
+            'period'          => PeriodParam::MIN_ALL,
+            'lastNGames'      => LastNGamesParam::MIN_ALL,
+            'defenseCategory' => DefenseCategoryParam::OVERALL,
         ];
     }
 }
