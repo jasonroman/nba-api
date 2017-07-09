@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Stats\Playoffs;
+namespace JasonRoman\NbaApi\Request\Stats\Roster;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
@@ -36,7 +36,7 @@ class TeamRosterRequest extends AbstractStatsRequest
 
     /**
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = LeagueIdParam::OPTIONS_NBA_G_LEAGUE)
+     * @ApiAssert\ApiChoice(LeagueIdParam::OPTIONS_NBA_G_LEAGUE)
      *
      * @var string
      */

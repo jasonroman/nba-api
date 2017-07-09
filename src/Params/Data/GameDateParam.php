@@ -50,6 +50,6 @@ class GameDateParam extends AbstractDataParam
      */
     public static function getDefaultValue() : \DateTime
     {
-        return new \DateTime('tomorrow');
+        return new \DateTime();
     }
 }

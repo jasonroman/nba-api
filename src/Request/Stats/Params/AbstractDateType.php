@@ -6,7 +6,7 @@ namespace JasonRoman\NbaApi\Request\Stats\Params;
 abstract class AbstractDateType extends AbstractType
 {
     /**
-     * @var \DateTime
+     * @var \DateTime|string if string, format is YYYY-MM-DD
      */
     public $value;
 

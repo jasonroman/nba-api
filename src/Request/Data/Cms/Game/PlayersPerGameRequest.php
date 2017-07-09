@@ -4,7 +4,6 @@ namespace JasonRoman\NbaApi\Request\Data\Cms\Game;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
-use JasonRoman\NbaApi\Params\Data\GameDateParam;
 use JasonRoman\NbaApi\Params\GameIdParam;
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 
@@ -20,7 +19,6 @@ class PlayersPerGameRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range()
      *
      * @var int
      */
@@ -29,9 +27,8 @@ class PlayersPerGameRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Date()
-     * @Assert\Range()
      *
-     * @var \DateTime
+     * @var \DateTime|string if string, format is YYYY-MM-DD
      */
     public $gameDate;
 

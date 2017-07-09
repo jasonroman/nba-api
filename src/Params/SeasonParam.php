@@ -5,7 +5,8 @@ namespace JasonRoman\NbaApi\Params;
 
 class SeasonParam extends AbstractParam
 {
-    const FORMAT = '/^\d{4}-\d{2}$/';
+    const FORMAT               = '/^\d{4}-\d{2}$/';
+    const FORMAT_WITH_ALL_TIME = '/^(\d{4}-\d{2})|(All Time)$/';
 
     /**
      * Get the current season in format YYYY-YY based on the year.

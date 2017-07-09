@@ -21,7 +21,7 @@ class FullPlayByPlayRequest extends AbstractDataRequest
      * @Assert\Date()
      * @Assert\Range(min = GameDateParam::START_DATE_PRE_SEASON_2012)
      *
-     * @var \DateTime
+     * @var \DateTime|string if string, format is YYYY-MM-DD
      */
     public $gameDate;
 

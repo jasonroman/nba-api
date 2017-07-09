@@ -1,22 +1,24 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Stats\Playoffs;
+namespace JasonRoman\NbaApi\Request\Stats\DraftCombine;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
 use JasonRoman\NbaApi\Params\SeasonParam;
-use JasonRoman\NbaApi\Params\Stats\PlayoffSeriesIdParam;
 use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
-class PlayoffSeriesRequest extends AbstractStatsRequest
+/**
+ * Draft combine player measurements/anthro. WNBA/G-League is supported, but returns the NBA values as its results.
+ */
+class DraftCombineStatsRequest extends AbstractStatsRequest
 {
-    const ENDPOINT = '/stats/commonplayoffseries';
+    const ENDPOINT = '/stats/draftcombinestats';
 
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(LeagueIdParam::OPTIONS_NBA_G_LEAGUE)
+     * @ApiAssert\ApiChoice(LeagueIdParam::OPTIONS_NBA_WNBA_G_LEAGUE)
      *
      * @var string
      */
@@ -29,13 +31,5 @@ class PlayoffSeriesRequest extends AbstractStatsRequest
      *
      * @var string
      */
-    public $season;
-
-    /**
-     * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = PlayoffSeriesIdParam::FORMAT)
-     *
-     * @var string
-     */
-    public $seriesId;
+    public $seasonYear;
 }
