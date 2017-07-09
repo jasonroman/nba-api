@@ -70,7 +70,6 @@ class LeagueLeadersRequest extends AbstractStatsRequest
      */
     public $scope;
 
-
     /**
      * @Assert\Type("bool")
      *

@@ -5,35 +5,30 @@ namespace JasonRoman\NbaApi\Request\Stats\Stats\Stats;
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
+use JasonRoman\NbaApi\Params\Stats\PerModeParam;
+use JasonRoman\NbaApi\Params\SeasonParam;
+use JasonRoman\NbaApi\Params\Stats\ClosestDefenderDistanceParam;
 use JasonRoman\NbaApi\Params\Stats\ConferenceParam;
 use JasonRoman\NbaApi\Params\Stats\DivisionParam;
+use JasonRoman\NbaApi\Params\Stats\DribbleRangeParam;
 use JasonRoman\NbaApi\Params\Stats\GameSegmentParam;
-use JasonRoman\NbaApi\Params\Stats\GroupQuantityParam;
 use JasonRoman\NbaApi\Params\Stats\LastNGamesParam;
-use JasonRoman\NbaApi\Params\Stats\MeasureTypeParam;
 use JasonRoman\NbaApi\Params\Stats\MonthParam;
 use JasonRoman\NbaApi\Params\Stats\OutcomeParam;
-use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Params\Stats\PeriodParam;
 use JasonRoman\NbaApi\Params\Stats\PORoundParam;
-use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
+use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\Stats\ShotClockRangeParam;
+use JasonRoman\NbaApi\Params\Stats\ShotDistanceRangeParam;
+use JasonRoman\NbaApi\Params\Stats\ShotRangeParam;
+use JasonRoman\NbaApi\Params\Stats\TouchTimeRangeParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 
-class LineupStatsRequest extends AbstractDataRequest
+class TeamShotStatsRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/stats/leaguedashlineups';
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(MeasureTypeParam::OPTIONS)
-     *
-     * @var string
-     */
-    public $measureType;
+    const ENDPOINT = '/stats/leaguedashteamptshot';
 
     /**
      * @Assert\NotBlank()
@@ -45,34 +40,8 @@ class LineupStatsRequest extends AbstractDataRequest
     public $perMode;
 
     /**
-     * @Assert\NotBlank()
-     * @Assert\Type("bool")
-     *
-     * @var bool
-     */
-    public $plusMinus;
-
-    /**
-     * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @Assert\Type("bool")
-     *
-     * @var bool
-     */
-    public $paceAdjust;
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
-     * @Assert\Type("bool")
-     *
-     * @var bool
-     */
-    public $rank;
-
-    /**
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(LeagueIdParam::OPTIONS_NBA_G_LEAGUE)
+     * @ApiAssert\ApiRegex(pattern = LeagueIdParam::FORMAT)
      *
      * @var string
      */
@@ -105,6 +74,62 @@ class LineupStatsRequest extends AbstractDataRequest
     public $poRound;
 
     /**
+     * @Assert\Type("int")
+     * @ApiAssert\ApiChoice(ClosestDefenderDistanceParam::OPTIONS)
+     *
+     * @var string
+     */
+    public $closeDefDistRange;
+
+    /**
+     * @Assert\Type("int")
+     * @ApiAssert\ApiChoice(ShotClockRangeParam::OPTIONS)
+     *
+     * @var string
+     */
+    public $shotClockRange;
+
+    /**
+     * @Assert\Type("int")
+     * @ApiAssert\ApiChoice(ShotDistanceRangeParam::OPTIONS
+     *
+     * @var string
+     */
+    public $shotDistRange;
+
+    /**
+     * @Assert\Type("int")
+     * @ApiAssert\ApiChoice(TouchTimeRangeParam::OPTIONS)
+     *
+     * @var string
+     */
+    public $touchTimeRange;
+
+    /**
+     * @Assert\Type("int")
+     * @ApiAssert\ApiChoice(DribbleRangeParam::OPTIONS)
+     *
+     * @var string
+     */
+    public $dribbleRange;
+
+    /**
+     * @Assert\Type("int")
+     * @ApiAssert\ApiChoice(ShotRangeParam::OPTIONS)
+     *
+     * @var string
+     */
+    public $generalRange;
+
+    /**
+     * @Assert\Type("int")
+     * @Assert\Range(min = TeamIdParam::MIN_ALL, max = TeamIdParam::MAX_VALUE)
+     *
+     * @var int
+     */
+    public $teamId;
+
+    /**
      * @Assert\Type("string")
      * @ApiAssert\ApiChoice(OutcomeParam::OPTIONS)
      *
@@ -121,7 +146,6 @@ class LineupStatsRequest extends AbstractDataRequest
     public $location;
 
     /**
-     * @Assert\NotBlank()
      * @Assert\Type("int")
      * @Assert\Range(min = MonthParam::MIN_ALL, max = MonthParam::MAX_VALUE)
      *
@@ -130,7 +154,6 @@ class LineupStatsRequest extends AbstractDataRequest
     public $month;
 
     /**
-     * @Assert\NotBlank()
      * @Assert\Type("string")
      * @ApiAssert\ApiChoice(SeasonSegmentParam::OPTIONS)
      *
@@ -153,7 +176,6 @@ class LineupStatsRequest extends AbstractDataRequest
     public $dateTo;
 
     /**
-     * @Assert\NotBlank()
      * @Assert\Type("int")
      * @Assert\Range(min = TeamIdParam::MIN_ALL, max = TeamIdParam::MAX_VALUE)
      *
@@ -176,15 +198,6 @@ class LineupStatsRequest extends AbstractDataRequest
      * @var string
      */
     public $vsDivision;
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Type("int")
-     * @Assert\Range(min = TeamIdParam::MIN_ALL, max = TeamIdParam::MAX_VALUE)
-     *
-     * @var int
-     */
-    public $teamId;
 
     /**
      * @Assert\Type("string")
@@ -220,14 +233,6 @@ class LineupStatsRequest extends AbstractDataRequest
     public $period;
 
     /**
-     * @Assert\Type("int")
-     * @ApiAssert\ApiChoice(ShotClockRangeParam::OPTIONS)
-     *
-     * @var string
-     */
-    public $shotClockRange;
-
-    /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
      * @Assert\Range(min = LastNGamesParam::MIN_ALL, max = LastNGamesParam::MAX_VALUE)
@@ -237,30 +242,19 @@ class LineupStatsRequest extends AbstractDataRequest
     public $lastNGames;
 
     /**
-     * @Assert\Type("int")
-     * @Assert\Range(min = GroupQuantityParam::MIN_LOGICAL, max = GroupQuantityParam::MAX)
-     *
-     * @var string
-     */
-    public $groupQuantity;
-
-    /**
      * {@inheritdoc}
      */
     public function getDefaultValues(): array
     {
         return [
-            'measureType'    => MeasureTypeParam::BASE,
-            'plusMinus'      => false,
-            'paceAdjust'     => false,
-            'rank'           => false,
+            'perMode'        => PerModeParam::PER_GAME,
             'poRound'        => PORoundParam::MIN_ALL,
+            'generalRange'   => ShotRangeParam::OVERALL,
+            'teamId'         => TeamIdParam::MIN_ALL,
             'month'          => MonthParam::MIN_ALL,
             'opponentTeamId' => TeamIdParam::MIN_ALL,
-            'teamId'         => TeamIdParam::MIN_ALL,
             'period'         => PeriodParam::MIN_ALL,
             'lastNGames'     => LastNGamesParam::MIN_ALL,
-            'groupQuantity'  => GroupQuantityParam::MAX,
         ];
     }
 }

@@ -7,14 +7,15 @@ use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
 use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Params\SeasonParam;
-use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\Stats\ConferenceParam;
+use JasonRoman\NbaApi\Params\Stats\DistanceRangeParam;
 use JasonRoman\NbaApi\Params\Stats\DivisionParam;
 use JasonRoman\NbaApi\Params\Stats\DraftPickParam;
 use JasonRoman\NbaApi\Params\Stats\GameScopeParam;
 use JasonRoman\NbaApi\Params\Stats\GameSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\HeightParam;
 use JasonRoman\NbaApi\Params\Stats\LastNGamesParam;
+use JasonRoman\NbaApi\Params\Stats\MeasureTypeParam;
 use JasonRoman\NbaApi\Params\Stats\MonthParam;
 use JasonRoman\NbaApi\Params\Stats\OutcomeParam;
 use JasonRoman\NbaApi\Params\Stats\PeriodParam;
@@ -22,6 +23,7 @@ use JasonRoman\NbaApi\Params\Stats\PlayerExperienceParam;
 use JasonRoman\NbaApi\Params\Stats\PlayerPositionParam;
 use JasonRoman\NbaApi\Params\Stats\PORoundParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
+use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\Stats\ShotClockRangeParam;
 use JasonRoman\NbaApi\Params\Stats\StarterBenchParam;
 use JasonRoman\NbaApi\Params\Stats\WeightParam;
@@ -29,14 +31,23 @@ use JasonRoman\NbaApi\Params\SeasonYearParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 
-class PlayerBioStatsRequest extends AbstractDataRequest
+class PlayerShotLocationStatsRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/stats/leaguedashplayerbiostats';
+    const ENDPOINT = '/stats/leaguedashplayershotlocations';
 
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(PerModeParam::OPTIONS_TOTALS_PER_GAME)
+     * @ApiAssert\ApiChoice(MeasureTypeParam::OPTIONS_BASE_OPPONENT)
+     *
+     * @var string
+     */
+    public $measureType;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @ApiAssert\ApiChoice(PerModeParam::OPTIONS_ALL)
      *
      * @var string
      */
@@ -44,6 +55,31 @@ class PlayerBioStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\NotBlank()
+     * @Assert\Type("bool")
+     *
+     * @var bool
+     */
+    public $plusMinus;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @Assert\Type("bool")
+     *
+     * @var bool
+     */
+    public $paceAdjust;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @Assert\Type("bool")
+     *
+     * @var bool
+     */
+    public $rank;
+
+    /**
      * @Assert\Type("string")
      * @ApiAssert\ApiChoice(LeagueIdParam::OPTIONS_NBA_G_LEAGUE)
      *
@@ -71,9 +107,9 @@ class PlayerBioStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\Type("int")
-     * @Assert\Range(min = PORoundParam::MIN_ALL, max = PORoundParam::MAX)
+     * @Assert\Range(min = PORoundParam::MIN_ALL, max = PORoundParam::MAX_VALUE)
      *
-     * @var string
+     * @var int
      */
     public $poRound;
 
@@ -94,10 +130,10 @@ class PlayerBioStatsRequest extends AbstractDataRequest
     public $location;
 
     /**
-     * @Assert\Type("string")
-     * @Assert\Range(min = MonthParam::MIN_ALL, max = MonthParam::MAX)
+     * @Assert\Type("int")
+     * @Assert\Range(min = MonthParam::MIN_ALL, max = MonthParam::MAX_VALUE)
      *
-     * @var string
+     * @var int
      */
     public $month;
 
@@ -125,7 +161,7 @@ class PlayerBioStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\Type("int")
-     * @Assert\Range(min = TeamIdParam::MIN_VALUE, max = TeamIdParam::MAX_VALUE)
+     * @Assert\Range(min = TeamIdParam::MIN_ALL, max = TeamIdParam::MAX_VALUE)
      *
      * @var int
      */
@@ -149,7 +185,7 @@ class PlayerBioStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\Type("int")
-     * @Assert\Range(min = TeamIdParam::MIN_VALUE, max = TeamIdParam::MAX_VALUE)
+     * @Assert\Range(min = TeamIdParam::MIN_ALL, max = TeamIdParam::MAX_VALUE)
      *
      * @var int
      */
@@ -165,7 +201,7 @@ class PlayerBioStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(DivisionParam::OPTIONS)
+     * @ApiAssert\ApiChoice(DivisionParam::OPTIONS_WITH_CONFERENCE)
      *
      * @var string
      */
@@ -180,6 +216,7 @@ class PlayerBioStatsRequest extends AbstractDataRequest
     public $gameSegment;
 
     /**
+     * @Assert\NotBlank()
      * @Assert\Type("int")
      * @Assert\Range(min = PeriodParam::MIN_ALL, max = PeriodParam::MAX_VALUE)
      *
@@ -196,12 +233,21 @@ class PlayerBioStatsRequest extends AbstractDataRequest
     public $shotClockRange;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Type("int")
+     * @Assert\Range(min = LastNGamesParam::MIN_ALL, max = LastNGamesParam::MAX_VALUE)
+     *
+     * @var int
+     */
+    public $lastNGames;
+
+    /**
      * @Assert\Type("string")
-     * @Assert\Range(min = LastNGamesParam::MIN_ALL, max = LastNGamesParam::MAX)
+     * @ApiAssert\ApiChoice(DistanceRangeParam::OPTIONS)
      *
      * @var string
      */
-    public $lastNGames;
+    public $distanceRange;
 
     /**
      * @Assert\Type("string")
@@ -287,7 +333,11 @@ class PlayerBioStatsRequest extends AbstractDataRequest
     public function getDefaultValues(): array
     {
         return [
+            'measureType'    => MeasureTypeParam::BASE,
             'perMode'        => PerModeParam::PER_GAME,
+            'plusMinus'      => false,
+            'paceAdjust'     => false,
+            'rank'           => false,
             'seasonType'     => SeasonTypeParam::REGULAR_SEASON,
             'poRound'        => PORoundParam::MIN_ALL,
             'month'          => MonthParam::MIN_ALL,
@@ -295,6 +345,7 @@ class PlayerBioStatsRequest extends AbstractDataRequest
             'teamId'         => TeamIdParam::MIN_ALL,
             'period'         => PeriodParam::MIN_ALL,
             'lastNGames'     => LastNGamesParam::MIN_ALL,
+            'distanceRange'  => DistanceRangeParam::RANGE_5_FOOT,
         ];
     }
 }

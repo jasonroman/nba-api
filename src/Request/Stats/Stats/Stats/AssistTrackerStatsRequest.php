@@ -29,8 +29,6 @@ use JasonRoman\NbaApi\Request\AbstractDataRequest;
  * Get the count of assists given particular criteria. All values are optional.
  * This endpoint seems pretty pointless, and if no values are specified, I cannot figure out what the defaults are.
  * There is a State Farm Assist Tracker on the NBA homepage, but it does not call this endpoint.
- *
- * @todo check 0-values here for 'all' meanings.
  */
 class AssistTrackerStatsRequest extends AbstractDataRequest
 {

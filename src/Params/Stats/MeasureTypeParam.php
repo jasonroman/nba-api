@@ -32,4 +32,9 @@ class MeasureTypeParam extends AbstractStatsParam
         self::SCORING,
         self::USAGE,
     ];
+
+    const OPTIONS_BASE_OPPONENT = [
+        self::BASE,
+        self::OPPONENT,
+    ];
 }

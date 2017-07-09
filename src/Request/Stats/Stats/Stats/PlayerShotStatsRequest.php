@@ -2,7 +2,6 @@
 
 namespace JasonRoman\NbaApi\Request\Stats\Stats\Stats;
 
-use JasonRoman\NbaApi\Params\Stats\PointDiffParam;
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
@@ -318,4 +317,21 @@ class PlayerShotStatsRequest extends AbstractDataRequest
      * @var string
      */
     public $starterBench;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDefaultValues(): array
+    {
+        return [
+            'perMode'        => PerModeParam::PER_GAME,
+            'poRound'        => PORoundParam::MIN_ALL,
+            'generalRange'   => ShotRangeParam::OVERALL,
+            'teamId'         => TeamIdParam::MIN_ALL,
+            'month'          => MonthParam::MIN_ALL,
+            'opponentTeamId' => TeamIdParam::MIN_ALL,
+            'period'         => PeriodParam::MIN_ALL,
+            'lastNGames'     => LastNGamesParam::MIN_ALL,
+        ];
+    }
 }

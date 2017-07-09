@@ -40,34 +40,6 @@ class PlayerClutchStatsRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = SeasonParam::FORMAT)
-     *
-     * @var string
-     */
-    public $season;
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(SeasonTypeParam::OPTIONS_WITH_ALL_STAR)
-     *
-     * @var string
-     */
-    public $seasonType;
-
-    /**
-     * This is oddly 'required', but defaults/allows a null value. Must be present in the query string.
-     *
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(SeasonSegmentParam::OPTIONS)
-     *
-     * @var string
-     */
-    public $seasonSegment;
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
      * @ApiAssert\ApiChoice(MeasureTypeParam::OPTIONS_CL)
      *
      * @var string
@@ -84,18 +56,10 @@ class PlayerClutchStatsRequest extends AbstractDataRequest
     public $perMode;
 
     /**
-     * @Assert\Type("int")
-     * @Assert\Range(min = PORoundParam::MIN_ALL, max = PORoundParam::MAX_VALUE)
-     *
-     * @var int
-     */
-    public $poRound;
-
-    /**
      * @Assert\NotBlank()
      * @Assert\Type("bool")
      *
-     * @var string
+     * @var bool
      */
     public $plusMinus;
 
@@ -104,7 +68,7 @@ class PlayerClutchStatsRequest extends AbstractDataRequest
      * @Assert\Type("string")
      * @Assert\Type("bool")
      *
-     * @var string
+     * @var bool
      */
     public $paceAdjust;
 
@@ -113,7 +77,7 @@ class PlayerClutchStatsRequest extends AbstractDataRequest
      * @Assert\Type("string")
      * @Assert\Type("bool")
      *
-     * @var string
+     * @var bool
      */
     public $rank;
 
@@ -126,22 +90,46 @@ class PlayerClutchStatsRequest extends AbstractDataRequest
     public $leagueId;
 
     /**
-     * This is oddly 'required', but defaults/allows a null value. Must be present in the query string.
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @ApiAssert\ApiRegex(pattern = SeasonParam::FORMAT)
      *
-     * @Assert\Date()
-     *
-     * @var \DateTime|string if string, format is YYYY-MM-DD
+     * @var string
      */
-    public $dateFrom;
+    public $season;
 
     /**
-     * This is oddly 'required', but defaults/allows a null value. Must be present in the query string.
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @ApiAssert\ApiChoice(SeasonTypeParam::OPTIONS_WITH_ALL_STAR)
      *
-     * @Assert\Date()
-     *
-     * @var \DateTime|string if string, format is YYYY-MM-DD
+     * @var string
      */
-    public $dateTo;
+    public $seasonType;
+
+    /**
+     * @Assert\Type("int")
+     * @Assert\Range(min = PORoundParam::MIN_ALL, max = PORoundParam::MAX_VALUE)
+     *
+     * @var int
+     */
+    public $poRound;
+
+    /**
+     * @Assert\Type("string")
+     * @ApiAssert\ApiChoice(OutcomeParam::OPTIONS)
+     *
+     * @var string
+     */
+    public $outcome;
+
+    /**
+     * @Assert\Type("string")
+     * @ApiAssert\ApiChoice(LocationParam::OPTIONS)
+     *
+     * @var string
+     */
+    public $location;
 
     /**
      * @Assert\NotBlank()
@@ -153,28 +141,37 @@ class PlayerClutchStatsRequest extends AbstractDataRequest
     public $month;
 
     /**
-     * This is oddly 'required', but defaults/allows a null value. Must be present in the query string.
-     *
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(OutcomeParam::OPTIONS)
+     * @ApiAssert\ApiChoice(SeasonSegmentParam::OPTIONS)
      *
      * @var string
      */
-    public $outcome;
+    public $seasonSegment;
 
     /**
-     * This is oddly 'required', but defaults/allows a null value. Must be present in the query string.
+     * @Assert\Date()
      *
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(GameSegmentParam::OPTIONS)
-     *
-     * @var string
+     * @var \DateTime|string if string, format is YYYY-MM-DD
      */
-    public $gameSegment;
+    public $dateFrom;
 
     /**
-     * This is oddly 'required', but defaults/allows a null value. Must be present in the query string.
+     * @Assert\Date()
      *
+     * @var \DateTime|string if string, format is YYYY-MM-DD
+     */
+    public $dateTo;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("int")
+     * @Assert\Range(min = TeamIdParam::MIN_ALL, max = TeamIdParam::MAX_VALUE)
+     *
+     * @var int
+     */
+    public $opponentTeamId;
+
+    /**
      * @Assert\Type("string")
      * @ApiAssert\ApiChoice(ConferenceParam::OPTIONS)
      *
@@ -183,8 +180,6 @@ class PlayerClutchStatsRequest extends AbstractDataRequest
     public $vsConference;
 
     /**
-     * This is oddly 'required', but defaults/allows a null value. Must be present in the query string.
-     *
      * @Assert\Type("string")
      * @ApiAssert\ApiChoice(DivisionParam::OPTIONS_WITH_CONFERENCE)
      *
@@ -202,23 +197,28 @@ class PlayerClutchStatsRequest extends AbstractDataRequest
     public $teamId;
 
     /**
-     * @Assert\NotBlank()
-     * @Assert\Type("int")
-     * @Assert\Range(min = TeamIdParam::MIN_ALL, max = TeamIdParam::MAX_VALUE)
-     *
-     * @var int
-     */
-    public $opponentTeamId;
-
-    /**
-     * This is oddly 'required', but defaults/allows a null value. Must be present in the query string.
-     *
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(LocationParam::OPTIONS)
+     * @ApiAssert\ApiChoice(ConferenceParam::OPTIONS)
      *
      * @var string
      */
-    public $location;
+    public $conference;
+
+    /**
+     * @Assert\Type("string")
+     * @ApiAssert\ApiChoice(DivisionParam::OPTIONS_WITH_CONFERENCE)
+     *
+     * @var string
+     */
+    public $division;
+
+    /**
+     * @Assert\Type("string")
+     * @ApiAssert\ApiChoice(GameSegmentParam::OPTIONS)
+     *
+     * @var string
+     */
+    public $gameSegment;
 
     /**
      * @Assert\NotBlank()
@@ -253,7 +253,7 @@ class PlayerClutchStatsRequest extends AbstractDataRequest
      *
      * @var string
      */
-    public $clutchTimeParam;
+    public $clutchTime;
 
     /**
      * @Assert\NotBlank()
@@ -352,31 +352,25 @@ class PlayerClutchStatsRequest extends AbstractDataRequest
     public $weight;
 
     /**
-     * @todo - check if null here will result in still existing in query string
      * {@inheritdoc}
      */
     public function getDefaultValues(): array
     {
         return [
-            'seasonSegment'  => null,
+            'measureType'    => MeasureTypeParam::BASE,
+            'perMode'        => PerModeParam::PER_GAME,
+            'plusMinus'      => false,
+            'paceAdjust'     => false,
+            'rank'           => false,
             'poRound'        => PORoundParam::MIN_ALL,
-            'plusMinus'      => PlusMinusParam::NO,
-            'paceAdjust'     => PaceAdjustParam::NO,
-            'rank'           => RankParam::NO,
-            'dateFrom'       => null,
-            'dateTo'         => null,
             'month'          => MonthParam::MIN_ALL,
-            'outcome'        => null,
-            'vsConference'   => null,
-            'vsDivision'     => null,
-            'teamId'         => TeamIdParam::MIN_ALL,
             'opponentTeamId' => TeamIdParam::MIN_ALL,
-            'location'       => null,
+            'teamId'         => TeamIdParam::MIN_ALL,
             'period'         => PeriodParam::MIN_ALL,
             'lastNGames'     => LastNGamesParam::MIN_ALL,
             'clutchTime'     => ClutchTimeParam::LAST_5_MINUTES,
             'aheadOrBehind'  => AheadOrBehindParam::AHEAD_OR_BEHIND,
-            'pointDiff'      => 5,
+            'pointDiff'      => PointDiffParam::MAX,
         ];
     }
 }

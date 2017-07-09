@@ -4,12 +4,10 @@ declare(strict_types = 1);
 namespace JasonRoman\NbaApi\Params\Stats;
 
 /**
- * Point Differential - use 0 for all. Point differential is X or less, not the exact amount.
+ * Point Differential. Value is X points or less, not the exact point differential.
  */
 class PointDiffParam extends AbstractStatsParam
 {
-    const MIN_ALL = 0;
-
     const MIN = 1;
-    const MAX = 14;
+    const MAX = 5;
 }

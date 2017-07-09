@@ -4,15 +4,18 @@ declare(strict_types = 1);
 namespace JasonRoman\NbaApi\Params\Stats;
 
 /**
- * Active flag determines whether to only display active players.
+ * Active flag determines whether to display only active players.
  */
 class ActiveFlagParam extends AbstractStatsParam
 {
+    const YES = 'Yes';
+    const NO  = 'No';
+
     /**
      * {@inheritdoc}
      */
     public static function getStringValue($value) : string
     {
-        return ((bool) $value) ? 'Yes' : 'No';
+        return ($value) ? self::YES : self::NO;
     }
 }
