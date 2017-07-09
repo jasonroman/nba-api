@@ -6,7 +6,7 @@ class Season
 {
     const FORMAT      = '/^\d{4}-\d{2}$/';
     const YEAR_FORMAT = '/^\d{4}$/';
-    const ALL_FORMAT  = '/^(\d{4}-\d{2})|(ALL)$/'; // for player game log, if not others
+    const ALL_FORMAT  = '/^(\d{4}-\d{2})|(ALL)$/';
 
     /**
      * @var string

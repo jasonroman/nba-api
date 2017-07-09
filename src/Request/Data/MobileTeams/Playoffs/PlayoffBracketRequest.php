@@ -1,20 +1,19 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Data\MobileTeams\Schedule;
+namespace JasonRoman\NbaApi\Request\Data\MobileTeams\Playoffs;
 
 use Symfony\Component\Validator\Constraints as Assert;
-use JasonRoman\NbaApi\Constraints as ApiAssert;
-use JasonRoman\NbaApi\Params\Data\LeagueSlugParam;
-use JasonRoman\NbaApi\Params\FormatParam;
-use JasonRoman\NbaApi\Params\LeagueIdParam;
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Params\Data\LeagueSlugParam;
+use JasonRoman\NbaApi\Params\Data\TeamSlugParam;
+use JasonRoman\NbaApi\Params\FormatParam;
 
 /**
- * Get the full league schedule for a given season (includes preseason for NBA).
+ * Get the playoff bracket and game scores. for the given league and season. Seems to just work with NBA for now.
  */
-class LeagueScheduleRequest extends AbstractDataRequest
+class PlayoffBracketRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/v2015/{format}/mobile_teams/{leagueSlug}/{year}/league/{leagueId}_full_schedule.{format}';
+    const ENDPOINT = '/v2015/{format}/mobile_teams/{leagueSlug}/{year}/scores/{leagueId}_playoff_bracket.{format}';
 
     /**
      * @Assert\NotBlank()
@@ -37,7 +36,7 @@ class LeagueScheduleRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = 2015)
+     * @Assert\Range(min = 2014)
      *
      * @var int
      */

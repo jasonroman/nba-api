@@ -6,11 +6,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
 use JasonRoman\NbaApi\Params\PlayerIdParam;
+use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
-class PlayerInfoRequest extends AbstractStatsRequest
+class PlayerProfileRequest extends AbstractStatsRequest
 {
-    const ENDPOINT = '/stats/commonplayerinfo';
+    const ENDPOINT = '/stats/playerprofilev2';
 
     /**
      * @Assert\NotBlank()
@@ -28,4 +29,13 @@ class PlayerInfoRequest extends AbstractStatsRequest
      * @var string
      */
     public $leagueId;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @ApiAssert\ApiChoice(PerModeParam::OPTIONS_TOTALS_PER_GAME_PER_36)
+     *
+     * @var string
+     */
+    public $perMode;
 }

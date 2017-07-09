@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Stats\AllStar;
+namespace JasonRoman\NbaApi\Request\Stats\Stats\AllStar;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Params\PlayerIdParam;

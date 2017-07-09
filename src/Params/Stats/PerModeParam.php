@@ -17,9 +17,20 @@ class PerModeParam extends AbstractStatsParam
     const PER_POSSESSION      = 'PerPossession';
     const TOTALS              = 'Totals';
 
-    const OPTIONS_TOTALS_PER_GAME_PER_48 = [
-        self::TOTALS,
+    const OPTIONS_TOTALS_PER_GAME = [
         self::PER_GAME,
+        self::TOTALS,
+    ];
+
+    const OPTIONS_TOTALS_PER_GAME_PER_48 = [
         self::PER_48,
+        self::PER_GAME,
+        self::TOTALS,
+    ];
+
+    const OPTIONS_TOTALS_PER_GAME_PER_36 = [
+        self::PER_36,
+        self::PER_GAME,
+        self::TOTALS,
     ];
 }

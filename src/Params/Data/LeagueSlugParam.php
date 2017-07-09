@@ -2,6 +2,9 @@
 
 namespace JasonRoman\NbaApi\Params\Data;
 
+/**
+ * @todo - check if wnba or dleague/gleague works for any endpoints that use this
+ */
 class LeagueSlugParam extends AbstractDataParam
 {
     // nba team codes by abbreviation
@@ -16,6 +19,10 @@ class LeagueSlugParam extends AbstractDataParam
         self::SUMMER_ORLANDO,
         self::SUMMER_VEGAS,
         self::SUMMER_UTAH,
+    ];
+
+    const OPTIONS_NBA = [
+        self::NBA,
     ];
 
     /**

@@ -4,6 +4,7 @@ namespace JasonRoman\NbaApi\Client;
 
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Game\FullPlayByPlayRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Game\GameDetailRequest;
+use JasonRoman\NbaApi\Request\Data\MobileTeams\Playoffs\PlayoffBracketRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Roster\TeamRosterRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Schedule\LeagueScheduleRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Schedule\LeagueScheduleMonthRequest;
@@ -43,6 +44,16 @@ class DataMobileTeamsClient extends AbstractDataClient
      * @return NbaApiResponseInterface
      */
     public function getPlayerCard(PlayerCardRequest $request, array $config = [])
+    {
+        return $this->request($request, $config);
+    }
+
+    /**
+     * @param PlayoffBracketRequest $request
+     * @param array $config
+     * @return NbaApiResponseInterface
+     */
+    public function getPlayoffBracket(PlayoffBracketRequest $request, array $config = [])
     {
         return $this->request($request, $config);
     }

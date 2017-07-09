@@ -1,15 +1,16 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Stats\Stats\Video;
+namespace JasonRoman\NbaApi\Request\Stats\Stats\Playoffs;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
+use JasonRoman\NbaApi\Params\SeasonIdParam;
 use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
-class VideoStatusRequest extends AbstractStatsRequest
+class PlayoffPictureRequest extends AbstractStatsRequest
 {
-    const ENDPOINT= '/stats/videostatus';
+    const ENDPOINT = '/stats/playoffpicture';
 
     /**
      * @Assert\NotBlank()
@@ -22,9 +23,10 @@ class VideoStatusRequest extends AbstractStatsRequest
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Date()
+     * @Assert\Type("string")
+     * @ApiAssert\ApiRegex(pattern = SeasonIdParam::FORMAT)
      *
-     * @var \DateTime|string if string, format is YYYY-MM-DD
+     * @var string
      */
-    public $gameDate;
+    public $seasonId;
 }

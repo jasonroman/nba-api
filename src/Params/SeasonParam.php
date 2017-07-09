@@ -6,15 +6,17 @@ namespace JasonRoman\NbaApi\Params;
 class SeasonParam extends AbstractParam
 {
     const FORMAT               = '/^\d{4}-\d{2}$/';
+    const FORMAT_WITH_ALL      = '/^(\d{4}-\d{2})|(ALL)$/';
     const FORMAT_WITH_ALL_TIME = '/^(\d{4}-\d{2})|(All Time)$/';
 
     /**
      * Get the current season in format YYYY-YY based on the year.
      *
-     * @param string|int $year
+     * @param int $year
      * @return string
+     * @throws \InvalidArgumentException
      */
-    public static function fromYear($year) : string
+    public static function fromYear(int $year) : string
     {
         if (preg_match(self::YEAR_FORMAT, $year) !== 1) {
             throw new \InvalidArgumentException(sprintf('Year must be in %s format', self::FORMAT));
@@ -45,5 +47,14 @@ class SeasonParam extends AbstractParam
         // NBA has a gap, where it considered a season ending on the last day of the NBA finals
         // but the season start is October 1st; might want to handle this more specifically in the future
         return (date('n') < 10) ?  (int) (date('Y') - 1) : (int) date('Y');
+    }
+
+    /**
+     * {@inheritdoc}
+     * @return string
+     */
+    public static function getDefaultValue() : string
+    {
+        return self::currentSeason();
     }
 }

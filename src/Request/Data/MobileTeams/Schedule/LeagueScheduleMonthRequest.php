@@ -58,7 +58,7 @@ class LeagueScheduleMonthRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(choices = {LeagueIdParam::NBA})
+     * @ApiAssert\ApiChoice(LeagueIdParam::OPTIONS)
      *
      * @var string
      */

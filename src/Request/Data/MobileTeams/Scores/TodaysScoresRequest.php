@@ -46,7 +46,7 @@ class TodaysScoresRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(LeagueIdParam::OPTIONS_NBA)
+     * @ApiAssert\ApiChoice(LeagueIdParam::OPTIONS)
      *
      * @var string
      */

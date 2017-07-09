@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Stats\Homepage;
+namespace JasonRoman\NbaApi\Request\Stats\Stats\Homepage;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
@@ -28,10 +28,9 @@ class HomepageLeadersRequest extends AbstractStatsRequest
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Type("DateTime")
-     * @ApiAssert\ApiRegex(pattern = SeasonParam::FORMAT)
+     * @Assert\Date()
      *
-     * @var string
+     * @var \DateTime|string if string, format is YYYY-MM-DD
      */
     public $gameDate;
 
