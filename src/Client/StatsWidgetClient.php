@@ -2,6 +2,12 @@
 
 namespace JasonRoman\NbaApi\Client;
 
+use JasonRoman\NbaApi\Request\Stats\Widges\Players\HomepageDailyRequest;
+use JasonRoman\NbaApi\Request\Stats\Widges\Players\HomepageDailySummerLeagueRequest;
+use JasonRoman\NbaApi\Request\Stats\Widges\Players\HomepageEditorialRequest;
+use JasonRoman\NbaApi\Request\Stats\Widges\Players\HomepagePlayoffsRequest;
+use JasonRoman\NbaApi\Request\Stats\Widges\Players\HomepageSeasonRequest;
+use JasonRoman\NbaApi\Request\Stats\Widges\Players\HomepageSidebarRequest;
 use JasonRoman\NbaApi\Request\Stats\Widges\Players\PlayersLandingInnerRequest;
 use JasonRoman\NbaApi\Request\Stats\Widges\Players\PlayersLandingSidebarRequest;
 use JasonRoman\NbaApi\Request\Stats\Widges\Scores\ScoresLeadersRequest;
@@ -18,6 +24,66 @@ use JasonRoman\NbaApi\Response\NbaApiResponseInterface;
  */
 class StatsWidgetClient extends AbstractStatsClient
 {
+    /**
+     * @param HomepageDailyRequest $request
+     * @param array $config
+     * @return NbaApiResponseInterface
+     */
+    public function getHomepageDaily(HomepageDailyRequest $request, array $config = [])
+    {
+        return $this->request($request, $config);
+    }
+
+    /**
+     * @param HomepageDailySummerLeagueRequest $request
+     * @param array $config
+     * @return NbaApiResponseInterface
+     */
+    public function getHomepageDailySummerLeague(HomepageDailySummerLeagueRequest $request, array $config = [])
+    {
+        return $this->request($request, $config);
+    }
+
+    /**
+     * @param HomepageEditorialRequest $request
+     * @param array $config
+     * @return NbaApiResponseInterface
+     */
+    public function getHomepageEditorial(HomepageEditorialRequest $request, array $config = [])
+    {
+        return $this->request($request, $config);
+    }
+
+    /**
+     * @param HomepagePlayoffsRequest $request
+     * @param array $config
+     * @return NbaApiResponseInterface
+     */
+    public function getHomepagePlayoffs(HomepagePlayoffsRequest $request, array $config = [])
+    {
+        return $this->request($request, $config);
+    }
+
+    /**
+     * @param HomepageSeasonRequest $request
+     * @param array $config
+     * @return NbaApiResponseInterface
+     */
+    public function getHomepageSeason(HomepageSeasonRequest $request, array $config = [])
+    {
+        return $this->request($request, $config);
+    }
+
+    /**
+     * @param HomepageSidebarRequest $request
+     * @param array $config
+     * @return NbaApiResponseInterface
+     */
+    public function getHomepageSidebar(HomepageSidebarRequest $request, array $config = [])
+    {
+        return $this->request($request, $config);
+    }
+
     /**
      * @param PlayersLandingInnerRequest $request
      * @param array $config
