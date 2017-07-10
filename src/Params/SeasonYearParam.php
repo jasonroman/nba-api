@@ -8,6 +8,7 @@ class SeasonYearParam extends SeasonParam
 
     const FIRST_SEASON_YEAR       = 1946;
     const FIRST_DRAFT_SEASON_YEAR = 1947;
+    const SYNERGY_FIRST_YEAR      = 2015;
 
     /**
      * {@inheritdoc}

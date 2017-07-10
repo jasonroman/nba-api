@@ -187,7 +187,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
          *
          * Priority:
          *  1. use the getStringValue() method of the corresponding Request Type -> Param class
-         *  2. use the getStringValue() method of the global Request Type -> Param class
+         *  2. use the getStringValue() method of the corresponding global Param class
          *  3. call the general AbstractParam::getStringValue() method
          */
         foreach ($publicProperties as $property) {
@@ -216,7 +216,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
             }
 
             // if got here, no specific param class exists, so just cast to string
-            $this->$propertyName = AbstractParam::getStringValue($this->$propertyName);
+            $this->$propertyName = AbstractParam::{self::CONVERT_TO_STRING_METHOD}($this->$propertyName);
         }
     }
 }

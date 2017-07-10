@@ -41,7 +41,7 @@ class PlayerGameStatsRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(MeasureTypeParam::OPTIONS_CL)
+     * @ApiAssert\ApiChoice(MeasureTypeParam::OPTIONS_NO_DEFENSE_FOUR_FACTORS_OPPONENT)
      *
      * @var string
      */

@@ -2,7 +2,7 @@
 
 namespace JasonRoman\NbaApi\Params;
 
-class PlayerIdParam extends AbstractDataParam
+class PlayerIdParam extends AbstractParam
 {
     const MIN     = 1;
     const MAX     = 2147483647;

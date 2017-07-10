@@ -33,8 +33,30 @@ class MeasureTypeParam extends AbstractStatsParam
         self::USAGE,
     ];
 
+    const OPTIONS_BASE = [
+        self::BASE,
+    ];
+
     const OPTIONS_BASE_OPPONENT = [
         self::BASE,
+        self::OPPONENT,
+    ];
+
+    const OPTIONS_NO_DEFENSE_FOUR_FACTORS_OPPONENT = [
+        self::BASE,
+        self::ADVANCED,
+        self::MISC,
+        self::SCORING,
+        self::USAGE,
+    ];
+
+    const OPTIONS_PLAYER_COMPARE = [
+        self::BASE,
+        self::ADVANCED,
+        self::FOUR_FACTORS,
+        self::MISC,
+        self::OPPONENT,
+        self::SCORING,
         self::OPPONENT,
     ];
 }

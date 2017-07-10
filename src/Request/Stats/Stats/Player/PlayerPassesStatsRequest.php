@@ -9,32 +9,18 @@ use JasonRoman\NbaApi\Params\PlayerIdParam;
 use JasonRoman\NbaApi\Params\SeasonParam;
 use JasonRoman\NbaApi\Params\Stats\ConferenceParam;
 use JasonRoman\NbaApi\Params\Stats\DivisionParam;
-use JasonRoman\NbaApi\Params\Stats\GameSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\LastNGamesParam;
-use JasonRoman\NbaApi\Params\Stats\MeasureTypeParam;
 use JasonRoman\NbaApi\Params\Stats\MonthParam;
 use JasonRoman\NbaApi\Params\Stats\OutcomeParam;
-use JasonRoman\NbaApi\Params\Stats\PeriodParam;
 use JasonRoman\NbaApi\Params\Stats\PerModeParam;
-use JasonRoman\NbaApi\Params\Stats\PORoundParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
-use JasonRoman\NbaApi\Params\Stats\ShotClockRangeParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 
-class PlayerOpponentStatsRequest extends AbstractDataRequest
+class PlayerPassesStatsRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/stats/playerdashboardbyopponent';
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(MeasureTypeParam::OPTIONS_ALL)
-     *
-     * @var string
-     */
-    public $measureType;
+    const ENDPOINT = '/stats/playerdashptpass';
 
     /**
      * @Assert\NotBlank()
@@ -47,31 +33,6 @@ class PlayerOpponentStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Type("bool")
-     *
-     * @var bool
-     */
-    public $plusMinus;
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
-     * @Assert\Type("bool")
-     *
-     * @var bool
-     */
-    public $paceAdjust;
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
-     * @Assert\Type("bool")
-     *
-     * @var bool
-     */
-    public $rank;
-
-    /**
      * @Assert\Type("string")
      * @ApiAssert\ApiChoice(LeagueIdParam::OPTIONS_NBA_G_LEAGUE)
      *
@@ -98,14 +59,6 @@ class PlayerOpponentStatsRequest extends AbstractDataRequest
     public $seasonType;
 
     /**
-     * @Assert\Type("int")
-     * @Assert\Range(min = PORoundParam::MIN_ALL, max = PORoundParam::MAX_VALUE)
-     *
-     * @var int
-     */
-    public $poRound;
-
-    /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
      * @Assert\Range(min = PlayerIdParam::MIN, max = PlayerIdParam::MAX)
@@ -113,6 +66,15 @@ class PlayerOpponentStatsRequest extends AbstractDataRequest
      * @var int
      */
     public $playerId;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("int")
+     * @Assert\Range(min = TeamIdParam::MIN_ALL, max = TeamIdParam::MAX_VALUE)
+     *
+     * @var int
+     */
+    public $teamId;
 
     /**
      * @Assert\Type("string")
@@ -187,31 +149,6 @@ class PlayerOpponentStatsRequest extends AbstractDataRequest
     public $vsDivision;
 
     /**
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(GameSegmentParam::OPTIONS)
-     *
-     * @var string
-     */
-    public $gameSegment;
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Type("int")
-     * @Assert\Range(min = PeriodParam::MIN_ALL, max = PeriodParam::MAX_VALUE)
-     *
-     * @var int
-     */
-    public $period;
-
-    /**
-     * @Assert\Type("int")
-     * @ApiAssert\ApiChoice(ShotClockRangeParam::OPTIONS)
-     *
-     * @var string
-     */
-    public $shotClockRange;
-
-    /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
      * @Assert\Range(min = LastNGamesParam::MIN_ALL, max = LastNGamesParam::MAX_VALUE)
@@ -226,16 +163,11 @@ class PlayerOpponentStatsRequest extends AbstractDataRequest
     public function getDefaultValues(): array
     {
         return [
-            'measureType'    => MeasureTypeParam::BASE,
             'perMode'        => PerModeParam::PER_GAME,
-            'plusMinus'      => false,
-            'paceAdjust'     => false,
-            'rank'           => false,
             'seasonType'     => SeasonTypeParam::REGULAR_SEASON,
-            'poRound'        => PORoundParam::MIN_ALL,
+            'teamId'         => MonthParam::MIN_ALL,
             'month'          => MonthParam::MIN_ALL,
             'opponentTeamId' => TeamIdParam::MIN_ALL,
-            'period'         => PeriodParam::MIN_ALL,
             'lastNGames'     => LastNGamesParam::MIN_ALL,
         ];
     }
