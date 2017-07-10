@@ -2,20 +2,20 @@
 
 namespace JasonRoman\NbaApi\Client;
 
-use JasonRoman\NbaApi\Request\Stats\Widges\Players\HomepageDailyRequest;
-use JasonRoman\NbaApi\Request\Stats\Widges\Players\HomepageDailySummerLeagueRequest;
-use JasonRoman\NbaApi\Request\Stats\Widges\Players\HomepageEditorialRequest;
-use JasonRoman\NbaApi\Request\Stats\Widges\Players\HomepagePlayoffsRequest;
-use JasonRoman\NbaApi\Request\Stats\Widges\Players\HomepageSeasonRequest;
-use JasonRoman\NbaApi\Request\Stats\Widges\Players\HomepageSidebarRequest;
-use JasonRoman\NbaApi\Request\Stats\Widges\Players\PlayersLandingInnerRequest;
-use JasonRoman\NbaApi\Request\Stats\Widges\Players\PlayersLandingSidebarRequest;
-use JasonRoman\NbaApi\Request\Stats\Widges\Scores\ScoresLeadersRequest;
-use JasonRoman\NbaApi\Request\Stats\Widges\Scores\ScoresSidebarRequest;
-use JasonRoman\NbaApi\Request\Stats\Widges\Stats\AdvancedLeadersRequest;
-use JasonRoman\NbaApi\Request\Stats\Widges\Stats\HustleLeadersRequest;
-use JasonRoman\NbaApi\Request\Stats\Widges\Teams\TeamsLandingInnerRequest;
-use JasonRoman\NbaApi\Request\Stats\Widges\Teams\TeamsLandingSidebarRequest;
+use JasonRoman\NbaApi\Request\Stats\Widgets\Homepage\DailyRequest;
+use JasonRoman\NbaApi\Request\Stats\Widgets\Homepage\DailySummerLeagueRequest;
+use JasonRoman\NbaApi\Request\Stats\Widgets\Homepage\EditorialRequest;
+use JasonRoman\NbaApi\Request\Stats\Widgets\Homepage\PlayoffsRequest;
+use JasonRoman\NbaApi\Request\Stats\Widgets\Homepage\SeasonRequest;
+use JasonRoman\NbaApi\Request\Stats\Widgets\Homepage\SidebarRequest;
+use JasonRoman\NbaApi\Request\Stats\Widgets\Players\PlayersLandingInnerRequest;
+use JasonRoman\NbaApi\Request\Stats\Widgets\Players\PlayersLandingSidebarRequest;
+use JasonRoman\NbaApi\Request\Stats\Widgets\Scores\ScoresLeadersRequest;
+use JasonRoman\NbaApi\Request\Stats\Widgets\Scores\ScoresSidebarRequest;
+use JasonRoman\NbaApi\Request\Stats\Widgets\Stats\AdvancedLeadersRequest;
+use JasonRoman\NbaApi\Request\Stats\Widgets\Stats\HustleLeadersRequest;
+use JasonRoman\NbaApi\Request\Stats\Widgets\Teams\TeamsLandingInnerRequest;
+use JasonRoman\NbaApi\Request\Stats\Widgets\Teams\TeamsLandingSidebarRequest;
 use JasonRoman\NbaApi\Response\NbaApiResponseInterface;
 
 /**

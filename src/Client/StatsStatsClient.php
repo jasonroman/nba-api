@@ -2,8 +2,8 @@
 
 namespace JasonRoman\NbaApi\Client;
 
-use JasonRoman\NbaApi\Request\Stats\Widges\Scores\ScoresLeadersRequest;
-use JasonRoman\NbaApi\Request\Stats\Widges\Scores\ScoresSidebarRequest;
+use JasonRoman\NbaApi\Request\Stats\Widgets\Scores\ScoresLeadersRequest;
+use JasonRoman\NbaApi\Request\Stats\Widgets\Scores\ScoresSidebarRequest;
 use JasonRoman\NbaApi\Response\NbaApiResponseInterface;
 
 /**

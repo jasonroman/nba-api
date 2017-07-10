@@ -2,8 +2,6 @@
 
 namespace JasonRoman\NbaApi\Client;
 
-use JasonRoman\NbaApi\Request\Stats\Widges\Scores\ScoresLeadersRequest;
-use JasonRoman\NbaApi\Request\Stats\Widges\Scores\ScoresSidebarRequest;
 use JasonRoman\NbaApi\Request\StatsProd\StatsCms\Homepage\HomepageRequest;
 use JasonRoman\NbaApi\Request\StatsProd\StatsCms\Homepage\SynergyPlayersPlayTypeStatsRequest;
 use JasonRoman\NbaApi\Request\StatsProd\StatsCms\Homepage\SynergyTeamsPlayTypeStatsRequest;

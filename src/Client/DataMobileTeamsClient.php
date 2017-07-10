@@ -6,6 +6,7 @@ use JasonRoman\NbaApi\Request\Data\MobileTeams\Game\FullPlayByPlayRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Game\GameDetailRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Playoffs\PlayoffBracketRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Roster\TeamRosterRequest;
+use JasonRoman\NbaApi\Request\Data\MobileTeams\Schedule\LeagueRollingScheduleRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Schedule\LeagueScheduleRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Schedule\LeagueScheduleMonthRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Scores\PlayerCardRequest;
@@ -64,6 +65,16 @@ class DataMobileTeamsClient extends AbstractDataClient
      * @return NbaApiResponseInterface
      */
     public function getTeamRoster(TeamRosterRequest $request, array $config = [])
+    {
+        return $this->request($request, $config);
+    }
+
+    /**
+     * @param LeagueRollingScheduleRequest $request
+     * @param array $config
+     * @return NbaApiResponseInterface
+     */
+    public function getLeagueRollingSchedule(LeagueRollingScheduleRequest $request, array $config = [])
     {
         return $this->request($request, $config);
     }

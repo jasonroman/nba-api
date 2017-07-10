@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Stats\Widges\Scores;
+namespace JasonRoman\NbaApi\Request\Stats\Widgets\Scores;
 
 use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
