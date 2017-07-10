@@ -9,4 +9,6 @@ namespace JasonRoman\NbaApi\Params\Stats;
  */
 class CollegeParam extends AbstractStatsParam
 {
+    const HIGH_SCHOOL = 'High School';
+    const NONE        = 'None';
 }
