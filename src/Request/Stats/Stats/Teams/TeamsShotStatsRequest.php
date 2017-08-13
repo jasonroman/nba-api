@@ -68,7 +68,7 @@ class TeamsShotStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\Type("int")
-     * @Assert\Range(min = PORoundParam::MIN_ALL, max = PORoundParam::MAX_VALUE)
+     * @Assert\Range(min = PORoundParam::MIN_ALL, max = PORoundParam::MAX)
      *
      * @var int
      */
@@ -83,7 +83,7 @@ class TeamsShotStatsRequest extends AbstractDataRequest
     public $closeDefDistRange;
 
     /**
-     * @Assert\Type("int")
+     * @Assert\Type("string")
      * @ApiAssert\ApiChoice(ShotClockRangeParam::OPTIONS)
      *
      * @var string
@@ -91,15 +91,15 @@ class TeamsShotStatsRequest extends AbstractDataRequest
     public $shotClockRange;
 
     /**
-     * @Assert\Type("int")
-     * @ApiAssert\ApiChoice(ShotDistanceRangeParam::OPTIONS
+     * @Assert\Type("string")
+     * @ApiAssert\ApiChoice(ShotDistanceRangeParam::OPTIONS)
      *
      * @var string
      */
     public $shotDistRange;
 
     /**
-     * @Assert\Type("int")
+     * @Assert\Type("string")
      * @ApiAssert\ApiChoice(TouchTimeRangeParam::OPTIONS)
      *
      * @var string
@@ -107,7 +107,7 @@ class TeamsShotStatsRequest extends AbstractDataRequest
     public $touchTimeRange;
 
     /**
-     * @Assert\Type("int")
+     * @Assert\Type("string")
      * @ApiAssert\ApiChoice(DribbleRangeParam::OPTIONS)
      *
      * @var string
@@ -115,7 +115,7 @@ class TeamsShotStatsRequest extends AbstractDataRequest
     public $dribbleRange;
 
     /**
-     * @Assert\Type("int")
+     * @Assert\Type("string")
      * @ApiAssert\ApiChoice(ShotRangeParam::OPTIONS)
      *
      * @var string

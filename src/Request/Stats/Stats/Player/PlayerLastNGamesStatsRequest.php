@@ -109,7 +109,7 @@ class PlayerLastNGamesStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\Type("int")
-     * @Assert\Range(min = PORoundParam::MIN_ALL, max = PORoundParam::MAX_VALUE)
+     * @Assert\Range(min = PORoundParam::MIN_ALL, max = PORoundParam::MAX)
      *
      * @var int
      */
@@ -214,7 +214,7 @@ class PlayerLastNGamesStatsRequest extends AbstractDataRequest
     public $period;
 
     /**
-     * @Assert\Type("int")
+     * @Assert\Type("string")
      * @ApiAssert\ApiChoice(ShotClockRangeParam::OPTIONS)
      *
      * @var string

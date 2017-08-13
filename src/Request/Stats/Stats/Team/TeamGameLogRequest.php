@@ -5,23 +5,31 @@ namespace JasonRoman\NbaApi\Request\Stats\Stats\Player;
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
-use JasonRoman\NbaApi\Params\PlayerIdParam;
 use JasonRoman\NbaApi\Params\SeasonParam;
+use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
-class PlayerGameLogRequest extends AbstractStatsRequest
+class TeamGameLogRequest extends AbstractStatsRequest
 {
-    const ENDPOINT = '/stats/playergamelog';
+    const ENDPOINT = '/stats/teamgamelog';
 
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = PlayerIdParam::MIN, max = PlayerIdParam::MAX)
+     * @Assert\Range(min = TeamIdParam::MIN_VALUE, TeamIdParam::MAX_VALUE)
      *
      * @var int
      */
-    public $playerId;
+    public $teamId;
+
+    /**
+     * @Assert\Type("string")
+     * @ApiAssert\ApiChoice(LeagueIdParam::OPTIONS_NBA_WNBA_G_LEAGUE)
+     *
+     * @var string
+     */
+    public $leagueId;
 
     /**
      * @Assert\NotBlank()
@@ -42,14 +50,6 @@ class PlayerGameLogRequest extends AbstractStatsRequest
     public $seasonType;
 
     /**
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(LeagueIdParam::OPTIONS_NBA_WNBA_G_LEAGUE)
-     *
-     * @var string
-     */
-    public $leagueId;
-
-    /**
      * @Assert\Date()
      *
      * @var \DateTime|string if string, format is YYYY-MM-DD
@@ -62,4 +62,15 @@ class PlayerGameLogRequest extends AbstractStatsRequest
      * @var \DateTime|string if string, format is YYYY-MM-DD
      */
     public $dateTo;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDefaultValues(): array
+    {
+        return [
+            'season'     => SeasonParam::currentSeason(),
+            'seasonType' => SeasonTypeParam::REGULAR_SEASON,
+        ];
+    }
 }

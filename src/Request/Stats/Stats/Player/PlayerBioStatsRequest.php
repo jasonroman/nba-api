@@ -189,7 +189,7 @@ class PlayerBioStatsRequest extends AbstractDataRequest
     public $period;
 
     /**
-     * @Assert\Type("int")
+     * @Assert\Type("string")
      * @ApiAssert\ApiChoice(ShotClockRangeParam::OPTIONS)
      *
      * @var string

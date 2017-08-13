@@ -1,48 +1,37 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Stats\Stats\Player;
+namespace JasonRoman\NbaApi\Request\Stats\Stats\Team;
 
-use JasonRoman\NbaApi\Params\Stats\PointDiffParam;
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
 use JasonRoman\NbaApi\Params\PlayerIdParam;
 use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Params\SeasonParam;
-use JasonRoman\NbaApi\Params\Stats\AheadBehindParam;
-use JasonRoman\NbaApi\Params\Stats\ClutchTimeParam;
 use JasonRoman\NbaApi\Params\Stats\ConferenceParam;
 use JasonRoman\NbaApi\Params\Stats\DivisionParam;
-use JasonRoman\NbaApi\Params\Stats\DraftPickParam;
-use JasonRoman\NbaApi\Params\Stats\GameScopeParam;
 use JasonRoman\NbaApi\Params\Stats\GameSegmentParam;
-use JasonRoman\NbaApi\Params\Stats\HeightParam;
 use JasonRoman\NbaApi\Params\Stats\LastNGamesParam;
 use JasonRoman\NbaApi\Params\Stats\LocationParam;
 use JasonRoman\NbaApi\Params\Stats\MeasureTypeParam;
 use JasonRoman\NbaApi\Params\Stats\MonthParam;
 use JasonRoman\NbaApi\Params\Stats\OutcomeParam;
 use JasonRoman\NbaApi\Params\Stats\PeriodParam;
-use JasonRoman\NbaApi\Params\Stats\PlayerExperienceParam;
-use JasonRoman\NbaApi\Params\Stats\PlayerPositionParam;
 use JasonRoman\NbaApi\Params\Stats\PORoundParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\Stats\ShotClockRangeParam;
-use JasonRoman\NbaApi\Params\Stats\StarterBenchParam;
-use JasonRoman\NbaApi\Params\Stats\WeightParam;
-use JasonRoman\NbaApi\Params\SeasonYearParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 
-class PlayerGeneralStatsRequest extends AbstractDataRequest
+class TeamShootingSplitsStatsRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/stats/playerdashboardbygeneralsplits';
+    const ENDPOINT = '/stats/teamdashboardbyshootingsplits';
 
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(MeasureTypeParam::OPTIONS_NO_DEFENSE_FOUR_FACTORS_OPPONENT)
+     * @ApiAssert\ApiChoice(MeasureTypeParam::OPTIONS)
      *
      * @var string
      */
@@ -109,7 +98,7 @@ class PlayerGeneralStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\Type("int")
-     * @Assert\Range(min = PORoundParam::MIN_ALL, max = PORoundParam::MAX_VALUE)
+     * @Assert\Range(min = PORoundParam::MIN_ALL, max = PORoundParam::MAX)
      *
      * @var int
      */
@@ -118,11 +107,11 @@ class PlayerGeneralStatsRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = PlayerIdParam::MIN, max = PlayerIdParam::MAX)
+     * @Assert\Range(min = TeamIdParam::MIN_VALUE, max = TeamIdParam::MAX_VALUE)
      *
      * @var int
      */
-    public $playerId;
+    public $teamId;
 
     /**
      * @Assert\Type("string")
@@ -214,7 +203,7 @@ class PlayerGeneralStatsRequest extends AbstractDataRequest
     public $period;
 
     /**
-     * @Assert\Type("int")
+     * @Assert\Type("string")
      * @ApiAssert\ApiChoice(ShotClockRangeParam::OPTIONS)
      *
      * @var string
@@ -241,6 +230,7 @@ class PlayerGeneralStatsRequest extends AbstractDataRequest
             'plusMinus'      => false,
             'paceAdjust'     => false,
             'rank'           => false,
+            'season'         => SeasonParam::currentSeason(),
             'seasonType'     => SeasonTypeParam::REGULAR_SEASON,
             'poRound'        => PORoundParam::MIN_ALL,
             'month'          => MonthParam::MIN_ALL,

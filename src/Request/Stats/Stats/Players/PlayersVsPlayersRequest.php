@@ -29,7 +29,7 @@ class PlayersVsPlayersRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(MeasureTypeParam::OPTIONS_PLAYER_COMPARE)
+     * @ApiAssert\ApiChoice(MeasureTypeParam::OPTIONS)
      *
      * @var string
      */

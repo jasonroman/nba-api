@@ -1,47 +1,31 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Stats\Stats\Teams;
+namespace JasonRoman\NbaApi\Request\Stats\Stats\Player;
 
-use JasonRoman\NbaApi\Params\Stats\PointDiffParam;
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
-use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Params\SeasonParam;
-use JasonRoman\NbaApi\Params\Stats\AheadBehindParam;
-use JasonRoman\NbaApi\Params\Stats\ClutchTimeParam;
 use JasonRoman\NbaApi\Params\Stats\ConferenceParam;
 use JasonRoman\NbaApi\Params\Stats\DivisionParam;
-use JasonRoman\NbaApi\Params\Stats\GameScopeParam;
 use JasonRoman\NbaApi\Params\Stats\GameSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\LastNGamesParam;
 use JasonRoman\NbaApi\Params\Stats\LocationParam;
-use JasonRoman\NbaApi\Params\Stats\MeasureTypeParam;
 use JasonRoman\NbaApi\Params\Stats\MonthParam;
 use JasonRoman\NbaApi\Params\Stats\OutcomeParam;
+use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Params\Stats\PeriodParam;
-use JasonRoman\NbaApi\Params\Stats\PlayerExperienceParam;
-use JasonRoman\NbaApi\Params\Stats\PlayerPositionParam;
-use JasonRoman\NbaApi\Params\Stats\PORoundParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
-use JasonRoman\NbaApi\Params\Stats\ShotClockRangeParam;
-use JasonRoman\NbaApi\Params\Stats\StarterBenchParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 
-class TeamsClutchStatsRequest extends AbstractDataRequest
+/**
+ * @link http://stats.nba.com/team/#!/{teamId}/rebounds-dash/
+ */
+class TeamReboundsStatsRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/stats/leaguedashteamclutch';
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(MeasureTypeParam::OPTIONS_ALL)
-     *
-     * @var string
-     */
-    public $measureType;
+    const ENDPOINT = '/stats/teamdashptreb';
 
     /**
      * @Assert\NotBlank()
@@ -54,29 +38,6 @@ class TeamsClutchStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Type("bool")
-     *
-     * @var bool
-     */
-    public $plusMinus;
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Type("bool")
-     *
-     * @var bool
-     */
-    public $paceAdjust;
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Type("bool")
-     *
-     * @var bool
-     */
-    public $rank;
-
-    /**
      * @Assert\Type("string")
      * @ApiAssert\ApiChoice(LeagueIdParam::OPTIONS_NBA_G_LEAGUE)
      *
@@ -103,12 +64,13 @@ class TeamsClutchStatsRequest extends AbstractDataRequest
     public $seasonType;
 
     /**
+     * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = PORoundParam::MIN_ALL, max = PORoundParam::MAX)
+     * @Assert\Range(min = TeamIdParam::MIN_VALUE, max = TeamIdParam::MAX_VALUE)
      *
      * @var int
      */
-    public $poRound;
+    public $teamId;
 
     /**
      * @Assert\Type("string")
@@ -183,31 +145,6 @@ class TeamsClutchStatsRequest extends AbstractDataRequest
     public $vsDivision;
 
     /**
-     * @Assert\NotBlank()
-     * @Assert\Type("int")
-     * @Assert\Range(min = TeamIdParam::MIN_ALL, max = TeamIdParam::MAX_VALUE)
-     *
-     * @var int
-     */
-    public $teamId;
-
-    /**
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(ConferenceParam::OPTIONS)
-     *
-     * @var string
-     */
-    public $conference;
-
-    /**
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(DivisionParam::OPTIONS_WITH_CONFERENCE)
-     *
-     * @var string
-     */
-    public $division;
-
-    /**
      * @Assert\Type("string")
      * @ApiAssert\ApiChoice(GameSegmentParam::OPTIONS)
      *
@@ -225,14 +162,6 @@ class TeamsClutchStatsRequest extends AbstractDataRequest
     public $period;
 
     /**
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(ShotClockRangeParam::OPTIONS)
-     *
-     * @var string
-     */
-    public $shotClockRange;
-
-    /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
      * @Assert\Range(min = LastNGamesParam::MIN_ALL, max = LastNGamesParam::MAX)
@@ -242,84 +171,19 @@ class TeamsClutchStatsRequest extends AbstractDataRequest
     public $lastNGames;
 
     /**
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(ClutchTimeParam::OPTIONS)
-     *
-     * @var string
-     */
-    public $clutchTime;
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(AheadBehindParam::OPTIONS)
-     *
-     * @var string
-     */
-    public $aheadBehind;
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Type("int")
-     * @Assert\Range(min = PointDiffParam::MIN, max = PointDiffParam::MAX)
-     *
-     * @var int
-     */
-    public $pointDiff;
-
-    /**
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(GameScopeParam::OPTIONS_LAST_10_YESTERDAY)
-     *
-     * @var string
-     */
-    public $gameScope;
-
-    /**
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(PlayerExperienceParam::OPTIONS)
-     *
-     * @var string
-     */
-    public $playerExperience;
-
-    /**
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(PlayerPositionParam::OPTIONS)
-     *
-     * @var string
-     */
-    public $playerPosition;
-
-    /**
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(StarterBenchParam::OPTIONS)
-     *
-     * @var string
-     */
-    public $starterBench;
-
-    /**
      * {@inheritdoc}
      */
     public function getDefaultValues(): array
     {
         return [
-            'measureType'    => MeasureTypeParam::BASE,
             'perMode'        => PerModeParam::PER_GAME,
-            'plusMinus'      => false,
-            'paceAdjust'     => false,
-            'rank'           => false,
-            'poRound'        => PORoundParam::MIN_ALL,
+            'season'         => SeasonParam::currentSeason(),
+            'seasonType'     => SeasonTypeParam::REGULAR_SEASON,
+            'teamId'         => TeamIdParam::MIN_ALL,
             'month'          => MonthParam::MIN_ALL,
             'opponentTeamId' => TeamIdParam::MIN_ALL,
-            'teamId'         => TeamIdParam::MIN_ALL,
             'period'         => PeriodParam::MIN_ALL,
             'lastNGames'     => LastNGamesParam::MIN_ALL,
-            'clutchTime'     => ClutchTimeParam::LAST_5_MINUTES,
-            'aheadBehind'    => AheadBehindParam::AHEAD_OR_BEHIND,
-            'pointDiff'      => PointDiffParam::MAX,
         ];
     }
 }

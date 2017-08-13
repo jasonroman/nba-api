@@ -1,37 +1,76 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Stats\Stats\Team;
+namespace JasonRoman\NbaApi\Request\Stats\Stats\Player;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
-use JasonRoman\NbaApi\Params\GameIdParam;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
+use JasonRoman\NbaApi\Params\PlayerIdParam;
+use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Params\SeasonParam;
 use JasonRoman\NbaApi\Params\Stats\ConferenceParam;
-use JasonRoman\NbaApi\Params\Stats\ContextMeasureParam;
 use JasonRoman\NbaApi\Params\Stats\DivisionParam;
 use JasonRoman\NbaApi\Params\Stats\GameSegmentParam;
-use JasonRoman\NbaApi\Params\Stats\GroupIdParam;
 use JasonRoman\NbaApi\Params\Stats\LastNGamesParam;
 use JasonRoman\NbaApi\Params\Stats\LocationParam;
+use JasonRoman\NbaApi\Params\Stats\MeasureTypeParam;
 use JasonRoman\NbaApi\Params\Stats\MonthParam;
 use JasonRoman\NbaApi\Params\Stats\OutcomeParam;
 use JasonRoman\NbaApi\Params\Stats\PeriodParam;
-use JasonRoman\NbaApi\Params\Stats\PerModeParam;
+use JasonRoman\NbaApi\Params\Stats\PORoundParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
+use JasonRoman\NbaApi\Params\Stats\ShotClockRangeParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 
-/**
- * This appears to not be publicly available on the stats nba website.
- */
-class ShotChartLineupDetailRequest extends AbstractDataRequest
+class PlayerGeneralSplitsStatsRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/stats/shotchartlineupdetail';
+    const ENDPOINT = '/stats/playerdashboardbygeneralsplits';
 
     /**
      * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @ApiAssert\ApiChoice(MeasureTypeParam::OPTIONS_NO_DEFENSE_FOUR_FACTORS_OPPONENT)
+     *
+     * @var string
+     */
+    public $measureType;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @ApiAssert\ApiChoice(PerModeParam::OPTIONS_ALL)
+     *
+     * @var string
+     */
+    public $perMode;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("bool")
+     *
+     * @var bool
+     */
+    public $plusMinus;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("bool")
+     *
+     * @var bool
+     */
+    public $paceAdjust;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("bool")
+     *
+     * @var bool
+     */
+    public $rank;
+
+    /**
      * @Assert\Type("string")
      * @ApiAssert\ApiChoice(LeagueIdParam::OPTIONS_NBA_G_LEAGUE)
      *
@@ -40,6 +79,7 @@ class ShotChartLineupDetailRequest extends AbstractDataRequest
     public $leagueId;
 
     /**
+     * @Assert\NotBlank()
      * @Assert\Type("string")
      * @ApiAssert\ApiRegex(pattern = SeasonParam::FORMAT)
      *
@@ -57,13 +97,21 @@ class ShotChartLineupDetailRequest extends AbstractDataRequest
     public $seasonType;
 
     /**
-     * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = TeamIdParam::MIN_ALL, max = TeamIdParam::MAX_VALUE)
+     * @Assert\Range(min = PORoundParam::MIN_ALL, max = PORoundParam::MAX)
      *
      * @var int
      */
-    public $teamId;
+    public $poRound;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("int")
+     * @Assert\Range(min = PlayerIdParam::MIN, max = PlayerIdParam::MAX)
+     *
+     * @var int
+     */
+    public $playerId;
 
     /**
      * @Assert\Type("string")
@@ -155,6 +203,14 @@ class ShotChartLineupDetailRequest extends AbstractDataRequest
     public $period;
 
     /**
+     * @Assert\Type("string")
+     * @ApiAssert\ApiChoice(ShotClockRangeParam::OPTIONS)
+     *
+     * @var string
+     */
+    public $shotClockRange;
+
+    /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
      * @Assert\Range(min = LastNGamesParam::MIN_ALL, max = LastNGamesParam::MAX)
@@ -164,54 +220,18 @@ class ShotChartLineupDetailRequest extends AbstractDataRequest
     public $lastNGames;
 
     /**
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = GameIdParam::FORMAT)
-     *
-     * @var string
-     */
-    public $gameId;
-
-    /**
-     * This appears to always be considered null on this request even if using a proper value.
-     * It also returns capitalized, and with an underscore - and has a very odd regex.
-     *
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = GroupIdParam::FORMAT)
-     *
-     * @var string
-     */
-    public $group_id;
-
-    /**
-     * This appears to be "" even if set to something, and does not appear to be used at all.
-     *
-     * @Assert\Type("string")
-     *
-     * @var string
-     */
-    public $contextFilter;
-
-    /**
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(ContextMeasureParam::OPTIONS)
-     *
-     * @var string
-     */
-    public $contextMeasure;
-
-    /**
      * {@inheritdoc}
      */
     public function getDefaultValues(): array
     {
         return [
-            'leagueId'       => LeagueIdParam::NBA,
-            'season'         => SeasonParam::currentSeason(),
-            'seasonType'     => SeasonTypeParam::REGULAR_SEASON,
+            'measureType'    => MeasureTypeParam::BASE,
             'perMode'        => PerModeParam::PER_GAME,
-            'teamId'         => TeamIdParam::MIN_ALL,
+            'plusMinus'      => false,
+            'paceAdjust'     => false,
+            'rank'           => false,
+            'seasonType'     => SeasonTypeParam::REGULAR_SEASON,
+            'poRound'        => PORoundParam::MIN_ALL,
             'month'          => MonthParam::MIN_ALL,
             'opponentTeamId' => TeamIdParam::MIN_ALL,
             'period'         => PeriodParam::MIN_ALL,

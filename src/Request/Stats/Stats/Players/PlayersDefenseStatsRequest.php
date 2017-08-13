@@ -72,7 +72,7 @@ class PlayersDefenseStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\Type("int")
-     * @Assert\Range(min = PORoundParam::MIN_ALL, max = PORoundParam::MAX_VALUE)
+     * @Assert\Range(min = PORoundParam::MIN_ALL, max = PORoundParam::MAX)
      *
      * @var int
      */

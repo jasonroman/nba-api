@@ -6,36 +6,25 @@ use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
 use JasonRoman\NbaApi\Params\PlayerIdParam;
-use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Params\SeasonParam;
 use JasonRoman\NbaApi\Params\Stats\ConferenceParam;
 use JasonRoman\NbaApi\Params\Stats\DivisionParam;
-use JasonRoman\NbaApi\Params\Stats\GameSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\LastNGamesParam;
 use JasonRoman\NbaApi\Params\Stats\LocationParam;
-use JasonRoman\NbaApi\Params\Stats\MeasureTypeParam;
 use JasonRoman\NbaApi\Params\Stats\MonthParam;
 use JasonRoman\NbaApi\Params\Stats\OutcomeParam;
-use JasonRoman\NbaApi\Params\Stats\PeriodParam;
-use JasonRoman\NbaApi\Params\Stats\PORoundParam;
+use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
-use JasonRoman\NbaApi\Params\Stats\ShotClockRangeParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 
-class PlayerCompareStatsRequest extends AbstractDataRequest
+/**
+ * @link http://stats.nba.com/team/#!/{teamId}/passes-dash/
+ */
+class TeamPassesStatsRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/stats/playercompare';
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(MeasureTypeParam::OPTIONS_NO_DEFENSE_FOUR_FACTORS_OPPONENT)
-     *
-     * @var string
-     */
-    public $measureType;
+    const ENDPOINT = '/stats/teamdashptpass';
 
     /**
      * @Assert\NotBlank()
@@ -48,29 +37,6 @@ class PlayerCompareStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Type("bool")
-     *
-     * @var bool
-     */
-    public $plusMinus;
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Type("bool")
-     *
-     * @var bool
-     */
-    public $paceAdjust;
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Type("bool")
-     *
-     * @var bool
-     */
-    public $rank;
-
-    /**
      * @Assert\Type("string")
      * @ApiAssert\ApiChoice(LeagueIdParam::OPTIONS_NBA_G_LEAGUE)
      *
@@ -97,21 +63,13 @@ class PlayerCompareStatsRequest extends AbstractDataRequest
     public $seasonType;
 
     /**
-     * @Assert\Type("int")
-     * @Assert\Range(min = PORoundParam::MIN_ALL, max = PORoundParam::MAX)
-     *
-     * @var int
-     */
-    public $poRound;
-
-    /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\All({@Assert\Range(min = PlayerIdParam::MIN, max = PlayerIdParam::MAX))
+     * @Assert\Range(min = TeamIdParam::MIN_VALUE, max = TeamIdParam::MAX_VALUE)
      *
      * @var int
      */
-    public $playerIdList;
+    public $teamId;
 
     /**
      * @Assert\Type("string")
@@ -186,47 +144,6 @@ class PlayerCompareStatsRequest extends AbstractDataRequest
     public $vsDivision;
 
     /**
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(ConferenceParam::OPTIONS)
-     *
-     * @var string
-     */
-    public $conference;
-
-    /**
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(DivisionParam::OPTIONS_WITH_CONFERENCE)
-     *
-     * @var string
-     */
-    public $division;
-
-    /**
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(GameSegmentParam::OPTIONS)
-     *
-     * @var string
-     */
-    public $gameSegment;
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Type("int")
-     * @Assert\Range(min = PeriodParam::MIN_ALL, max = PeriodParam::MAX)
-     *
-     * @var int
-     */
-    public $period;
-
-    /**
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(ShotClockRangeParam::OPTIONS)
-     *
-     * @var string
-     */
-    public $shotClockRange;
-
-    /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
      * @Assert\Range(min = LastNGamesParam::MIN_ALL, max = LastNGamesParam::MAX)
@@ -236,33 +153,18 @@ class PlayerCompareStatsRequest extends AbstractDataRequest
     public $lastNGames;
 
     /**
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
-     * @Assert\All({@Assert\Range(min = PlayerIdParam::MIN, max = PlayerIdParam::MAX))
-     *
-     * @var int
-     */
-    public $vsPlayerIdList;
-
-    /**
      * {@inheritdoc}
      */
     public function getDefaultValues(): array
     {
         return [
-            'measureType'    => MeasureTypeParam::BASE,
             'perMode'        => PerModeParam::PER_GAME,
-            'plusMinus'      => false,
-            'paceAdjust'     => false,
-            'rank'           => false,
+            'season'         => SeasonParam::currentSeason(),
             'seasonType'     => SeasonTypeParam::REGULAR_SEASON,
-            'poRound'        => PORoundParam::MIN_ALL,
+            'teamId'         => TeamIdParam::MIN_ALL,
             'month'          => MonthParam::MIN_ALL,
             'opponentTeamId' => TeamIdParam::MIN_ALL,
-            'period'         => PeriodParam::MIN_ALL,
             'lastNGames'     => LastNGamesParam::MIN_ALL,
         ];
     }
-
-
 }
