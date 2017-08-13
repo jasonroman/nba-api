@@ -5,7 +5,6 @@ namespace JasonRoman\NbaApi\Params\Stats;
 
 /**
  * Get the month.
- * @todo perform more research on assist tracker or other endpoints to make sure 0 means all.
  */
 class MonthParam extends AbstractStatsParam
 {

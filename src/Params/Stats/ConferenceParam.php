@@ -8,7 +8,6 @@ class ConferenceParam extends AbstractStatsParam
     const EAST = 'East';
     const WEST = 'West';
 
-
     const OPTIONS = [
         self::EAST,
         self::WEST,

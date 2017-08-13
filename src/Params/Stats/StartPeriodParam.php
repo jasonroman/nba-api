@@ -8,6 +8,9 @@ class StartPeriodParam extends AbstractStatsParam
     const MIN = 0;
     const MAX = 14;
 
+    const MIN_ALT = 1;
+    const MAX_ALT = 10;
+
     /**
      * {@inheritdoc}
      * @return int

@@ -9,4 +9,7 @@ class PlayerIdParam extends AbstractParam
 
     // some requests have a minimum of 1; does not matter though, as neither 0 nor 1 are existing player ids.
     const MIN_ALT = 0;
+
+    // some requests take multiple player ids and the others are optional; with a value of 0.
+    const NONE = 0;
 }

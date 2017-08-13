@@ -44,7 +44,6 @@ class PlayerFantasyProfileRequest extends AbstractDataRequest
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Type("string")
      * @Assert\Type("bool")
      *
      * @var bool
@@ -53,7 +52,6 @@ class PlayerFantasyProfileRequest extends AbstractDataRequest
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Type("string")
      * @Assert\Type("bool")
      *
      * @var bool

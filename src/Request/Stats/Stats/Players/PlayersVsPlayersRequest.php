@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Stats\Stats\Player;
+namespace JasonRoman\NbaApi\Request\Stats\Stats\Players;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
@@ -17,21 +17,19 @@ use JasonRoman\NbaApi\Params\Stats\MonthParam;
 use JasonRoman\NbaApi\Params\Stats\OutcomeParam;
 use JasonRoman\NbaApi\Params\Stats\PeriodParam;
 use JasonRoman\NbaApi\Params\Stats\PerModeParam;
-use JasonRoman\NbaApi\Params\Stats\PORoundParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
-use JasonRoman\NbaApi\Params\Stats\ShotClockRangeParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 
-class PlayerOpponentStatsRequest extends AbstractDataRequest
+class PlayersVsPlayersRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/stats/playerdashboardbyopponent';
+    const ENDPOINT = '/stats/playersvsplayers';
 
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(MeasureTypeParam::OPTIONS_ALL)
+     * @ApiAssert\ApiChoice(MeasureTypeParam::OPTIONS_PLAYER_COMPARE)
      *
      * @var string
      */
@@ -90,19 +88,20 @@ class PlayerOpponentStatsRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(SeasonTypeParam::OPTIONS_WITH_ALL_STAR)
+     * @ApiAssert\ApiChoice(SeasonTypeParam::OPTIONS)
      *
      * @var string
      */
     public $seasonType;
 
     /**
+     * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = PORoundParam::MIN_ALL, max = PORoundParam::MAX_VALUE)
+     * @Assert\Range(min = TeamIdParam::MIN_VALUE, max = TeamIdParam::MAX_VALUE)
      *
      * @var int
      */
-    public $poRound;
+    public $playerTeamId;
 
     /**
      * @Assert\NotBlank()
@@ -111,7 +110,43 @@ class PlayerOpponentStatsRequest extends AbstractDataRequest
      *
      * @var int
      */
-    public $playerId;
+    public $playerId1;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("int")
+     * @Assert\Range(min = PlayerIdParam::MIN_ALT, max = PlayerIdParam::MAX)
+     *
+     * @var int
+     */
+    public $playerId2;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("int")
+     * @Assert\Range(min = PlayerIdParam::MIN_ALT, max = PlayerIdParam::MAX)
+     *
+     * @var int
+     */
+    public $playerId3;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("int")
+     * @Assert\Range(min = PlayerIdParam::MIN_ALT, max = PlayerIdParam::MAX)
+     *
+     * @var int
+     */
+    public $playerId4;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("int")
+     * @Assert\Range(min = PlayerIdParam::MIN_ALT, max = PlayerIdParam::MAX)
+     *
+     * @var int
+     */
+    public $playerId5;
 
     /**
      * @Assert\Type("string")
@@ -187,6 +222,22 @@ class PlayerOpponentStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\Type("string")
+     * @ApiAssert\ApiChoice(ConferenceParam::OPTIONS)
+     *
+     * @var string
+     */
+    public $conference;
+
+    /**
+     * @Assert\Type("string")
+     * @ApiAssert\ApiChoice(DivisionParam::OPTIONS_WITH_CONFERENCE)
+     *
+     * @var string
+     */
+    public $division;
+
+    /**
+     * @Assert\Type("string")
      * @ApiAssert\ApiChoice(GameSegmentParam::OPTIONS)
      *
      * @var string
@@ -203,14 +254,6 @@ class PlayerOpponentStatsRequest extends AbstractDataRequest
     public $period;
 
     /**
-     * @Assert\Type("int")
-     * @ApiAssert\ApiChoice(ShotClockRangeParam::OPTIONS)
-     *
-     * @var string
-     */
-    public $shotClockRange;
-
-    /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
      * @Assert\Range(min = LastNGamesParam::MIN_ALL, max = LastNGamesParam::MAX)
@@ -218,6 +261,60 @@ class PlayerOpponentStatsRequest extends AbstractDataRequest
      * @var int
      */
     public $lastNGames;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("int")
+     * @Assert\Range(min = TeamIdParam::MIN_VALUE, max = TeamIdParam::MAX_VALUE)
+     *
+     * @var int
+     */
+    public $vsTeamId;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("int")
+     * @Assert\Range(min = PlayerIdParam::MIN, max = PlayerIdParam::MAX)
+     *
+     * @var int
+     */
+    public $vsPlayerId1;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("int")
+     * @Assert\Range(min = PlayerIdParam::MIN, max = PlayerIdParam::MAX)
+     *
+     * @var int
+     */
+    public $vsPlayerId2;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("int")
+     * @Assert\Range(min = PlayerIdParam::MIN, max = PlayerIdParam::MAX)
+     *
+     * @var int
+     */
+    public $vsPlayerId3;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("int")
+     * @Assert\Range(min = PlayerIdParam::MIN, max = PlayerIdParam::MAX)
+     *
+     * @var int
+     */
+    public $vsPlayerId4;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("int")
+     * @Assert\Range(min = PlayerIdParam::MIN, max = PlayerIdParam::MAX)
+     *
+     * @var int
+     */
+    public $vsPlayerId5;
 
     /**
      * {@inheritdoc}
@@ -231,11 +328,18 @@ class PlayerOpponentStatsRequest extends AbstractDataRequest
             'paceAdjust'     => false,
             'rank'           => false,
             'seasonType'     => SeasonTypeParam::REGULAR_SEASON,
-            'poRound'        => PORoundParam::MIN_ALL,
+            'playerId2'      => PlayerIdParam::NONE,
+            'playerId3'      => PlayerIdParam::NONE,
+            'playerId4'      => PlayerIdParam::NONE,
+            'playerId5'      => PlayerIdParam::NONE,
             'month'          => MonthParam::MIN_ALL,
             'opponentTeamId' => TeamIdParam::MIN_ALL,
             'period'         => PeriodParam::MIN_ALL,
             'lastNGames'     => LastNGamesParam::MIN_ALL,
+            'vsPlayerId2'    => PlayerIdParam::NONE,
+            'vsPlayerId3'    => PlayerIdParam::NONE,
+            'vsPlayerId4'    => PlayerIdParam::NONE,
+            'vsPlayerId5'    => PlayerIdParam::NONE,
         ];
     }
 }

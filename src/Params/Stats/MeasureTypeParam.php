@@ -53,10 +53,11 @@ class MeasureTypeParam extends AbstractStatsParam
     const OPTIONS_PLAYER_COMPARE = [
         self::BASE,
         self::ADVANCED,
+        self::DEFENSE,
         self::FOUR_FACTORS,
         self::MISC,
         self::OPPONENT,
         self::SCORING,
-        self::OPPONENT,
+        self::USAGE,
     ];
 }

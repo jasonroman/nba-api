@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Params\Stats;
 
-class AheadOrBehindParam extends AbstractStatsParam
+class AheadBehindParam extends AbstractStatsParam
 {
     const AHEAD_OR_BEHIND = 'Ahead or Behind';
     const BEHIND_OR_TIED  = 'Behind or Tied';

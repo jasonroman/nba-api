@@ -14,6 +14,7 @@ use JasonRoman\NbaApi\Params\Stats\GameScopeParam;
 use JasonRoman\NbaApi\Params\Stats\GameSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\HeightParam;
 use JasonRoman\NbaApi\Params\Stats\LastNGamesParam;
+use JasonRoman\NbaApi\Params\Stats\LocationParam;
 use JasonRoman\NbaApi\Params\Stats\MeasureTypeParam;
 use JasonRoman\NbaApi\Params\Stats\MonthParam;
 use JasonRoman\NbaApi\Params\Stats\OutcomeParam;
@@ -62,7 +63,6 @@ class PlayersGeneralStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Type("string")
      * @Assert\Type("bool")
      *
      * @var bool
@@ -71,7 +71,6 @@ class PlayersGeneralStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Type("string")
      * @Assert\Type("bool")
      *
      * @var bool
@@ -130,7 +129,7 @@ class PlayersGeneralStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\Type("int")
-     * @Assert\Range(min = MonthParam::MIN_ALL, max = MonthParam::MAX_VALUE)
+     * @Assert\Range(min = MonthParam::MIN_ALL, max = MonthParam::MAX)
      *
      * @var int
      */
@@ -217,7 +216,7 @@ class PlayersGeneralStatsRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = PeriodParam::MIN_ALL, max = PeriodParam::MAX_VALUE)
+     * @Assert\Range(min = PeriodParam::MIN_ALL, max = PeriodParam::MAX)
      *
      * @var int
      */
@@ -234,7 +233,7 @@ class PlayersGeneralStatsRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = LastNGamesParam::MIN_ALL, max = LastNGamesParam::MAX_VALUE)
+     * @Assert\Range(min = LastNGamesParam::MIN_ALL, max = LastNGamesParam::MAX)
      *
      * @var int
      */

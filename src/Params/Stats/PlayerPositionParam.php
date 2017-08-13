@@ -20,15 +20,26 @@ class PlayerPositionParam extends AbstractStatsParam
     const F = 'F';
     const G = 'G';
 
-    // alternate using abbreivations; it seems like these return errors even though the regular expression is matched
+    // alternate using abbreviations; it seems like these return errors even though the regular expression is matched
     const C_F = 'C-F';
     const F_C = 'F-C';
     const F_G = 'F-G';
     const G_F = 'G-F';
 
+    // these options are alternate designations that appear to be no longer used
+    const CENTER_FULL  = 'Center';
+    const FORWARD_FULL = 'Forward';
+    const GUARD_FULL   = 'Guard';
+
     const OPTIONS = [
         self::CENTER,
         self::FORWARD,
         self::GUARD,
+    ];
+
+    const OPTIONS_FULL = [
+        self::CENTER_FULL,
+        self::FORWARD_FULL,
+        self::GUARD_FULL,
     ];
 }

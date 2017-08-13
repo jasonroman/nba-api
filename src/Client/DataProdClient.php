@@ -3,6 +3,7 @@
 namespace JasonRoman\NbaApi\Client;
 
 use JasonRoman\NbaApi\Request\Data\Prod\Game\BoxscoreRequest;
+use JasonRoman\NbaApi\Request\Data\Prod\Game\DraftPickRequest;
 use JasonRoman\NbaApi\Request\Data\Prod\Game\GameBookRequest;
 use JasonRoman\NbaApi\Request\Data\Prod\Game\LeadTrackerRequest;
 use JasonRoman\NbaApi\Request\Data\Prod\Game\MiniBoxscoreRequest;
@@ -49,6 +50,16 @@ class DataProdClient extends AbstractDataClient
      * @return NbaApiResponseInterface
      */
     public function getToday(TodayRequest $request, array $config = [])
+    {
+        return $this->request($request, $config);
+    }
+
+    /**
+     * @param DraftPickRequest $request
+     * @param array $config
+     * @return NbaApiResponseInterface
+     */
+    public function getDraftPick(DraftPickRequest $request, array $config = [])
     {
         return $this->request($request, $config);
     }
