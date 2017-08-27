@@ -7,11 +7,11 @@ class DivisionParam extends AbstractStatsParam
 {
     const ATLANTIC  = 'Atlantic';
     const CENTRAL   = 'Central';
-    const EAST      = 'East';
     const NORTHWEST = 'Northwest';
     const PACIFIC   = 'Pacific';
     const SOUTHEAST = 'Southeast';
     const SOUTHWEST = 'Southwest';
+    const EAST      = 'East';
     const WEST      = 'West';
 
     const OPTIONS = [
@@ -26,11 +26,11 @@ class DivisionParam extends AbstractStatsParam
     const OPTIONS_WITH_CONFERENCE = [
         self::ATLANTIC,
         self::CENTRAL,
-        self::EAST,
         self::NORTHWEST,
         self::PACIFIC,
         self::SOUTHEAST,
         self::SOUTHWEST,
+        self::EAST,
         self::WEST,
     ];
 }

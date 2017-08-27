@@ -20,7 +20,7 @@ class TeamsYearByYearStatsRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = TeamIdParam::MIN_VALUE, max = TeamIdParam::MAX_VALUE)
+     * @Assert\Range(min = TeamIdParam::MIN, max = TeamIdParam::MAX)
      *
      * @var int
      */

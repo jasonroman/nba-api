@@ -126,7 +126,7 @@ class PlayerBioStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\Type("int")
-     * @Assert\Range(min = TeamIdParam::MIN_VALUE, max = TeamIdParam::MAX_VALUE)
+     * @Assert\Range(min = TeamIdParam::MIN, max = TeamIdParam::MAX)
      *
      * @var int
      */
@@ -150,7 +150,7 @@ class PlayerBioStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\Type("int")
-     * @Assert\Range(min = TeamIdParam::MIN_VALUE, max = TeamIdParam::MAX_VALUE)
+     * @Assert\Range(min = TeamIdParam::MIN, max = TeamIdParam::MAX)
      *
      * @var int
      */

@@ -14,5 +14,5 @@ class PORoundParam extends AbstractStatsParam
     const MAX = 4;
 
     // only 4 playoff rounds, but treated as integer and this is maximum allowed value
-    const MAX_VALUE = 2147483647;
+    const MAX_ALT = 2147483647;
 }

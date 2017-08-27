@@ -16,14 +16,14 @@ class StatCategoryParam extends AbstractStatsParam
     const SCORING_BREAKDOWN = 'Scoring Breakdown';
 
     const ABBR_MINUTES                  = 'MIN';
-    const ABBR_FIELD_GOALS_MADE         = 'FGM';
     const ABBR_FIELD_GOALS_ATTEMPTED    = 'FGA';
+    const ABBR_FIELD_GOALS_MADE         = 'FGM';
     const ABBR_FIELD_GOAL_PERCENTAGE    = 'FG%';
-    const ABBR_THREE_POINTERS_MADE      = '3PM';
     const ABBR_THREE_POINTERS_ATTEMPTED = '3PA';
+    const ABBR_THREE_POINTERS_MADE      = '3PM';
     const ABBR_THREE_POINT_PERCENTAGE   = '3P%';
-    const ABBR_FREE_THROWS_MADE         = 'FTM';
     const ABBR_FREE_THROWS_ATTEMPTED    = 'FTA';
+    const ABBR_FREE_THROWS_MADE         = 'FTM';
     const ABBR_FREE_THROW_PERCENTAGE    = 'FT%';
     const ABBR_OFFENSIVE_REBOUNDS       = 'OREB';
     const ABBR_DEFENSIVE_REBOUNDS       = 'DREB';
@@ -48,14 +48,14 @@ class StatCategoryParam extends AbstractStatsParam
 
     const OPTIONS_ABBR = [
         self::ABBR_MINUTES,
-        self::ABBR_FIELD_GOALS_MADE,
         self::ABBR_FIELD_GOALS_ATTEMPTED,
+        self::ABBR_FIELD_GOALS_MADE,
         self::ABBR_FIELD_GOAL_PERCENTAGE,
-        self::ABBR_THREE_POINTERS_MADE,
         self::ABBR_THREE_POINTERS_ATTEMPTED,
+        self::ABBR_THREE_POINTERS_MADE,
         self::ABBR_THREE_POINT_PERCENTAGE,
-        self::ABBR_FREE_THROWS_MADE,
         self::ABBR_FREE_THROWS_ATTEMPTED,
+        self::ABBR_FREE_THROWS_MADE,
         self::ABBR_FREE_THROW_PERCENTAGE,
         self::ABBR_OFFENSIVE_REBOUNDS,
         self::ABBR_DEFENSIVE_REBOUNDS,

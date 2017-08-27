@@ -42,7 +42,7 @@ class TeamInfoRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = TeamIdParam::MIN_VALUE, TeamIdParam::MAX_VALUE)
+     * @Assert\Range(min = TeamIdParam::MIN, TeamIdParam::MAX)
      *
      * @var int
      */

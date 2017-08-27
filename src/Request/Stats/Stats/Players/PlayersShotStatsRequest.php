@@ -99,7 +99,7 @@ class PlayersShotStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(ShotDistanceRangeParam::OPTIONS)
+     * @ApiAssert\ApiRegex(pattern = ShotDistanceRangeParam::FORMAT)
      *
      * @var string
      */
@@ -131,7 +131,7 @@ class PlayersShotStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\Type("int")
-     * @Assert\Range(min = TeamIdParam::MIN_ALL, max = TeamIdParam::MAX_VALUE)
+     * @Assert\Range(min = TeamIdParam::MIN_ALL, max = TeamIdParam::MAX)
      *
      * @var int
      */
@@ -185,7 +185,7 @@ class PlayersShotStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\Type("int")
-     * @Assert\Range(min = TeamIdParam::MIN_ALL, max = TeamIdParam::MAX_VALUE)
+     * @Assert\Range(min = TeamIdParam::MIN_ALL, max = TeamIdParam::MAX)
      *
      * @var int
      */

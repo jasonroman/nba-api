@@ -9,6 +9,7 @@ class LeagueSlugParam extends AbstractDataParam
 {
     // nba team codes by abbreviation
     const NBA            = 'nba';
+    const G_LEAGUE       = 'dleague';
     const SUMMER_ORLANDO = 'orlando';
     const SUMMER_VEGAS   = 'vegas';
     const SUMMER_UTAH    = 'utah';
@@ -16,6 +17,7 @@ class LeagueSlugParam extends AbstractDataParam
     // standard allowed options
     const OPTIONS = [
         self::NBA,
+        self::G_LEAGUE,
         self::SUMMER_ORLANDO,
         self::SUMMER_VEGAS,
         self::SUMMER_UTAH,
@@ -23,6 +25,11 @@ class LeagueSlugParam extends AbstractDataParam
 
     const OPTIONS_NBA = [
         self::NBA,
+    ];
+
+    const OPTIONS_NBA_G_LEAGUE = [
+        self::NBA,
+        self::G_LEAGUE,
     ];
 
     /**

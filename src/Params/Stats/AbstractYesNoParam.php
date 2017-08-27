@@ -9,6 +9,8 @@ abstract class AbstractYesNoParam extends AbstractStatsParam
     const NO  = 'N';
 
     /**
+     * Returns a true/false as the string 'Y' or 'N'.
+     *
      * {@inheritdoc}
      */
     public static function getStringValue($value): string

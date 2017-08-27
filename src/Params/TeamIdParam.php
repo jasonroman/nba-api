@@ -8,40 +8,8 @@ class TeamIdParam extends AbstractDataParam
     const MIN_ALL = 0;
 
     // normally would not have '_VALUE' attached, but team Minnesota trumps that here...go figure
-    const MIN_VALUE = 1;
-    const MAX_VALUE = 2147483647;
-
-    // nba team ids by abbreviation
-    const ATL = 1610612737;
-    const BOS = 1610612738;
-    const BKN = 1610612751;
-    const CHA = 1610612766;
-    const CHI = 1610612741;
-    const CLE = 1610612739;
-    const DAL = 1610612742;
-    const DEN = 1610612743;
-    const DET = 1610612765;
-    const GSW = 1610612744;
-    const HOU = 1610612745;
-    const IND = 1610612754;
-    const LAC = 1610612746;
-    const LAL = 1610612747;
-    const MEM = 1610612763;
-    const MIA = 1610612748;
-    const MIL = 1610612749;
-    const MIN = 1610612750;
-    const NOP = 1610612740;
-    const NYK = 1610612752;
-    const OKC = 1610612760;
-    const ORL = 1610612753;
-    const PHI = 1610612755;
-    const PHX = 1610612756;
-    const POR = 1610612757;
-    const SAC = 1610612758;
-    const SAS = 1610612759;
-    const TOR = 1610612761;
-    const UTA = 1610612762;
-    const WAS = 1610612764;
+    const MIN = 1;
+    const MAX = 2147483647;
 
     // nba team ids by city/name
     const ATLANTA_HAWKS          = 1610612737;
@@ -75,6 +43,34 @@ class TeamIdParam extends AbstractDataParam
     const UTAH_JAZZ              = 1610612762;
     const WASHINGTON_WIZARDS     = 1610612764;
 
+    // g-league team ids - ids for the 4 new teams are currently missing
+    const AGUA_CALIENTE_CLIPPERS   = 'aguacaliente';
+    const AUSTIN_SPURS             = 1612709890;
+    const CANTON_CHARGE            = 1612709893;
+    const DELAWARE_87ERS           = 1612709909;
+    const ERIE_BAYHAWKS            = 1612709913;
+    const FORT_WAYNE_MAD_ANTS      = 1612709910;
+    const GREENSBORO_SWARM         = 1612709922;
+    const GRAND_RAPIDS_DRIVE       = 1612709917;
+    const IOWA_WOLVES              = 1612709911;
+    const LAKELAND_MAGIC           = 'lakeland';
+    const LONG_ISLAND_NETS         = 1612709921;
+    const MAINE_RED_CLAWS          = 1612709915;
+    const MEMPHIS_HUSTLE           = 'memphis';
+    const NORTHERN_ARIZONA_SUNS    = 1612709900;
+    const OKLAHOMA_CITY_BLUE       = 1612709889;
+    const RAPTORS_905              = 1612709920;
+    const RENO_BIGHORNS            = 1612709914;
+    const RIO_GRANDE_VALLEY_VIPERS = 1612709908;
+    const SALT_LAKE_CITY_STARS     = 1612709903;
+    const SANTA_CRUZ_WARRIORS      = 1612709902;
+    const SIOUX_FALLS_SKYFORCE     = 1612709904;
+    const SOUTH_BAY_LAKERS         = 1612709905;
+    const TEXAS_LEGENDS            = 1612709918;
+    const WESTCHESTER_KNICKS       = 1612709919;
+    const WINDY_CITY_BULLS         = 1612709923;
+    const WISCONSIN_HERD           = 'wisconsin';
+
     // standard allowed options
     const OPTIONS = [
         self::ATLANTA_HAWKS,
@@ -107,5 +103,34 @@ class TeamIdParam extends AbstractDataParam
         self::TORONTO_RAPTORS,
         self::UTAH_JAZZ,
         self::WASHINGTON_WIZARDS,
+    ];
+
+    const OPTIONS_G_LEAGUE = [
+        self::AGUA_CALIENTE_CLIPPERS,
+        self::AUSTIN_SPURS,
+        self::CANTON_CHARGE,
+        self::DELAWARE_87ERS,
+        self::ERIE_BAYHAWKS,
+        self::FORT_WAYNE_MAD_ANTS,
+        self::GREENSBORO_SWARM,
+        self::GRAND_RAPIDS_DRIVE,
+        self::IOWA_WOLVES,
+        self::LAKELAND_MAGIC,
+        self::LONG_ISLAND_NETS,
+        self::MAINE_RED_CLAWS,
+        self::MEMPHIS_HUSTLE,
+        self::NORTHERN_ARIZONA_SUNS,
+        self::OKLAHOMA_CITY_BLUE,
+        self::RAPTORS_905,
+        self::RENO_BIGHORNS,
+        self::RIO_GRANDE_VALLEY_VIPERS,
+        self::SALT_LAKE_CITY_STARS,
+        self::SANTA_CRUZ_WARRIORS,
+        self::SIOUX_FALLS_SKYFORCE,
+        self::SOUTH_BAY_LAKERS,
+        self::TEXAS_LEGENDS,
+        self::WESTCHESTER_KNICKS,
+        self::WINDY_CITY_BULLS,
+        self::WISCONSIN_HERD,
     ];
 }

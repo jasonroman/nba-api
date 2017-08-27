@@ -1,41 +1,9 @@
 <?php
 
-namespace JasonRoman\NbaApi\Params\Data;
+namespace JasonRoman\NbaApi\Params;
 
-class TeamSlugParam extends AbstractDataParam
+class TeamSlugParam extends AbstractParam
 {
-    // nba team codes by abbreviation
-    const ATL = 'hawks';
-    const BOS = 'celtics';
-    const BKN = 'nets';
-    const CHA = 'hornets';
-    const CHI = 'bulls';
-    const CLE = 'cavaliers';
-    const DAL = 'mavericks';
-    const DEN = 'nuggets';
-    const DET = 'pistons';
-    const GSW = 'warriors';
-    const HOU = 'rockets';
-    const IND = 'pacers';
-    const LAC = 'clippers';
-    const LAL = 'lakers';
-    const MEM = 'grizzlies';
-    const MIA = 'heat';
-    const MIL = 'bucks';
-    const MIN = 'timberwolves';
-    const NOP = 'pelicans';
-    const NYK = 'knicks';
-    const OKC = 'thunder';
-    const ORL = 'magic';
-    const PHI = 'sixers';
-    const PHX = 'suns';
-    const POR = 'blazers';
-    const SAC = 'kings';
-    const SAS = 'spurs';
-    const TOR = 'raptors';
-    const UTA = 'jazz';
-    const WAS = 'wizards';
-
     // nba team codes by city/name
     const ATLANTA_HAWKS          = 'hawks';
     const BOSTON_CELTICS         = 'celtics';
@@ -67,6 +35,34 @@ class TeamSlugParam extends AbstractDataParam
     const TORONTO_RAPTORS        = 'raptors';
     const UTAH_JAZZ              = 'jazz';
     const WASHINGTON_WIZARDS     = 'wizards';
+
+    // g-league team codes
+    const AGUA_CALIENTE_CLIPPERS   = 'aguacaliente';
+    const AUSTIN_SPURS             = 'austin';
+    const CANTON_CHARGE            = 'canton';
+    const DELAWARE_87ERS           = 'delaware';
+    const ERIE_BAYHAWKS            = 'erie';
+    const FORT_WAYNE_MAD_ANTS      = 'fortwayne';
+    const GREENSBORO_SWARM         = 'greensboro';
+    const GRAND_RAPIDS_DRIVE       = 'grandrapids';
+    const IOWA_WOLVES              = 'iowa';
+    const LAKELAND_MAGIC           = 'lakeland';
+    const LONG_ISLAND_NETS         = 'longisland';
+    const MAINE_RED_CLAWS          = 'maine';
+    const MEMPHIS_HUSTLE           = 'memphis';
+    const NORTHERN_ARIZONA_SUNS    = 'northernarizona';
+    const OKLAHOMA_CITY_BLUE       = 'oklahomacity';
+    const RAPTORS_905              = 'raptors905';
+    const RENO_BIGHORNS            = 'reno';
+    const RIO_GRANDE_VALLEY_VIPERS = 'riograndevalley';
+    const SALT_LAKE_CITY_STARS     = 'saltlakecity';
+    const SANTA_CRUZ_WARRIORS      = 'santacruz';
+    const SIOUX_FALLS_SKYFORCE     = 'siouxfalls';
+    const SOUTH_BAY_LAKERS         = 'southbay';
+    const TEXAS_LEGENDS            = 'texas';
+    const WESTCHESTER_KNICKS       = 'westchester';
+    const WINDY_CITY_BULLS         = 'windycity';
+    const WISCONSIN_HERD           = 'wisconsin';
 
     // standard allowed options
     const OPTIONS = [
@@ -100,5 +96,34 @@ class TeamSlugParam extends AbstractDataParam
         self::TORONTO_RAPTORS,
         self::UTAH_JAZZ,
         self::WASHINGTON_WIZARDS,
+    ];
+
+    const OPTIONS_G_LEAGUE = [
+        self::AGUA_CALIENTE_CLIPPERS,
+        self::AUSTIN_SPURS,
+        self::CANTON_CHARGE,
+        self::DELAWARE_87ERS,
+        self::ERIE_BAYHAWKS,
+        self::FORT_WAYNE_MAD_ANTS,
+        self::GREENSBORO_SWARM,
+        self::GRAND_RAPIDS_DRIVE,
+        self::IOWA_WOLVES,
+        self::LAKELAND_MAGIC,
+        self::LONG_ISLAND_NETS,
+        self::MAINE_RED_CLAWS,
+        self::MEMPHIS_HUSTLE,
+        self::NORTHERN_ARIZONA_SUNS,
+        self::OKLAHOMA_CITY_BLUE,
+        self::RAPTORS_905,
+        self::RENO_BIGHORNS,
+        self::RIO_GRANDE_VALLEY_VIPERS,
+        self::SALT_LAKE_CITY_STARS,
+        self::SANTA_CRUZ_WARRIORS,
+        self::SIOUX_FALLS_SKYFORCE,
+        self::SOUTH_BAY_LAKERS,
+        self::TEXAS_LEGENDS,
+        self::WESTCHESTER_KNICKS,
+        self::WINDY_CITY_BULLS,
+        self::WISCONSIN_HERD,
     ];
 }

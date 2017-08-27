@@ -13,4 +13,9 @@ class SeasonTypeCodeParam extends AbstractParam
         self::REGULAR_SEASON,
         self::PLAYOFFS,
     ];
+
+    const OPTIONS_NO_PLAYOFFS = [
+        self::PRESEASON,
+        self::REGULAR_SEASON,
+    ];
 }

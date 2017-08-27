@@ -160,7 +160,7 @@ class TeamsClutchStatsRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = TeamIdParam::MIN_ALL, max = TeamIdParam::MAX_VALUE)
+     * @Assert\Range(min = TeamIdParam::MIN_ALL, max = TeamIdParam::MAX)
      *
      * @var int
      */
@@ -185,7 +185,7 @@ class TeamsClutchStatsRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = TeamIdParam::MIN_ALL, max = TeamIdParam::MAX_VALUE)
+     * @Assert\Range(min = TeamIdParam::MIN_ALL, max = TeamIdParam::MAX)
      *
      * @var int
      */

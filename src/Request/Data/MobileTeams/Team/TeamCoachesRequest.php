@@ -5,7 +5,7 @@ namespace JasonRoman\NbaApi\Request\Data\MobileTeams\Schedule;
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\Data\LeagueSlugParam;
-use JasonRoman\NbaApi\Params\Data\TeamSlugParam;
+use JasonRoman\NbaApi\Params\TeamSlugParam;
 use JasonRoman\NbaApi\Params\FormatParam;
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 

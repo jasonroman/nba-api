@@ -127,7 +127,7 @@ class AssistTrackerStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\Type("int")
-     * @Assert\Range(min = TeamIdParam::MIN_VALUE, max = TeamIdParam::MAX_VALUE)
+     * @Assert\Range(min = TeamIdParam::MIN, max = TeamIdParam::MAX)
      *
      * @var int
      */
@@ -135,7 +135,7 @@ class AssistTrackerStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\Type("int")
-     * @Assert\Range(min = TeamIdParam::MIN_VALUE, max = TeamIdParam::MAX_VALUE)
+     * @Assert\Range(min = TeamIdParam::MIN, max = TeamIdParam::MAX)
      *
      * @var int
      */

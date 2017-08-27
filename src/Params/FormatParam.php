@@ -14,6 +14,10 @@ class FormatParam extends AbstractParam
         self::XML,
     ];
 
+    const OPTIONS_JSON = [
+        self::JSON,
+    ];
+
     /**
      * {@inheritdoc}
      * @return string
