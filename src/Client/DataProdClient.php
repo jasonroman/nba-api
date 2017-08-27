@@ -36,7 +36,7 @@ use JasonRoman\NbaApi\Request\Data\Prod\Team\TeamSchedule2015Request;
 use JasonRoman\NbaApi\Request\Data\Prod\Teams\TeamsConfigRequest;
 use JasonRoman\NbaApi\Request\Data\Prod\Teams\TeamsRequest;
 use JasonRoman\NbaApi\Request\Data\Prod\TodayRequest;
-use JasonRoman\NbaApi\Response\NbaApiResponseInterface;
+use JasonRoman\NbaApi\Response\NbaApiResponse;
 
 /**
  * Client that accesses data.nba.com and endpoints which contain /prod in them.
@@ -47,7 +47,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param TodayRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getToday(TodayRequest $request, array $config = [])
     {
@@ -57,7 +57,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param DraftPickRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getDraftPick(DraftPickRequest $request, array $config = [])
     {
@@ -67,7 +67,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param BoxscoreRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getBoxscore(BoxscoreRequest $request, array $config = [])
     {
@@ -77,7 +77,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param GameBookRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getGameBook(GameBookRequest $request, array $config = [])
     {
@@ -87,7 +87,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param LeadTrackerRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getLeadTracker(LeadTrackerRequest $request, array $config = [])
     {
@@ -97,7 +97,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param MiniBoxscoreRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getMiniBoxscore(MiniBoxscoreRequest $request, array $config = [])
     {
@@ -107,7 +107,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param PlayByPlayRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayByPlay(PlayByPlayRequest $request, array $config = [])
     {
@@ -117,7 +117,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param PreviewRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPreview(PreviewRequest $request, array $config = [])
     {
@@ -127,7 +127,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param RecapRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getRecap(RecapRequest $request, array $config = [])
     {
@@ -137,7 +137,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param PlayerGameLogRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerGameLog(PlayerGameLogRequest $request, array $config = [])
     {
@@ -147,7 +147,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param PlayerProfileRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerProfile(PlayerProfileRequest $request, array $config = [])
     {
@@ -157,7 +157,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param PlayerUberStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerUberStats(PlayerUberStatsRequest $request, array $config = [])
     {
@@ -167,7 +167,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param PlayoffsBracketRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayoffsBracket(PlayoffsBracketRequest $request, array $config = [])
     {
@@ -177,7 +177,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param PlayoffSeriesLeaders $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayoffSeriesLeaders(PlayoffSeriesLeaders $request, array $config = [])
     {
@@ -187,7 +187,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param AllStarRosterRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getAllStarRoster(AllStarRosterRequest $request, array $config = [])
     {
@@ -197,7 +197,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param LeagueRosterCoachesRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getLeagueRosterCoaches(LeagueRosterCoachesRequest $request, array $config = [])
     {
@@ -207,7 +207,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param LeagueRosterPlayersRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getLeagueRosterPlayers(LeagueRosterPlayersRequest $request, array $config = [])
     {
@@ -217,7 +217,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param CalendarRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getCalendar(CalendarRequest $request, array $config = [])
     {
@@ -227,7 +227,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param LeagueScheduleRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getLeagueSchedule(LeagueScheduleRequest $request, array $config = [])
     {
@@ -237,7 +237,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param ScoreboardRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getScoreboard(ScoreboardRequest $request, array $config = [])
     {
@@ -247,7 +247,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param ConferenceStandingsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getConferenceStandings(ConferenceStandingsRequest $request, array $config = [])
     {
@@ -257,7 +257,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param DivisionStandingsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getDivisionStandings(DivisionStandingsRequest $request, array $config = [])
     {
@@ -267,7 +267,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param LeagueStandingsMiniRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getLeagueStandingsMini(LeagueStandingsMiniRequest $request, array $config = [])
     {
@@ -277,7 +277,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param LeagueStandingsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getLeagueStandings(LeagueStandingsRequest $request, array $config = [])
     {
@@ -287,7 +287,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param TeamStatsLastFiveGamesRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamStatsLastFiveGames(TeamStatsLastFiveGamesRequest $request, array $config = [])
     {
@@ -297,7 +297,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param TeamStatsRankingsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamStatsRankings(TeamStatsRankingsRequest $request, array $config = [])
     {
@@ -307,7 +307,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param TeamLeaders2015Request $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamLeaders2015(TeamLeaders2015Request $request, array $config = [])
     {
@@ -317,7 +317,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param TeamLeadersRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamLeaders(TeamLeadersRequest $request, array $config = [])
     {
@@ -327,7 +327,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param TeamRoster2015Request $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamRoster2015(TeamRoster2015Request $request, array $config = [])
     {
@@ -337,7 +337,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param TeamRosterRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamRoster(TeamRosterRequest $request, array $config = [])
     {
@@ -347,7 +347,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param TeamSchedule2015Request $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamSchedule2015(TeamSchedule2015Request $request, array $config = [])
     {
@@ -357,7 +357,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param TeamScheduleRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamSchedule(TeamScheduleRequest $request, array $config = [])
     {
@@ -367,7 +367,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param TeamsConfigRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamsConfig(TeamsConfigRequest $request, array $config = [])
     {
@@ -377,7 +377,7 @@ class DataProdClient extends AbstractDataClient
     /**
      * @param TeamsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeams(TeamsRequest $request, array $config = [])
     {

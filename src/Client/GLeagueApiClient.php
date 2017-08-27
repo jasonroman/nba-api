@@ -4,7 +4,7 @@ namespace JasonRoman\NbaApi\Client;
 
 use JasonRoman\NbaApi\Request\GLeague\Api\Players\PlayerAssignmentsRequest;
 use JasonRoman\NbaApi\Request\GLeague\Api\Team\TeamAssignmentsRequest;
-use JasonRoman\NbaApi\Response\NbaApiResponseInterface;
+use JasonRoman\NbaApi\Response\NbaApiResponse;
 
 /**
  * Client that accesses gleague.nba.com and {teamSlug}.gleague.nba.com endpoints which contain /api in them.
@@ -15,7 +15,7 @@ class GLeagueApiClient extends AbstractGLeagueClient
     /**
      * @param PlayerAssignmentsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerAssignments(PlayerAssignmentsRequest $request, array $config = [])
     {
@@ -25,7 +25,7 @@ class GLeagueApiClient extends AbstractGLeagueClient
     /**
      * @param TeamAssignmentsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamAssignments(TeamAssignmentsRequest $request, array $config = [])
     {

@@ -3,7 +3,7 @@
 namespace JasonRoman\NbaApi\Client;
 
 use JasonRoman\NbaApi\Request\Nba\Wsc\Video\VideoRequest;
-use JasonRoman\NbaApi\Response\NbaApiResponseInterface;
+use JasonRoman\NbaApi\Response\NbaApiResponse;
 
 /**
  * Client that accesses data.nba.com and endpoints which contain /wsc in them.
@@ -14,7 +14,7 @@ class NbaWscClient extends AbstractNbaClient
     /**
      * @param VideoRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getVideo(VideoRequest $request, array $config = [])
     {

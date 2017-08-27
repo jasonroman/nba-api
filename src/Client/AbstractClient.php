@@ -10,7 +10,7 @@ use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\ValidatorBuilderInterface;
 use JasonRoman\NbaApi\Request\NbaApiRequestInterface;
-use JasonRoman\NbaApi\Response\NbaApiResponseInterface;
+use JasonRoman\NbaApi\Response\NbaApiResponse;
 use JasonRoman\NbaApi\Response\ResponseType;
 
 /**
@@ -95,7 +95,7 @@ abstract class AbstractClient
     /**
      * @param NbaApiRequestInterface $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      * @throws \Exception if validation fails
      */
     public function request(NbaApiRequestInterface $request, array $config = [])
@@ -143,7 +143,7 @@ abstract class AbstractClient
      * @param mixed $method
      * @param string $uri
      * @param array $options
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      * @throws ClientException
      */
     public function apiRequest($method, $uri, array $options = [])
@@ -155,7 +155,7 @@ abstract class AbstractClient
 
     /**
      * @param ResponseInterface $response
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function responseWrapper(ResponseInterface $response)
     {

@@ -7,12 +7,12 @@ use Psr\Http\Message\ResponseInterface;
 
 /**
  * Guzzle Response wrapper class, making it easier to work with returned results.
- * Might want to look into Guzzle MiddleWare later, but the concept is general seems overly complex.
+ * Might want to look into Guzzle Middleware later, but the concept is general seems overly complex.
  */
 class NbaApiResponse implements NbaApiResponseInterface
 {
     /**
-     * @var NbaApiResponseInterface
+     * @var ResponseInterface
      */
     private $response;
 
@@ -59,7 +59,7 @@ class NbaApiResponse implements NbaApiResponseInterface
     }
 
     /**
-     * @return NbaApiResponseInterface
+     * @return ResponseInterface
      */
     public function getResponse()
     {

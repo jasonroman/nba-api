@@ -4,7 +4,7 @@ namespace JasonRoman\NbaApi\Client;
 
 use JasonRoman\NbaApi\Request\Stats\Feeds\Team\PlayerTransactions2012To2015Request;
 use JasonRoman\NbaApi\Request\Stats\Feeds\Team\TeamProfileRequest;
-use JasonRoman\NbaApi\Response\NbaApiResponseInterface;
+use JasonRoman\NbaApi\Response\NbaApiResponse;
 
 /**
  * Client that accesses stats.nba.com and endpoints which contain /feeds in them.
@@ -15,7 +15,7 @@ class StatsFeedsClient extends AbstractStatsClient
     /**
      * @param TeamProfileRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamProfile(TeamProfileRequest $request, array $config = [])
     {
@@ -25,7 +25,7 @@ class StatsFeedsClient extends AbstractStatsClient
     /**
      * @param PlayerTransactions2012To2015Request $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerTransactions2012To2015(PlayerTransactions2012To2015Request $request, array $config = [])
     {

@@ -5,7 +5,7 @@ namespace JasonRoman\NbaApi\Client;
 use JasonRoman\NbaApi\Request\Data\GameExperience\BrandsRequest;
 use JasonRoman\NbaApi\Request\Data\GameExperience\Team\TeamCoverItLiveRequest;
 use JasonRoman\NbaApi\Request\Data\GameExperience\Team\TeamDefaultRequest;
-use JasonRoman\NbaApi\Response\NbaApiResponseInterface;
+use JasonRoman\NbaApi\Response\NbaApiResponse;
 
 /**
  * Client that accesses data.nba.com and endpoints which contain /ge in them.
@@ -16,7 +16,7 @@ class DataGameExperienceClient extends AbstractDataClient
     /**
      * @param BrandsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getBrands(BrandsRequest $request, array $config = [])
     {
@@ -26,7 +26,7 @@ class DataGameExperienceClient extends AbstractDataClient
     /**
      * @param TeamCoverItLiveRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamCoverItLive(TeamCoverItLiveRequest $request, array $config = [])
     {
@@ -36,7 +36,7 @@ class DataGameExperienceClient extends AbstractDataClient
     /**
      * @param TeamDefaultRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamDefault(TeamDefaultRequest $request, array $config = [])
     {

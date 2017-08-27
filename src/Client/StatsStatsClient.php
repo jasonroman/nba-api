@@ -103,7 +103,7 @@ use JasonRoman\NbaApi\Request\Stats\Stats\Teams\TeamsShotStatsRequest;
 use JasonRoman\NbaApi\Request\Stats\Stats\Teams\TeamsYearByYearStatsRequest;
 use JasonRoman\NbaApi\Request\Stats\Stats\Video\VideoEventsRequest;
 use JasonRoman\NbaApi\Request\Stats\Stats\Video\VideoStatusRequest;
-use JasonRoman\NbaApi\Response\NbaApiResponseInterface;
+use JasonRoman\NbaApi\Response\NbaApiResponse;
 
 /**
  * Client that accesses stats.nba.com and endpoints which contain /stats in them.
@@ -114,7 +114,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param AllStarBallotPredictorRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getAllStarBallotPredictor(AllStarBallotPredictorRequest $request, array $config = [])
     {
@@ -124,7 +124,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param DraftHistoryRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getDraftHistory(DraftHistoryRequest $request, array $config = [])
     {
@@ -134,7 +134,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param DraftCombineDrillResultsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getDraftCombineDrillResults(DraftCombineDrillResultsRequest $request, array $config = [])
     {
@@ -144,7 +144,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param DraftCombineNonStationaryShootingRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getDraftCombineNonStationaryShooting(
         DraftCombineNonStationaryShootingRequest $request,
@@ -156,7 +156,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param DraftCombinePlayerMeasurementsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getDraftCombinePlayerMeasurementsRequest(
         DraftCombinePlayerMeasurementsRequest $request,
@@ -168,7 +168,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param DraftCombineSpotShootingRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getDraftCombineSpotShooting(DraftCombineSpotShootingRequest $request, array $config = [])
     {
@@ -178,7 +178,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param DraftCombineStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getDraftCombineStats(DraftCombineStatsRequest $request, array $config = [])
     {
@@ -188,7 +188,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param BoxScoreAdvancedRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getBoxScoreAdvanced(BoxScoreAdvancedRequest $request, array $config = [])
     {
@@ -198,7 +198,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param BoxScoreFourFactorsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getBoxScoreFourFactors(BoxScoreFourFactorsRequest $request, array $config = [])
     {
@@ -208,7 +208,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param BoxScoreMiscRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getBoxScoreMisc(BoxScoreMiscRequest $request, array $config = [])
     {
@@ -218,7 +218,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param BoxScorePlayerTrackingRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getBoxScorePlayerTracking(BoxScorePlayerTrackingRequest $request, array $config = [])
     {
@@ -228,7 +228,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param BoxScoreScoringRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getBoxScoreScoring(BoxScoreScoringRequest $request, array $config = [])
     {
@@ -238,7 +238,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param BoxScoreSummaryRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getBoxScoreSummary(BoxScoreSummaryRequest $request, array $config = [])
     {
@@ -248,7 +248,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param BoxScoreTraditionalRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getBoxScoreTraditional(BoxScoreTraditionalRequest $request, array $config = [])
     {
@@ -258,7 +258,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param BoxScoreUsageRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getBoxScoreUsage(BoxScoreUsageRequest $request, array $config = [])
     {
@@ -268,7 +268,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayByPlayMiniRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayByPlayMini(PlayByPlayMiniRequest $request, array $config = [])
     {
@@ -278,7 +278,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayByPlayRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayByPlay(PlayByPlayRequest $request, array $config = [])
     {
@@ -288,7 +288,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param LeagueGameLogRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getLeagueGameLog(LeagueGameLogRequest $request, array $config = [])
     {
@@ -298,7 +298,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param GLeaguePredictorRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getGLeaguePredictor(GLeaguePredictorRequest $request, array $config = [])
     {
@@ -308,7 +308,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param HomepageLeadersRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getHomepageLeaders(HomepageLeadersRequest $request, array $config = [])
     {
@@ -318,7 +318,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param HomepageRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getHomepage(HomepageRequest $request, array $config = [])
     {
@@ -328,7 +328,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param LeadersTilesRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getLeadersTiles(LeadersTilesRequest $request, array $config = [])
     {
@@ -338,7 +338,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param LeagueLeadersRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getLeagueLeaders(LeagueLeadersRequest $request, array $config = [])
     {
@@ -348,7 +348,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerAwardsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerAwards(PlayerAwardsRequest $request, array $config = [])
     {
@@ -358,7 +358,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerBioStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerBioStats(PlayerBioStatsRequest $request, array $config = [])
     {
@@ -368,7 +368,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerCareerStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerCareerStats(PlayerCareerStatsRequest $request, array $config = [])
     {
@@ -378,7 +378,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerClutchStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerClutchStats(PlayerClutchStatsRequest $request, array $config = [])
     {
@@ -388,7 +388,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerCompareStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerCompareStats(PlayerCompareStatsRequest $request, array $config = [])
     {
@@ -398,7 +398,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerDefenseStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerDefenseStatsRequest(PlayerDefenseStatsRequest $request, array $config = [])
     {
@@ -408,7 +408,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerFantasyProfileBarGraphRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerFantasyProfileBarGraph(PlayerFantasyProfileBarGraphRequest $request, array $config = [])
     {
@@ -418,7 +418,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerFantasyProfileRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerFantasyProfile(PlayerFantasyProfileRequest $request, array $config = [])
     {
@@ -428,7 +428,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerGameLogRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerGameLog(PlayerGameLogRequest $request, array $config = [])
     {
@@ -438,7 +438,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerGameLogsStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerGameLogsStats(PlayerGameLogsStatsRequest $request, array $config = [])
     {
@@ -448,7 +448,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerGameSplitsStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerGameSplitsStats(PlayerGameSplitsStatsRequest $request, array $config = [])
     {
@@ -458,7 +458,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerGeneralSplitsStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerGeneralSplitsStats(PlayerGeneralSplitsStatsRequest $request, array $config = [])
     {
@@ -468,7 +468,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerInfoRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerInfo(PlayerInfoRequest $request, array $config = [])
     {
@@ -478,7 +478,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerLastNGamesStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerLastNGamesStats(PlayerLastNGamesStatsRequest $request, array $config = [])
     {
@@ -488,7 +488,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerNextNGamesRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerNextNGames(PlayerNextNGamesRequest $request, array $config = [])
     {
@@ -498,7 +498,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerOnDetailsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerOnDetails(PlayerOnDetailsRequest $request, array $config = [])
     {
@@ -508,7 +508,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerOpponentStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerOpponentStats(PlayerOpponentStatsRequest $request, array $config = [])
     {
@@ -518,7 +518,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerPassesStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerPassesStats(PlayerPassesStatsRequest $request, array $config = [])
     {
@@ -528,7 +528,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerProfileRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerProfile(PlayerProfileRequest $request, array $config = [])
     {
@@ -538,7 +538,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerReboundsStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerReboundsStats(PlayerReboundsStatsRequest $request, array $config = [])
     {
@@ -548,7 +548,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerShotChartDetailRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerShotChartDetail(PlayerShotChartDetailRequest $request, array $config = [])
     {
@@ -558,7 +558,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerShotsStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerShotsStats(PlayerShotsStatsRequest $request, array $config = [])
     {
@@ -568,7 +568,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerTeamPerformanceStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerTeamPerformanceStats(PlayerTeamPerformanceStatsRequest $request, array $config = [])
     {
@@ -578,7 +578,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerVsPlayerRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerVsPlayer(PlayerVsPlayerRequest $request, array $config = [])
     {
@@ -588,7 +588,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayerYearOverYearStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerYearOverYearStats(PlayerYearOverYearStatsRequest $request, array $config = [])
     {
@@ -598,7 +598,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param AllPlayersRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getAllPlayers(AllPlayersRequest $request, array $config = [])
     {
@@ -608,7 +608,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayersCareerStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayersCareerStats(PlayersCareerStatsRequest $request, array $config = [])
     {
@@ -618,7 +618,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayersClutchStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayersClutchStats(PlayersClutchStatsRequest $request, array $config = [])
     {
@@ -628,7 +628,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayersDefenseStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayersDefenseStats(PlayersDefenseStatsRequest $request, array $config = [])
     {
@@ -638,7 +638,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayersGeneralStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayersGeneralStats(PlayersGeneralStatsRequest $request, array $config = [])
     {
@@ -648,7 +648,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayersHustleLeadersRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayersHustleLeaders(PlayersHustleLeadersRequest $request, array $config = [])
     {
@@ -658,7 +658,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayersHustleStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayersHustleStats(PlayersHustleStatsRequest $request, array $config = [])
     {
@@ -668,7 +668,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayersShotLocationStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayersShotLocationStats(PlayersShotLocationStatsRequest $request, array $config = [])
     {
@@ -678,7 +678,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayersShotStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayersShotStats(PlayersShotStatsRequest $request, array $config = [])
     {
@@ -688,7 +688,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayersTrackingStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayersTrackingStats(PlayersTrackingStatsRequest $request, array $config = [])
     {
@@ -698,7 +698,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayersVsPlayersRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayersVsPlayers(PlayersVsPlayersRequest $request, array $config = [])
     {
@@ -708,7 +708,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayoffPictureRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayoffPicture(PlayoffPictureRequest $request, array $config = [])
     {
@@ -718,7 +718,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param PlayoffSeriesRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayoffSeries(PlayoffSeriesRequest $request, array $config = [])
     {
@@ -728,7 +728,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamRosterRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamRoster(TeamRosterRequest $request, array $config = [])
     {
@@ -738,7 +738,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param ScoreboardMiniRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getScoreboardMini(ScoreboardMiniRequest $request, array $config = [])
     {
@@ -748,7 +748,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param ScoreboardRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getScoreboard(ScoreboardRequest $request, array $config = [])
     {
@@ -758,7 +758,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param AssistTrackerStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getAssistTrackerStats(AssistTrackerStatsRequest $request, array $config = [])
     {
@@ -768,7 +768,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param DefenseHubRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getDefenseHub(DefenseHubRequest $request, array $config = [])
     {
@@ -778,7 +778,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param LineupStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getLineupStats(LineupStatsRequest $request, array $config = [])
     {
@@ -788,7 +788,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamClutchStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamClutchStats(TeamClutchStatsRequest $request, array $config = [])
     {
@@ -798,7 +798,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamDetailsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamDetails(TeamDetailsRequest $request, array $config = [])
     {
@@ -808,7 +808,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamFranchiseLeadersRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamFranchiseLeaders(TeamFranchiseLeadersRequest $request, array $config = [])
     {
@@ -818,7 +818,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamGameLogRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamGameLog(TeamGameLogRequest $request, array $config = [])
     {
@@ -828,7 +828,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamGameSplitsStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamGameSplitsStats(TeamGameSplitsStatsRequest $request, array $config = [])
     {
@@ -838,7 +838,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamGeneralSplitsStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamGeneralSplitsStats(TeamGeneralSplitsStatsRequest $request, array $config = [])
     {
@@ -848,7 +848,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamHistoricalLeadersRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamHistoricalLeaders(TeamHistoricalLeadersRequest $request, array $config = [])
     {
@@ -858,7 +858,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamInfoRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamInfo(TeamInfoRequest $request, array $config = [])
     {
@@ -868,7 +868,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamLastNGamesStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamLastNGamesStats(TeamLastNGamesStatsRequest $request, array $config = [])
     {
@@ -878,7 +878,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamLineupStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamLineupStats(TeamLineupStatsRequest $request, array $config = [])
     {
@@ -888,7 +888,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamOpponentStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamOpponentStats(TeamOpponentStatsRequest $request, array $config = [])
     {
@@ -898,7 +898,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamPassesStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamPassesStats(TeamPassesStatsRequest $request, array $config = [])
     {
@@ -908,7 +908,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamPerformanceStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamPerformanceStats(TeamPerformanceStatsRequest $request, array $config = [])
     {
@@ -918,7 +918,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamPlayerOnOffDetailsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamPlayerOnOffDetails(TeamPlayerOnOffDetailsRequest $request, array $config = [])
     {
@@ -928,7 +928,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamPlayerOnOffSummaryRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamPlayerOnOffSummary(TeamPlayerOnOffSummaryRequest $request, array $config = [])
     {
@@ -938,7 +938,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamPlayerStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamPlayerStats(TeamPlayerStatsRequest $request, array $config = [])
     {
@@ -948,7 +948,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamReboundsStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamReboundsStats(TeamReboundsStatsRequest $request, array $config = [])
     {
@@ -958,7 +958,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamShootingSplitsStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamShootingSplitsStats(TeamShootingSplitsStatsRequest $request, array $config = [])
     {
@@ -968,7 +968,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamShotChartLineupDetailRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamShotChartLineupDetail(TeamShotChartLineupDetailRequest $request, array $config = [])
     {
@@ -978,7 +978,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamShotsStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamShotsStats(TeamShotsStatsRequest $request, array $config = [])
     {
@@ -988,7 +988,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamVsPlayerRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamVsPlayer(TeamVsPlayerRequest $request, array $config = [])
     {
@@ -998,7 +998,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamYearOverYearStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamYearOverYearStats(TeamYearOverYearStatsRequest $request, array $config = [])
     {
@@ -1008,7 +1008,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamYearsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamYears(TeamYearsRequest $request, array $config = [])
     {
@@ -1018,7 +1018,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param FranchiseHistoryRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getFranchiseHistory(FranchiseHistoryRequest $request, array $config = [])
     {
@@ -1028,7 +1028,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamsClutchStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamsClutchStats(TeamsClutchStatsRequest $request, array $config = [])
     {
@@ -1038,7 +1038,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamsDefenseStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamsDefenseStats(TeamsDefenseStatsRequest $request, array $config = [])
     {
@@ -1048,7 +1048,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamsGeneralStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamsGeneralStats(TeamsGeneralStatsRequest $request, array $config = [])
     {
@@ -1058,7 +1058,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamsHustleLeadersRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamsHustleLeaders(TeamsHustleLeadersRequest $request, array $config = [])
     {
@@ -1068,7 +1068,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamsHustleStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamsHustleStats(TeamsHustleStatsRequest $request, array $config = [])
     {
@@ -1078,7 +1078,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamsShotLocationStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamsShotLocationStats(TeamsShotLocationStatsRequest $request, array $config = [])
     {
@@ -1088,7 +1088,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamsShotStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamsShotStats(TeamsShotStatsRequest $request, array $config = [])
     {
@@ -1098,7 +1098,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param TeamsYearByYearStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamsYearByYearStats(TeamsYearByYearStatsRequest $request, array $config = [])
     {
@@ -1108,7 +1108,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param VideoEventsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getVideoEvents(VideoEventsRequest $request, array $config = [])
     {
@@ -1118,7 +1118,7 @@ class StatsStatsClient extends AbstractStatsClient
     /**
      * @param VideoStatusRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getVideoStatus(VideoStatusRequest $request, array $config = [])
     {

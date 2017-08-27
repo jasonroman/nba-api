@@ -3,7 +3,7 @@
 namespace JasonRoman\NbaApi\Client;
 
 use JasonRoman\NbaApi\Request\Data\Bios\Player\PlayerBioRequest;
-use JasonRoman\NbaApi\Response\NbaApiResponseInterface;
+use JasonRoman\NbaApi\Response\NbaApiResponse;
 
 /**
  * Client that accesses data.nba.com and endpoints which contain /bios in them.
@@ -14,7 +14,7 @@ class DataBiosClient extends AbstractDataClient
     /**
      * @param PlayerBioRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayerBio(PlayerBioRequest $request, array $config = [])
     {

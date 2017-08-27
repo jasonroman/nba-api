@@ -20,7 +20,7 @@ use JasonRoman\NbaApi\Request\Data\Cms\Standings\StandingsRequest;
 use JasonRoman\NbaApi\Request\Data\Cms\Stats\TeamRegularSeasonStatsAndRankingsRequest;
 use JasonRoman\NbaApi\Request\Data\Cms\Team\SportsMetaTeamsRequest;
 use JasonRoman\NbaApi\Request\Data\Cms\TodayRequest;
-use JasonRoman\NbaApi\Response\NbaApiResponseInterface;
+use JasonRoman\NbaApi\Response\NbaApiResponse;
 
 /**
  * Client that accesses data.nba.com and endpoints which contain /cms in them.
@@ -31,7 +31,7 @@ class DataCmsClient extends AbstractDataClient
     /**
      * @param TodayRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getToday(TodayRequest $request, array $config = [])
     {
@@ -41,7 +41,7 @@ class DataCmsClient extends AbstractDataClient
     /**
      * @param BoxscoreRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getBoxscore(BoxscoreRequest $request, array $config = [])
     {
@@ -51,7 +51,7 @@ class DataCmsClient extends AbstractDataClient
     /**
      * @param FullPlayByPlayRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getFullPlayByPlay(FullPlayByPlayRequest $request, array $config = [])
     {
@@ -61,7 +61,7 @@ class DataCmsClient extends AbstractDataClient
     /**
      * @param PlayByPlayRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayByPlay(PlayByPlayRequest $request, array $config = [])
     {
@@ -71,7 +71,7 @@ class DataCmsClient extends AbstractDataClient
     /**
      * @param PlayersPerGameRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayersPerGame(PlayersPerGameRequest $request, array $config = [])
     {
@@ -81,7 +81,7 @@ class DataCmsClient extends AbstractDataClient
     /**
      * @param PreviewRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPreview(PreviewRequest $request, array $config = [])
     {
@@ -91,7 +91,7 @@ class DataCmsClient extends AbstractDataClient
     /**
      * @param RecapRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getRecap(RecapRequest $request, array $config = [])
     {
@@ -101,7 +101,7 @@ class DataCmsClient extends AbstractDataClient
     /**
      * @param SummerLeagueGenericTeamRosterRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getSummerLeagueGenericTeamRoster(SummerLeagueGenericTeamRosterRequest $request, array $config = [])
     {
@@ -111,7 +111,7 @@ class DataCmsClient extends AbstractDataClient
     /**
      * @param SummerLeagueTeamRosterRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getSummerLeagueTeamRoster(SummerLeagueTeamRosterRequest $request, array $config = [])
     {
@@ -121,7 +121,7 @@ class DataCmsClient extends AbstractDataClient
     /**
      * @param TeamRosterRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamRoster(TeamRosterRequest $request, array $config = [])
     {
@@ -131,7 +131,7 @@ class DataCmsClient extends AbstractDataClient
     /**
      * @param ScheduleRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getSchedule(ScheduleRequest $request, array $config = [])
     {
@@ -141,7 +141,7 @@ class DataCmsClient extends AbstractDataClient
     /**
      * @param SummerLeagueScheduleRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getSummerLeagueSchedule(SummerLeagueScheduleRequest $request, array $config = [])
     {
@@ -151,7 +151,7 @@ class DataCmsClient extends AbstractDataClient
     /**
      * @param ScoreboardRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getScoreboard(ScoreboardRequest $request, array $config = [])
     {
@@ -161,7 +161,7 @@ class DataCmsClient extends AbstractDataClient
     /**
      * @param ConferenceStandingsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getConferenceStandings(ConferenceStandingsRequest $request, array $config = [])
     {
@@ -171,7 +171,7 @@ class DataCmsClient extends AbstractDataClient
     /**
      * @param DivisionStandingsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getDivisionStandings(DivisionStandingsRequest $request, array $config = [])
     {
@@ -181,7 +181,7 @@ class DataCmsClient extends AbstractDataClient
     /**
      * @param StandingsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getStandings(StandingsRequest $request, array $config = [])
     {
@@ -191,7 +191,7 @@ class DataCmsClient extends AbstractDataClient
     /**
      * @param TeamRegularSeasonStatsAndRankingsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamRegularSeasonStatsAndRankings(
         TeamRegularSeasonStatsAndRankingsRequest $request,
@@ -203,7 +203,7 @@ class DataCmsClient extends AbstractDataClient
     /**
      * @param SportsMetaTeamsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getSportsMetaTeams(SportsMetaTeamsRequest $request, array $config = [])
     {

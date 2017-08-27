@@ -7,7 +7,7 @@ use JasonRoman\NbaApi\Request\StatsProd\StatsCms\Homepage\SynergyPlayersPlayType
 use JasonRoman\NbaApi\Request\StatsProd\StatsCms\Homepage\SynergyTeamsPlayTypeStatsRequest;
 use JasonRoman\NbaApi\Request\StatsProd\StatsCms\Rotowire\RotowirePlayerRequest;
 use JasonRoman\NbaApi\Request\StatsProd\StatsCms\Rotowire\RotowirePlayersRequest;
-use JasonRoman\NbaApi\Response\NbaApiResponseInterface;
+use JasonRoman\NbaApi\Response\NbaApiResponse;
 
 /**
  * Client that accesses stats-prod.nba.com and endpoints which contain /statscms in them.
@@ -18,7 +18,7 @@ class StatsProdStatsCmsClient extends AbstractStatsProdClient
     /**
      * @param HomepageRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getHomepage(HomepageRequest $request, array $config = [])
     {
@@ -28,7 +28,7 @@ class StatsProdStatsCmsClient extends AbstractStatsProdClient
     /**
      * @param SynergyPlayersPlayTypeStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getSynergyPlayersPlayTypeStats(SynergyPlayersPlayTypeStatsRequest $request, array $config = [])
     {
@@ -38,7 +38,7 @@ class StatsProdStatsCmsClient extends AbstractStatsProdClient
     /**
      * @param SynergyTeamsPlayTypeStatsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getSynergyTeamsPlayTypeStats(SynergyTeamsPlayTypeStatsRequest $request, array $config = [])
     {
@@ -48,7 +48,7 @@ class StatsProdStatsCmsClient extends AbstractStatsProdClient
     /**
      * @param RotowirePlayerRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getRotowirePlayer(RotowirePlayerRequest $request, array $config = [])
     {
@@ -58,7 +58,7 @@ class StatsProdStatsCmsClient extends AbstractStatsProdClient
     /**
      * @param RotowirePlayersRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getRotowirePlayers(RotowirePlayersRequest $request, array $config = [])
     {

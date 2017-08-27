@@ -16,7 +16,7 @@ use JasonRoman\NbaApi\Request\Stats\Widgets\Stats\AdvancedLeadersRequest;
 use JasonRoman\NbaApi\Request\Stats\Widgets\Stats\HustleLeadersRequest;
 use JasonRoman\NbaApi\Request\Stats\Widgets\Teams\TeamsLandingInnerRequest;
 use JasonRoman\NbaApi\Request\Stats\Widgets\Teams\TeamsLandingSidebarRequest;
-use JasonRoman\NbaApi\Response\NbaApiResponseInterface;
+use JasonRoman\NbaApi\Response\NbaApiResponse;
 
 /**
  * Client that accesses stats.nba.com and endpoints which contain /widgets in them.
@@ -27,7 +27,7 @@ class StatsWidgetClient extends AbstractStatsClient
     /**
      * @param HomepageDailyRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getHomepageDaily(HomepageDailyRequest $request, array $config = [])
     {
@@ -37,7 +37,7 @@ class StatsWidgetClient extends AbstractStatsClient
     /**
      * @param HomepageDailySummerLeagueRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getHomepageDailySummerLeague(HomepageDailySummerLeagueRequest $request, array $config = [])
     {
@@ -47,7 +47,7 @@ class StatsWidgetClient extends AbstractStatsClient
     /**
      * @param HomepageEditorialRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getHomepageEditorial(HomepageEditorialRequest $request, array $config = [])
     {
@@ -57,7 +57,7 @@ class StatsWidgetClient extends AbstractStatsClient
     /**
      * @param HomepagePlayoffsRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getHomepagePlayoffs(HomepagePlayoffsRequest $request, array $config = [])
     {
@@ -67,7 +67,7 @@ class StatsWidgetClient extends AbstractStatsClient
     /**
      * @param HomepageSeasonRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getHomepageSeason(HomepageSeasonRequest $request, array $config = [])
     {
@@ -77,7 +77,7 @@ class StatsWidgetClient extends AbstractStatsClient
     /**
      * @param HomepageSidebarRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getHomepageSidebar(HomepageSidebarRequest $request, array $config = [])
     {
@@ -87,7 +87,7 @@ class StatsWidgetClient extends AbstractStatsClient
     /**
      * @param PlayersLandingInnerRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayersLandingInner(PlayersLandingInnerRequest $request, array $config = [])
     {
@@ -97,7 +97,7 @@ class StatsWidgetClient extends AbstractStatsClient
     /**
      * @param PlayersLandingSidebarRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getPlayersLandingSidebar(PlayersLandingSidebarRequest $request, array $config = [])
     {
@@ -107,7 +107,7 @@ class StatsWidgetClient extends AbstractStatsClient
     /**
      * @param ScoresLeadersRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getScoresLeaders(ScoresLeadersRequest $request, array $config = [])
     {
@@ -117,7 +117,7 @@ class StatsWidgetClient extends AbstractStatsClient
     /**
      * @param ScoresSidebarRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getScoresSidebar(ScoresSidebarRequest $request, array $config = [])
     {
@@ -127,7 +127,7 @@ class StatsWidgetClient extends AbstractStatsClient
     /**
      * @param AdvancedLeadersRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getAdvancedLeaders(AdvancedLeadersRequest $request, array $config = [])
     {
@@ -138,7 +138,7 @@ class StatsWidgetClient extends AbstractStatsClient
     /**
      * @param HustleLeadersRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getHustleLeaders(HustleLeadersRequest $request, array $config = [])
     {
@@ -148,7 +148,7 @@ class StatsWidgetClient extends AbstractStatsClient
     /**
      * @param TeamsLandingInnerRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamsLandingInner(TeamsLandingInnerRequest $request, array $config = [])
     {
@@ -158,7 +158,7 @@ class StatsWidgetClient extends AbstractStatsClient
     /**
      * @param TeamsLandingSidebarRequest $request
      * @param array $config
-     * @return NbaApiResponseInterface
+     * @return NbaApiResponse
      */
     public function getTeamsLandingSidebar(TeamsLandingSidebarRequest $request, array $config = [])
     {
