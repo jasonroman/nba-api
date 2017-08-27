@@ -22,7 +22,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "JasonRoman\\NbaApi\\": "src/"
+            "JasonRoman\\NbaApi\\": "src/",
+            "JasonRoman\\NbaApi\\Tests": "tests/"
         }
     },
     "extra": {
