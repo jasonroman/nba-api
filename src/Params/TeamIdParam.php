@@ -2,7 +2,7 @@
 
 namespace JasonRoman\NbaApi\Params;
 
-class TeamIdParam extends AbstractDataParam
+class TeamIdParam extends AbstractParam
 {
     // some endpoints require this, but '0' indicates all teams; why not just make it not required? who knows...
     const MIN_ALL = 0;

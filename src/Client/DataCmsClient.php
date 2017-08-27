@@ -18,7 +18,7 @@ use JasonRoman\NbaApi\Request\Data\Cms\Standings\ConferenceStandingsRequest;
 use JasonRoman\NbaApi\Request\Data\Cms\Standings\DivisionStandingsRequest;
 use JasonRoman\NbaApi\Request\Data\Cms\Standings\StandingsRequest;
 use JasonRoman\NbaApi\Request\Data\Cms\Stats\TeamRegularSeasonStatsAndRankingsRequest;
-use JasonRoman\NbaApi\Request\Data\Cms\Team\SportsMetaTeamsRequest;
+use JasonRoman\NbaApi\Request\Data\Cms\Teams\SportsMetaTeamsRequest;
 use JasonRoman\NbaApi\Request\Data\Cms\TodayRequest;
 use JasonRoman\NbaApi\Response\NbaApiResponse;
 

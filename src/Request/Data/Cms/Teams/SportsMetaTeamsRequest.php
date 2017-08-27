@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Data\Cms\Team;
+namespace JasonRoman\NbaApi\Request\Data\Cms\Teams;
 
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 

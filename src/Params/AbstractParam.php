@@ -24,6 +24,10 @@ class AbstractParam
      */
     public static function getStringValue($value) : string
     {
+        if ($value instanceof \DateTime) {
+            return $value->format('Y-m-d');
+        }
+
         return (string) $value;
     }
 

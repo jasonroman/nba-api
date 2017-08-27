@@ -263,6 +263,4 @@ class PlayerCompareStatsRequest extends AbstractDataRequest
             'lastNGames'     => LastNGamesParam::MIN_ALL,
         ];
     }
-
-
 }

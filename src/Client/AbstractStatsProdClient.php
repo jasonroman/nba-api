@@ -34,6 +34,6 @@ abstract class AbstractStatsProdClient extends AbstractClient
         }
 
         // the query string contains from all of the request parameters
-        return parent::request($request, array_merge(['query' => $request->toArray()], $config));
+        return parent::request($request, $config);
     }
 }
