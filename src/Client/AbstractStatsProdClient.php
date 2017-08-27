@@ -2,8 +2,8 @@
 
 namespace JasonRoman\NbaApi\Client;
 
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
-use JasonRoman\NbaApi\Response\NbaApiResponseInterface;
+use JasonRoman\NbaApi\Request\AbstractStatsProdRequest;
+use JasonRoman\NbaApi\Request\NbaApiRequestInterface;
 
 abstract class AbstractStatsProdClient extends AbstractClient
 {
@@ -24,13 +24,16 @@ abstract class AbstractStatsProdClient extends AbstractClient
     }
 
     /**
-     * @param AbstractStatsRequest $request
-     * @param array $config
-     * @return NbaApiResponseInterface
+     * {@inheritdoc}
+     * @throws \InvalidArgumentException if request is not the proper type
      */
-    public function request(AbstractStatsRequest $request, array $config = [])
+    public function request(NbaApiRequestInterface $request, array $config = [])
     {
+        if (!$request instanceof AbstractStatsProdRequest) {
+            throw new \InvalidArgumentException('Request must be of type AbstractApiRequest');
+        }
+
         // the query string contains from all of the request parameters
-        return parent::doRequest($request, array_merge(['query' => $request->toArray()], $config));
+        return parent::request($request, array_merge(['query' => $request->toArray()], $config));
     }
 }

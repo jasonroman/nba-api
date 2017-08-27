@@ -7,7 +7,7 @@ use JasonRoman\NbaApi\Params\SeasonParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
-class GLeaguePredictor extends AbstractStatsRequest
+class GLeaguePredictorRequest extends AbstractStatsRequest
 {
     const ENDPOINT = '/stats/dleaguepredictor';
 

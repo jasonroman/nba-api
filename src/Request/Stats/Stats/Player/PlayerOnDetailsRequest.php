@@ -24,7 +24,7 @@ use JasonRoman\NbaApi\Request\AbstractDataRequest;
 /**
  * This may not work without errors.
  */
-class LeaguePlayerOnDetailsRequest extends AbstractDataRequest
+class PlayerOnDetailsRequest extends AbstractDataRequest
 {
     const ENDPOINT = '/stats/leagueplayerondetails';
 

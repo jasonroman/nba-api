@@ -9,7 +9,7 @@ use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
 class VideoStatusRequest extends AbstractStatsRequest
 {
-    const ENDPOINT= '/stats/videostatus';
+    const ENDPOINT = '/stats/videostatus';
 
     /**
      * @Assert\NotBlank()

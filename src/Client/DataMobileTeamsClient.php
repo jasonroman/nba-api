@@ -9,8 +9,11 @@ use JasonRoman\NbaApi\Request\Data\MobileTeams\Roster\TeamRosterRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Schedule\LeagueRollingScheduleRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Schedule\LeagueScheduleRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Schedule\LeagueScheduleMonthRequest;
+use JasonRoman\NbaApi\Request\Data\MobileTeams\Schedule\LeagueTicketsRequest;
+use JasonRoman\NbaApi\Request\Data\MobileTeams\Schedule\TeamCoachesRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Scores\PlayerCardRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Scores\TodaysScoresRequest;
+use JasonRoman\NbaApi\Request\Data\MobileTeams\Standings\StandingsRequest;
 use JasonRoman\NbaApi\Response\NbaApiResponseInterface;
 
 /**
@@ -100,11 +103,41 @@ class DataMobileTeamsClient extends AbstractDataClient
     }
 
     /**
+     * @param LeagueTicketsRequest $request
+     * @param array $config
+     * @return NbaApiResponseInterface
+     */
+    public function getLeagueTickets(LeagueTicketsRequest $request, array $config = [])
+    {
+        return $this->request($request, $config);
+    }
+
+    /**
      * @param TodaysScoresRequest $request
      * @param array $config
      * @return NbaApiResponseInterface
      */
     public function getTodaysScores(TodaysScoresRequest $request, array $config = [])
+    {
+        return $this->request($request, $config);
+    }
+
+    /**
+     * @param StandingsRequest $request
+     * @param array $config
+     * @return NbaApiResponseInterface
+     */
+    public function getStandings(StandingsRequest $request, array $config = [])
+    {
+        return $this->request($request, $config);
+    }
+
+    /**
+     * @param TeamCoachesRequest $request
+     * @param array $config
+     * @return NbaApiResponseInterface
+     */
+    public function getTeamCoaches(TeamCoachesRequest $request, array $config = [])
     {
         return $this->request($request, $config);
     }

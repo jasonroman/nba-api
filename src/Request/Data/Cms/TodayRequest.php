@@ -2,6 +2,8 @@
 
 namespace JasonRoman\NbaApi\Request\Data\Cms;
 
+use JasonRoman\NbaApi\Request\AbstractDataRequest;
+
 /**
  * Not sure what this provides other than season meta information.
  */

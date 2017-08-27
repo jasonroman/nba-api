@@ -2,7 +2,7 @@
 
 namespace JasonRoman\NbaApi\Client;
 
-use JasonRoman\NbaApi\Request\Nba\Wsc\Video\ArticleRequest;
+use JasonRoman\NbaApi\Request\Nba\Wsc\Video\VideoRequest;
 use JasonRoman\NbaApi\Response\NbaApiResponseInterface;
 
 /**
@@ -12,11 +12,11 @@ use JasonRoman\NbaApi\Response\NbaApiResponseInterface;
 class NbaWscClient extends AbstractNbaClient
 {
     /**
-     * @param ArticleRequest $request
+     * @param VideoRequest $request
      * @param array $config
      * @return NbaApiResponseInterface
      */
-    public function getVideo(ArticleRequest $request, array $config = [])
+    public function getVideo(VideoRequest $request, array $config = [])
     {
         return $this->request($request, $config);
     }

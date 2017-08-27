@@ -96,16 +96,16 @@ abstract class AbstractClient
      * @param NbaApiRequestInterface $request
      * @param array $config
      * @return NbaApiResponseInterface
-     * @throws \InvalidArgumentException if validation fails
+     * @throws \Exception if validation fails
      */
-    public function doRequest(NbaApiRequestInterface $request, array $config = [])
+    public function request(NbaApiRequestInterface $request, array $config = [])
     {
         // validate the request if specified, and throw an exception if invalid
         if ($this->validateRequest) {
             $violations = $this->validator->validate($request);
 
             if (count($violations)) {
-                throw new \InvalidArgumentException((string) $violations);
+                throw new \Exception((string) $violations);
             }
         }
 

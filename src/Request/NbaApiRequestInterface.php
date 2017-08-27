@@ -41,14 +41,6 @@ interface NbaApiRequestInterface
     public function getDefaultValues() : array;
 
     /**
-     * Create a request from a passed in array of values.
-     *
-     * @param array $array
-     * @return self
-     */
-    public static function fromArray(array $array = []) : NbaApiRequestInterface;
-
-    /**
      * Convert an API Request to an array that can be passed as a Guzzle 'query'.
      *
      * @return array

@@ -3,7 +3,7 @@
 namespace JasonRoman\NbaApi\Client;
 
 use JasonRoman\NbaApi\Request\AbstractGLeagueRequest;
-use JasonRoman\NbaApi\Response\NbaApiResponseInterface;
+use JasonRoman\NbaApi\Request\NbaApiRequestInterface;
 
 abstract class AbstractGLeagueClient extends AbstractClient
 {
@@ -24,17 +24,20 @@ abstract class AbstractGLeagueClient extends AbstractClient
     }
 
     /**
-     * @param AbstractGLeagueRequest $request
-     * @param array $config
-     * @return NbaApiResponseInterface
+     * {@inheritdoc}
+     * @throws \InvalidArgumentException if request is not the proper type
      */
-    public function request(AbstractGLeagueRequest $request, array $config = [])
+    public function request(NbaApiRequestInterface $request, array $config = [])
     {
+        if (!$request instanceof AbstractGLeagueRequest) {
+            throw new \InvalidArgumentException('Request must be of type AbstractApiRequest');
+        }
+
         // get the base URI, which could differ from the standard class base URI
         $config['base_uri'] = $this->getBaseUri($request);
 
         // the query string contains from all of the request parameters
-        return parent::doRequest($request, array_merge(['query' => $request->toArray()], $config));
+        return parent::request($request, array_merge(['query' => $request->toArray()], $config));
     }
 
     /**

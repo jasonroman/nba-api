@@ -13,16 +13,7 @@ use JasonRoman\NbaApi\Request\AbstractDataRequest;
  */
 class PlayerBioRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/{format}/bios/player_{playerId}.{format}';
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(FormatParam::OPTIONS_JSON)
-     *
-     * @var string
-     */
-    public $format;
+    const ENDPOINT = '/json/bios/player_{playerId}.json';
 
     /**
      * @Assert\NotBlank()

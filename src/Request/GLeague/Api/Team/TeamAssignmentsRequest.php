@@ -1,13 +1,13 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\GLeague\Team;
+namespace JasonRoman\NbaApi\Request\GLeague\Api\Team;
 
 use JasonRoman\NbaApi\Params\GLeague\SubdomainSlugParam;
 use JasonRoman\NbaApi\Params\SeasonParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Request\AbstractGLeagueRequest;
 
-class AssignmentsRequest extends AbstractGLeagueRequest
+class TeamAssignmentsRequest extends AbstractGLeagueRequest
 {
     const ENDPOINT = '/wp-json/api/v1/assignments.json';
 
@@ -28,7 +28,7 @@ class AssignmentsRequest extends AbstractGLeagueRequest
      *
      * @var string
      */
-    public $seasonYear;
+    public $season;
 
     /**
      * Even though using the subdomain slug, this is still required and must be the id that matches the subdomain slug.

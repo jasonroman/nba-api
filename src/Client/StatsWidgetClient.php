@@ -2,12 +2,12 @@
 
 namespace JasonRoman\NbaApi\Client;
 
-use JasonRoman\NbaApi\Request\Stats\Widgets\Homepage\DailyRequest;
-use JasonRoman\NbaApi\Request\Stats\Widgets\Homepage\DailySummerLeagueRequest;
-use JasonRoman\NbaApi\Request\Stats\Widgets\Homepage\EditorialRequest;
-use JasonRoman\NbaApi\Request\Stats\Widgets\Homepage\PlayoffsRequest;
-use JasonRoman\NbaApi\Request\Stats\Widgets\Homepage\SeasonRequest;
-use JasonRoman\NbaApi\Request\Stats\Widgets\Homepage\SidebarRequest;
+use JasonRoman\NbaApi\Request\Stats\Widgets\Homepage\HomepageDailyRequest;
+use JasonRoman\NbaApi\Request\Stats\Widgets\Homepage\HomepageDailySummerLeagueRequest;
+use JasonRoman\NbaApi\Request\Stats\Widgets\Homepage\HomepageEditorialRequest;
+use JasonRoman\NbaApi\Request\Stats\Widgets\Homepage\HomepagePlayoffsRequest;
+use JasonRoman\NbaApi\Request\Stats\Widgets\Homepage\HomepageSeasonRequest;
+use JasonRoman\NbaApi\Request\Stats\Widgets\Homepage\HomepageSidebarRequest;
 use JasonRoman\NbaApi\Request\Stats\Widgets\Players\PlayersLandingInnerRequest;
 use JasonRoman\NbaApi\Request\Stats\Widgets\Players\PlayersLandingSidebarRequest;
 use JasonRoman\NbaApi\Request\Stats\Widgets\Scores\ScoresLeadersRequest;

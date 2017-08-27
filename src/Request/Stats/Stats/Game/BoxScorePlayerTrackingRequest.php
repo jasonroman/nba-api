@@ -7,7 +7,7 @@ use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\GameIdParam;
 use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
-class BoxScorePlayer extends AbstractStatsRequest
+class BoxScorePlayerTrackingRequest extends AbstractStatsRequest
 {
     const ENDPOINT = '/stats/boxscoreplayertrackv2';
 
