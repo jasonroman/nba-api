@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Stats\Stats\Game;
+namespace JasonRoman\NbaApi\Request\Stats\Stats\Games;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
@@ -29,7 +29,7 @@ class LeagueGameLogRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = SeasonParam::FORMAT_WITH_ALL_TIME_ALT)
+     * @ApiAssert\ApiRegex(SeasonParam::FORMAT_WITH_ALL_TIME_ALT)
      *
      * @var string
      */

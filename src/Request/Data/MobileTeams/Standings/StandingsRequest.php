@@ -3,6 +3,11 @@
 namespace JasonRoman\NbaApi\Request\Data\MobileTeams\Standings;
 
 use Symfony\Component\Validator\Constraints as Assert;
+use JasonRoman\NbaApi\Constraints as ApiAssert;
+use JasonRoman\NbaApi\Params\FormatParam;
+use JasonRoman\NbaApi\Params\Data\LeagueSlugParam;
+use JasonRoman\NbaApi\Params\Data\SeasonTypeCodeParam;
+use JasonRoman\NbaApi\Params\LeagueIdParam;
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 
 /**
@@ -11,7 +16,7 @@ use JasonRoman\NbaApi\Request\AbstractDataRequest;
 class StandingsRequest extends AbstractDataRequest
 {
     const ENDPOINT =
-        '/v2015/{format}/mobile_teams/{leagueSlug}/{year}/scores/{leagueId}_standings_{seasonTypeCode}.{format}';
+        '/v2015/{format}/mobile_teams/{leagueSlug}/{year}/{leagueId}_standings_{seasonTypeCode}.{format}';
 
     /**
      * @Assert\NotBlank()

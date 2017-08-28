@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Params\Stats;
 
-class DateToParam extends AbstractDataParam
+class DateToParam extends AbstractStatsParam
 {
     const FORMAT      = '/^\d{2}\/\d{2}\/\d{4}$/';
     const DATE_FORMAT = 'm/d/Y';

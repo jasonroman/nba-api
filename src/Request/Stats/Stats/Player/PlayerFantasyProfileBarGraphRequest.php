@@ -8,9 +8,9 @@ use JasonRoman\NbaApi\Params\LeagueIdParam;
 use JasonRoman\NbaApi\Params\PlayerIdParam;
 use JasonRoman\NbaApi\Params\SeasonParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
-class PlayerFantasyProfileBarGraphRequest extends AbstractDataRequest
+class PlayerFantasyProfileBarGraphRequest extends AbstractStatsRequest
 {
     const ENDPOINT = '/stats/playerfantasyprofilebargraph';
 
@@ -26,7 +26,7 @@ class PlayerFantasyProfileBarGraphRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = SeasonParam::FORMAT)
+     * @ApiAssert\ApiRegex(SeasonParam::FORMAT)
      *
      * @var string
      */

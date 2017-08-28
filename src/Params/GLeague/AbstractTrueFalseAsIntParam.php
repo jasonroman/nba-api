@@ -1,9 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace JasonRoman\NbaApi\Params\Stats;
-
-use JasonRoman\NbaApi\Params\GLeague\AbstractGLeagueParam;
+namespace JasonRoman\NbaApi\Params\GLeague;
 
 abstract class AbstractTrueFalseAsIntParam extends AbstractGLeagueParam
 {

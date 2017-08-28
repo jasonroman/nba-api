@@ -126,9 +126,9 @@ abstract class AbstractClient
             array_merge(
                 ['query' => $request->toArray()],
                 $config,
-                $acceptHeadersExtra
-                /*['on_stats' => function (TransferStats $stats) {
-                    dump($stats->getEffectiveUri());
+                $acceptHeadersExtra,
+                ['on_stats' => function (TransferStats $stats) {
+                    /*dump($stats->getEffectiveUri());
                     dump($stats->getTransferTime());
                     dump($stats->getHandlerStats());
                     dump($stats->getRequest());
@@ -136,8 +136,8 @@ abstract class AbstractClient
 
                     if ($stats->hasResponse()) {
                         dump($stats->getResponse()->getStatusCode());
-                    }
-                }]*/
+                    }*/
+                }]
             )
         );
     }

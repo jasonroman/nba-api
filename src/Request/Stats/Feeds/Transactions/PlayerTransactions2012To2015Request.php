@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Stats\Feeds\Team;
+namespace JasonRoman\NbaApi\Request\Stats\Feeds\Transactions;
 
 use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 

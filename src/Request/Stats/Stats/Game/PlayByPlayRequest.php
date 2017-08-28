@@ -7,16 +7,16 @@ use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\GameIdParam;
 use JasonRoman\NbaApi\Params\Stats\StartPeriodParam;
 use JasonRoman\NbaApi\Params\Stats\EndPeriodParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
-class PlayByPlayRequest extends AbstractDataRequest
+class PlayByPlayRequest extends AbstractStatsRequest
 {
     const ENDPOINT = '/stats/playbyplayv2';
 
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = GameIdParam::FORMAT)
+     * @ApiAssert\ApiRegex(GameIdParam::FORMAT)
      *
      * @var string
      */

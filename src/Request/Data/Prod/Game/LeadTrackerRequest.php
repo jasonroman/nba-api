@@ -19,7 +19,7 @@ class LeadTrackerRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Date()
-     * @Assert\Range(min = GameDateParam::MIN_DATE)
+     *
      *
      * @var \DateTime|string if string, format is YYYY-MM-DD
      */
@@ -28,7 +28,7 @@ class LeadTrackerRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = GameIdParam::FORMAT)
+     * @ApiAssert\ApiRegex(GameIdParam::FORMAT)
      *
      * @var string
      */

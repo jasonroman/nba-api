@@ -7,7 +7,7 @@ use JasonRoman\NbaApi\Params\PlayerIdParam;
 use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
 /**
- * This appears to error when not during the regular season.
+ * This appears to error, possibly just when it is not the regular season.
  */
 class AllStarBallotPredictorRequest extends AbstractStatsRequest
 {
@@ -25,7 +25,7 @@ class AllStarBallotPredictorRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = PlayerIdParam::MIN_ALT, PlayerIdParam::MAX)
+     * @Assert\Range(min = PlayerIdParam::MIN_ALT, max = PlayerIdParam::MAX)
      *
      * @var string
      */
@@ -34,7 +34,7 @@ class AllStarBallotPredictorRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = PlayerIdParam::MIN_ALT, PlayerIdParam::MAX)
+     * @Assert\Range(min = PlayerIdParam::MIN_ALT, max = PlayerIdParam::MAX)
      *
      * @var string
      */
@@ -43,7 +43,7 @@ class AllStarBallotPredictorRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = PlayerIdParam::MIN_ALT, PlayerIdParam::MAX)
+     * @Assert\Range(min = PlayerIdParam::MIN_ALT, max = PlayerIdParam::MAX)
      *
      * @var string
      */
@@ -52,7 +52,7 @@ class AllStarBallotPredictorRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = PlayerIdParam::MIN_ALT, PlayerIdParam::MAX)
+     * @Assert\Range(min = PlayerIdParam::MIN_ALT, max = PlayerIdParam::MAX)
      *
      * @var string
      */
@@ -61,7 +61,7 @@ class AllStarBallotPredictorRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = PlayerIdParam::MIN_ALT, PlayerIdParam::MAX)
+     * @Assert\Range(min = PlayerIdParam::MIN_ALT, max = PlayerIdParam::MAX)
      *
      * @var string
      */
@@ -70,7 +70,7 @@ class AllStarBallotPredictorRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = PlayerIdParam::MIN_ALT, PlayerIdParam::MAX)
+     * @Assert\Range(min = PlayerIdParam::MIN_ALT, max = PlayerIdParam::MAX)
      *
      * @var string
      */
@@ -79,7 +79,7 @@ class AllStarBallotPredictorRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = PlayerIdParam::MIN_ALT, PlayerIdParam::MAX)
+     * @Assert\Range(min = PlayerIdParam::MIN_ALT, max = PlayerIdParam::MAX)
      *
      * @var string
      */
@@ -88,7 +88,7 @@ class AllStarBallotPredictorRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = PlayerIdParam::MIN_ALT, PlayerIdParam::MAX)
+     * @Assert\Range(min = PlayerIdParam::MIN_ALT, max = PlayerIdParam::MAX)
      *
      * @var string
      */
@@ -97,7 +97,7 @@ class AllStarBallotPredictorRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = PlayerIdParam::MIN_ALT, PlayerIdParam::MAX)
+     * @Assert\Range(min = PlayerIdParam::MIN_ALT, max = PlayerIdParam::MAX)
      *
      * @var string
      */

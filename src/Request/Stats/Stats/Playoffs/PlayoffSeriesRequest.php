@@ -25,7 +25,7 @@ class PlayoffSeriesRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = SeasonParam::FORMAT)
+     * @ApiAssert\ApiRegex(SeasonParam::FORMAT)
      *
      * @var string
      */
@@ -33,7 +33,7 @@ class PlayoffSeriesRequest extends AbstractStatsRequest
 
     /**
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = PlayoffSeriesIdParam::FORMAT)
+     * @ApiAssert\ApiRegex(PlayoffSeriesIdParam::FORMAT)
      *
      * @var string
      */

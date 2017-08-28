@@ -34,6 +34,6 @@ class ApiRegex extends Constraint
      */
     public function getRequiredOptions()
     {
-        return array('pattern');
+        return ['pattern'];
     }
 }

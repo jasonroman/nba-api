@@ -2,7 +2,7 @@
 
 namespace JasonRoman\NbaApi\Params\Data;
 
-class MonthNumParam extends AbstractParam
+class MonthNumParam extends AbstractDataParam
 {
     const JAN = '01';
     const FEB = '02';

@@ -2,7 +2,7 @@
 
 namespace JasonRoman\NbaApi\Params\Data;
 
-class SeasonTypeCodeParam extends AbstractParam
+class SeasonTypeCodeParam extends AbstractDataParam
 {
     const PRESEASON      = '01';
     const REGULAR_SEASON = '02';

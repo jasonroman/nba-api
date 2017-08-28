@@ -19,9 +19,9 @@ use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
-class PlayerDefenseStatsRequest extends AbstractDataRequest
+class PlayerDefenseStatsRequest extends AbstractStatsRequest
 {
     const ENDPOINT = '/stats/playerdashptshotdefend';
 
@@ -46,7 +46,7 @@ class PlayerDefenseStatsRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = SeasonParam::FORMAT)
+     * @ApiAssert\ApiRegex(SeasonParam::FORMAT)
      *
      * @var string
      */

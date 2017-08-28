@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Data\MobileTeams\Schedule;
+namespace JasonRoman\NbaApi\Request\Data\MobileTeams\Team;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;

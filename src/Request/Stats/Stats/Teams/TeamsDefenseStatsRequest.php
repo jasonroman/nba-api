@@ -20,9 +20,9 @@ use JasonRoman\NbaApi\Params\Stats\PORoundParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
-class TeamsDefenseStatsRequest extends AbstractDataRequest
+class TeamsDefenseStatsRequest extends AbstractStatsRequest
 {
     const ENDPOINT = '/stats/leaguedashptteamdefend';
 
@@ -38,7 +38,7 @@ class TeamsDefenseStatsRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = LeagueIdParam::FORMAT)
+     * @ApiAssert\ApiRegex(LeagueIdParam::FORMAT)
      *
      * @var string
      */
@@ -47,7 +47,7 @@ class TeamsDefenseStatsRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = SeasonParam::FORMAT)
+     * @ApiAssert\ApiRegex(SeasonParam::FORMAT)
      *
      * @var string
      */

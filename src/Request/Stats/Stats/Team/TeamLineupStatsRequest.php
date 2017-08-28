@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Stats\Stats\Stats;
+namespace JasonRoman\NbaApi\Request\Stats\Stats\Team;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
@@ -21,9 +21,9 @@ use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\ShotClockRangeParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
-class TeamLineupStatsRequest extends AbstractDataRequest
+class TeamLineupStatsRequest extends AbstractStatsRequest
 {
     const ENDPOINT = '/stats/teamdashlineups';
 
@@ -80,7 +80,7 @@ class TeamLineupStatsRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = SeasonParam::FORMAT)
+     * @ApiAssert\ApiRegex(SeasonParam::FORMAT)
      *
      * @var string
      */
@@ -231,7 +231,7 @@ class TeamLineupStatsRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = GameIdParam::FORMAT)
+     * @ApiAssert\ApiRegex(GameIdParam::FORMAT)
      *
      * @var string
      */

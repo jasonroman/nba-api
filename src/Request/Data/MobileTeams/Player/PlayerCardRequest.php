@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Data\MobileTeams\Scores;
+namespace JasonRoman\NbaApi\Request\Data\MobileTeams\Player;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
@@ -15,7 +15,8 @@ use JasonRoman\NbaApi\Request\AbstractDataRequest;
  */
 class PlayerCardRequest extends AbstractDataRequest
 {
-    const ENDPOINT = '/v2015/{format}/mobile_teams/{leagueSlug}/{year}/players/playercard_{playerId}_{seasonTypeCode}.{format}';
+    const ENDPOINT =
+        '/v2015/{format}/mobile_teams/{leagueSlug}/{year}/players/playercard_{playerId}_{seasonTypeCode}.{format}';
 
     /**
      * @Assert\NotBlank()

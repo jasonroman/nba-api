@@ -11,7 +11,7 @@ use JasonRoman\NbaApi\Request\AbstractStatsRequest;
  */
 class PlayerSpeedRequest extends AbstractStatsRequest
 {
-    const ENDPOINT = '/data/sportvu/{year}/speedData.json';
+    const ENDPOINT = '/js/data/sportvu/{year}/speedData.json';
 
     /**
      * @Assert\NotBlank()
@@ -20,5 +20,5 @@ class PlayerSpeedRequest extends AbstractStatsRequest
      *
      * @var int
      */
-    public $seasonYear;
+    public $year;
 }

@@ -3,15 +3,18 @@
 namespace JasonRoman\NbaApi\Tests\Integration\Client;
 
 use JasonRoman\NbaApi\Client\DataCmsClient;
+use JasonRoman\NbaApi\Params\Data\SummerLeagueAbbrevParam;
+use JasonRoman\NbaApi\Params\Stats\PeriodParam;
 
 class DataCmsClientTest extends BaseClientTestCase
 {
     const DEFAULT_PARAMS = [
-        'period' => 1,
+        'period'             => PeriodParam::MIN,
+        'summerLeagueAbbrev' => SummerLeagueAbbrevParam::ORLANDO,
     ];
 
     /**
-     * @var DataBiosClient
+     * @var DataCmsClient
      */
     protected $client;
 

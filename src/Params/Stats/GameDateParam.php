@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Params\Stats;
 
-class GameDateParam extends AbstractDataParam
+class GameDateParam extends AbstractStatsParam
 {
     const FORMAT      = '/^\d{4}-\d{2}-\d{2}$/';
     const DATE_FORMAT = 'm/d/Y';
@@ -18,7 +18,7 @@ class GameDateParam extends AbstractDataParam
     {
         // until a mixed type is supported for type-hints, check the value here
         if (!$dateTime instanceof \DateTime) {
-            return parent::getStringValue($dateTime);
+            return (new \DateTime($dateTime))->format(self::DATE_FORMAT);
         }
 
         return $dateTime->format(self::DATE_FORMAT);

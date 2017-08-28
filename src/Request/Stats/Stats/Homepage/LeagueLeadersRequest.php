@@ -19,7 +19,7 @@ class LeagueLeadersRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = LeagueIdParam::FORMAT)
+     * @ApiAssert\ApiRegex(LeagueIdParam::FORMAT)
      *
      * @var string
      */
@@ -28,7 +28,7 @@ class LeagueLeadersRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = SeasonParam::FORMAT_WITH_ALL_TIME)
+     * @ApiAssert\ApiRegex(SeasonParam::FORMAT_WITH_ALL_TIME)
      *
      * @var string
      */

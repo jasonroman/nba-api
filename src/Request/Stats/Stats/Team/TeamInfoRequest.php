@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Stats\Stats\Player;
+namespace JasonRoman\NbaApi\Request\Stats\Stats\Team;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
@@ -17,7 +17,7 @@ class TeamInfoRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = LeagueIdParam::FORMAT)
+     * @ApiAssert\ApiRegex(LeagueIdParam::FORMAT)
      *
      * @var string
      */
@@ -25,7 +25,7 @@ class TeamInfoRequest extends AbstractStatsRequest
 
     /**
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = SeasonParam::FORMAT)
+     * @ApiAssert\ApiRegex(SeasonParam::FORMAT)
      *
      * @var string
      */

@@ -19,7 +19,7 @@ class DraftHistoryRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = LeagueIdParam::FORMAT)
+     * @ApiAssert\ApiRegex(LeagueIdParam::FORMAT)
      *
      * @var string
      */
@@ -60,7 +60,7 @@ class DraftHistoryRequest extends AbstractStatsRequest
 
     /**
      * @Assert\Type("int")
-     * @Assert\Range(min = OverallPickParam::MIN, OverallPickParam::MAX)
+     * @Assert\Range(min = OverallPickParam::MIN, max = OverallPickParam::MAX)
      *
      * @var int
      */
@@ -68,7 +68,7 @@ class DraftHistoryRequest extends AbstractStatsRequest
 
     /**
      * @Assert\Type("int")
-     * @Assert\Range(min = OverallPickParam::MIN, OverallPickParam::MAX)
+     * @Assert\Range(min = OverallPickParam::MIN, max = OverallPickParam::MAX)
      *
      * @var int
      */
@@ -80,4 +80,11 @@ class DraftHistoryRequest extends AbstractStatsRequest
      * @var string
      */
     public $college;
+
+    public function getDefaultValues(): array
+    {
+        return [
+            'season' => SeasonYearParam::getDefaultValue(),
+        ];
+    }
 }

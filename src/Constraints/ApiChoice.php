@@ -20,4 +20,20 @@ class ApiChoice extends Constraint
      * @var array
      */
     public $choices;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDefaultOption()
+    {
+        return 'choices';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getRequiredOptions()
+    {
+        return ['choices'];
+    }
 }

@@ -2,8 +2,8 @@
 
 namespace JasonRoman\NbaApi\Client;
 
+use JasonRoman\NbaApi\Request\Data\Prod\Draft\DraftPickRequest;
 use JasonRoman\NbaApi\Request\Data\Prod\Game\BoxscoreRequest;
-use JasonRoman\NbaApi\Request\Data\Prod\Game\DraftPickRequest;
 use JasonRoman\NbaApi\Request\Data\Prod\Game\GameBookRequest;
 use JasonRoman\NbaApi\Request\Data\Prod\Game\LeadTrackerRequest;
 use JasonRoman\NbaApi\Request\Data\Prod\Game\MiniBoxscoreRequest;

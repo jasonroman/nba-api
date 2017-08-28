@@ -25,9 +25,9 @@ use JasonRoman\NbaApi\Params\Stats\ShotDistanceRangeParam;
 use JasonRoman\NbaApi\Params\Stats\ShotRangeParam;
 use JasonRoman\NbaApi\Params\Stats\TouchTimeRangeParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
-class TeamsShotStatsRequest extends AbstractDataRequest
+class TeamsShotStatsRequest extends AbstractStatsRequest
 {
     const ENDPOINT = '/stats/leaguedashteamptshot';
 
@@ -42,7 +42,7 @@ class TeamsShotStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = LeagueIdParam::FORMAT)
+     * @ApiAssert\ApiRegex(LeagueIdParam::FORMAT)
      *
      * @var string
      */
@@ -51,7 +51,7 @@ class TeamsShotStatsRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = SeasonParam::FORMAT)
+     * @ApiAssert\ApiRegex(SeasonParam::FORMAT)
      *
      * @var string
      */
@@ -92,7 +92,7 @@ class TeamsShotStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = ShotDistanceRangeParam::FORMAT)
+     * @ApiAssert\ApiRegex(ShotDistanceRangeParam::FORMAT)
      *
      * @var string
      */

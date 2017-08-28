@@ -19,11 +19,11 @@ class SeasonParam extends AbstractParam
      */
     public static function fromYear(int $year) : string
     {
-        if (preg_match(self::YEAR_FORMAT, $year) !== 1) {
+        if (preg_match(SeasonYearParam::FORMAT, (string) $year) !== 1) {
             throw new \InvalidArgumentException(sprintf('Year must be in %s format', self::FORMAT));
         }
 
-        return $year.'-'.substr($year + 1, -2);
+        return $year.'-'.substr((string) ($year + 1), -2);
     }
 
     /**

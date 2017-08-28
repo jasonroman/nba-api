@@ -21,12 +21,12 @@ use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
 /**
  * This appears to not be publicly available on the stats nba website.
  */
-class TeamShotChartLineupDetailRequest extends AbstractDataRequest
+class TeamShotChartLineupDetailRequest extends AbstractStatsRequest
 {
     const ENDPOINT = '/stats/shotchartlineupdetail';
 
@@ -41,7 +41,7 @@ class TeamShotChartLineupDetailRequest extends AbstractDataRequest
 
     /**
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = SeasonParam::FORMAT)
+     * @ApiAssert\ApiRegex(SeasonParam::FORMAT)
      *
      * @var string
      */
@@ -166,7 +166,7 @@ class TeamShotChartLineupDetailRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = GameIdParam::FORMAT)
+     * @ApiAssert\ApiRegex(GameIdParam::FORMAT)
      *
      * @var string
      */
@@ -178,7 +178,7 @@ class TeamShotChartLineupDetailRequest extends AbstractDataRequest
      *
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = GroupIdParam::FORMAT)
+     * @ApiAssert\ApiRegex(GroupIdParam::FORMAT)
      *
      * @var string
      */

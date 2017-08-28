@@ -2,8 +2,8 @@
 
 namespace JasonRoman\NbaApi\Client;
 
-use JasonRoman\NbaApi\Request\Stats\Feeds\Team\PlayerTransactions2012To2015Request;
 use JasonRoman\NbaApi\Request\Stats\Feeds\Team\TeamProfileRequest;
+use JasonRoman\NbaApi\Request\Stats\Feeds\Transactions\PlayerTransactions2012To2015Request;
 use JasonRoman\NbaApi\Response\NbaApiResponse;
 
 /**

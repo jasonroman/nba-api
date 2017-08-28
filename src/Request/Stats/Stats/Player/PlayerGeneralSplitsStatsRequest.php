@@ -22,9 +22,9 @@ use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\Stats\ShotClockRangeParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
-class PlayerGeneralSplitsStatsRequest extends AbstractDataRequest
+class PlayerGeneralSplitsStatsRequest extends AbstractStatsRequest
 {
     const ENDPOINT = '/stats/playerdashboardbygeneralsplits';
 
@@ -81,7 +81,7 @@ class PlayerGeneralSplitsStatsRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = SeasonParam::FORMAT)
+     * @ApiAssert\ApiRegex(SeasonParam::FORMAT)
      *
      * @var string
      */

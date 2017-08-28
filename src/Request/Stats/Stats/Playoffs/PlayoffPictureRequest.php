@@ -15,7 +15,7 @@ class PlayoffPictureRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = LeagueIdParam::FORMAT)
+     * @ApiAssert\ApiRegex(LeagueIdParam::FORMAT)
      *
      * @var string
      */
@@ -24,7 +24,7 @@ class PlayoffPictureRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = SeasonIdParam::FORMAT)
+     * @ApiAssert\ApiRegex(SeasonIdParam::FORMAT)
      *
      * @var string
      */

@@ -13,7 +13,7 @@ class ApiLeagueClientTest extends BaseClientTestCase
     ];
 
     /**
-     * @var DataBiosClient
+     * @var ApiLeagueClient
      */
     protected $client;
 
@@ -23,13 +23,5 @@ class ApiLeagueClientTest extends BaseClientTestCase
     protected function setUp()
     {
         $this->client = new ApiLeagueClient();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function getDefaultParams() : array
-    {
-        return array_merge(self::DEFAULT_PARAMS, static::DEFAULT_PARAMS);
     }
 }

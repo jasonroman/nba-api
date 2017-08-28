@@ -2,6 +2,7 @@
 
 namespace JasonRoman\NbaApi\Request\StatsProd\StatsCms\Rotowire;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Params\PlayerIdParam;
 use JasonRoman\NbaApi\Request\AbstractStatsProdRequest;
 

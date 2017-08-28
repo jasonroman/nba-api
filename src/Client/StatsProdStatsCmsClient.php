@@ -3,8 +3,8 @@
 namespace JasonRoman\NbaApi\Client;
 
 use JasonRoman\NbaApi\Request\StatsProd\StatsCms\Homepage\HomepageRequest;
-use JasonRoman\NbaApi\Request\StatsProd\StatsCms\Homepage\SynergyPlayersPlayTypeStatsRequest;
-use JasonRoman\NbaApi\Request\StatsProd\StatsCms\Homepage\SynergyTeamsPlayTypeStatsRequest;
+use JasonRoman\NbaApi\Request\StatsProd\StatsCms\Players\SynergyPlayersPlayTypeStatsRequest;
+use JasonRoman\NbaApi\Request\StatsProd\StatsCms\Players\SynergyTeamsPlayTypeStatsRequest;
 use JasonRoman\NbaApi\Request\StatsProd\StatsCms\Rotowire\RotowirePlayerRequest;
 use JasonRoman\NbaApi\Request\StatsProd\StatsCms\Rotowire\RotowirePlayersRequest;
 use JasonRoman\NbaApi\Response\NbaApiResponse;

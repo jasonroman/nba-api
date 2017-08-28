@@ -11,7 +11,7 @@ use JasonRoman\NbaApi\Request\AbstractStatsRequest;
  */
 class PlayerPassingRequest extends AbstractStatsRequest
 {
-    const ENDPOINT = '/data/sportvu/{year}/passingData.json';
+    const ENDPOINT = '/js/data/sportvu/{year}/passingData.json';
 
     /**
      * @Assert\NotBlank()
@@ -20,5 +20,5 @@ class PlayerPassingRequest extends AbstractStatsRequest
      *
      * @var int
      */
-    public $seasonYear;
+    public $year;
 }

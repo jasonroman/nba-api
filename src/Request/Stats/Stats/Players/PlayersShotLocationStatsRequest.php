@@ -30,9 +30,9 @@ use JasonRoman\NbaApi\Params\Stats\StarterBenchParam;
 use JasonRoman\NbaApi\Params\Stats\WeightParam;
 use JasonRoman\NbaApi\Params\SeasonYearParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
-class PlayersShotLocationStatsRequest extends AbstractDataRequest
+class PlayersShotLocationStatsRequest extends AbstractStatsRequest
 {
     const ENDPOINT = '/stats/leaguedashplayershotlocations';
 
@@ -89,7 +89,7 @@ class PlayersShotLocationStatsRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = SeasonParam::FORMAT)
+     * @ApiAssert\ApiRegex(SeasonParam::FORMAT)
      *
      * @var string
      */

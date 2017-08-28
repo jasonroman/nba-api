@@ -7,9 +7,9 @@ use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
 use JasonRoman\NbaApi\Params\PlayerIdParam;
 use JasonRoman\NbaApi\Params\Stats\PerModeParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
-class PlayerCareerStatsRequest extends AbstractDataRequest
+class PlayerCareerStatsRequest extends AbstractStatsRequest
 {
     const ENDPOINT = '/stats/playercareerstats';
 

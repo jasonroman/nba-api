@@ -30,12 +30,12 @@ use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\Stats\StartPeriodParam;
 use JasonRoman\NbaApi\Params\Stats\StartRangeParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
 /**
  * This appears to no longer be publicly available on the stats nba website.
  */
-class PlayerShotChartDetailRequest extends AbstractDataRequest
+class PlayerShotChartDetailRequest extends AbstractStatsRequest
 {
     const ENDPOINT = '/stats/shotchartdetail';
 
@@ -50,7 +50,7 @@ class PlayerShotChartDetailRequest extends AbstractDataRequest
 
     /**
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = SeasonParam::FORMAT)
+     * @ApiAssert\ApiRegex(SeasonParam::FORMAT)
      *
      * @var string
      */
@@ -86,7 +86,7 @@ class PlayerShotChartDetailRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = GameIdParam::FORMAT)
+     * @ApiAssert\ApiRegex(GameIdParam::FORMAT)
      *
      * @var string
      */
@@ -187,7 +187,7 @@ class PlayerShotChartDetailRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = SeasonParam::FORMAT)
+     * @ApiAssert\ApiRegex(SeasonParam::FORMAT)
      *
      * @var string
      */

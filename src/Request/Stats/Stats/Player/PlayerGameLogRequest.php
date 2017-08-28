@@ -26,7 +26,7 @@ class PlayerGameLogRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = SeasonParam::FORMAT_WITH_ALL)
+     * @ApiAssert\ApiRegex(SeasonParam::FORMAT_WITH_ALL)
      *
      * @var string
      */

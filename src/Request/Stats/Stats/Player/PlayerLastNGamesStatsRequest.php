@@ -33,9 +33,9 @@ use JasonRoman\NbaApi\Params\Stats\StarterBenchParam;
 use JasonRoman\NbaApi\Params\Stats\WeightParam;
 use JasonRoman\NbaApi\Params\SeasonYearParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
-class PlayerLastNGamesStatsRequest extends AbstractDataRequest
+class PlayerLastNGamesStatsRequest extends AbstractStatsRequest
 {
     const ENDPOINT = '/stats/playerdashboardbylastngames';
 
@@ -92,7 +92,7 @@ class PlayerLastNGamesStatsRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = SeasonParam::FORMAT)
+     * @ApiAssert\ApiRegex(SeasonParam::FORMAT)
      *
      * @var string
      */

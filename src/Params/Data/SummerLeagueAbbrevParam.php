@@ -2,7 +2,7 @@
 
 namespace JasonRoman\NbaApi\Params\Data;
 
-class SummerLeagueAbbrevParam extends AbstractParam
+class SummerLeagueAbbrevParam extends AbstractDataParam
 {
     const ORLANDO = 'SL_O';
     const UTAH    = 'SL_U';

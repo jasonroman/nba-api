@@ -4,16 +4,16 @@ namespace JasonRoman\NbaApi\Client;
 
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Game\FullPlayByPlayRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Game\GameDetailRequest;
+use JasonRoman\NbaApi\Request\Data\MobileTeams\Player\PlayerCardRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Playoffs\PlayoffBracketRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Roster\TeamRosterRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Schedule\LeagueRollingScheduleRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Schedule\LeagueScheduleRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Schedule\LeagueScheduleMonthRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Schedule\LeagueTicketsRequest;
-use JasonRoman\NbaApi\Request\Data\MobileTeams\Schedule\TeamCoachesRequest;
-use JasonRoman\NbaApi\Request\Data\MobileTeams\Scores\PlayerCardRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Scores\TodaysScoresRequest;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\Standings\StandingsRequest;
+use JasonRoman\NbaApi\Request\Data\MobileTeams\Team\TeamCoachesRequest;
 use JasonRoman\NbaApi\Response\NbaApiResponse;
 
 /**

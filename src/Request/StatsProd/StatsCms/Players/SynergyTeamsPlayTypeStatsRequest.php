@@ -1,7 +1,9 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\StatsProd\StatsCms\Homepage;
+namespace JasonRoman\NbaApi\Request\StatsProd\StatsCms\Players;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\StatsProd\CategoryParam;
 use JasonRoman\NbaApi\Params\StatsProd\LimitParam;
 use JasonRoman\NbaApi\Params\StatsProd\NamesParam;

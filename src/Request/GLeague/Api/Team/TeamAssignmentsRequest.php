@@ -2,7 +2,9 @@
 
 namespace JasonRoman\NbaApi\Request\GLeague\Api\Team;
 
-use JasonRoman\NbaApi\Params\GLeague\SubdomainSlugParam;
+use Symfony\Component\Validator\Constraints as Assert;
+use JasonRoman\NbaApi\Constraints as ApiAssert;
+use JasonRoman\NbaApi\Params\GLeague\SubdomainTeamSlugParam;
 use JasonRoman\NbaApi\Params\SeasonParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Request\AbstractGLeagueRequest;
@@ -14,17 +16,17 @@ class TeamAssignmentsRequest extends AbstractGLeagueRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(SubdomainSlugParam::OPTIONS)
+     * @ApiAssert\ApiChoice(SubdomainTeamSlugParam::OPTIONS)
      *
      * @var string
      */
-    public $subdomainSlug;
+    public $subdomainTeamSlug;
 
     /**
      * This does not appear to have any effect, even if changing the value.
      *
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = SeasonParam::FORMAT)
+     * @ApiAssert\ApiRegex(SeasonParam::FORMAT)
      *
      * @var string
      */

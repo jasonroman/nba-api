@@ -17,7 +17,7 @@ class GameDateParam extends AbstractDataParam
 
     // earliest game date supported by the Data CMS API for recaps/previews;
     // the first regular season game of the 2012-2013 season.
-    const CMS_MIN_DATE_RECAP = '2012-10-30';
+    const CMS_MIN_DATE_RECAP   = '2012-10-30';
     const CMS_MIN_DATE_PREVIEW = '2012-10-30';
 
     const START_DATE_REGULAR_SEASON_2014 = '2014-10-28';
@@ -38,7 +38,7 @@ class GameDateParam extends AbstractDataParam
     {
         // until a mixed type is supported for type-hints, check the value here
         if (!$dateTime instanceof \DateTime) {
-            return parent::getStringValue($dateTime);
+            return (new \DateTime($dateTime))->format(self::DATE_FORMAT);
         }
 
         return $dateTime->format(self::DATE_FORMAT);

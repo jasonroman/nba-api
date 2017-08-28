@@ -39,7 +39,7 @@ class TeamsHustleStatsRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = LeagueIdParam::OPTIONS_NBA_WNBA_G_LEAGUE)
+     * @ApiAssert\ApiRegex(LeagueIdParam::OPTIONS_NBA_WNBA_G_LEAGUE)
      *
      * @var string
      */
@@ -48,7 +48,7 @@ class TeamsHustleStatsRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = SeasonParam::FORMAT)
+     * @ApiAssert\ApiRegex(SeasonParam::FORMAT)
      *
      * @var string
      */

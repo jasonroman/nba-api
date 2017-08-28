@@ -1,8 +1,9 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Tests\Integration\Client;
 
 use PHPUnit\Framework\TestCase;
+use JasonRoman\NbaApi\Client\AbstractNbaClient;
 use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Response\NbaApiResponse;
 
@@ -13,14 +14,18 @@ class BaseClientTestCase extends TestCase
     const DEFAULT_PARAMS = [
         'playerId' => 201939, // steph curry
         'teamId'   => TeamIdParam::DETROIT_PISTONS,
-        'gameId'   => '0021500490', // 2016-01-01 Orlando vs. Washington Regular Season
+        'teamSlug' => 'pistons',
+        'gameDate' => '2017-02-01', // will be converted to \DateTime as the request expects
+        'gameId'   => '0021600732', // 2017-02-01 Toronto @ Boston Regular Season
         'year'     => 2016,
     ];
 
-    protected function getDefaultParams() : array
-    {
-        return array_merge(self::DEFAULT_PARAMS, static::DEFAULT_PARAMS, ['gameDate' => new \DateTime('2016-01-01')]);
-    }
+    const REQUEST_PARAMS = [];
+
+    /**
+     * @var AbstractNbaClient
+     */
+    protected $client;
 
     /**
      * {@inheritdoc}
@@ -41,14 +46,30 @@ class BaseClientTestCase extends TestCase
             $className   = $requestMethod['class']->getName();
             $requestName = $requestMethod['name'];
 
+            if (in_array($requestName, $this->getWhitelistedRequestMethods())) {
+                continue;
+            }
+            dump("testing $requestName of $className");
             /** @var AbstractNbaApiRequest $request */
             $request = $className::fromArray();
 
+            // set default params
             foreach (static::getDefaultParams() as $param => $value) {
                 if (property_exists($request, $param)) {
-                    $request->$param = $value;
+                    $request->$param = $this->toValue($param, $value);
                 }
             }
+
+            // now set individually-specified request params
+            if (isset(static::REQUEST_PARAMS[$requestName])) {
+                foreach (static::REQUEST_PARAMS[$requestName] as $param => $value) {
+                    if (property_exists($request, $param)) {
+                        $request->$param = $this->toValue($param, $value);;
+                    }
+                }
+            }
+
+            //$
 
             /** @var NbaApiResponse $response */
             $response = $this->client->$requestName($request);
@@ -59,7 +80,35 @@ class BaseClientTestCase extends TestCase
             $this->assertJson((string) $response->getResponse()->getBody());
             $this->assertInternalType('array', $response->getArrayFromJson());
             $this->assertInternalType('object', $response->getObjectFromJson());
+            $this->assertTrue(is_array($response->getObjectsFromJson()) || is_object($response->getObjectsFromJson()));
+
+            usleep(500000);
         }
+
+        // in case all tests are skipped, this will not give a warning about a risky test
+        $this->assertTrue(true);
+    }
+
+    /**
+     * @return array
+     */
+    protected function getDefaultParams() : array
+    {
+        return array_merge(self::DEFAULT_PARAMS, static::DEFAULT_PARAMS);
+    }
+
+    /**
+     * @param string $key
+     * @param $value
+     * @return mixed
+     */
+    protected function toValue(string $key, $value)
+    {
+        if (stripos($key, 'date') !== false) {
+            return new \DateTime($value);
+        }
+
+        return $value;
     }
 
     /**
@@ -69,7 +118,7 @@ class BaseClientTestCase extends TestCase
      * @param string $className
      * @return array
      */
-    protected function getRequestMethods($className)
+    protected function getRequestMethods(string $className)
     {
         $reflectionClass = new \ReflectionClass($className);
         $methodNames     = [];
@@ -91,5 +140,15 @@ class BaseClientTestCase extends TestCase
         }
 
         return $methodNames;
+    }
+
+    /**
+     * Return a list of methods that should not be tested globally; for example, when a PDF is returned by an endpoint.
+     *
+     * @return array
+     */
+    protected function getWhitelistedRequestMethods()
+    {
+        return [];
     }
 }

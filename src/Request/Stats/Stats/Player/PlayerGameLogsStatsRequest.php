@@ -22,13 +22,13 @@ use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\Stats\ShotClockRangeParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
 /**
  * This gets player game logs along with current ranks in each stat category.
  * Be careful - if player id is left off, this fetches *all* players.
  */
-class PlayerGameLogsStatsRequest extends AbstractDataRequest
+class PlayerGameLogsStatsRequest extends AbstractStatsRequest
 {
     const ENDPOINT = '/stats/playergamelogs';
 
@@ -50,7 +50,7 @@ class PlayerGameLogsStatsRequest extends AbstractDataRequest
 
     /**
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = LeagueIdParam::FORMAT)
+     * @ApiAssert\ApiRegex(LeagueIdParam::FORMAT)
      *
      * @var string
      */
@@ -59,7 +59,7 @@ class PlayerGameLogsStatsRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = SeasonParam::FORMAT)
+     * @ApiAssert\ApiRegex(SeasonParam::FORMAT)
      *
      * @var string
      */

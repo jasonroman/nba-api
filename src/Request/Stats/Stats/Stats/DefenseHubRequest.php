@@ -10,16 +10,16 @@ use JasonRoman\NbaApi\Params\Stats\GameScopeParam;
 use JasonRoman\NbaApi\Params\Stats\PlayerOrTeamParam;
 use JasonRoman\NbaApi\Params\Stats\PlayerScopeParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
-class DefenseHubRequest extends AbstractDataRequest
+class DefenseHubRequest extends AbstractStatsRequest
 {
     const ENDPOINT = '/stats/defensehub';
 
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = LeagueIdParam::FORMAT)
+     * @ApiAssert\ApiRegex(LeagueIdParam::FORMAT)
      *
      * @var string
      */
@@ -28,7 +28,7 @@ class DefenseHubRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = SeasonParam::FORMAT)
+     * @ApiAssert\ApiRegex(SeasonParam::FORMAT)
      *
      * @var string
      */

@@ -19,16 +19,15 @@ class GameBookRequest extends AbstractDataRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Date()
-     * @Assert\Range(min = GameDateParam::START_DATE_PRE_SEASON_2014)
      *
-     * @var \DateTime|string if string, format is YYYY-MM-DD
+     * @var \DateTime
      */
     public $gameDate;
 
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(pattern = GameIdParam::FORMAT)
+     * @ApiAssert\ApiRegex(GameIdParam::FORMAT)
      *
      * @var string
      */

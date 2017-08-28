@@ -35,9 +35,22 @@ class NbaApiResponse implements NbaApiResponseInterface
     }
 
     /**
+     * This hard-casts the returned JSON to an object.
+     *
      * @return object
      */
     public function getObjectFromJson()
+    {
+        return (object) $this->getFromJson(false);
+    }
+
+    /**
+     * This may return an array if there are no key/value stores, however this recursively converts all
+     * sub-arrays to objects as well. Use the appropriate functions as you see fit.
+     *
+     * @return object|array
+     */
+    public function getObjectsFromJson()
     {
         return $this->getFromJson(false);
     }
