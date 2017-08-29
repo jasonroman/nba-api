@@ -45,7 +45,7 @@ class TeamVsPlayerRequest extends AbstractStatsRequest
     public $perMode;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @Assert\Type("bool")
      *
      * @var bool
@@ -53,7 +53,7 @@ class TeamVsPlayerRequest extends AbstractStatsRequest
     public $plusMinus;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @Assert\Type("bool")
      *
      * @var bool
@@ -61,7 +61,7 @@ class TeamVsPlayerRequest extends AbstractStatsRequest
     public $paceAdjust;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @Assert\Type("bool")
      *
      * @var bool
@@ -95,15 +95,15 @@ class TeamVsPlayerRequest extends AbstractStatsRequest
     public $seasonType;
 
     /**
-     * Note: This is actually a team id! The endoint is 'PlayerID' though...
+     * Note: This oddly shows up as 'PlayerID' in the response 'parameters'.
      *
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = TeamIdParam::MIN::MIN, max = TeamIdParam::MAX)
+     * @Assert\Range(min = TeamIdParam::MIN, max = TeamIdParam::MAX)
      *
      * @var int
      */
-    public $playerId;
+    public $teamId;
 
     /**
      * @Assert\Type("string")

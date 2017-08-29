@@ -41,7 +41,7 @@ class PlayersClutchStatsRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(MeasureTypeParam::OPTIONS_ALL)
+     * @ApiAssert\ApiChoice(MeasureTypeParam::OPTIONS)
      *
      * @var string
      */
@@ -57,7 +57,7 @@ class PlayersClutchStatsRequest extends AbstractStatsRequest
     public $perMode;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @Assert\Type("bool")
      *
      * @var bool
@@ -65,7 +65,7 @@ class PlayersClutchStatsRequest extends AbstractStatsRequest
     public $plusMinus;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @Assert\Type("bool")
      *
      * @var bool
@@ -73,7 +73,7 @@ class PlayersClutchStatsRequest extends AbstractStatsRequest
     public $paceAdjust;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @Assert\Type("bool")
      *
      * @var bool

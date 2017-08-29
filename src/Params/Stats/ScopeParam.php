@@ -14,9 +14,9 @@ class ScopeParam extends AbstractStatsParam
     const ROOKIES         = 'Rookies';
 
     const OPTIONS = [
+        self::ALL,
+        self::ALL_AND_ROOKIES,
         self::ROOKIES,
-        self::SOPHOMORES,
-        self::ROOKIES_AND_SOPHOMORES,
     ];
 
     public static function getDefaultValue()

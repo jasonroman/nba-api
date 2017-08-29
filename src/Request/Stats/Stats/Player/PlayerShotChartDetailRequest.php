@@ -84,7 +84,6 @@ class PlayerShotChartDetailRequest extends AbstractStatsRequest
     public $playerId;
 
     /**
-     * @Assert\NotBlank()
      * @Assert\Type("string")
      * @ApiAssert\ApiRegex(GameIdParam::FORMAT)
      *
@@ -185,7 +184,6 @@ class PlayerShotChartDetailRequest extends AbstractStatsRequest
     public $playerPosition;
 
     /**
-     * @Assert\NotBlank()
      * @Assert\Type("string")
      * @ApiAssert\ApiRegex(SeasonParam::FORMAT)
      *
@@ -293,6 +291,7 @@ class PlayerShotChartDetailRequest extends AbstractStatsRequest
     public $contextFilter;
 
     /**
+     * @Assert\NotBlank
      * @Assert\Type("string")
      * @ApiAssert\ApiChoice(ContextMeasureParam::OPTIONS)
      *

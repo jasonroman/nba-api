@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Params\Stats;
 
-class PtMeasureType extends AbstractStatsParam
+class PtMeasureTypeParam extends AbstractStatsParam
 {
     const CATCH_AND_SHOOT = 'CatchShoot';
     const DEFENSE         = 'Defense';

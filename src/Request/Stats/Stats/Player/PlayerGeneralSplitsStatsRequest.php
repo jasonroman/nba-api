@@ -47,7 +47,7 @@ class PlayerGeneralSplitsStatsRequest extends AbstractStatsRequest
     public $perMode;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @Assert\Type("bool")
      *
      * @var bool
@@ -55,7 +55,7 @@ class PlayerGeneralSplitsStatsRequest extends AbstractStatsRequest
     public $plusMinus;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @Assert\Type("bool")
      *
      * @var bool
@@ -63,7 +63,7 @@ class PlayerGeneralSplitsStatsRequest extends AbstractStatsRequest
     public $paceAdjust;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @Assert\Type("bool")
      *
      * @var bool

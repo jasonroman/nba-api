@@ -23,10 +23,10 @@ class PlayoffPictureRequest extends AbstractStatsRequest
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Type("string")
+     * @Assert\Type("int")
      * @ApiAssert\ApiRegex(SeasonIdParam::FORMAT)
      *
-     * @var string
+     * @var int
      */
     public $seasonId;
 }

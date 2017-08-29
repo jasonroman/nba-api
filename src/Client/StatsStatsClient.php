@@ -766,13 +766,15 @@ class StatsStatsClient extends AbstractStatsClient
     }
 
     /**
+     * Set a longer timeout as this request seems to take awhile...
+     *
      * @param DefenseHubRequest $request
      * @param array $config
      * @return NbaApiResponse
      */
     public function getDefenseHub(DefenseHubRequest $request, array $config = [])
     {
-        return $this->request($request, $config);
+        return $this->request($request, array_merge(['timeout' => 30], $config));
     }
 
     /**

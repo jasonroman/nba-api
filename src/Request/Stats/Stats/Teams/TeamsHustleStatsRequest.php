@@ -21,6 +21,7 @@ use JasonRoman\NbaApi\Params\Stats\PORoundParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\Stats\WeightParam;
+use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
 class TeamsHustleStatsRequest extends AbstractStatsRequest
@@ -39,7 +40,7 @@ class TeamsHustleStatsRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiRegex(LeagueIdParam::OPTIONS_NBA_WNBA_G_LEAGUE)
+     * @ApiAssert\ApiChoice(LeagueIdParam::OPTIONS_NBA_WNBA_G_LEAGUE)
      *
      * @var string
      */

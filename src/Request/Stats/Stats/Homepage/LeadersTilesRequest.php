@@ -51,7 +51,7 @@ class LeadersTilesRequest extends AbstractStatsRequest
      *
      * @var string
      */
-    public $stats;
+    public $stat;
 
     /**
      * @Assert\NotBlank()

@@ -4,7 +4,9 @@ namespace JasonRoman\NbaApi\Request\Stats\Stats\Team;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
+use JasonRoman\NbaApi\Params\GameIdParam;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
+use JasonRoman\NbaApi\Params\SeasonParam;
 use JasonRoman\NbaApi\Params\Stats\ConferenceParam;
 use JasonRoman\NbaApi\Params\Stats\DivisionParam;
 use JasonRoman\NbaApi\Params\Stats\GameSegmentParam;
@@ -46,7 +48,7 @@ class TeamLineupStatsRequest extends AbstractStatsRequest
     public $perMode;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @Assert\Type("bool")
      *
      * @var bool
@@ -54,7 +56,7 @@ class TeamLineupStatsRequest extends AbstractStatsRequest
     public $plusMinus;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @Assert\Type("bool")
      *
      * @var bool
@@ -62,7 +64,7 @@ class TeamLineupStatsRequest extends AbstractStatsRequest
     public $paceAdjust;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @Assert\Type("bool")
      *
      * @var bool
@@ -138,7 +140,6 @@ class TeamLineupStatsRequest extends AbstractStatsRequest
     public $month;
 
     /**
-     * @Assert\NotBlank()
      * @Assert\Type("string")
      * @ApiAssert\ApiChoice(SeasonSegmentParam::OPTIONS)
      *

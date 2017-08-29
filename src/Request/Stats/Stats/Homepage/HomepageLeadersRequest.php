@@ -28,11 +28,12 @@ class HomepageLeadersRequest extends AbstractStatsRequest
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Date()
+     * @Assert\Type("string")
+     * @ApiAssert\ApiRegex(SeasonParam::FORMAT)
      *
-     * @var \DateTime|string if string, format is YYYY-MM-DD
+     * @var string
      */
-    public $gameDate;
+    public $season;
 
     /**
      * @Assert\NotBlank()

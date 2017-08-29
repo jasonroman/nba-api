@@ -35,7 +35,7 @@ class DataHtmlClientTest extends BaseClientTestCase
 
         foreach (self::getDefaultParams() as $param => $value) {
             if (property_exists($request, $param)) {
-                $request->$param = $value;
+                $request->$param = $this->toValue($param, $value);
             }
         }
 

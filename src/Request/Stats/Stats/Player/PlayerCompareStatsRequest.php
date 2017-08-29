@@ -47,7 +47,7 @@ class PlayerCompareStatsRequest extends AbstractStatsRequest
     public $perMode;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @Assert\Type("bool")
      *
      * @var bool
@@ -55,7 +55,7 @@ class PlayerCompareStatsRequest extends AbstractStatsRequest
     public $plusMinus;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @Assert\Type("bool")
      *
      * @var bool
@@ -63,7 +63,7 @@ class PlayerCompareStatsRequest extends AbstractStatsRequest
     public $paceAdjust;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @Assert\Type("bool")
      *
      * @var bool
@@ -106,10 +106,10 @@ class PlayerCompareStatsRequest extends AbstractStatsRequest
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Type("int")
-     * @Assert\All({@Assert\Range(min = PlayerIdParam::MIN, max = PlayerIdParam::MAX))
+     * @Assert\All({@Assert\Type("int")})
+     * @Assert\All({@Assert\Range(min = PlayerIdParam::MIN, max = PlayerIdParam::MAX)})
      *
-     * @var int
+     * @var int[]
      */
     public $playerIdList;
 
@@ -237,10 +237,10 @@ class PlayerCompareStatsRequest extends AbstractStatsRequest
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Type("string")
-     * @Assert\All({@Assert\Range(min = PlayerIdParam::MIN, max = PlayerIdParam::MAX))
+     * @Assert\All({@Assert\Type("int")})
+     * @Assert\All({@Assert\Range(min = PlayerIdParam::MIN, max = PlayerIdParam::MAX)})
      *
-     * @var int
+     * @var int[]
      */
     public $vsPlayerIdList;
 

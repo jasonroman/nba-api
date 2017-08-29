@@ -22,7 +22,7 @@ use JasonRoman\NbaApi\Params\Stats\PeriodParam;
 use JasonRoman\NbaApi\Params\Stats\PlayerExperienceParam;
 use JasonRoman\NbaApi\Params\Stats\PlayerOrTeamParam;
 use JasonRoman\NbaApi\Params\Stats\PlayerPositionParam;
-use JasonRoman\NbaApi\Params\Stats\PtMeasureType;
+use JasonRoman\NbaApi\Params\Stats\PtMeasureTypeParam;
 use JasonRoman\NbaApi\Params\Stats\PORoundParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
@@ -38,7 +38,7 @@ class PlayersTrackingStatsRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(PtMeasureType::OPTIONS)
+     * @ApiAssert\ApiChoice(PtMeasureTypeParam::OPTIONS)
      *
      * @var string
      */

@@ -49,7 +49,7 @@ class BaseClientTestCase extends TestCase
             if (in_array($requestName, $this->getWhitelistedRequestMethods())) {
                 continue;
             }
-            dump("testing $requestName of $className");
+            dump("Testing $requestName of $className");
             /** @var AbstractNbaApiRequest $request */
             $request = $className::fromArray();
 
@@ -68,8 +68,6 @@ class BaseClientTestCase extends TestCase
                     }
                 }
             }
-
-            //$
 
             /** @var NbaApiResponse $response */
             $response = $this->client->$requestName($request);
@@ -104,7 +102,7 @@ class BaseClientTestCase extends TestCase
      */
     protected function toValue(string $key, $value)
     {
-        if (stripos($key, 'date') !== false) {
+        if (stripos($key, 'date') !== false && !$value instanceof \DateTime) {
             return new \DateTime($value);
         }
 

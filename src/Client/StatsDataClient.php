@@ -287,7 +287,7 @@ class StatsDataClient extends AbstractStatsClient
      * @param array $config
      * @return NbaApiResponse
      */
-    public function PlayerPlayTypeOffensiveScreen(PlayerPlayTypeOffensiveScreenRequest $request, array $config = [])
+    public function getPlayerPlayTypeOffensiveScreen(PlayerPlayTypeOffensiveScreenRequest $request, array $config = [])
     {
         return $this->request($request, $config);
     }
@@ -403,7 +403,7 @@ class StatsDataClient extends AbstractStatsClient
      * @param array $config
      * @return NbaApiResponse
      */
-    public function TeamPlayTypeOffensiveScreen(TeamPlayTypeOffensiveScreenRequest $request, array $config = [])
+    public function getTeamPlayTypeOffensiveScreen(TeamPlayTypeOffensiveScreenRequest $request, array $config = [])
     {
         return $this->request($request, $config);
     }

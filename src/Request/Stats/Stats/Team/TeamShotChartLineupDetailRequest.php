@@ -194,6 +194,7 @@ class TeamShotChartLineupDetailRequest extends AbstractStatsRequest
     public $contextFilter;
 
     /**
+     * @Assert\NotBlank
      * @Assert\Type("string")
      * @ApiAssert\ApiChoice(ContextMeasureParam::OPTIONS)
      *

@@ -5,6 +5,8 @@ namespace JasonRoman\NbaApi\Request\Stats\Stats\Stats;
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
+use JasonRoman\NbaApi\Params\SeasonParam;
+use JasonRoman\NbaApi\Params\SeasonYearParam;
 use JasonRoman\NbaApi\Params\Stats\ConferenceParam;
 use JasonRoman\NbaApi\Params\Stats\DivisionParam;
 use JasonRoman\NbaApi\Params\Stats\DraftPickParam;
@@ -22,7 +24,6 @@ use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\StarterBenchParam;
 use JasonRoman\NbaApi\Params\Stats\WeightParam;
-use JasonRoman\NbaApi\Params\SeasonYearParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Request\AbstractStatsRequest;
 
@@ -36,7 +37,6 @@ class AssistTrackerStatsRequest extends AbstractStatsRequest
     const ENDPOINT = '/stats/assisttracker';
 
     /**
-     * @Assert\NotBlank()
      * @Assert\Type("string")
      * @ApiAssert\ApiChoice(LeagueIdParam::OPTIONS_NBA_G_LEAGUE)
      *
@@ -45,7 +45,6 @@ class AssistTrackerStatsRequest extends AbstractStatsRequest
     public $leagueId;
 
     /**
-     * @Assert\NotBlank()
      * @Assert\Type("string")
      * @ApiAssert\ApiRegex(SeasonParam::FORMAT)
      *
@@ -54,7 +53,6 @@ class AssistTrackerStatsRequest extends AbstractStatsRequest
     public $season;
 
     /**
-     * @Assert\NotBlank()
      * @Assert\Type("string")
      * @ApiAssert\ApiChoice(SeasonTypeParam::OPTIONS_WITH_ALL_STAR)
      *
@@ -63,7 +61,6 @@ class AssistTrackerStatsRequest extends AbstractStatsRequest
     public $seasonType;
 
     /**
-     * @Assert\NotBlank()
      * @Assert\Type("string")
      * @ApiAssert\ApiChoice(PerModeParam::OPTIONS_TOTALS_PER_GAME)
      *
@@ -96,10 +93,10 @@ class AssistTrackerStatsRequest extends AbstractStatsRequest
     public $location;
 
     /**
-     * @Assert\Type("string")
+     * @Assert\Type("int")
      * @Assert\Range(min = MonthParam::MIN_ALL, max = MonthParam::MAX)
      *
-     * @var string
+     * @var int
      */
     public $month;
 
@@ -135,7 +132,7 @@ class AssistTrackerStatsRequest extends AbstractStatsRequest
 
     /**
      * @Assert\Type("int")
-     * @Assert\Range(min = TeamIdParam::MIN, max = TeamIdParam::MAX)
+     * @Assert\Range(min = TeamIdParam::MIN_ALL, max = TeamIdParam::MAX)
      *
      * @var int
      */
@@ -206,18 +203,18 @@ class AssistTrackerStatsRequest extends AbstractStatsRequest
     public $starterBench;
 
     /**
-     * @Assert\Type("string")
+     * @Assert\Type("int")
      * @Assert\Range(min = LastNGamesParam::MIN_ALL, max = LastNGamesParam::MAX)
      *
-     * @var string
+     * @var int
      */
     public $lastNGames;
 
     /**
-     * @Assert\Type("string")
+     * @Assert\Type("int")
      * @Assert\Range(min = SeasonYearParam::FIRST_DRAFT_SEASON_YEAR)
      *
-     * @var string
+     * @var int
      */
     public $draftYear;
 

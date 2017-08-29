@@ -17,7 +17,7 @@ class TeamGameLogRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = TeamIdParam::MIN, TeamIdParam::MAX)
+     * @Assert\Range(min = TeamIdParam::MIN, max = TeamIdParam::MAX)
      *
      * @var int
      */

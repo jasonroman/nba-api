@@ -95,10 +95,10 @@ class PlayerBioStatsRequest extends AbstractStatsRequest
     public $location;
 
     /**
-     * @Assert\Type("string")
+     * @Assert\Type("int")
      * @Assert\Range(min = MonthParam::MIN_ALL, max = MonthParam::MAX)
      *
-     * @var string
+     * @var int
      */
     public $month;
 
@@ -126,7 +126,7 @@ class PlayerBioStatsRequest extends AbstractStatsRequest
 
     /**
      * @Assert\Type("int")
-     * @Assert\Range(min = TeamIdParam::MIN, max = TeamIdParam::MAX)
+     * @Assert\Range(min = TeamIdParam::MIN_ALL, max = TeamIdParam::MAX)
      *
      * @var int
      */
@@ -197,10 +197,10 @@ class PlayerBioStatsRequest extends AbstractStatsRequest
     public $shotClockRange;
 
     /**
-     * @Assert\Type("string")
+     * @Assert\Type("int")
      * @Assert\Range(min = LastNGamesParam::MIN_ALL, max = LastNGamesParam::MAX)
      *
-     * @var string
+     * @var int
      */
     public $lastNGames;
 

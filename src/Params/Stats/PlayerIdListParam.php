@@ -11,6 +11,6 @@ class PlayerIdListParam extends AbstractStatsParam
      */
     public static function getStringValue($value): string
     {
-        return explode(',', $value);
+        return implode(',', $value);
     }
 }

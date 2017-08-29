@@ -46,7 +46,7 @@ class DefenseHubRequest extends AbstractStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(GameScopeParam::OPTIONS_LAST_10_YESTERDAY)
+     * @ApiAssert\ApiChoice(GameScopeParam::OPTIONS)
      *
      * @var string
      */

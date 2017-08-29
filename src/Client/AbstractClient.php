@@ -18,7 +18,7 @@ use JasonRoman\NbaApi\Response\ResponseType;
  */
 abstract class AbstractClient
 {
-    const TIMEOUT         = 5;
+    const TIMEOUT         = 10;
     const CONNECT_TIMEOUT = 3;
 
     const DEFAULT_HEADERS = [

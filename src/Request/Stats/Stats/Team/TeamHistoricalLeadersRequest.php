@@ -24,17 +24,17 @@ class TeamHistoricalLeadersRequest extends AbstractStatsRequest
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Type("string")
+     * @Assert\Type("int")
      * @ApiAssert\ApiRegex(SeasonIdParam::FORMAT)
      *
-     * @var string
+     * @var int
      */
     public $seasonId;
 
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = TeamIdParam::MIN_ALL, TeamIdParam::MAX)
+     * @Assert\Range(min = TeamIdParam::MIN_ALL, max = TeamIdParam::MAX)
      *
      * @var int
      */
