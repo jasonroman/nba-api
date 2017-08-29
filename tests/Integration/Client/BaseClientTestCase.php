@@ -49,7 +49,9 @@ class BaseClientTestCase extends TestCase
             if (in_array($requestName, $this->getWhitelistedRequestMethods())) {
                 continue;
             }
-            dump("Testing $requestName of $className");
+
+            //dump("Testing $requestName of $className");
+
             /** @var AbstractNbaApiRequest $request */
             $request = $className::fromArray();
 

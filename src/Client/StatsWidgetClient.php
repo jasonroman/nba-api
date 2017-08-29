@@ -2,6 +2,7 @@
 
 namespace JasonRoman\NbaApi\Client;
 
+use JasonRoman\NbaApi\Request\Stats\Widgets\Games\BoxScoreBreakdownRequest;
 use JasonRoman\NbaApi\Request\Stats\Widgets\Homepage\HomepageDailyRequest;
 use JasonRoman\NbaApi\Request\Stats\Widgets\Homepage\HomepageDailySummerLeagueRequest;
 use JasonRoman\NbaApi\Request\Stats\Widgets\Homepage\HomepageEditorialRequest;
@@ -24,6 +25,16 @@ use JasonRoman\NbaApi\Response\NbaApiResponse;
  */
 class StatsWidgetClient extends AbstractStatsClient
 {
+    /**
+     * @param BoxScoreBreakdownRequest $request
+     * @param array $config
+     * @return NbaApiResponse
+     */
+    public function getBoxScoreBreakdown(BoxScoreBreakdownRequest $request, array $config = [])
+    {
+        return $this->request($request, $config);
+    }
+
     /**
      * @param HomepageDailyRequest $request
      * @param array $config

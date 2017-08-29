@@ -3,6 +3,8 @@
 namespace JasonRoman\NbaApi\Client;
 
 use JasonRoman\NbaApi\Request\Stats\Stats\AllStar\AllStarBallotPredictorRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\Charts\InfographicFanDuelPlayerRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\Charts\WinProbabilityPlayByPlayRequest;
 use JasonRoman\NbaApi\Request\Stats\Stats\Draft\DraftHistoryRequest;
 use JasonRoman\NbaApi\Request\Stats\Stats\DraftCombine\DraftCombineDrillResultsRequest;
 use JasonRoman\NbaApi\Request\Stats\Stats\DraftCombine\DraftCombineNonStationaryShootingRequest;
@@ -117,6 +119,26 @@ class StatsStatsClient extends AbstractStatsClient
      * @return NbaApiResponse
      */
     public function getAllStarBallotPredictor(AllStarBallotPredictorRequest $request, array $config = [])
+    {
+        return $this->request($request, $config);
+    }
+
+    /**
+     * @param InfographicFanDuelPlayerRequest $request
+     * @param array $config
+     * @return NbaApiResponse
+     */
+    public function getInfographicFanDuelPlayer(InfographicFanDuelPlayerRequest $request, array $config = [])
+    {
+        return $this->request($request, $config);
+    }
+
+    /**
+     * @param WinProbabilityPlayByPlayRequest $request
+     * @param array $config
+     * @return NbaApiResponse
+     */
+    public function getWinProbabilityPlayByPlay(WinProbabilityPlayByPlayRequest $request, array $config = [])
     {
         return $this->request($request, $config);
     }

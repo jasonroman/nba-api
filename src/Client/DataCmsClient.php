@@ -11,6 +11,7 @@ use JasonRoman\NbaApi\Request\Data\Cms\Game\RecapRequest;
 use JasonRoman\NbaApi\Request\Data\Cms\Roster\SummerLeagueGenericTeamRosterRequest;
 use JasonRoman\NbaApi\Request\Data\Cms\Roster\SummerLeagueTeamRosterRequest;
 use JasonRoman\NbaApi\Request\Data\Cms\Roster\TeamRosterRequest;
+use JasonRoman\NbaApi\Request\Data\Cms\Schedule\ScheduleNbaGamesRequest;
 use JasonRoman\NbaApi\Request\Data\Cms\Schedule\ScheduleRequest;
 use JasonRoman\NbaApi\Request\Data\Cms\Schedule\SummerLeagueScheduleRequest;
 use JasonRoman\NbaApi\Request\Data\Cms\Scores\ScoreboardRequest;
@@ -134,6 +135,16 @@ class DataCmsClient extends AbstractDataClient
      * @return NbaApiResponse
      */
     public function getSchedule(ScheduleRequest $request, array $config = [])
+    {
+        return $this->request($request, $config);
+    }
+
+    /**
+     * @param ScheduleNbaGamesRequest $request
+     * @param array $config
+     * @return NbaApiResponse
+     */
+    public function getScheduleNbaGames(ScheduleNbaGamesRequest $request, array $config = [])
     {
         return $this->request($request, $config);
     }
