@@ -50,7 +50,7 @@ class BaseClientTestCase extends TestCase
                 continue;
             }
 
-            //dump("Testing $requestName of $className");
+            dump("Testing $requestName of $className");
 
             /** @var AbstractNbaApiRequest $request */
             $request = $className::fromArray();

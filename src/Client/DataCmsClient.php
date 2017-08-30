@@ -8,6 +8,7 @@ use JasonRoman\NbaApi\Request\Data\Cms\Game\PlayByPlayRequest;
 use JasonRoman\NbaApi\Request\Data\Cms\Game\PlayersPerGameRequest;
 use JasonRoman\NbaApi\Request\Data\Cms\Game\PreviewRequest;
 use JasonRoman\NbaApi\Request\Data\Cms\Game\RecapRequest;
+use JasonRoman\NbaApi\Request\Data\Cms\General\TodayRequest;
 use JasonRoman\NbaApi\Request\Data\Cms\Roster\SummerLeagueGenericTeamRosterRequest;
 use JasonRoman\NbaApi\Request\Data\Cms\Roster\SummerLeagueTeamRosterRequest;
 use JasonRoman\NbaApi\Request\Data\Cms\Roster\TeamRosterRequest;
@@ -20,7 +21,6 @@ use JasonRoman\NbaApi\Request\Data\Cms\Standings\DivisionStandingsRequest;
 use JasonRoman\NbaApi\Request\Data\Cms\Standings\StandingsRequest;
 use JasonRoman\NbaApi\Request\Data\Cms\Stats\TeamRegularSeasonStatsAndRankingsRequest;
 use JasonRoman\NbaApi\Request\Data\Cms\Teams\SportsMetaTeamsRequest;
-use JasonRoman\NbaApi\Request\Data\Cms\TodayRequest;
 use JasonRoman\NbaApi\Response\NbaApiResponse;
 
 /**
@@ -29,16 +29,6 @@ use JasonRoman\NbaApi\Response\NbaApiResponse;
  */
 class DataCmsClient extends AbstractDataClient
 {
-    /**
-     * @param TodayRequest $request
-     * @param array $config
-     * @return NbaApiResponse
-     */
-    public function getToday(TodayRequest $request, array $config = [])
-    {
-        return $this->request($request, $config);
-    }
-
     /**
      * @param BoxscoreRequest $request
      * @param array $config
@@ -95,6 +85,16 @@ class DataCmsClient extends AbstractDataClient
      * @return NbaApiResponse
      */
     public function getRecap(RecapRequest $request, array $config = [])
+    {
+        return $this->request($request, $config);
+    }
+
+    /**
+     * @param TodayRequest $request
+     * @param array $config
+     * @return NbaApiResponse
+     */
+    public function getToday(TodayRequest $request, array $config = [])
     {
         return $this->request($request, $config);
     }

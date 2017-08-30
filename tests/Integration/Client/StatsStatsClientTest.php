@@ -8,7 +8,6 @@ use JasonRoman\NbaApi\Params\Stats\CounterParam;
 use JasonRoman\NbaApi\Params\Stats\DirectionParam;
 use JasonRoman\NbaApi\Params\Stats\EndPeriodParam;
 use JasonRoman\NbaApi\Params\Stats\GameScopeParam;
-use JasonRoman\NbaApi\Params\Stats\PeriodParam;
 use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Params\Stats\PlayerOrTeamParam;
 use JasonRoman\NbaApi\Params\Stats\PlayerScopeParam;

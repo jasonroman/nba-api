@@ -6,7 +6,7 @@ namespace JasonRoman\NbaApi\Params\Data;
 class GameDateParam extends AbstractDataParam
 {
     // format for dates is YYYYMMDD
-    const FORMAT      = '/^\d{4}\d{2}\d{2}$/';
+    const FORMAT      = '/^\d{4}-\d{2}-\d{2}$/';
     const DATE_FORMAT = 'Ymd';
 
     // earliest game date supported by the Data API; the first preseason game of the 2014-2015 season.

@@ -13,7 +13,7 @@ interface NbaApiRequestInterface
     public function getMethod() : string;
 
     /**
-     * Get the request type - essentially where the request is coming from (ex: 'Data', 'Nba', 'Stats')
+     * Get the request type - essentially the domain request is coming from (ex: 'Data', 'Nba', 'Stats')
      *
      * @return string
      */
@@ -32,6 +32,13 @@ interface NbaApiRequestInterface
      * @return string
      */
     public function getEndpoint() : string;
+
+    /**
+     * Retrieve the query params, which are all params minus any that occur as placeholders in the endpoint.
+     *
+     * @return array
+     */
+    public function getQueryParams() : array;
 
     /**
      * Get the default parameter values for this request.

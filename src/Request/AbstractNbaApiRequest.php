@@ -7,6 +7,9 @@ use JasonRoman\NbaApi\Params\AbstractParam;
 
 abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
 {
+    const BASE_NAMESPACE = 'JasonRoman\NbaApi\Request\\';
+    const REQUEST_SUFFIX = 'Request';
+
     const PARAM_DEFAULT_METHOD     = 'getDefaultValue';
     const CONVERT_TO_STRING_METHOD = 'getStringValue';
 
@@ -17,7 +20,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
 
     // default regex looks like the following: /{\K[^}]*(?=})/m
     const REGEX_GET_ENDPOINT_VARS = '/'.
-    self::PLACEHOLDER_START.'\K[^'.self::PLACEHOLDER_END.']*(?='.self::PLACEHOLDER_END.')'.
+        self::PLACEHOLDER_START.'\K[^'.self::PLACEHOLDER_END.']*(?='.self::PLACEHOLDER_END.')'.
     '/m';
 
     /**
@@ -33,7 +36,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
      */
     public function getRequestType() : string
     {
-        return static::REQUEST_TYPE;
+        return static::getDomain();
     }
 
     /**
@@ -46,7 +49,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
             return $this->format;
         }
 
-        return static::RESPONSE_TYPE;
+        return static::DEFAULT_RESPONSE_TYPE;
     }
 
     /**
@@ -57,11 +60,8 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
         // get the endpoint from the request class
         $endpoint = static::ENDPOINT;
 
-        // get all endpoint variables that need replacing
-        preg_match_all(self::REGEX_GET_ENDPOINT_VARS, static::ENDPOINT, $endpointVars);
-
         // remove duplicates
-        $endpointVars = array_unique($endpointVars[0]);
+        $endpointVars = $this->getEndpointVars();
 
         // loop through each endpoint variable and replace the class member value in the endpoint string
         foreach ($endpointVars as $endpointVar) {
@@ -73,6 +73,47 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
         }
 
         return $endpoint;
+    }
+
+    /**
+     * Retrieve the endpoint variables in the URL that get added to the base URL.
+     *
+     * @return string[]
+     */
+    public function getEndpointVars() : array
+    {
+        // get all endpoint variables that need replacing
+        preg_match_all(self::REGEX_GET_ENDPOINT_VARS, static::ENDPOINT, $endpointVars);
+
+        // remove duplicates and return
+        return array_unique($endpointVars[0]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getQueryParams() : array
+    {
+        $queryParams  = [];
+        $endpointVars = $this->getEndpointVars();
+
+        foreach ($this->toArray() as $key => $value) {
+            if (!in_array($key, $endpointVars)) {
+                $queryParams[$key] = $value;
+            }
+        }
+
+        return $queryParams;
+    }
+
+    /**
+     * Retrieve the query param keys, which are all params minus any that occur as placeholders in the endpoint.
+     *
+     * @return string[]
+     */
+    public function getQueryParamKeys() : array
+    {
+        return array_keys($this->getQueryParams());
     }
 
     /**
@@ -218,5 +259,97 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
             // if got here, no specific param class exists, so just cast to string
             $this->$propertyName = AbstractParam::{self::CONVERT_TO_STRING_METHOD}($this->$propertyName);
         }
+    }
+
+    /**
+     * The following functions are all helper functions that get various properties/meta information about a request.
+     * All requests in this library have a domain, section, and category which can be determined from the namespace.
+     */
+
+    /**
+     * Get the namespace left over after removing the base namespace.  All request namespaces should be in this format:
+     *
+     * self::BASE_NAMESPACE\<Domain>\<Section>\<Category>
+     *
+     * @return string
+     * @throws \Exception if the request does not have the base namespace
+     */
+    public static function getMainNamespace(): string
+    {
+        if (substr(static::class, 0, strlen(self::BASE_NAMESPACE)) !== self::BASE_NAMESPACE) {
+            throw new \Exception('Request must have root namespace of '.self::BASE_NAMESPACE);
+        }
+
+        // should never reach here, but just in case...
+        return substr(static::class, strlen(self::BASE_NAMESPACE));
+    }
+
+    /**
+     * Get the namespace parts as an array after removing the base namespace.
+     *
+     * @return array
+     */
+    public static function getMainNamespaceParts(): array
+    {
+        return explode('\\', self::getMainNamespace());
+    }
+
+    /**
+     * Get the request domain given the following format:
+     *  self::BASE_NAMESPACE\<Domain>\<Section>\<Category>\<RequestName>Request
+     *
+     * @return string
+     */
+    public static function getDomain(): string
+    {
+        return self::getMainNamespaceParts()[0];
+    }
+
+    /**
+     * Get the request section given the following format:
+     *  self::BASE_NAMESPACE\<Domain>\<Section>\<Category>\<RequestName>Request
+     *
+     * @return string
+     */
+    public static function getSection(): string
+    {
+        return self::getMainNamespaceParts()[1];
+    }
+
+    /**
+     * Get the request category given the following format:
+     *  self::BASE_NAMESPACE\<Domain>\<Section>\<Category>\<RequestName>Request
+     *
+     * @return string
+     */
+    public static function getCategory(): string
+    {
+        return self::getMainNamespaceParts()[2];
+    }
+
+    /**
+     * Get the request name given the following format:
+     *  self::BASE_NAMESPACE\<Domain>\<Section>\<Category>\<RequestName>Request
+     *
+     * @return string
+     * @throws \Exception if the request class does not end with self::REQUEST_SUFFIX
+     */
+    public static function getRequestName(): string
+    {
+        if (substr(static::class, -strlen(self::REQUEST_SUFFIX)) !== self::REQUEST_SUFFIX) {
+            throw new \Exception('Request class name must end with '.self::REQUEST_SUFFIX);
+        }
+
+        return substr(self::getMainNamespaceParts()[3], 0, strlen(self::REQUEST_SUFFIX));
+    }
+
+    /**
+     * Get the 'short name' of the request class - the class name without namespaces.
+     *
+     * @return string
+     */
+    public static function getClassShortName(): string
+    {
+        return (new \ReflectionClass(static::class))->getShortName();
     }
 }

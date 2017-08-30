@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Data\Cms;
+namespace JasonRoman\NbaApi\Request\Data\Cms\General;
 
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 

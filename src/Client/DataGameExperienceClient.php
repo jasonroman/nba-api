@@ -2,7 +2,7 @@
 
 namespace JasonRoman\NbaApi\Client;
 
-use JasonRoman\NbaApi\Request\Data\GameExperience\BrandsRequest;
+use JasonRoman\NbaApi\Request\Data\GameExperience\General\BrandsRequest;
 use JasonRoman\NbaApi\Request\Data\GameExperience\Team\TeamCoverItLiveRequest;
 use JasonRoman\NbaApi\Request\Data\GameExperience\Team\TeamDefaultRequest;
 use JasonRoman\NbaApi\Response\NbaApiResponse;

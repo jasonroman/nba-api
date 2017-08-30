@@ -9,8 +9,6 @@ use JasonRoman\NbaApi\Response\ResponseType;
  */
 abstract class AbstractApiRequest extends AbstractNbaApiRequest
 {
-    const REQUEST_TYPE  = 'Api';
-
     // default response type for most requests - override for non-JSON requests
-    const RESPONSE_TYPE = ResponseType::JSON;
+    const DEFAULT_RESPONSE_TYPE = ResponseType::JSON;
 }

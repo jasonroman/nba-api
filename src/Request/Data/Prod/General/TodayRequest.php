@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Data\Prod;
+namespace JasonRoman\NbaApi\Request\Data\Prod\General;
 
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 

@@ -10,6 +10,7 @@ use JasonRoman\NbaApi\Request\Data\Prod\Game\MiniBoxscoreRequest;
 use JasonRoman\NbaApi\Request\Data\Prod\Game\PlayByPlayRequest;
 use JasonRoman\NbaApi\Request\Data\Prod\Game\PreviewRequest;
 use JasonRoman\NbaApi\Request\Data\Prod\Game\RecapRequest;
+use JasonRoman\NbaApi\Request\Data\Prod\General\TodayRequest;
 use JasonRoman\NbaApi\Request\Data\Prod\Player\PlayerGameLogRequest;
 use JasonRoman\NbaApi\Request\Data\Prod\Player\PlayerProfileRequest;
 use JasonRoman\NbaApi\Request\Data\Prod\Player\PlayerUberStatsRequest;
@@ -35,7 +36,6 @@ use JasonRoman\NbaApi\Request\Data\Prod\Team\TeamScheduleRequest;
 use JasonRoman\NbaApi\Request\Data\Prod\Team\TeamSchedule2015Request;
 use JasonRoman\NbaApi\Request\Data\Prod\Teams\TeamsConfigRequest;
 use JasonRoman\NbaApi\Request\Data\Prod\Teams\TeamsRequest;
-use JasonRoman\NbaApi\Request\Data\Prod\TodayRequest;
 use JasonRoman\NbaApi\Response\NbaApiResponse;
 
 /**
@@ -44,16 +44,6 @@ use JasonRoman\NbaApi\Response\NbaApiResponse;
  */
 class DataProdClient extends AbstractDataClient
 {
-    /**
-     * @param TodayRequest $request
-     * @param array $config
-     * @return NbaApiResponse
-     */
-    public function getToday(TodayRequest $request, array $config = [])
-    {
-        return $this->request($request, $config);
-    }
-
     /**
      * @param DraftPickRequest $request
      * @param array $config
@@ -130,6 +120,16 @@ class DataProdClient extends AbstractDataClient
      * @return NbaApiResponse
      */
     public function getRecap(RecapRequest $request, array $config = [])
+    {
+        return $this->request($request, $config);
+    }
+
+    /**
+     * @param TodayRequest $request
+     * @param array $config
+     * @return NbaApiResponse
+     */
+    public function getToday(TodayRequest $request, array $config = [])
     {
         return $this->request($request, $config);
     }

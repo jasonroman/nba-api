@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Data\GameExperience;
+namespace JasonRoman\NbaApi\Request\Data\GameExperience\General;
 
 use JasonRoman\NbaApi\Request\AbstractDataRequest;
 

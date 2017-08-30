@@ -117,14 +117,12 @@ abstract class AbstractClient
             ? ['headers' => ['Accept' => ResponseType::ACCEPT_HEADERS[$request->getResponseType()]]]
             : [];
 
-        // @todo - only use 'query' for params that are *not* in placeholders
-
         // return the response from the Guzzle request
         return $this->apiRequest(
             $request->getMethod(),
             $request->getEndpoint(),
             array_merge(
-                ['query' => $request->toArray()],
+                ['query' => $request->getQueryParams()],
                 $config,
                 $acceptHeadersExtra,
                 ['on_stats' => function (TransferStats $stats) {
