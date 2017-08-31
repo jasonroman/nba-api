@@ -8,12 +8,12 @@ use JasonRoman\NbaApi\Params\FormatParam;
 use JasonRoman\NbaApi\Params\Data\LeagueSlugParam;
 use JasonRoman\NbaApi\Params\Data\SeasonTypeCodeParam;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\MobileTeams\AbstractDataMobileTeamsRequest;
 
 /**
  * Get the standings of the pre-season or regular-season.
  */
-class StandingsRequest extends AbstractDataRequest
+class StandingsRequest extends AbstractDataMobileTeamsRequest
 {
     const ENDPOINT =
         '/v2015/{format}/mobile_teams/{leagueSlug}/{year}/{leagueId}_standings_{seasonTypeCode}.{format}';

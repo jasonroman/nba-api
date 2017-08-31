@@ -11,9 +11,9 @@ use JasonRoman\NbaApi\Params\Stats\DirectionParam;
 use JasonRoman\NbaApi\Params\Stats\PlayerOrTeamParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\Stats\SorterParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
-class LeagueGameLogRequest extends AbstractStatsRequest
+class LeagueGameLogRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/leaguegamelog';
 

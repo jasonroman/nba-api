@@ -6,9 +6,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
 use JasonRoman\NbaApi\Params\SeasonIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
-class PlayoffPictureRequest extends AbstractStatsRequest
+class PlayoffPictureRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/playoffpicture';
 

@@ -8,13 +8,13 @@ use JasonRoman\NbaApi\Params\Data\LeagueSlugParam;
 use JasonRoman\NbaApi\Params\Data\MonthNumParam;
 use JasonRoman\NbaApi\Params\FormatParam;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\MobileTeams\AbstractDataMobileTeamsRequest;
 
 /**
  * Get the league schedule for a given month of the year. Note that games from January through the end
  * of the season will still have the season year, not the actual year (year 2016 month 05 would get games in May 2017).
  */
-class LeagueScheduleMonthRequest extends AbstractDataRequest
+class LeagueScheduleMonthRequest extends AbstractDataMobileTeamsRequest
 {
     const ENDPOINT =
         '/v2015/{format}/mobile_teams/{leagueSlug}/{year}/league/{leagueId}_league_schedule_{monthNum}.{format}';

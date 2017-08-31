@@ -4,12 +4,12 @@ namespace JasonRoman\NbaApi\Request\StatsProd\StatsCms\Rotowire;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Params\PlayerIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsProdRequest;
+use JasonRoman\NbaApi\Request\StatsProd\StatsCms\AbstractStatsProdStatsCmsRequest;
 
 /**
  * Get the rotowire for a specific player. Same endpoint but separated out to enforce requesting a specific player.
  */
-class RotowirePlayerRequest extends AbstractStatsProdRequest
+class RotowirePlayerRequest extends AbstractStatsProdStatsCmsRequest
 {
     const ENDPOINT = '/wp-json/statscms/v1/rotowire/player/';
 

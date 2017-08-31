@@ -4,13 +4,13 @@ namespace JasonRoman\NbaApi\Request\Data\Cms\Schedule;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\Cms\AbstractDataCmsRequest;
 use JasonRoman\NbaApi\Params\TeamSlugParam;
 
 /**
  * Get a team's summer league schedule.
  */
-class SummerLeagueScheduleRequest extends AbstractDataRequest
+class SummerLeagueScheduleRequest extends AbstractDataCmsRequest
 {
     const ENDPOINT = '/json/sl/cms/{year}/team/{teamSlug}/schedule.json';
 

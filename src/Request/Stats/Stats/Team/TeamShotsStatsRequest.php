@@ -18,12 +18,12 @@ use JasonRoman\NbaApi\Params\Stats\PeriodParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
 /**
  * @link http://stats.nba.com/team/#!/{teamId}/shots-dash/
  */
-class TeamShotsStatsRequest extends AbstractStatsRequest
+class TeamShotsStatsRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/teamdashptshots';
 

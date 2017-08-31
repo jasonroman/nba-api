@@ -25,14 +25,14 @@ use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\StarterBenchParam;
 use JasonRoman\NbaApi\Params\Stats\WeightParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
 /**
  * Get the count of assists given particular criteria. All values are optional.
  * This endpoint seems pretty pointless, and if no values are specified, I cannot figure out what the defaults are.
  * There is a State Farm Assist Tracker on the NBA homepage, but it does not call this endpoint.
  */
-class AssistTrackerStatsRequest extends AbstractStatsRequest
+class AssistTrackerStatsRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/assisttracker';
 

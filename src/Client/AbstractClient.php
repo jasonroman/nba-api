@@ -126,6 +126,7 @@ abstract class AbstractClient
                 $config,
                 $acceptHeadersExtra,
                 ['on_stats' => function (TransferStats $stats) {
+                    //dump($stats->getRequest());
                     /*dump($stats->getEffectiveUri());
                     dump($stats->getTransferTime());
                     dump($stats->getHandlerStats());

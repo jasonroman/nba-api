@@ -32,9 +32,9 @@ use JasonRoman\NbaApi\Params\Stats\TouchTimeRangeParam;
 use JasonRoman\NbaApi\Params\Stats\WeightParam;
 use JasonRoman\NbaApi\Params\SeasonYearParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
-class PlayersShotStatsRequest extends AbstractStatsRequest
+class PlayersShotStatsRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/leaguedashplayerptshot';
 

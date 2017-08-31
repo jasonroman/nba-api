@@ -21,12 +21,12 @@ use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
 /**
  * This appears to not be publicly available on the stats nba website.
  */
-class TeamShotChartLineupDetailRequest extends AbstractStatsRequest
+class TeamShotChartLineupDetailRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/shotchartlineupdetail';
 

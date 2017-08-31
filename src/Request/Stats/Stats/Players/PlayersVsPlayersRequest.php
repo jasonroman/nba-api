@@ -20,9 +20,9 @@ use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
-class PlayersVsPlayersRequest extends AbstractStatsRequest
+class PlayersVsPlayersRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/playersvsplayers';
 

@@ -3,9 +3,9 @@
 namespace JasonRoman\NbaApi\Request\Data\Prod\Teams;
 
 use Symfony\Component\Validator\Constraints as Assert;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
 
-class TeamsRequest extends AbstractDataRequest
+class TeamsRequest extends AbstractDataProdRequest
 {
     const ENDPOINT = '/prod/v1/{year}/teams.json';
 

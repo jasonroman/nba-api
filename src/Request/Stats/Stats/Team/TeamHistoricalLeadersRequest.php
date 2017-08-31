@@ -7,9 +7,9 @@ use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
 use JasonRoman\NbaApi\Params\SeasonIdParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
-class TeamHistoricalLeadersRequest extends AbstractStatsRequest
+class TeamHistoricalLeadersRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/teamhistoricalleaders';
 

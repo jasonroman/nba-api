@@ -6,12 +6,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\Data\GameDateParam;
 use JasonRoman\NbaApi\Params\GameIdParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\Cms\AbstractDataCmsRequest;
 
 /**
  * Get the play-by-play for a specific period of a game used by the CMS. Valid from 2012-2013 preseason and later.
  */
-class PlayByPlayRequest extends AbstractDataRequest
+class PlayByPlayRequest extends AbstractDataCmsRequest
 {
     const ENDPOINT = '/json/cms/noseason/game/{gameDate}/{gameId}/pbp_{period}.json';
 

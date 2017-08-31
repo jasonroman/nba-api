@@ -6,12 +6,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
 use JasonRoman\NbaApi\Params\SeasonParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
 /**
  * Draft combine player measurements/anthro. WNBA/G-League is supported, but returns the NBA values as its results.
  */
-class DraftCombineStatsRequest extends AbstractStatsRequest
+class DraftCombineStatsRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/draftcombinestats';
 

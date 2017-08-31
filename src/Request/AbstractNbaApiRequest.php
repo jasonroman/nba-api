@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Request;
 
+use Doctrine\Common\Annotations\AnnotationReader;
 use JasonRoman\NbaApi\Params\AbstractParam;
 
 abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
@@ -276,11 +277,50 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
         return static::BASE_URI.static::ENDPOINT;
     }
 
-    public function getParams(): array
+    public function getPublicProperties(): array
     {
         $reflectionClass = new \ReflectionClass($this);
 
         return $reflectionClass->getProperties(\ReflectionProperty::IS_PUBLIC);
+    }
+
+    public function getParamNames(): array
+    {
+        $names = [];
+
+        foreach ($this->getPublicProperties() as $param) {
+            dump($param);
+            /** @var \ReflectionProperty $param */
+            $names[] = $param->getName();
+        }
+
+        return $names;
+    }
+
+    public function getParamInfo($property)
+    {
+        $reflectionProperty = new \ReflectionProperty($this, $property);
+        dump($reflectionProperty);
+        $docComment = $reflectionProperty->getDocComment();
+        $pattern = "/@(\w+)\b(.*)/";
+        preg_match_all($pattern, $docComment, $matches);
+        dump($matches);
+
+        $docBlockUtility = new DocBlockUtility();
+
+        $var = $docBlockUtility->getVar($docComment);
+        dump($var);
+        echo $docBlockUtility->getDescription($docComment);
+
+        echo "<br><br>";
+        var_export($docBlockUtility->getDescription($docComment));
+        $varPattern = "/@var (\w+)\b/";
+        preg_match($varPattern, $docComment, $matches);
+        dump($matches);
+
+        $reader = new AnnotationReader();
+        $annotations = $reader->getPropertyAnnotations($reflectionProperty);
+        dump($annotations);
     }
 
     /**

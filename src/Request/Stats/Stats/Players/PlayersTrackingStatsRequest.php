@@ -29,9 +29,9 @@ use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\Stats\StarterBenchParam;
 use JasonRoman\NbaApi\Params\Stats\WeightParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
-class PlayersTrackingStatsRequest extends AbstractStatsRequest
+class PlayersTrackingStatsRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/leaguedashptstats';
 

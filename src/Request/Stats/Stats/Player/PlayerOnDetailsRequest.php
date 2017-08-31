@@ -19,12 +19,12 @@ use JasonRoman\NbaApi\Params\Stats\PeriodParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
 /**
  * This may not work without errors.
  */
-class PlayerOnDetailsRequest extends AbstractStatsRequest
+class PlayerOnDetailsRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/leagueplayerondetails';
 

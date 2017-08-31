@@ -22,13 +22,13 @@ use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\Stats\ShotClockRangeParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
 /**
  * This gets player game logs along with current ranks in each stat category.
  * Be careful - if player id is left off, this fetches *all* players.
  */
-class PlayerGameLogsStatsRequest extends AbstractStatsRequest
+class PlayerGameLogsStatsRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/playergamelogs';
 

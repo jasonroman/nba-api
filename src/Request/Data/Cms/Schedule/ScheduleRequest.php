@@ -4,13 +4,13 @@ namespace JasonRoman\NbaApi\Request\Data\Cms\Schedule;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\Cms\AbstractDataCmsRequest;
 use JasonRoman\NbaApi\Params\TeamSlugParam;
 
 /**
  * Get a team's schedule - preseason, regular season, and playoffs.
  */
-class ScheduleRequest extends AbstractDataRequest
+class ScheduleRequest extends AbstractDataCmsRequest
 {
     const ENDPOINT = '/json/cms/{year}/team/{teamSlug}/schedule.json';
 

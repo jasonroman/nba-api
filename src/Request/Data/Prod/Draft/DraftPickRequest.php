@@ -3,15 +3,12 @@
 namespace JasonRoman\NbaApi\Request\Data\Prod\Draft;
 
 use Symfony\Component\Validator\Constraints as Assert;
-use JasonRoman\NbaApi\Constraints as ApiAssert;
-use JasonRoman\NbaApi\Params\Data\GameDateParam;
-use JasonRoman\NbaApi\Params\GameIdParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
 
 /**
  * Get basic information on all picks of the draft.
  */
-class DraftPickRequest extends AbstractDataRequest
+class DraftPickRequest extends AbstractDataProdRequest
 {
     const ENDPOINT = '/prod/draft/{year}/draft_pick.json';
 

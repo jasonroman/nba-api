@@ -7,9 +7,9 @@ use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\GLeague\SubdomainTeamSlugParam;
 use JasonRoman\NbaApi\Params\SeasonParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractGLeagueRequest;
+use JasonRoman\NbaApi\Request\GLeague\Api\AbstractGLeagueApiRequest;
 
-class TeamAssignmentsRequest extends AbstractGLeagueRequest
+class TeamAssignmentsRequest extends AbstractGLeagueApiRequest
 {
     const ENDPOINT = '/wp-json/api/v1/assignments.json';
 

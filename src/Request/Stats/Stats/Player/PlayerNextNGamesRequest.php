@@ -11,9 +11,9 @@ use JasonRoman\NbaApi\Params\Stats\MeasureTypeParam;
 use JasonRoman\NbaApi\Params\Stats\NumberOfGamesParam;
 use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
-class PlayerNextNGamesRequest extends AbstractStatsRequest
+class PlayerNextNGamesRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/playernextngames';
 

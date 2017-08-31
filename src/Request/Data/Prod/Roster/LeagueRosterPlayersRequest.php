@@ -3,12 +3,12 @@
 namespace JasonRoman\NbaApi\Request\Data\Prod\Roster;
 
 use Symfony\Component\Validator\Constraints as Assert;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
 
 /**
  * Get all of the players for a given season. This also includes players' overall team history.
  */
-class LeagueRosterPlayersRequest extends AbstractDataRequest
+class LeagueRosterPlayersRequest extends AbstractDataProdRequest
 {
     const ENDPOINT = '/prod/v1/{year}/players.json';
 

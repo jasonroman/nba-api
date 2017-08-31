@@ -11,9 +11,9 @@ use JasonRoman\NbaApi\Params\Stats\PlayerOrTeamParam;
 use JasonRoman\NbaApi\Params\Stats\PlayerScopeParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\Stats\StatTypeParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
-class HomepageRequest extends AbstractStatsRequest
+class HomepageRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/homepagev2';
 

@@ -6,12 +6,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
 use JasonRoman\NbaApi\Params\SeasonParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
 /**
  * Draft combine non-stationary shooting. WNBA/G-League is supported, but currently only NBA returns results.
  */
-class DraftCombineNonStationaryShootingRequest extends AbstractStatsRequest
+class DraftCombineNonStationaryShootingRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/draftcombinenonstationaryshooting';
 

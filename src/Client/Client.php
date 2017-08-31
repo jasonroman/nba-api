@@ -2,12 +2,13 @@
 
 namespace JasonRoman\NbaApi\Client;
 
-use JasonRoman\NbaApi\Request\Data\Bios\Player\PlayerBioRequest;
-use JasonRoman\NbaApi\Response\NbaApiResponse;
+use JasonRoman\NbaApi\Client\Api\ApiLeagueClient;
 
 /**
  * Main Client for ease of use; essentially allows a single client to be used instead of creating
  * the drilled-down client for whatever individual request is being retrieved.
+ *
+ * @todo decide whether to keep this class
  */
 class Client
 {

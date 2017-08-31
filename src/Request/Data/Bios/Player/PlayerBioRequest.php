@@ -3,15 +3,13 @@
 namespace JasonRoman\NbaApi\Request\Data\Bios\Player;
 
 use Symfony\Component\Validator\Constraints as Assert;
-use JasonRoman\NbaApi\Constraints as ApiAssert;
-use JasonRoman\NbaApi\Params\FormatParam;
 use JasonRoman\NbaApi\Params\PlayerIdParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\Bios\AbstractDataBiosRequest;
 
 /**
  * Get the player overall bio.
  */
-class PlayerBioRequest extends AbstractDataRequest
+class PlayerBioRequest extends AbstractDataBiosRequest
 {
     const ENDPOINT = '/json/bios/player_{playerId}.json';
 

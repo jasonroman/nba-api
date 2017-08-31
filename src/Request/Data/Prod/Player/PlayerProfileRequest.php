@@ -4,12 +4,12 @@ namespace JasonRoman\NbaApi\Request\Data\Prod\Player;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Params\PlayerIdParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
 
 /**
  * Get current player information and basic regular season stats for all of the player's seasons.
  */
-class PlayerProfileRequest extends AbstractDataRequest
+class PlayerProfileRequest extends AbstractDataProdRequest
 {
     const ENDPOINT = '/prod/v1/{year}/players/{playerId}_profile.json';
 

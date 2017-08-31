@@ -7,12 +7,12 @@ use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
 use JasonRoman\NbaApi\Params\SeasonParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
 /**
  * Get the players and coaches for a team for a given season. Supports both NBA and G-League.
  */
-class TeamRosterRequest extends AbstractStatsRequest
+class TeamRosterRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/commonteamroster';
 

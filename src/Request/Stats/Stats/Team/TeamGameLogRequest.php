@@ -8,9 +8,9 @@ use JasonRoman\NbaApi\Params\LeagueIdParam;
 use JasonRoman\NbaApi\Params\SeasonParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
-class TeamGameLogRequest extends AbstractStatsRequest
+class TeamGameLogRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/teamgamelog';
 

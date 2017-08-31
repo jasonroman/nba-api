@@ -3,14 +3,14 @@
 namespace JasonRoman\NbaApi\Request\Api\League\Video;
 
 use Symfony\Component\Validator\Constraints as Assert;
-use JasonRoman\NbaApi\Request\AbstractApiRequest;
+use JasonRoman\NbaApi\Request\Api\League\AbstractApiLeagueRequest;
 
 /**
  * Retrieve a collection of videos and their information/ids. Collection id appears to be tied to specific
  * video categories, but there does not seem to be an endpoint that retrieves these categories. Should mark
  * existing ones and see if they change over time.
  */
-class VideoCollectionRequest extends AbstractApiRequest
+class VideoCollectionRequest extends AbstractApiLeagueRequest
 {
     const ENDPOINT = '/0/league/collection/{collectionId}';
 

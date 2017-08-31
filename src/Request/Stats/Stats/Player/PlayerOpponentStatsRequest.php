@@ -22,9 +22,9 @@ use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\Stats\ShotClockRangeParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
-class PlayerOpponentStatsRequest extends AbstractStatsRequest
+class PlayerOpponentStatsRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/playerdashboardbyopponent';
 

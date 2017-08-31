@@ -25,9 +25,9 @@ use JasonRoman\NbaApi\Params\Stats\ShotDistanceRangeParam;
 use JasonRoman\NbaApi\Params\Stats\ShotRangeParam;
 use JasonRoman\NbaApi\Params\Stats\TouchTimeRangeParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
-class TeamsShotStatsRequest extends AbstractStatsRequest
+class TeamsShotStatsRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/leaguedashteamptshot';
 
