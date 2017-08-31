@@ -5,7 +5,7 @@ namespace JasonRoman\NbaApi\Request\Stats\Stats\Scores;
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
 /**
  * Get the scoreboard for the day. This seems to require header 'Referer: http://stats.nba.com/scores/'
@@ -14,7 +14,7 @@ use JasonRoman\NbaApi\Request\AbstractStatsRequest;
  * The dayOffset param is odd; it takes the date you specify and adds that number of days to change the date.
  * This can also be negative to go backward for a number of days. Better off just leaving it as 0.
  */
-class ScoreboardRequest extends AbstractStatsRequest
+class ScoreboardRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/scoreboardv2';
 

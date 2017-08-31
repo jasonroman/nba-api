@@ -4,7 +4,7 @@ namespace JasonRoman\NbaApi\Request\Data\MobileTeams\Roster;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\MobileTeams\AbstractDataMobileTeamsRequest;
 use JasonRoman\NbaApi\Params\Data\LeagueSlugParam;
 use JasonRoman\NbaApi\Params\TeamSlugParam;
 use JasonRoman\NbaApi\Params\FormatParam;
@@ -12,7 +12,7 @@ use JasonRoman\NbaApi\Params\FormatParam;
 /**
  * Get all of the current players on a team for the given league and year/season.
  */
-class TeamRosterRequest extends AbstractDataRequest
+class TeamRosterRequest extends AbstractDataMobileTeamsRequest
 {
     const ENDPOINT = '/v2015/{format}/mobile_teams/{leagueSlug}/{year}/teams/{teamSlug}_roster.{format}';
 

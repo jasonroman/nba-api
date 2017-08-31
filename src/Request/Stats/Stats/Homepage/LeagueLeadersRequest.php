@@ -10,9 +10,9 @@ use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Params\Stats\ScopeParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\Stats\StatParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
-class LeagueLeadersRequest extends AbstractStatsRequest
+class LeagueLeadersRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/leagueleaders';
 

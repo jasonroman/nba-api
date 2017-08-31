@@ -4,7 +4,7 @@ namespace JasonRoman\NbaApi\Request\Data\MobileTeams\Playoffs;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\MobileTeams\AbstractDataMobileTeamsRequest;
 use JasonRoman\NbaApi\Params\Data\LeagueSlugParam;
 use JasonRoman\NbaApi\Params\FormatParam;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
@@ -12,7 +12,7 @@ use JasonRoman\NbaApi\Params\LeagueIdParam;
 /**
  * Get the playoff bracket and game scores. for the given league and season. Seems to just work with NBA for now.
  */
-class PlayoffBracketRequest extends AbstractDataRequest
+class PlayoffBracketRequest extends AbstractDataMobileTeamsRequest
 {
     const ENDPOINT = '/v2015/{format}/mobile_teams/{leagueSlug}/{year}/scores/{leagueId}_playoff_bracket.{format}';
 

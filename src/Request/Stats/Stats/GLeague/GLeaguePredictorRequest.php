@@ -6,9 +6,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\SeasonParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
-class GLeaguePredictorRequest extends AbstractStatsRequest
+class GLeaguePredictorRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/dleaguepredictor';
 

@@ -6,12 +6,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\GameIdParam;
 use JasonRoman\NbaApi\Params\GameEventIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
 /**
  * Get details about a game event; namely the UUID that can be used in Nba\Wsc\Video\VideoRequest to get more details.
  */
-class VideoEventsRequest extends AbstractStatsRequest
+class VideoEventsRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/videoevents';
 

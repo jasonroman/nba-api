@@ -5,12 +5,12 @@ namespace JasonRoman\NbaApi\Request\Data\GameExperience\Team;
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\TeamSlugParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\GameExperience\AbstractDataGameExperienceRequest;
 
 /**
  * Cover-it-live information; seems to just apply to summer league games.
  */
-class TeamCoverItLiveRequest extends AbstractDataRequest
+class TeamCoverItLiveRequest extends AbstractDataGameExperienceRequest
 {
     const ENDPOINT = '/json/ge/{teamSlug}/{year}-coverit-live.json';
 

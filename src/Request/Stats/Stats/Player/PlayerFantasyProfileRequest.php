@@ -10,9 +10,9 @@ use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Params\SeasonParam;
 use JasonRoman\NbaApi\Params\Stats\MeasureTypeParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
-class PlayerFantasyProfileRequest extends AbstractStatsRequest
+class PlayerFantasyProfileRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/playerfantasyprofile';
 

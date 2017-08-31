@@ -6,12 +6,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\Data\GameDateParam;
 use JasonRoman\NbaApi\Params\GameIdParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
 
 /**
  * Get the play-by-play for a specific period of a game. Valid from 2014-2015 season and later.
  */
-class PlayByPlayRequest extends AbstractDataRequest
+class PlayByPlayRequest extends AbstractDataProdRequest
 {
     const ENDPOINT = '/prod/v1/{gameDate}/{gameId}_pbp_{period}.json';
 

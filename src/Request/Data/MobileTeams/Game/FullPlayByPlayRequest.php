@@ -7,12 +7,12 @@ use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\Data\LeagueSlugParam;
 use JasonRoman\NbaApi\Params\FormatParam;
 use JasonRoman\NbaApi\Params\GameIdParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\MobileTeams\AbstractDataMobileTeamsRequest;
 
 /**
  * Get the full play-by-play of a game. This does not restrict per period.
  */
-class FullPlayByPlayRequest extends AbstractDataRequest
+class FullPlayByPlayRequest extends AbstractDataMobileTeamsRequest
 {
     const ENDPOINT = '/v2015/{format}/mobile_teams/{leagueSlug}/{year}/scores/pbp/{gameId}_full_pbp.{format}';
 

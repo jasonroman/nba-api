@@ -7,12 +7,12 @@ use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\Data\LeagueSlugParam;
 use JasonRoman\NbaApi\Params\FormatParam;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\MobileTeams\AbstractDataMobileTeamsRequest;
 
 /**
  * Get the links to league tickets.
  */
-class LeagueTicketsRequest extends AbstractDataRequest
+class LeagueTicketsRequest extends AbstractDataMobileTeamsRequest
 {
     const ENDPOINT = '/v2015/{format}/mobile_teams/{leagueSlug}/{year}/league/{leagueId}_league_tickets.{format}';
 

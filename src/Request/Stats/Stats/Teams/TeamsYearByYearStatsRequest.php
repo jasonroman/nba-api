@@ -8,12 +8,12 @@ use JasonRoman\NbaApi\Params\LeagueIdParam;
 use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
 /**
  * Get a team's year by year stats since the team's inception.
  */
-class TeamsYearByYearStatsRequest extends AbstractStatsRequest
+class TeamsYearByYearStatsRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/teamyearbyyearstats';
 

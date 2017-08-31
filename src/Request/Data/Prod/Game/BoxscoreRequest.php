@@ -6,12 +6,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\Data\GameDateParam;
 use JasonRoman\NbaApi\Params\GameIdParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
 
 /**
  * Get the box score of a game. This includes player statistics. Valid from 2014-2015 preseason and later.
  */
-class BoxscoreRequest extends AbstractDataRequest
+class BoxscoreRequest extends AbstractDataProdRequest
 {
     const ENDPOINT = '/prod/v1/{gameDate}/{gameId}_boxscore.json';
 

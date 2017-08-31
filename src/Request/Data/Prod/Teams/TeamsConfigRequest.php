@@ -3,12 +3,12 @@
 namespace JasonRoman\NbaApi\Request\Data\Prod\Teams;
 
 use Symfony\Component\Validator\Constraints as Assert;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
 
 /**
  * Links to Android/iOS apps, TicketMaster tickets, team website/tickets.
  */
-class TeamsConfigRequest extends AbstractDataRequest
+class TeamsConfigRequest extends AbstractDataProdRequest
 {
     const ENDPOINT = '/prod/{year}/teams_config.json';
 

@@ -4,9 +4,9 @@ namespace JasonRoman\NbaApi\Request\Stats\Feeds\Team;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Feeds\AbstractStatsFeedsRequest;
 
-class TeamProfileRequest extends AbstractStatsRequest
+class TeamProfileRequest extends AbstractStatsFeedsRequest
 {
     const ENDPOINT = '/feeds/teams/profile/{teamId}_TeamProfile.js';
 

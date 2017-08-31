@@ -4,12 +4,12 @@ namespace JasonRoman\NbaApi\Request\Stats\Stats\AllStar;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Params\PlayerIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
 /**
  * This appears to error, possibly just when it is not the regular season.
  */
-class AllStarBallotPredictorRequest extends AbstractStatsRequest
+class AllStarBallotPredictorRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/allstarballotpredictor';
 

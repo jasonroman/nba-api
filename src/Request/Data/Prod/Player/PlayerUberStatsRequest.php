@@ -4,12 +4,12 @@ namespace JasonRoman\NbaApi\Request\Data\Prod\Player;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Params\PlayerIdParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
 
 /**
  * This does not seem to return any actual data besides keys.
  */
-class PlayerUberStatsRequest extends AbstractDataRequest
+class PlayerUberStatsRequest extends AbstractDataProdRequest
 {
     const ENDPOINT = '/prod/v1/{year}/players/{playerId}_profile.json';
 

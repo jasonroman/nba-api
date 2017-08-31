@@ -5,12 +5,12 @@ namespace JasonRoman\NbaApi\Request\Data\Prod\Playoffs;
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\Data\PlayoffSeriesIdParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
 
 /**
  * Get the playoff series leaders for a number of statistical categories.
  */
-class PlayoffSeriesLeadersRequest extends AbstractDataRequest
+class PlayoffSeriesLeadersRequest extends AbstractDataProdRequest
 {
     const ENDPOINT = '/prod/v1/{year}/playoffs_{playoffSeriesId}_leaders.json';
 

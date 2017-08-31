@@ -3,12 +3,12 @@
 namespace JasonRoman\NbaApi\Request\Data\Prod\Roster;
 
 use Symfony\Component\Validator\Constraints as Assert;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
 
 /**
  * Get the All-Star rosters. This includes additional teams like USA vs. World (formerly Rookies vs. Sophomores).
  */
-class AllStarRosterRequest extends AbstractDataRequest
+class AllStarRosterRequest extends AbstractDataProdRequest
 {
     const ENDPOINT = '/prod/v1/allstar/{year}/AS_roster.json';
 

@@ -30,12 +30,12 @@ use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\Stats\StartPeriodParam;
 use JasonRoman\NbaApi\Params\Stats\StartRangeParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
 /**
  * This appears to no longer be publicly available on the stats nba website.
  */
-class PlayerShotChartDetailRequest extends AbstractStatsRequest
+class PlayerShotChartDetailRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/shotchartdetail';
 

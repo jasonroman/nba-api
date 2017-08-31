@@ -7,12 +7,12 @@ use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\Data\LeagueSlugParam;
 use JasonRoman\NbaApi\Params\TeamSlugParam;
 use JasonRoman\NbaApi\Params\FormatParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\MobileTeams\AbstractDataMobileTeamsRequest;
 
 /**
  * Get the coaches of a team.
  */
-class TeamCoachesRequest extends AbstractDataRequest
+class TeamCoachesRequest extends AbstractDataMobileTeamsRequest
 {
     const ENDPOINT = '/v2015/{format}/mobile_teams/{leagueSlug}/{year}/teams/{teamSlug}_coach.{format}';
 

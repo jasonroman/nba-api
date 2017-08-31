@@ -2,9 +2,9 @@
 
 namespace JasonRoman\NbaApi\Request\GLeague\Api\Players;
 
-use JasonRoman\NbaApi\Request\AbstractGLeagueRequest;
+use JasonRoman\NbaApi\Request\GLeague\Api\AbstractGLeagueApiRequest;
 
-class PlayerAssignmentsRequest extends AbstractGLeagueRequest
+class PlayerAssignmentsRequest extends AbstractGLeagueApiRequest
 {
     const ENDPOINT = '/wp-json/api/v1/assignments.json';
 }

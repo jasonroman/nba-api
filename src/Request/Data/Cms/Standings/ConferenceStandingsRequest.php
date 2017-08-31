@@ -3,12 +3,12 @@
 namespace JasonRoman\NbaApi\Request\Data\Cms\Standings;
 
 use Symfony\Component\Validator\Constraints as Assert;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\Cms\AbstractDataCmsRequest;
 
 /**
  * Get the conference standings used by the CMS.
  */
-class ConferenceStandingsRequest extends AbstractDataRequest
+class ConferenceStandingsRequest extends AbstractDataCmsRequest
 {
     const ENDPOINT = '/json/cms/{year}/standings/conference.json';
 

@@ -10,9 +10,9 @@ use JasonRoman\NbaApi\Params\Stats\OverallPickParam;
 use JasonRoman\NbaApi\Params\Stats\RoundNumParam;
 use JasonRoman\NbaApi\Params\Stats\RoundPickParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
-class DraftHistoryRequest extends AbstractStatsRequest
+class DraftHistoryRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/drafthistory';
 

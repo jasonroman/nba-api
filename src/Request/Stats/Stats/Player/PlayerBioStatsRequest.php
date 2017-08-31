@@ -28,9 +28,9 @@ use JasonRoman\NbaApi\Params\Stats\ShotClockRangeParam;
 use JasonRoman\NbaApi\Params\Stats\StarterBenchParam;
 use JasonRoman\NbaApi\Params\Stats\WeightParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
-class PlayerBioStatsRequest extends AbstractStatsRequest
+class PlayerBioStatsRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/leaguedashplayerbiostats';
 

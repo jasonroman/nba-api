@@ -4,13 +4,13 @@ namespace JasonRoman\NbaApi\Request\Data\Prod\Team;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
 use JasonRoman\NbaApi\Params\TeamSlugParam;
 
 /**
  * Get statistical leaders of a team for a given season. Available for 2015.
  */
-class TeamLeaders2015Request extends AbstractDataRequest
+class TeamLeaders2015Request extends AbstractDataProdRequest
 {
     const ENDPOINT = '/prod/v1/{year}/teams/{teamSlug}/leaders.json';
 

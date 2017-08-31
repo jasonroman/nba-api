@@ -30,9 +30,9 @@ use JasonRoman\NbaApi\Params\Stats\StarterBenchParam;
 use JasonRoman\NbaApi\Params\Stats\WeightParam;
 use JasonRoman\NbaApi\Params\SeasonYearParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
-class PlayersShotLocationStatsRequest extends AbstractStatsRequest
+class PlayersShotLocationStatsRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/leaguedashplayershotlocations';
 

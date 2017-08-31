@@ -6,13 +6,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\Data\GameDateParam;
 use JasonRoman\NbaApi\Params\GameIdParam;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
 
 /**
  * Get the tracking of which team is in the lead of a specific period of a game, and by how many points.
  * Valid from 2014-2015 preseason and later.
  */
-class LeadTrackerRequest extends AbstractDataRequest
+class LeadTrackerRequest extends AbstractDataProdRequest
 {
     const ENDPOINT = '/prod/v1/{gameDate}/{gameId}_lead_tracker_{period}.json';
 

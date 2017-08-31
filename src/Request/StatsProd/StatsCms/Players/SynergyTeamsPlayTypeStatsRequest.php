@@ -9,12 +9,12 @@ use JasonRoman\NbaApi\Params\StatsProd\LimitParam;
 use JasonRoman\NbaApi\Params\StatsProd\NamesParam;
 use JasonRoman\NbaApi\Params\StatsProd\SeasonParam;
 use JasonRoman\NbaApi\Params\StatsProd\SeasonTypeParam;
-use JasonRoman\NbaApi\Request\AbstractStatsProdRequest;
+use JasonRoman\NbaApi\Request\StatsProd\StatsCms\AbstractStatsProdStatsCmsRequest;
 
 /**
  * Get teams synergy stats for a particular category.
  */
-class SynergyTeamsPlayTypeStatsRequest extends AbstractStatsProdRequest
+class SynergyTeamsPlayTypeStatsRequest extends AbstractStatsProdStatsCmsRequest
 {
     const ENDPOINT = '/wp-json/statscms/v1/synergy/player/';
 

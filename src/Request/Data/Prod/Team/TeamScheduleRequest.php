@@ -4,13 +4,13 @@ namespace JasonRoman\NbaApi\Request\Data\Prod\Team;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
-use JasonRoman\NbaApi\Request\AbstractDataRequest;
+use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
 use JasonRoman\NbaApi\Params\TeamIdParam;
 
 /**
  * Get the schedule of a team for a given season. Same as other request except uses team id, available from 2016.
  */
-class TeamScheduleRequest extends AbstractDataRequest
+class TeamScheduleRequest extends AbstractDataProdRequest
 {
     const ENDPOINT = '/prod/v1/{year}/teams/{teamId}/schedule.json';
 

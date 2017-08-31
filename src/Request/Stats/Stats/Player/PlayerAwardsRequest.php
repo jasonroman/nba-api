@@ -4,9 +4,9 @@ namespace JasonRoman\NbaApi\Request\Stats\Stats\Player;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Params\PlayerIdParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
-class PlayerAwardsRequest extends AbstractStatsRequest
+class PlayerAwardsRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/playerawards';
 

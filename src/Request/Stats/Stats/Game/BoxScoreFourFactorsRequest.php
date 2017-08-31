@@ -10,9 +10,9 @@ use JasonRoman\NbaApi\Params\Stats\EndRangeParam;
 use JasonRoman\NbaApi\Params\Stats\RangeTypeParam;
 use JasonRoman\NbaApi\Params\Stats\StartPeriodParam;
 use JasonRoman\NbaApi\Params\Stats\StartRangeParam;
-use JasonRoman\NbaApi\Request\AbstractStatsRequest;
+use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
-class BoxScoreFourFactorsRequest extends AbstractStatsRequest
+class BoxScoreFourFactorsRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/boxscorefourfactorsv2';
 
