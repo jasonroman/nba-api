@@ -7,7 +7,7 @@ use JasonRoman\NbaApi\Request\NbaApiRequestInterface;
 
 abstract class AbstractApiClient extends AbstractClient
 {
-    const BASE_URI = 'http://api.nba.net/';
+    const BASE_URI = 'http://api.nba.net';
 
     const CONFIG = [
         'base_uri'        => self::BASE_URI,

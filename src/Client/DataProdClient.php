@@ -15,7 +15,7 @@ use JasonRoman\NbaApi\Request\Data\Prod\Player\PlayerGameLogRequest;
 use JasonRoman\NbaApi\Request\Data\Prod\Player\PlayerProfileRequest;
 use JasonRoman\NbaApi\Request\Data\Prod\Player\PlayerUberStatsRequest;
 use JasonRoman\NbaApi\Request\Data\Prod\Playoffs\PlayoffsBracketRequest;
-use JasonRoman\NbaApi\Request\Data\Prod\Playoffs\PlayoffSeriesLeaders;
+use JasonRoman\NbaApi\Request\Data\Prod\Playoffs\PlayoffSeriesLeadersRequest;
 use JasonRoman\NbaApi\Request\Data\Prod\Roster\AllStarRosterRequest;
 use JasonRoman\NbaApi\Request\Data\Prod\Roster\LeagueRosterCoachesRequest;
 use JasonRoman\NbaApi\Request\Data\Prod\Roster\LeagueRosterPlayersRequest;
@@ -175,11 +175,11 @@ class DataProdClient extends AbstractDataClient
     }
 
     /**
-     * @param PlayoffSeriesLeaders $request
+     * @param PlayoffSeriesLeadersRequest $request
      * @param array $config
      * @return NbaApiResponse
      */
-    public function getPlayoffSeriesLeaders(PlayoffSeriesLeaders $request, array $config = [])
+    public function getPlayoffSeriesLeaders(PlayoffSeriesLeadersRequest $request, array $config = [])
     {
         return $this->request($request, $config);
     }

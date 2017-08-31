@@ -54,6 +54,9 @@ class NbaWscApiClientTest extends BaseClientTestCase
         $this->assertInstanceOf(NbaApiResponse::class, $response);
         $this->assertSame(200, $response->getResponse()->getStatusCode());
 
-        $this->assertTrue($response->getResponse()->getHeader('Content-Type') === ['text/xml; charset=UTF-8']);
+        $this->assertSame(
+            0,
+            strpos('text/xml', $response->getResponse()->getHeader('Content-Type'))
+        );
     }
 }

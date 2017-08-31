@@ -8,7 +8,7 @@ use JasonRoman\NbaApi\Request\NbaApiRequestInterface;
 abstract class AbstractDataClient extends AbstractClient
 {
     // it appears data.nba.com could also be used;
-    const BASE_URI = 'http://data.nba.net/';
+    const BASE_URI = 'http://data.nba.net';
 
     const HEADERS = [
         'Origin' => 'http://data.nba.net',

@@ -7,7 +7,7 @@ use JasonRoman\NbaApi\Params\AbstractParam;
 
 abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
 {
-    const BASE_NAMESPACE = 'JasonRoman\NbaApi\Request\\';
+    const BASE_NAMESPACE = 'JasonRoman\NbaApi\Request';
     const REQUEST_SUFFIX = 'Request';
 
     const PARAM_DEFAULT_METHOD     = 'getDefaultValue';
@@ -26,7 +26,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
     /**
      * {@inheritdoc}
      */
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'GET';
     }
@@ -34,7 +34,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
     /**
      * {@inheritdoc}
      */
-    public function getRequestType() : string
+    public function getRequestType(): string
     {
         return static::getDomain();
     }
@@ -42,7 +42,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
     /**
      * {@inheritdoc}
      */
-    public function getResponseType() : string
+    public function getResponseType(): string
     {
         // if the format parameter exists, use that as the response type, otherwise use the request's default
         if (isset($this->format)) {
@@ -55,7 +55,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
     /**
      * {@inheritdoc}
      */
-    public function getEndpoint() : string
+    public function getEndpoint(): string
     {
         // get the endpoint from the request class
         $endpoint = static::ENDPOINT;
@@ -80,7 +80,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
      *
      * @return string[]
      */
-    public function getEndpointVars() : array
+    public function getEndpointVars(): array
     {
         // get all endpoint variables that need replacing
         preg_match_all(self::REGEX_GET_ENDPOINT_VARS, static::ENDPOINT, $endpointVars);
@@ -92,7 +92,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
     /**
      * {@inheritdoc}
      */
-    public function getQueryParams() : array
+    public function getQueryParams(): array
     {
         $queryParams  = [];
         $endpointVars = $this->getEndpointVars();
@@ -111,7 +111,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
      *
      * @return string[]
      */
-    public function getQueryParamKeys() : array
+    public function getQueryParamKeys(): array
     {
         return array_keys($this->getQueryParams());
     }
@@ -119,7 +119,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
     /**
      * {@inheritdoc}
      */
-    public function getDefaultValues() : array
+    public function getDefaultValues(): array
     {
         return [];
     }
@@ -207,7 +207,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
     /**
      * {@inheritdoc}
      */
-    public function toArray() : array
+    public function toArray(): array
     {
         return (array) $this;
     }
@@ -267,6 +267,21 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
      */
 
     /**
+     * Get the base endpoint for display - the base url plus the main endpoint.
+     *
+     * @return string
+     */
+    public function getFullBaseEndpoint(): string
+    {
+        return static::BASE_URI.static::ENDPOINT;
+    }
+
+    public function getParameters(): array
+    {
+
+    }
+
+    /**
      * Get the namespace left over after removing the base namespace.  All request namespaces should be in this format:
      *
      * self::BASE_NAMESPACE\<Domain>\<Section>\<Category>
@@ -274,14 +289,13 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
      * @return string
      * @throws \Exception if the request does not have the base namespace
      */
-    public static function getMainNamespace(): string
+    public static function getMainNamespaceAndRequest(): string
     {
         if (substr(static::class, 0, strlen(self::BASE_NAMESPACE)) !== self::BASE_NAMESPACE) {
             throw new \Exception('Request must have root namespace of '.self::BASE_NAMESPACE);
         }
 
-        // should never reach here, but just in case...
-        return substr(static::class, strlen(self::BASE_NAMESPACE));
+        return substr(static::class, strlen(self::BASE_NAMESPACE) + 1);
     }
 
     /**
@@ -289,9 +303,9 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
      *
      * @return array
      */
-    public static function getMainNamespaceParts(): array
+    public static function getMainNamespaceAndRequestParts(): array
     {
-        return explode('\\', self::getMainNamespace());
+        return explode('\\', self::getMainNamespaceAndRequest());
     }
 
     /**
@@ -302,7 +316,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
      */
     public static function getDomain(): string
     {
-        return self::getMainNamespaceParts()[0];
+        return self::getMainNamespaceAndRequestParts()[0];
     }
 
     /**
@@ -313,7 +327,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
      */
     public static function getSection(): string
     {
-        return self::getMainNamespaceParts()[1];
+        return self::getMainNamespaceAndRequestParts()[1];
     }
 
     /**
@@ -324,7 +338,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
      */
     public static function getCategory(): string
     {
-        return self::getMainNamespaceParts()[2];
+        return self::getMainNamespaceAndRequestParts()[2];
     }
 
     /**
@@ -340,7 +354,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
             throw new \Exception('Request class name must end with '.self::REQUEST_SUFFIX);
         }
 
-        return substr(self::getMainNamespaceParts()[3], 0, strlen(self::REQUEST_SUFFIX));
+        return substr(self::getMainNamespaceAndRequestParts()[3], 0, -strlen(self::REQUEST_SUFFIX));
     }
 
     /**
@@ -348,7 +362,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
      *
      * @return string
      */
-    public static function getClassShortName(): string
+    public static function getRequestClassShortName(): string
     {
         return (new \ReflectionClass(static::class))->getShortName();
     }
