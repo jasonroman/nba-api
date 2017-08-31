@@ -16,6 +16,8 @@ class ArticleRequest extends AbstractApiRequest
      * @Assert\NotBlank()
      * @Assert\Type("string")
      * @Assert\Uuid(strict = false)
+     *
+     * @var string
      */
     public $articleId;
 }

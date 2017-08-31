@@ -276,9 +276,11 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
         return static::BASE_URI.static::ENDPOINT;
     }
 
-    public function getParameters(): array
+    public function getParams(): array
     {
+        $reflectionClass = new \ReflectionClass($this);
 
+        return $reflectionClass->getProperties(\ReflectionProperty::IS_PUBLIC);
     }
 
     /**
@@ -357,6 +359,11 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
         return substr(self::getMainNamespaceAndRequestParts()[3], 0, -strlen(self::REQUEST_SUFFIX));
     }
 
+    public static function getClassShortName($class): string
+    {
+        return (new \ReflectionClass($class))->getShortName();
+    }
+
     /**
      * Get the 'short name' of the request class - the class name without namespaces.
      *
@@ -364,6 +371,38 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
      */
     public static function getRequestClassShortName(): string
     {
-        return (new \ReflectionClass(static::class))->getShortName();
+        return self::getClassShortName(static::class);
+    }
+
+    public static function getFqcn(): string
+    {
+        return get_called_class();
+    }
+
+    public static function getBaseUri(): string
+    {
+        return static::BASE_URI;
+    }
+
+    public static function getClient(): string
+    {
+        return static::CLIENT;
+    }
+
+    public static function getClientClassShortName(): string
+    {
+        return self::getClassShortName(static::CLIENT);
+    }
+
+    public static function getDefaultResponseType(): string
+    {
+        return static::DEFAULT_RESPONSE_TYPE;
+    }
+
+    public static function getNamespace(): string
+    {
+        $reflector = new \ReflectionClass(get_called_class());
+
+        return $reflector->getNamespaceName();
     }
 }

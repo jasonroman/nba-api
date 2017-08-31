@@ -11,6 +11,7 @@ abstract class AbstractStatsRequest extends AbstractNbaApiRequest
     const DEFAULT_RESPONSE_TYPE = ResponseType::JSON;
 
     const BASE_URI = AbstractStatsClient::BASE_URI;
+    const CLIENT   = AbstractStatsClient::class;
 
     /**
      * Note - it appears the following links are currently broken:

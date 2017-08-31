@@ -38,7 +38,7 @@ class BaseClientTestCase extends TestCase
     /**
      * Tests all public requests of a client; this only tests that a 200 response was received.
      */
-    public function testAllRequests()
+    public function atestAllRequests()
     {
         $requestMethods = $this->getRequestMethods(get_class($this->client));
 

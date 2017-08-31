@@ -10,8 +10,9 @@ use JasonRoman\NbaApi\Response\ResponseType;
  */
 abstract class AbstractDataRequest extends AbstractNbaApiRequest
 {
+    const BASE_URI = AbstractDataClient::BASE_URI;
+    const CLIENT   = AbstractDataClient::class;
+
     // default response type for most requests - override for non-JSON requests
     const DEFAULT_RESPONSE_TYPE = ResponseType::JSON;
-
-    const BASE_URI = AbstractDataClient::BASE_URI;
 }

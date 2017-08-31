@@ -56,7 +56,7 @@ class NbaWscApiClientTest extends BaseClientTestCase
 
         $this->assertSame(
             0,
-            strpos('text/xml', $response->getResponse()->getHeader('Content-Type'))
+            strpos($response->getResponse()->getHeader('Content-Type')[0], 'text/xml')
         );
     }
 }

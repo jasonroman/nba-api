@@ -71,7 +71,7 @@ class DataProdClientTest extends BaseClientTestCase
                 $request->$param = $this->toValue($param, $value);
             }
         }
-
+dump($request);
         $response = $this->client->getGameBook($request);
 
         $this->assertInstanceOf(NbaApiResponse::class, $response);
