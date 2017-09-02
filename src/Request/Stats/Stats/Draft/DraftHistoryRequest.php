@@ -81,10 +81,13 @@ class DraftHistoryRequest extends AbstractStatsStatsRequest
      */
     public $college;
 
-    public function getDefaultValues(): array
+    /**
+     * {@inheritdoc}
+     */
+    public function getExampleValues(): array
     {
-        return [
-            'season' => SeasonYearParam::getDefaultValue(),
-        ];
+        return array_merge(parent::getExampleValues(), [
+            'season' => 2016,
+        ]);
     }
 }

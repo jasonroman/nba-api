@@ -107,4 +107,23 @@ class AllStarBallotPredictorRequest extends AbstractStatsStatsRequest
      * Not sure what this is.
      */
     public $pointCap;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDefaultValues(): array
+    {
+        return array_merge(parent::getDefaultValues(), [
+            'westPlayer1' => 201939,
+            'westPlayer2' => 201566,
+            'westPlayer3' => 202695,
+            'westPlayer4' => 201142,
+            'westPlayer5' => 201935,
+            'eastPlayer1' => 2544,
+            'eastPlayer2' => 201942,
+            'eastPlayer3' => 202681,
+            'eastPlayer4' => 202322,
+            'eastPlayer5' => 203083,
+        ]);
+    }
 }

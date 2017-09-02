@@ -19,4 +19,14 @@ class BoxScoreBreakdownRequest extends AbstractStatsWidgetsRequest
      * @var \DateTime|string if string, format is YYYY-MM-DD
      */
     public $gameDateYmd;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getExampleValues(): array
+    {
+        return [
+            'gameDateYmd' => new \DateTime('2017-01-01'),
+        ];
+    }
 }

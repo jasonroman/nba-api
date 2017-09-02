@@ -16,9 +16,9 @@ abstract class AbstractStatsProdStatsCmsRequest extends AbstractStatsProdRequest
      */
     public function getExampleValues(): array
     {
-        return [
+        return array_merge(parent::getExampleValues(), [
             'season' => 2015,
             'names'  => NamesParam::OFFENSIVE,
-        ];
+        ]);
     }
 }

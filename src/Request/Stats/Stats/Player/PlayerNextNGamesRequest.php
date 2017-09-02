@@ -61,15 +61,4 @@ class PlayerNextNGamesRequest extends AbstractStatsStatsRequest
      * @var int
      */
     public $numberOfGames;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getDefaultValues(): array
-    {
-        return [
-            'seasonType'    => SeasonTypeParam::REGULAR_SEASON,
-            'numberOfGames' => NumberOfGamesParam::DEFAULT_FANTASY_NEXT_N_GAMES,
-        ];
-    }
 }

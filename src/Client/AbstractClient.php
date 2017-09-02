@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Client;
 
@@ -169,7 +168,7 @@ abstract class AbstractClient
      *
      * @return bool
      */
-    public function getValidateRequest() : bool
+    public function getValidateRequest(): bool
     {
         return $this->validateRequest;
     }

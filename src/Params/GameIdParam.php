@@ -11,6 +11,7 @@ class GameIdParam extends AbstractParam
      */
     public static function getExampleValue()
     {
-        return '0021600732'; // 2017-02-01 Toronto @ Boston Regular Season
+        // 2017-02-01 Toronto @ Boston Regular Season
+        return '0021600732';
     }
 }

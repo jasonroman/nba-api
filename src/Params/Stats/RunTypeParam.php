@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Params\Stats;
 
@@ -15,7 +14,7 @@ class RunTypeParam extends AbstractStatsParam
      * {@inheritdoc}
      * @return string
      */
-    public static function getDefaultValue() : string
+    public static function getDefaultValue(): string
     {
         return self::EACH_SECOND;
     }

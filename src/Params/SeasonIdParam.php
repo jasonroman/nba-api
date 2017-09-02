@@ -1,15 +1,15 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Params;
 
 class SeasonIdParam extends AbstractParam
 {
-    const FORMAT               = '/^\d{1}\d{4}$/';
+    const FORMAT = '/^\d{1}\d{4}$/';
 
+    // assuming all-star is 3, @todo should confirm sometime
     const PREFIX_PRESEASON      = 1;
     const PREFIX_REGULAR_SEASON = 2;
-    const PREFIX_ALL_STAR       = 3; // @TODO: need to confirm this somewhere
+    const PREFIX_ALL_STAR       = 3;
     const PREFIX_PLAYOFFS       = 4;
 
     const PREFIXES = [
@@ -44,7 +44,7 @@ class SeasonIdParam extends AbstractParam
     public static function currentSeasonId(int $prefix) : string
     {
         // if August or earlier, the season started from the previous year
-        return self::fromYear(SeasonParam::currentSeasonStartYear());
+        return self::fromYearAndPrefix(SeasonParam::currentSeasonStartYear(), $prefix);
     }
 
     /**
@@ -52,11 +52,11 @@ class SeasonIdParam extends AbstractParam
      *
      * @return int
      */
-    public static function currentSeasonStartYear() : int
+    public static function currentSeasonStartYear(): int
     {
-        // if September or earlier, the season started from the previous year
+        // if earlier than July, the season started from the previous year; summer league counts as the next season
         // NBA has a gap, where it considered a season ending on the last day of the NBA finals
         // but the season start is October 1st; might want to handle this more specifically in the future
-        return (date('n') < 10) ?  (int) (date('Y') - 1) : (int) date('Y');
+        return (date('n') < 7) ? (int) (date('Y') - 1) : (int) date('Y');
     }
 }

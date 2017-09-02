@@ -19,9 +19,9 @@ abstract class AbstractDataMobileTeamsRequest extends AbstractDataRequest
      */
     public function getExampleValues(): array
     {
-        return [
+        return array_merge(parent::getExampleValues(), [
             'seasonTypeCode' => SeasonTypeCodeParam::REGULAR_SEASON,
             'monthNum'       => MonthNumParam::JAN,
-        ];
+        ]);
     }
 }

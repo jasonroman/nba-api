@@ -22,7 +22,7 @@ use JasonRoman\NbaApi\Params\Stats\OutcomeParam;
 use JasonRoman\NbaApi\Params\Stats\PeriodParam;
 use JasonRoman\NbaApi\Params\Stats\PlayerExperienceParam;
 use JasonRoman\NbaApi\Params\Stats\PlayerPositionParam;
-use JasonRoman\NbaApi\Params\Stats\PORoundParam;
+use JasonRoman\NbaApi\Params\Stats\PoRoundParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\Stats\ShotClockRangeParam;
@@ -104,7 +104,7 @@ class TeamsClutchStatsRequest extends AbstractStatsStatsRequest
 
     /**
      * @Assert\Type("int")
-     * @Assert\Range(min = PORoundParam::MIN_ALL, max = PORoundParam::MAX)
+     * @Assert\Range(min = PoRoundParam::MIN_ALL, max = PoRoundParam::MAX)
      *
      * @var int
      */
@@ -299,27 +299,4 @@ class TeamsClutchStatsRequest extends AbstractStatsStatsRequest
      * @var string
      */
     public $starterBench;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getDefaultValues(): array
-    {
-        return [
-            'measureType'    => MeasureTypeParam::BASE,
-            'perMode'        => PerModeParam::PER_GAME,
-            'plusMinus'      => false,
-            'paceAdjust'     => false,
-            'rank'           => false,
-            'poRound'        => PORoundParam::MIN_ALL,
-            'month'          => MonthParam::MIN_ALL,
-            'opponentTeamId' => TeamIdParam::MIN_ALL,
-            'teamId'         => TeamIdParam::MIN_ALL,
-            'period'         => PeriodParam::MIN_ALL,
-            'lastNGames'     => LastNGamesParam::MIN_ALL,
-            'clutchTime'     => ClutchTimeParam::LAST_5_MINUTES,
-            'aheadBehind'    => AheadBehindParam::AHEAD_OR_BEHIND,
-            'pointDiff'      => PointDiffParam::MAX,
-        ];
-    }
 }

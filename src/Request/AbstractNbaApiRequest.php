@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Request;
 
@@ -173,7 +172,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
             }
 
             // set from the example value
-            if ($useExampleValues && ($exampleValue = self::getExampleValue($request, $propertyName))) {
+            if ($useExampleValues && !is_null($exampleValue = self::getExampleValue($request, $propertyName))) {
                 $request->$propertyName = $exampleValue;
 
                 continue;
@@ -201,7 +200,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
      * Get the default value of a parameter according to the priority.
      *
      * @param AbstractNbaApiRequest $request
-     * @param $propertyName
+     * @param string $propertyName
      * @return mixed
      */
     public static function getDefaultValue(AbstractNbaApiRequest $request, $propertyName)
@@ -213,7 +212,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
      * Get the example value of a parameter according to the priority.
      *
      * @param AbstractNbaApiRequest $request
-     * @param $propertyName
+     * @param string $propertyName
      * @return mixed
      */
     public static function getExampleValue(AbstractNbaApiRequest $request, $propertyName)

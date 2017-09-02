@@ -92,19 +92,4 @@ class PlayerFantasyProfileRequest extends AbstractStatsStatsRequest
      * @var int
      */
     public $playerId;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getDefaultValues(): array
-    {
-        return [
-            'measureType'    => MeasureTypeParam::BASE,
-            'perMode'        => PerModeParam::PER_GAME,
-            'plusMinus'      => false,
-            'paceAdjust'     => false,
-            'rank'           => false,
-            'seasonType'     => SeasonTypeParam::REGULAR_SEASON,
-        ];
-    }
 }

@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Params\Stats;
 
@@ -56,4 +55,13 @@ class PerModeParam extends AbstractStatsParam
         self::PER_100_POSSESSIONS,
         self::PER_100_PLAYS,
     ];
+
+    /**
+     * {@inheritdoc}
+     * @return string
+     */
+    public static function getDefaultValue(): string
+    {
+        return self::PER_GAME;
+    }
 }

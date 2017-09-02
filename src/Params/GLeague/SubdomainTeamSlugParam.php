@@ -16,6 +16,6 @@ class SubdomainTeamSlugParam extends AbstractGLeagueParam
      */
     public static function getExampleValue()
     {
-        return TeamSlugParam::GRAND_RAPIDS_DRIVE1;
+        return TeamSlugParam::GRAND_RAPIDS_DRIVE;
     }
 }

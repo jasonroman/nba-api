@@ -1,14 +1,11 @@
-<?php declare(strict_types = 1);
+<?php
 
 namespace JasonRoman\NbaApi\Params\Stats;
 
-class LastNGamesParam extends AbstractStatsParam
+use JasonRoman\NbaApi\Params\TeamIdParam;
+
+class OpponentTeamIdParam extends TeamIdParam
 {
-    const MIN_ALL = 0;
-
-    const MIN = 1;
-    const MAX = 2147483647;
-
     /**
      * {@inheritdoc}
      * @return int

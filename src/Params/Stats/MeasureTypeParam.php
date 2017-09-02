@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Params\Stats;
 
@@ -60,4 +59,13 @@ class MeasureTypeParam extends AbstractStatsParam
         self::SCORING,
         self::USAGE,
     ];
+
+    /**
+     * {@inheritdoc}
+     * @return string
+     */
+    public static function getDefaultValue(): string
+    {
+        return self::BASE;
+    }
 }

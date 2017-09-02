@@ -76,4 +76,14 @@ class LeagueLeadersRequest extends AbstractStatsStatsRequest
      * @var bool
      */
     public $activeFlag;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getExampleValues(): array
+    {
+        return array_merge(parent::getExampleValues(), [
+            'statCategory' => StatParam::POINTS,
+        ]);
+    }
 }

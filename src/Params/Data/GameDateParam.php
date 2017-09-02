@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Params\Data;
 
@@ -48,7 +47,7 @@ class GameDateParam extends AbstractDataParam
      * {@inheritdoc}
      * @return \DateTime
      */
-    public static function getDefaultValue() : \DateTime
+    public static function getDefaultValue(): \DateTime
     {
         return new \DateTime();
     }
@@ -58,6 +57,6 @@ class GameDateParam extends AbstractDataParam
      */
     public static function getExampleValue()
     {
-        return new \DateTime('2017-02-01'); // will be converted to \DateTime as the request expects
+        return new \DateTime('2017-02-01');
     }
 }

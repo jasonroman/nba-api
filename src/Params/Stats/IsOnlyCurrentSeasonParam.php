@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Params\Stats;
 
@@ -9,7 +8,7 @@ class IsOnlyCurrentSeasonParam extends AbstractStatsParam
      * {@inheritdoc}
      * @return int
      */
-    public static function getDefaultValue() : bool
+    public static function getDefaultValue(): bool
     {
         return true;
     }

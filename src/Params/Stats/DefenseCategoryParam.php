@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Params\Stats;
 
@@ -20,4 +19,13 @@ class DefenseCategoryParam extends AbstractStatsParam
         self::LT_10_FEET,
         self::GT_15_FEET,
     ];
+
+    /**
+     * {@inheritdoc}
+     * @return string
+     */
+    public static function getDefaultValue(): string
+    {
+        return self::OVERALL;
+    }
 }

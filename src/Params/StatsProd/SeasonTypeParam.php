@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Params\StatsProd;
 
@@ -17,7 +16,7 @@ class SeasonTypeParam extends AbstractStatsProdParam
      * {@inheritdoc}
      * @return int
      */
-    public static function getDefaultValue() : string
+    public static function getDefaultValue(): string
     {
         return self::REGULAR_SEASON;
     }

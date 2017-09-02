@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Params\StatsProd;
 
@@ -11,7 +10,7 @@ class SeasonParam extends SeasonYearParam
      * {@inheritdoc}
      * @return int
      */
-    public static function getDefaultValue() : int
+    public static function getDefaultValue(): int
     {
         return SeasonParam::currentSeasonStartYear();
     }

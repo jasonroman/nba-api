@@ -38,14 +38,4 @@ class PlayerCareerStatsRequest extends AbstractStatsStatsRequest
      * @var string
      */
     public $leagueId;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getDefaultValues(): array
-    {
-        return [
-            'perMode' => PerModeParam::PER_GAME,
-        ];
-    }
 }

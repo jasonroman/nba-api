@@ -2,9 +2,6 @@
 
 namespace JasonRoman\NbaApi\Params\Data;
 
-/**
- * @todo - check if wnba or dleague/gleague works for any endpoints that use this
- */
 class LeagueSlugParam extends AbstractDataParam
 {
     // nba team codes by abbreviation
@@ -37,7 +34,7 @@ class LeagueSlugParam extends AbstractDataParam
      *
      * @return string
      */
-    public static function getDefaultValue() : string
+    public static function getDefaultValue(): string
     {
         return self::NBA;
     }

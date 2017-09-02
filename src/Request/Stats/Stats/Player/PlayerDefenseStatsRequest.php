@@ -176,20 +176,4 @@ class PlayerDefenseStatsRequest extends AbstractStatsStatsRequest
      * @var int
      */
     public $lastNGames;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getDefaultValues(): array
-    {
-        return [
-            'perMode'        => PerModeParam::PER_GAME,
-            'seasonType'     => SeasonTypeParam::REGULAR_SEASON,
-            'teamId'         => MonthParam::MIN_ALL,
-            'month'          => MonthParam::MIN_ALL,
-            'opponentTeamId' => TeamIdParam::MIN_ALL,
-            'period'         => PeriodParam::MIN_ALL,
-            'lastNGames'     => LastNGamesParam::MIN_ALL,
-        ];
-    }
 }

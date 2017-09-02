@@ -42,14 +42,4 @@ class ScoreboardMiniRequest extends AbstractStatsStatsRequest
      * @var int
      */
     public $dayOffset;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getDefaultValues(): array
-    {
-        return [
-            'dayOffset' => 0,
-        ];
-    }
 }

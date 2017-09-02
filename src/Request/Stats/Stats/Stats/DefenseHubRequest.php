@@ -69,4 +69,14 @@ class DefenseHubRequest extends AbstractStatsStatsRequest
      * @var string
      */
     public $playerOrTeam;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getExampleValues(): array
+    {
+        return array_merge(parent::getExampleValues(), [
+            'gameScope' => GameScopeParam::SEASON,
+        ]);
+    }
 }

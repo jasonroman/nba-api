@@ -151,20 +151,4 @@ class TeamPassesStatsRequest extends AbstractStatsStatsRequest
      * @var int
      */
     public $lastNGames;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getDefaultValues(): array
-    {
-        return [
-            'perMode'        => PerModeParam::PER_GAME,
-            'season'         => SeasonParam::currentSeason(),
-            'seasonType'     => SeasonTypeParam::REGULAR_SEASON,
-            'teamId'         => TeamIdParam::MIN_ALL,
-            'month'          => MonthParam::MIN_ALL,
-            'opponentTeamId' => TeamIdParam::MIN_ALL,
-            'lastNGames'     => LastNGamesParam::MIN_ALL,
-        ];
-    }
 }

@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Params\Stats;
 
@@ -14,4 +13,13 @@ class AheadBehindParam extends AbstractStatsParam
         self::BEHIND_OR_TIED,
         self::AHEAD_OR_TIED,
     ];
+
+    /**
+     * {@inheritdoc}
+     * @return string
+     */
+    public static function getDefaultValue(): string
+    {
+        return self::AHEAD_OR_BEHIND;
+    }
 }

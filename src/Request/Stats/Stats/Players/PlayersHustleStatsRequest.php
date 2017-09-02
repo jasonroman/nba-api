@@ -17,7 +17,7 @@ use JasonRoman\NbaApi\Params\Stats\OutcomeParam;
 use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Params\Stats\PlayerExperienceParam;
 use JasonRoman\NbaApi\Params\Stats\PlayerPositionParam;
-use JasonRoman\NbaApi\Params\Stats\PORoundParam;
+use JasonRoman\NbaApi\Params\Stats\PoRoundParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\Stats\WeightParam;
@@ -66,7 +66,7 @@ class PlayersHustleStatsRequest extends AbstractStatsStatsRequest
 
     /**
      * @Assert\Type("int")
-     * @Assert\Range(min = PORoundParam::MIN_ALL, max = PORoundParam::MAX)
+     * @Assert\Range(min = PoRoundParam::MIN_ALL, max = PoRoundParam::MAX)
      *
      * @var int
      */

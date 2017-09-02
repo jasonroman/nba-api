@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Params\Stats;
 
@@ -19,7 +18,11 @@ class ScopeParam extends AbstractStatsParam
         self::ROOKIES,
     ];
 
-    public static function getDefaultValue()
+    /**
+     * {@inheritdoc}
+     * @return string
+     */
+    public static function getDefaultValue(): string
     {
         return self::ALL;
     }

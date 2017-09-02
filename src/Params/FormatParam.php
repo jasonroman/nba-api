@@ -22,7 +22,7 @@ class FormatParam extends AbstractParam
      * {@inheritdoc}
      * @return string
      */
-    public static function getDefaultValue() : string
+    public static function getDefaultValue(): string
     {
         return self::JSON;
     }

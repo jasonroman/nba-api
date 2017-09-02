@@ -36,4 +36,15 @@ class GLeaguePredictorRequest extends AbstractStatsStatsRequest
      * @var int
      */
     public $dLeagueTeamId;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getExampleValues(): array
+    {
+        return array_merge(parent::getExampleValues(), [
+            'nbaTeamId'     => TeamIdParam::DETROIT_PISTONS,
+            'dLeagueTeamId' => TeamIdParam::GRAND_RAPIDS_DRIVE,
+        ]);
+    }
 }

@@ -37,8 +37,8 @@ class TeamLeaders2015Request extends AbstractDataProdRequest
      */
     public function getExampleValues(): array
     {
-        return [
+        return array_merge(parent::getExampleValues(), [
             'year' => 2015,
-        ];
+        ]);
     }
 }

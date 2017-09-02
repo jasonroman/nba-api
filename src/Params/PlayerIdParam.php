@@ -18,6 +18,7 @@ class PlayerIdParam extends AbstractParam
      */
     public static function getExampleValue()
     {
-        return 201939; // steph curry
+        // steph curry
+        return 201939;
     }
 }

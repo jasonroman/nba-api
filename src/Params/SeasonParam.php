@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Params;
 
@@ -31,7 +30,7 @@ class SeasonParam extends AbstractParam
      *
      * @return string
      */
-    public static function currentSeason() : string
+    public static function currentSeason(): string
     {
         // if August or earlier, the season started from the previous year
         return self::fromYear(self::currentSeasonStartYear());
@@ -42,7 +41,7 @@ class SeasonParam extends AbstractParam
      *
      * @return int
      */
-    public static function currentSeasonStartYear() : int
+    public static function currentSeasonStartYear(): int
     {
         // if September or earlier, the season started from the previous year
         // NBA has a gap, where it considered a season ending on the last day of the NBA finals
@@ -54,7 +53,7 @@ class SeasonParam extends AbstractParam
      * {@inheritdoc}
      * @return string
      */
-    public static function getDefaultValue() : string
+    public static function getDefaultValue(): string
     {
         return self::currentSeason();
     }

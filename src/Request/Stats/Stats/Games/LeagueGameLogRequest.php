@@ -93,4 +93,17 @@ class LeagueGameLogRequest extends AbstractStatsStatsRequest
      * @var \DateTime|string if string, format is YYYY-MM-DD
      */
     public $dateTo;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getExampleValues(): array
+    {
+        return array_merge(parent::getExampleValues(), [
+            'playerOrTeam' => PlayerOrTeamParam::PLAYER_ABBREV,
+            'counter'      => CounterParam::MIN_ALL,
+            'sorter'       => SorterParam::POINTS,
+            'direction'    => DirectionParam::ASC,
+        ]);
+    }
 }

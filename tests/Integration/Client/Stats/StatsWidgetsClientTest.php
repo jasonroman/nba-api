@@ -7,12 +7,6 @@ use JasonRoman\NbaApi\Tests\Integration\Client\BaseClientTestCase;
 
 class StatsWidgetsClientTest extends BaseClientTestCase
 {
-    const REQUEST_PARAMS = [
-        'getBoxScoreBreakdown' => [
-            'gameDateYmd' => '2017-01-01',
-        ],
-    ];
-
     /**
      * @var StatsWidgetsClient
      */

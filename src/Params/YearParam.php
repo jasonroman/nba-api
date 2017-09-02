@@ -10,7 +10,7 @@ class YearParam extends AbstractParam
      * {@inheritdoc}
      * @return int
      */
-    public static function getDefaultValue() : int
+    public static function getDefaultValue(): int
     {
         return SeasonParam::currentSeasonStartYear();
     }

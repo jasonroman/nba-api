@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Params\Stats;
 
@@ -17,4 +16,13 @@ class DistanceRangeParam extends AbstractStatsParam
         self::RANGE_8_FOOT,
         self::RANGE_ZONE,
     ];
+
+    /**
+     * {@inheritdoc}
+     * @return string
+     */
+    public static function getDefaultValue(): string
+    {
+        return self::RANGE_5_FOOT;
+    }
 }

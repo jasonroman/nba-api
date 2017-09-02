@@ -304,15 +304,22 @@ class PlayerShotChartDetailRequest extends AbstractStatsStatsRequest
      */
     public function getDefaultValues(): array
     {
-        return [
-            'leagueId'       => LeagueIdParam::NBA,
-            'seasonType'     => SeasonTypeParam::REGULAR_SEASON,
-            'perMode'        => PerModeParam::PER_GAME,
-            'teamId'         => TeamIdParam::MIN_ALL,
-            'month'          => MonthParam::MIN_ALL,
-            'opponentTeamId' => TeamIdParam::MIN_ALL,
-            'period'         => PeriodParam::MIN_ALL,
-            'lastNGames'     => LastNGamesParam::MIN_ALL,
-        ];
+        // for some reason none of these are required, so do not set them
+        return array_merge(parent::getDefaultValues(), [
+            'clutchTime'  => null,
+            'aheadBehind' => null,
+            'pointDiff'   => null,
+        ]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getExampleValues(): array
+    {
+        return array_merge(parent::getExampleValues(), [
+            'startPeriod' => StartPeriodParam::MIN_ALT,
+            'endPeriod'   => EndPeriodParam::MAX_ALT,
+        ]);
     }
 }

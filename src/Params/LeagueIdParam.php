@@ -53,7 +53,7 @@ class LeagueIdParam extends AbstractParam
      *
      * @return string
      */
-    public static function getDefaultValue() : string
+    public static function getDefaultValue(): string
     {
         return self::NBA;
     }

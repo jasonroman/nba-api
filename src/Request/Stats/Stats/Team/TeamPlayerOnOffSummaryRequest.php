@@ -199,24 +199,4 @@ class TeamPlayerOnOffSummaryRequest extends AbstractStatsStatsRequest
      * @var int
      */
     public $lastNGames;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getDefaultValues(): array
-    {
-        return [
-            'measureType'    => MeasureTypeParam::BASE,
-            'perMode'        => PerModeParam::PER_GAME,
-            'plusMinus'      => false,
-            'paceAdjust'     => false,
-            'rank'           => false,
-            'season'         => SeasonParam::currentSeason(),
-            'seasonType'     => SeasonTypeParam::REGULAR_SEASON,
-            'month'          => MonthParam::MIN_ALL,
-            'opponentTeamId' => TeamIdParam::MIN_ALL,
-            'period'         => PeriodParam::MIN_ALL,
-            'lastNGames'     => LastNGamesParam::MIN_ALL,
-        ];
-    }
 }

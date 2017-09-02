@@ -9,7 +9,6 @@ use JasonRoman\NbaApi\Params\SeasonParam;
 use JasonRoman\NbaApi\Params\SeasonYearParam;
 use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Params\Stats\ConferenceParam;
-use JasonRoman\NbaApi\Params\Stats\DefenseCategoryParam;
 use JasonRoman\NbaApi\Params\Stats\DivisionParam;
 use JasonRoman\NbaApi\Params\Stats\DraftPickParam;
 use JasonRoman\NbaApi\Params\Stats\GameScopeParam;
@@ -18,12 +17,11 @@ use JasonRoman\NbaApi\Params\Stats\LastNGamesParam;
 use JasonRoman\NbaApi\Params\Stats\LocationParam;
 use JasonRoman\NbaApi\Params\Stats\MonthParam;
 use JasonRoman\NbaApi\Params\Stats\OutcomeParam;
-use JasonRoman\NbaApi\Params\Stats\PeriodParam;
 use JasonRoman\NbaApi\Params\Stats\PlayerExperienceParam;
 use JasonRoman\NbaApi\Params\Stats\PlayerOrTeamParam;
 use JasonRoman\NbaApi\Params\Stats\PlayerPositionParam;
 use JasonRoman\NbaApi\Params\Stats\PtMeasureTypeParam;
-use JasonRoman\NbaApi\Params\Stats\PORoundParam;
+use JasonRoman\NbaApi\Params\Stats\PoRoundParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\Stats\StarterBenchParam;
@@ -83,7 +81,7 @@ class PlayersTrackingStatsRequest extends AbstractStatsStatsRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = PORoundParam::MIN_ALL, max = PORoundParam::MAX)
+     * @Assert\Range(min = PoRoundParam::MIN_ALL, max = PoRoundParam::MAX)
      *
      * @var int
      */
@@ -285,16 +283,10 @@ class PlayersTrackingStatsRequest extends AbstractStatsStatsRequest
     /**
      * {@inheritdoc}
      */
-    public function getDefaultValues(): array
+    public function getExampleValues(): array
     {
-        return [
-            'perMode'         => PerModeParam::PER_GAME,
-            'seasonType'      => SeasonTypeParam::REGULAR_SEASON,
-            'poRound'         => PORoundParam::MIN_ALL,
-            'teamId'          => TeamIdParam::MIN_ALL,
-            'month'           => MonthParam::MIN_ALL,
-            'opponentTeamId'  => TeamIdParam::MIN_ALL,
-            'lastNGames'      => LastNGamesParam::MIN_ALL,
-        ];
+        return array_merge(parent::getExampleValues(), [
+            'ptMeasureType' => PtMeasureTypeParam::REBOUNDING,
+        ]);
     }
 }

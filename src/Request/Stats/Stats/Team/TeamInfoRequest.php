@@ -47,14 +47,4 @@ class TeamInfoRequest extends AbstractStatsStatsRequest
      * @var int
      */
     public $teamId;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getDefaultValues(): array
-    {
-        return [
-            'leagueId' => LeagueIdParam::NBA,
-        ];
-    }
 }

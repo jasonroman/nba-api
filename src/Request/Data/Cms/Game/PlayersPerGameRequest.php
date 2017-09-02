@@ -10,7 +10,6 @@ use JasonRoman\NbaApi\Request\Data\Cms\AbstractDataCmsRequest;
 /**
  * This seems to get current per-game averages of all players involved with the specified game.
  * The averages appear to be player averages for the current season/type (ex: 2016 regular season).
- * @TODO figure out earliest game later
  */
 class PlayersPerGameRequest extends AbstractDataCmsRequest
 {

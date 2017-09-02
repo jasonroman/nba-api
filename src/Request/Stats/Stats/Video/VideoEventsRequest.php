@@ -32,4 +32,14 @@ class VideoEventsRequest extends AbstractStatsStatsRequest
      * @var int
      */
     public $gameEventId;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getExampleValues(): array
+    {
+        return array_merge(parent::getExampleValues(), [
+            'gameEventId' => 1,
+        ]);
+    }
 }

@@ -19,9 +19,9 @@ abstract class AbstractDataProdRequest extends AbstractDataRequest
      */
     public function getExampleValues(): array
     {
-        return [
+        return array_merge(parent::getExampleValues(), [
             'period'          => PeriodParam::MIN,
             'playoffSeriesId' => PlayoffSeriesIdParam::OPTIONS[0],
-        ];
+        ]);
     }
 }

@@ -49,14 +49,4 @@ class PlayerFantasyProfileBarGraphRequest extends AbstractStatsStatsRequest
      * @var int
      */
     public $playerId;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getDefaultValues(): array
-    {
-        return [
-            'seasonType' => SeasonTypeParam::REGULAR_SEASON,
-        ];
-    }
 }

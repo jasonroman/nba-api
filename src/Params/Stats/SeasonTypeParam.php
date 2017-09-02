@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Params\Stats;
 
@@ -31,4 +30,13 @@ class SeasonTypeParam extends AbstractStatsParam
         self::ALL_STAR,
         self::ALL_STAR_ALT,
     ];
+
+    /**
+     * {@inheritdoc}
+     * @return int
+     */
+    public static function getDefaultValue(): string
+    {
+        return self::REGULAR_SEASON;
+    }
 }

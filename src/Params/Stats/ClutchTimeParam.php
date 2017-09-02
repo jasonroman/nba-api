@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Params\Stats;
 
@@ -22,4 +21,13 @@ class ClutchTimeParam extends AbstractStatsParam
         self::LAST_30_SECONDS,
         self::LAST_10_SECONDS,
     ];
+
+    /**
+     * {@inheritdoc}
+     * @return string
+     */
+    public static function getDefaultValue(): string
+    {
+        return self::LAST_5_MINUTES;
+    }
 }

@@ -213,19 +213,10 @@ class PlayerVsPlayerRequest extends AbstractStatsStatsRequest
     /**
      * {@inheritdoc}
      */
-    public function getDefaultValues(): array
+    public function getExampleValues(): array
     {
-        return [
-            'measureType'    => MeasureTypeParam::BASE,
-            'perMode'        => PerModeParam::PER_GAME,
-            'plusMinus'      => false,
-            'paceAdjust'     => false,
-            'rank'           => false,
-            'seasonType'     => SeasonTypeParam::REGULAR_SEASON,
-            'month'          => MonthParam::MIN_ALL,
-            'opponentTeamId' => TeamIdParam::MIN_ALL,
-            'period'         => PeriodParam::MIN_ALL,
-            'lastNGames'     => LastNGamesParam::MIN_ALL,
-        ];
+        return array_merge(parent::getExampleValues(), [
+            'vsPlayerId' => 2544,
+        ]);
     }
 }

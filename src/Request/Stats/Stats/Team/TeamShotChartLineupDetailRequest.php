@@ -205,18 +205,10 @@ class TeamShotChartLineupDetailRequest extends AbstractStatsStatsRequest
     /**
      * {@inheritdoc}
      */
-    public function getDefaultValues(): array
+    public function getExampleValues(): array
     {
-        return [
-            'leagueId'       => LeagueIdParam::NBA,
-            'season'         => SeasonParam::currentSeason(),
-            'seasonType'     => SeasonTypeParam::REGULAR_SEASON,
-            'perMode'        => PerModeParam::PER_GAME,
-            'teamId'         => TeamIdParam::MIN_ALL,
-            'month'          => MonthParam::MIN_ALL,
-            'opponentTeamId' => TeamIdParam::MIN_ALL,
-            'period'         => PeriodParam::MIN_ALL,
-            'lastNGames'     => LastNGamesParam::MIN_ALL,
-        ];
+        return array_merge(parent::getExampleValues(), [
+            'group_id' => '0',
+        ]);
     }
 }

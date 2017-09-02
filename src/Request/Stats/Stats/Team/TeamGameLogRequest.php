@@ -62,15 +62,4 @@ class TeamGameLogRequest extends AbstractStatsStatsRequest
      * @var \DateTime|string if string, format is YYYY-MM-DD
      */
     public $dateTo;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getDefaultValues(): array
-    {
-        return [
-            'season'     => SeasonParam::currentSeason(),
-            'seasonType' => SeasonTypeParam::REGULAR_SEASON,
-        ];
-    }
 }

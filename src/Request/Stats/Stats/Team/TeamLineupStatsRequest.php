@@ -18,7 +18,7 @@ use JasonRoman\NbaApi\Params\Stats\MonthParam;
 use JasonRoman\NbaApi\Params\Stats\OutcomeParam;
 use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Params\Stats\PeriodParam;
-use JasonRoman\NbaApi\Params\Stats\PORoundParam;
+use JasonRoman\NbaApi\Params\Stats\PoRoundParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonSegmentParam;
 use JasonRoman\NbaApi\Params\Stats\ShotClockRangeParam;
@@ -99,7 +99,7 @@ class TeamLineupStatsRequest extends AbstractStatsStatsRequest
 
     /**
      * @Assert\Type("int")
-     * @Assert\Range(min = PORoundParam::MIN_ALL, max = PORoundParam::MAX)
+     * @Assert\Range(min = PoRoundParam::MIN_ALL, max = PoRoundParam::MAX)
      *
      * @var int
      */
@@ -237,25 +237,4 @@ class TeamLineupStatsRequest extends AbstractStatsStatsRequest
      * @var string
      */
     public $gameId;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getDefaultValues(): array
-    {
-        return [
-            'measureType'    => MeasureTypeParam::BASE,
-            'plusMinus'      => false,
-            'paceAdjust'     => false,
-            'rank'           => false,
-            'season'         => SeasonParam::currentSeason(),
-            'seasonType'     => SeasonTypeParam::REGULAR_SEASON,
-            'poRound'        => PORoundParam::MIN_ALL,
-            'month'          => MonthParam::MIN_ALL,
-            'opponentTeamId' => TeamIdParam::MIN_ALL,
-            'period'         => PeriodParam::MIN_ALL,
-            'lastNGames'     => LastNGamesParam::MIN_ALL,
-            'groupQuantity'  => GroupQuantityParam::MAX,
-        ];
-    }
 }

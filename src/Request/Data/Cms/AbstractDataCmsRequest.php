@@ -19,9 +19,9 @@ abstract class AbstractDataCmsRequest extends AbstractDataRequest
      */
     public function getExampleValues(): array
     {
-        return [
+        return array_merge(parent::getExampleValues(), [
             'period'             => PeriodParam::MIN,
             'summerLeagueAbbrev' => SummerLeagueAbbrevParam::ORLANDO,
-        ];
+        ]);
     }
 }

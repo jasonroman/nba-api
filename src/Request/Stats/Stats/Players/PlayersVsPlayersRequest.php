@@ -321,25 +321,28 @@ class PlayersVsPlayersRequest extends AbstractStatsStatsRequest
      */
     public function getDefaultValues(): array
     {
-        return [
-            'measureType'    => MeasureTypeParam::BASE,
-            'perMode'        => PerModeParam::PER_GAME,
-            'plusMinus'      => false,
-            'paceAdjust'     => false,
-            'rank'           => false,
-            'seasonType'     => SeasonTypeParam::REGULAR_SEASON,
-            'playerId2'      => PlayerIdParam::NONE,
-            'playerId3'      => PlayerIdParam::NONE,
-            'playerId4'      => PlayerIdParam::NONE,
-            'playerId5'      => PlayerIdParam::NONE,
-            'month'          => MonthParam::MIN_ALL,
-            'opponentTeamId' => TeamIdParam::MIN_ALL,
-            'period'         => PeriodParam::MIN_ALL,
-            'lastNGames'     => LastNGamesParam::MIN_ALL,
-            'vsPlayerId2'    => PlayerIdParam::NONE,
-            'vsPlayerId3'    => PlayerIdParam::NONE,
-            'vsPlayerId4'    => PlayerIdParam::NONE,
-            'vsPlayerId5'    => PlayerIdParam::NONE,
-        ];
+        return array_merge(parent::getDefaultValues(), [
+            'playerId2'   => PlayerIdParam::NONE,
+            'playerId3'   => PlayerIdParam::NONE,
+            'playerId4'   => PlayerIdParam::NONE,
+            'playerId5'   => PlayerIdParam::NONE,
+            'vsPlayerId2' => PlayerIdParam::NONE,
+            'vsPlayerId3' => PlayerIdParam::NONE,
+            'vsPlayerId4' => PlayerIdParam::NONE,
+            'vsPlayerId5' => PlayerIdParam::NONE,
+        ]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getExampleValues(): array
+    {
+        return array_merge(parent::getExampleValues(), [
+            'playerTeamId' => TeamIdParam::GOLDEN_STATE_WARRIORS,
+            'playerId1'    => 201939,
+            'vsTeamId'     => TeamIdParam::CLEVELAND_CAVALIERS,
+            'vsPlayerId1'  => 2544,
+        ]);
     }
 }

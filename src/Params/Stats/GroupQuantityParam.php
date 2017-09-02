@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Params\Stats;
 
@@ -17,7 +16,7 @@ class GroupQuantityParam extends AbstractStatsParam
      * {@inheritdoc}
      * @return int
      */
-    public static function getDefaultValue()
+    public static function getDefaultValue(): int
     {
         return self::MAX;
     }
