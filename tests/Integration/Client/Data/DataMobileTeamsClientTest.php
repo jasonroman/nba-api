@@ -9,11 +9,6 @@ use JasonRoman\NbaApi\Tests\Integration\Client\BaseClientTestCase;
 
 class DataMobileTeamsClientTest extends BaseClientTestCase
 {
-    const DEFAULT_PARAMS = [
-        'seasonTypeCode' => SeasonTypeCodeParam::REGULAR_SEASON,
-        'monthNum'       => MonthNumParam::JAN,
-    ];
-
     /**
      * @var DataMobileTeamsClient
      */

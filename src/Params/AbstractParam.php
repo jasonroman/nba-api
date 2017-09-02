@@ -17,6 +17,16 @@ class AbstractParam
     }
 
     /**
+     * Override this method in individual param classes to provide an example value if none is specified.
+     *
+     * @return mixed|null
+     */
+    public static function getExampleValue()
+    {
+        return null;
+    }
+
+    /**
      * Override this method in individual param classes to provide a way to convert the param value to a string.
      *
      * @param mixed $value

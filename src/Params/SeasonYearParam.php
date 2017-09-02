@@ -2,7 +2,7 @@
 
 namespace JasonRoman\NbaApi\Params;
 
-class SeasonYearParam
+class SeasonYearParam extends AbstractParam
 {
     const FORMAT = '/^\d{4}$/';
 

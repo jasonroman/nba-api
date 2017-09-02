@@ -32,4 +32,15 @@ class PreviewRequest extends AbstractDataProdRequest
      * @var string
      */
     public $gameId;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getExampleValues(): array
+    {
+        return [
+            'gameDate' => new \DateTime('2015-02-01'),
+            'gameId'   => '0021400717',
+        ];
+    }
 }

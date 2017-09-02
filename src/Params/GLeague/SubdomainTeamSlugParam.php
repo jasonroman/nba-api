@@ -10,4 +10,12 @@ use JasonRoman\NbaApi\Params\TeamSlugParam;
 class SubdomainTeamSlugParam extends AbstractGLeagueParam
 {
     const OPTIONS = TeamSlugParam::OPTIONS_G_LEAGUE;
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function getExampleValue()
+    {
+        return TeamSlugParam::GRAND_RAPIDS_DRIVE1;
+    }
 }

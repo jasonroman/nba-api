@@ -31,4 +31,14 @@ class TeamLeaders2015Request extends AbstractDataProdRequest
      * @var string
      */
     public $teamSlug;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getExampleValues(): array
+    {
+        return [
+            'year' => 2015,
+        ];
+    }
 }

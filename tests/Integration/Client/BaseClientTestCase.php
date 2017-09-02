@@ -11,17 +11,6 @@ class BaseClientTestCase extends TestCase
 {
     const REQUEST_METHOD_PREFIX = 'get';
 
-    const DEFAULT_PARAMS = [
-        'playerId' => 201939, // steph curry
-        'teamId'   => TeamIdParam::DETROIT_PISTONS,
-        'teamSlug' => 'pistons',
-        'gameDate' => '2017-02-01', // will be converted to \DateTime as the request expects
-        'gameId'   => '0021600732', // 2017-02-01 Toronto @ Boston Regular Season
-        'year'     => 2016,
-    ];
-
-    const REQUEST_PARAMS = [];
-
     /**
      * @var AbstractNbaClient
      */
@@ -53,23 +42,7 @@ class BaseClientTestCase extends TestCase
             dump("Testing $requestName of $className");
 
             /** @var AbstractNbaApiRequest $request */
-            $request = $className::fromArray();
-
-            // set default params
-            foreach (static::getDefaultParams() as $param => $value) {
-                if (property_exists($request, $param)) {
-                    $request->$param = $this->toValue($param, $value);
-                }
-            }
-
-            // now set individually-specified request params
-            if (isset(static::REQUEST_PARAMS[$requestName])) {
-                foreach (static::REQUEST_PARAMS[$requestName] as $param => $value) {
-                    if (property_exists($request, $param)) {
-                        $request->$param = $this->toValue($param, $value);;
-                    }
-                }
-            }
+            $request = $className::fromArray([], true);
 
             /** @var NbaApiResponse $response */
             $response = $this->client->$requestName($request);
@@ -87,14 +60,6 @@ class BaseClientTestCase extends TestCase
 
         // in case all tests are skipped, this will not give a warning about a risky test
         $this->assertTrue(true);
-    }
-
-    /**
-     * @return array
-     */
-    protected function getDefaultParams() : array
-    {
-        return array_merge(self::DEFAULT_PARAMS, static::DEFAULT_PARAMS);
     }
 
     /**

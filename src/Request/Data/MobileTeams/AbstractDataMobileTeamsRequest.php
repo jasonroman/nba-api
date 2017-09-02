@@ -3,6 +3,8 @@
 namespace JasonRoman\NbaApi\Request\Data\MobileTeams;
 
 use JasonRoman\NbaApi\Client\Data\DataMobileTeamsClient;
+use JasonRoman\NbaApi\Params\Data\MonthNumParam;
+use JasonRoman\NbaApi\Params\Data\SeasonTypeCodeParam;
 use JasonRoman\NbaApi\Request\Data\AbstractDataRequest;
 
 /**
@@ -11,4 +13,15 @@ use JasonRoman\NbaApi\Request\Data\AbstractDataRequest;
 abstract class AbstractDataMobileTeamsRequest extends AbstractDataRequest
 {
     const CLIENT = DataMobileTeamsClient::class;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getExampleValues(): array
+    {
+        return [
+            'seasonTypeCode' => SeasonTypeCodeParam::REGULAR_SEASON,
+            'monthNum'       => MonthNumParam::JAN,
+        ];
+    }
 }

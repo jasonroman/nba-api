@@ -104,9 +104,9 @@ abstract class AbstractClient
         if ($this->validateRequest) {
             $violations = $this->validator->validate($request);
 
-            if (count($violations)) {
-                throw new \Exception((string) $violations);
-            }
+           // if (count($violations)) {
+            //    throw new \Exception((string) $violations);
+          //  }
         }
 
         // convert all request parameters to string before sending the data

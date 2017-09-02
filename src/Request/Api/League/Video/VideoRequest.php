@@ -16,14 +16,9 @@ class VideoRequest extends AbstractApiLeagueRequest
     const ENDPOINT = '/0/league/video';
 
     /**
-     * I have some description.
-     *
-     * And something else
-     *
      * @Assert\NotBlank()
      * @Assert\Type("string")
      * @ApiAssert\ApiRegex(GameIdParam::FORMAT)
-     * @ApiAssert\ApiChoice({1, 2, 3})
      *
      * @var string
      */
@@ -36,4 +31,14 @@ class VideoRequest extends AbstractApiLeagueRequest
      * @var int
      */
     public $count;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getExampleValues(): array
+    {
+        return [
+            'games' => GameIdParam::getExampleValue(),
+        ];
+    }
 }

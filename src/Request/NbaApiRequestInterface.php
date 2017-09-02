@@ -41,11 +41,34 @@ interface NbaApiRequestInterface
     public function getQueryParams(): array;
 
     /**
+     * Retrieve the query params as a string
+     *
+     * @return string
+     */
+    public function getQueryString(): string;
+
+    /**
      * Get the default parameter values for this request.
      *
      * @return array
      */
     public function getDefaultValues(): array;
+
+    /**
+     * Get the example parameter values for this request.
+     *
+     * @return array
+     */
+    public function getExampleValues(): array;
+
+    /**
+     * Convert params from an array to the proper request class.
+     *
+     * @param array $array
+     * @param bool $useExampleValues
+     * @return NbaApiRequestInterface
+     */
+    public static function fromArray(array $array, bool $useExampleValues): NbaApiRequestInterface;
 
     /**
      * Convert an API Request to an array that can be passed as a Guzzle 'query'.

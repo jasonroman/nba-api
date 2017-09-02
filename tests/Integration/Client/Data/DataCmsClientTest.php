@@ -9,11 +9,6 @@ use JasonRoman\NbaApi\Tests\Integration\Client\BaseClientTestCase;
 
 class DataCmsClientTest extends BaseClientTestCase
 {
-    const DEFAULT_PARAMS = [
-        'period'             => PeriodParam::MIN,
-        'summerLeagueAbbrev' => SummerLeagueAbbrevParam::ORLANDO,
-    ];
-
     /**
      * @var DataCmsClient
      */

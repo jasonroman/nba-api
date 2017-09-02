@@ -32,14 +32,7 @@ class DataHtmlClientTest extends BaseClientTestCase
 
     public function testGetGameBook()
     {
-        $request = GameBookRequest::fromArray();
-
-        foreach (self::getDefaultParams() as $param => $value) {
-            if (property_exists($request, $param)) {
-                $request->$param = $this->toValue($param, $value);
-            }
-        }
-
+        $request  = GameBookRequest::fromArrayWithExamples();
         $response = $this->client->getGameBook($request);
 
         $this->assertInstanceOf(NbaApiResponse::class, $response);

@@ -22,4 +22,14 @@ class ArticleRequest extends AbstractApiLeagueRequest
      * @var string
      */
     public $articleId;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getExampleValues(): array
+    {
+        return [
+            'articleId' => '931b388a-eee6-4f0b-bfaf-d1ad77253117',
+        ];
+    }
 }

@@ -9,10 +9,6 @@ use JasonRoman\NbaApi\Tests\Integration\Client\BaseClientTestCase;
 
 class NbaWscApiClientTest extends BaseClientTestCase
 {
-    const DEFAULT_PARAMS = [
-        'videoId' => '087a6075-00fc-187d-3f9b-10023abe58a3',
-    ];
-
     /**
      * @var NbaWscClient
      */
@@ -36,14 +32,7 @@ class NbaWscApiClientTest extends BaseClientTestCase
 
     public function testGetVideo()
     {
-        $request = VideoRequest::fromArray();
-
-        foreach (self::getDefaultParams() as $param => $value) {
-            if (property_exists($request, $param)) {
-                $request->$param = $this->toValue($param, $value);
-            }
-        }
-
+        $request  = VideoRequest::fromArrayWithExamples();
         $response = $this->client->getVideo($request);
 
         $this->assertInstanceOf(NbaApiResponse::class, $response);

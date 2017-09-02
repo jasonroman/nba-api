@@ -52,4 +52,12 @@ class GameDateParam extends AbstractDataParam
     {
         return new \DateTime();
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function getExampleValue()
+    {
+        return new \DateTime('2017-02-01'); // will be converted to \DateTime as the request expects
+    }
 }

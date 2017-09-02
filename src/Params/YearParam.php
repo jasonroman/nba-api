@@ -2,7 +2,7 @@
 
 namespace JasonRoman\NbaApi\Params;
 
-class YearParam
+class YearParam extends AbstractParam
 {
     const FORMAT = '/^\d{4}$/';
 
@@ -13,5 +13,13 @@ class YearParam
     public static function getDefaultValue() : int
     {
         return SeasonParam::currentSeasonStartYear();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function getExampleValue()
+    {
+        return 2016;
     }
 }

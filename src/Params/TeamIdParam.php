@@ -133,4 +133,12 @@ class TeamIdParam extends AbstractParam
         self::WINDY_CITY_BULLS,
         self::WISCONSIN_HERD,
     ];
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function getExampleValue()
+    {
+        return self::DETROIT_PISTONS;
+    }
 }

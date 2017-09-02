@@ -62,6 +62,11 @@ class RequestPropertyUtility
         return $this->getStringOutput(AbstractNbaApiRequest::getDefaultValue($this->request, $this->propertyName));
     }
 
+    public function getExampleValue()
+    {
+        return $this->getStringOutput(AbstractNbaApiRequest::getExampleValue($this->request, $this->propertyName));
+    }
+
     /**
      * @param mixed $value
      * @return string
@@ -73,7 +78,7 @@ class RequestPropertyUtility
         } elseif (is_bool($value)) {
             return $value ? 'true' : 'false';
         } elseif (is_array($value)) {
-            return explode(', ', $value);
+            return implode(', ', $value);
         }
 
         return (string) $value;
