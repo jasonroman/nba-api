@@ -3,7 +3,6 @@ declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Request;
 
-use Doctrine\Common\Annotations\AnnotationReader;
 use JasonRoman\NbaApi\Params\AbstractParam;
 
 abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
@@ -132,77 +131,85 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
     {
         $calledClass = get_called_class();
 
-        /** @var AbstractNbaApiRequest $class */
-        $class = new $calledClass;
+        /** @var AbstractNbaApiRequest $request */
+        $request = new $calledClass;
 
-        // get the reflection class and all public properties of the class
-        $reflectionClass  = (new \ReflectionObject($class));
-        $publicProperties = $reflectionClass->getProperties(\ReflectionProperty::IS_PUBLIC);
+        // get all public properties of the request
+        $publicProperties = (new \ReflectionObject($request))->getProperties(\ReflectionProperty::IS_PUBLIC);
 
         /**
-         * loop through each public property of the class and set the value according to the priority;
-         * if a value is found at any of these steps, set the value for the property and continue to the next property;
-         * note that each param class does not have to specifically define this function; it rolls up to the base class
+         * loop through each public property of the class and set the value according to the following priority;
          *
          * Priority:
          *  1. passed in directly to this function (user-defined)
-         *  2. set in the getDefaultValues() method of the request class
-         *  3. set in the getDefaultValue() method of the corresponding Request Type -> Param class
-         *  4. set in the getDefaultValue() method of the global Request Type -> Param class
+         *  2. retrieved as a default value
          */
         foreach ($publicProperties as $property) {
             $propertyName = $property->getName();
 
             // use the property if it was passed in to this method
             if (isset($array[$propertyName])) {
-                $class->$propertyName = $array[$propertyName];
+                $request->$propertyName = $array[$propertyName];
 
                 continue;
             }
 
-            // use the property if it exists in the getDefaultValues() method of the request class
-            $requestClassDefaultValues = $class->getDefaultValues();
+            // set from the default value
+            $request->$propertyName = self::getDefaultValue($request, $propertyName);
+        }
 
-            if (isset($requestClassDefaultValues[$propertyName])) {
-                $class->$propertyName = $requestClassDefaultValues[$propertyName];
+        return $request;
+    }
 
-                continue;
-            }
+    /**
+     * Get the default value of a parameter according to the priority, stopping when a default value is found.
+     * Note that each param class does not have to specifically define this function; it rolls up to the base class.
+     *
+     * Priority:
+     *  1. set in the getDefaultValues() method of the request class
+     *  2. set in the getDefaultValue() method of the corresponding Request Type -> Param class
+     *  3. set in the getDefaultValue() method of the global Request Type -> Param class
+     *
+     * @param AbstractNbaApiRequest $request
+     * @param $propertyName
+     * @return mixed
+     */
+    public static function getDefaultValue(AbstractNbaApiRequest $request, $propertyName)
+    {
+        // use the property if it exists in the getDefaultValues() method of the request class
+        $requestDefaultValues = $request->getDefaultValues();
 
-            // use the property if it exists in the getDefaultValue() method of the Request Type -> Param class
-            // for example, for a Data request, this looks in JasonRoman\NbaApi\Params\Data\<Property>Param
-            $requestTypeFqcn = AbstractParam::getRequestTypeParamClassFqcn($class->getRequestType(), $propertyName);
+        if (isset($requestDefaultValues[$propertyName])) {
+            return $requestDefaultValues[$propertyName];
+        }
 
-            // make sure the class exists and is an AbstractParam type
-            if (class_exists($requestTypeFqcn) && is_subclass_of($requestTypeFqcn, AbstractParam::class)) {
-                $requestTypeDefaultValue = $requestTypeFqcn::{self::PARAM_DEFAULT_METHOD}();
+        // use the property if it exists in the getDefaultValue() method of the Request Type -> Param class
+        // for example, for a Data request, this looks in JasonRoman\NbaApi\Params\Data\<Property>Param
+        $requestTypeFqcn = AbstractParam::getRequestTypeParamClassFqcn($request->getRequestType(), $propertyName);
 
-                // if the default is anything other than null, set the value
-                if (!is_null($requestTypeDefaultValue)) {
-                    $class->$propertyName = $requestTypeDefaultValue;
+        // make sure the class exists and is an AbstractParam type
+        if (class_exists($requestTypeFqcn) && is_subclass_of($requestTypeFqcn, AbstractParam::class)) {
+            $requestTypeDefaultValue = $requestTypeFqcn::{self::PARAM_DEFAULT_METHOD}();
 
-                    continue;
-                }
-            }
-
-            // use the property if it exists in the getDefaultValue() method of the base Param class
-            // for example, for a Data request, this looks in JasonRoman\NbaApi\Params\<Property>Param
-            $paramFqcn = AbstractParam::getParamClassFqcn($propertyName);
-
-            // make sure the class exists and is an AbstractParam type
-            if (class_exists($paramFqcn) && is_subclass_of($paramFqcn, AbstractParam::class)) {
-                $defaultValue = $paramFqcn::{self::PARAM_DEFAULT_METHOD}();
-
-                // if the default is anything other than null, set the value
-                if (!is_null($defaultValue)) {
-                    $class->$propertyName = $defaultValue;
-
-                    continue;
-                }
+            // if the default is anything other than null, set the value
+            if (!is_null($requestTypeDefaultValue)) {
+                return $requestTypeDefaultValue;
             }
         }
 
-        return $class;
+        // use the property if it exists in the getDefaultValue() method of the base Param class
+        // for example, for a Data request, this looks in JasonRoman\NbaApi\Params\<Property>Param
+        $paramFqcn = AbstractParam::getParamClassFqcn($propertyName);
+
+        // make sure the class exists and is an AbstractParam type
+        if (class_exists($paramFqcn) && is_subclass_of($paramFqcn, AbstractParam::class)) {
+            $defaultValue = $paramFqcn::{self::PARAM_DEFAULT_METHOD}();
+
+            // if the default is anything other than null, set the value
+            if (!is_null($defaultValue)) {
+                return $defaultValue;
+            }
+        }
     }
 
     /**
@@ -222,44 +229,47 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
         $reflectionClass  = (new \ReflectionObject($this));
         $publicProperties = $reflectionClass->getProperties(\ReflectionProperty::IS_PUBLIC);
 
-        /**
-         * loop through each public property of the class and convert the value to string according to the priority;
-         * if a param is found at any of these steps, use the the conversion function in that param class;
-         * note that each param class does not have to specifically define this function; it rolls up to the base class
-         *
-         * Priority:
-         *  1. use the getStringValue() method of the corresponding Request Type -> Param class
-         *  2. use the getStringValue() method of the corresponding global Param class
-         *  3. call the general AbstractParam::getStringValue() method
-         */
+        // loop through each public property of the class and convert the value to string
         foreach ($publicProperties as $property) {
             $propertyName = $property->getName();
 
-            // use the property if it exists in the getDefaultValue() method of the Request Type -> Param class
-            // for example, for a Data request, this looks in JasonRoman\NbaApi\Params\Data\<Property>Param
-            $requestTypeFqcn = AbstractParam::getRequestTypeParamClassFqcn($this->getRequestType(), $propertyName);
-
-            // make sure the class exists and is an AbstractParam type
-            if (class_exists($requestTypeFqcn) && is_subclass_of($requestTypeFqcn, AbstractParam::class)) {
-                $this->$propertyName = $requestTypeFqcn::{self::CONVERT_TO_STRING_METHOD}($this->$propertyName);
-
-                continue;
-            }
-
-            // use the property if it exists in the getDefaultValue() method of the base Param class
-            // for example, for a Data request, this looks in JasonRoman\NbaApi\Params\<Property>Param
-            $paramFqcn = AbstractParam::getParamClassFqcn($propertyName);
-
-            // make sure the class exists and is an AbstractParam type
-            if (class_exists($paramFqcn) && is_subclass_of($paramFqcn, AbstractParam::class)) {
-                $this->$propertyName = $paramFqcn::{self::CONVERT_TO_STRING_METHOD}($this->$propertyName);
-
-                continue;
-            }
-
-            // if got here, no specific param class exists, so just cast to string
-            $this->$propertyName = AbstractParam::{self::CONVERT_TO_STRING_METHOD}($this->$propertyName);
+            $this->$propertyName = $this->convertParamToString($propertyName);
         }
+    }
+
+    /**
+     * Get the string value of a parameter according to the priority, stopping when a value is converted.
+     * Note that each param class does not have to specifically define this function; it rolls up to the base class.
+     *
+     * Priority:
+     *  1. use the getStringValue() method of the corresponding Request Type -> Param class
+     *  2. use the getStringValue() method of the corresponding global Param class
+     *  3. call the general AbstractParam::getStringValue() method
+     *
+     * @param string $propertyName
+     */
+    public function convertParamToString($propertyName)
+    {
+        // use the property if it exists in the getDefaultValue() method of the Request Type -> Param class
+        // for example, for a Data request, this looks in JasonRoman\NbaApi\Params\Data\<Property>Param
+        $requestTypeFqcn = AbstractParam::getRequestTypeParamClassFqcn($this->getRequestType(), $propertyName);
+
+        // make sure the class exists and is an AbstractParam type
+        if (class_exists($requestTypeFqcn) && is_subclass_of($requestTypeFqcn, AbstractParam::class)) {
+            return $requestTypeFqcn::{self::CONVERT_TO_STRING_METHOD}($this->$propertyName);
+        }
+
+        // use the property if it exists in the getDefaultValue() method of the base Param class
+        // for example, for a Data request, this looks in JasonRoman\NbaApi\Params\<Property>Param
+        $paramFqcn = AbstractParam::getParamClassFqcn($propertyName);
+
+        // make sure the class exists and is an AbstractParam type
+        if (class_exists($paramFqcn) && is_subclass_of($paramFqcn, AbstractParam::class)) {
+            return $paramFqcn::{self::CONVERT_TO_STRING_METHOD}($this->$propertyName);
+        }
+
+        // if got here, no specific param class exists, so just cast to string
+        return AbstractParam::{self::CONVERT_TO_STRING_METHOD}($this->$propertyName);
     }
 
     /**
@@ -289,7 +299,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
         $names = [];
 
         foreach ($this->getPublicProperties() as $param) {
-            dump($param);
+            //dump($param);
             /** @var \ReflectionProperty $param */
             $names[] = $param->getName();
         }
@@ -297,30 +307,36 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
         return $names;
     }
 
-    public function getParamInfo($property)
+    public function getParamsInfo(): array
     {
-        $reflectionProperty = new \ReflectionProperty($this, $property);
-        dump($reflectionProperty);
-        $docComment = $reflectionProperty->getDocComment();
-        $pattern = "/@(\w+)\b(.*)/";
-        preg_match_all($pattern, $docComment, $matches);
-        dump($matches);
+        $paramsInfo = [];
 
-        $docBlockUtility = new DocBlockUtility();
+        foreach ($this->getParamNames() as $paramName) {
+            $paramsInfo[$paramName] = $this->getParamInfo($paramName);
+        }
 
-        $var = $docBlockUtility->getVar($docComment);
-        dump($var);
-        echo $docBlockUtility->getDescription($docComment);
+        return $paramsInfo;
+    }
 
-        echo "<br><br>";
-        var_export($docBlockUtility->getDescription($docComment));
-        $varPattern = "/@var (\w+)\b/";
-        preg_match($varPattern, $docComment, $matches);
-        dump($matches);
+    public function getParamInfo($paramName)
+    {
+        $propertyUtility = new RequestPropertyUtility($this, $paramName);
 
-        $reader = new AnnotationReader();
-        $annotations = $reader->getPropertyAnnotations($reflectionProperty);
-        dump($annotations);
+        return [
+            'is_required'   => $propertyUtility->isRequired(),
+            'is_array'      => $propertyUtility->isArray(),
+            'is_not_blank'  => $propertyUtility->getNotBlank(),
+            'is_not_null'   => $propertyUtility->getNotNull(),
+            'description'   => $propertyUtility->getDescription(),
+            'type'          => $propertyUtility->getType(),
+            'default_value' => $propertyUtility->getDefaultValue(),
+            'choices'       => $propertyUtility->getChoices(),
+            'regex'         => $propertyUtility->getRegex(),
+            'range'         => $propertyUtility->getRange(),
+            'count'         => $propertyUtility->getCount(),
+            'date'          => $propertyUtility->getDate(),
+            'uuid'          => $propertyUtility->getUuid(),
+        ];
     }
 
     /**
