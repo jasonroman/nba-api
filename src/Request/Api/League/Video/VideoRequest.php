@@ -25,7 +25,7 @@ class VideoRequest extends AbstractApiLeagueRequest
      * @ApiAssert\ApiRegex(GameIdParam::FORMAT)
      * @ApiAssert\ApiChoice({1, 2, 3})
      *
-     * @var asdf
+     * @var string
      */
     public $games;
 

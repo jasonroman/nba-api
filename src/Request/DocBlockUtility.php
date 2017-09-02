@@ -3,29 +3,23 @@
 namespace JasonRoman\NbaApi\Request;
 
 use Doctrine\Common\Annotations\AnnotationReader;
+use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\All;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 class DocBlockUtility
 {
-    const REGEX_SPLIT_BY_NEWLINE = "/\\r\\n|\\r|\\n/";
-    const REGEX_LINE_HAS_CONTENT = '/^(?=\s+?\*[^\/])(.+)/';
-    const REGEX_VAR_PATTERN      = '/@var (\w+)\b/';
+    const REGEX_SPLIT_BY_NEWLINE        = "/\\r\\n|\\r|\\n/";
+    const REGEX_LINE_HAS_CONTENT        = '/^(?=\s+?\*[^\/])(.+)/';
+    const REGEX_REMOVE_LEADING_ASTERISK = '/^(\*\s+?)/';
+    const REGEX_VAR_PATTERN             = '/@var (\w+)\b/';
 
-    const ASSERTIONS = [
-        // Symfony basic constraints
-        'NotBlank',
-        'NotNull',
-        'Type',
-        // Symfony string constraints
-        'Uuid',
-        // Symfony number/date constraints
-        'Range',
-        // Symfony date constraints
-        'Date',
-        // Symfony other constraints
-        'All',
-        // NbaApi constraints
-        'ApiRegex',
-        'ApiChoice',
+    // 'tags' to skip when returning the description (if the line starts with the tag, skip it)
+    const DESCRIPTION_SKIP_TAGS = [
+        '@',
+        ')',
+        '})', // end of a multi-line annotation
     ];
 
     /**
@@ -55,22 +49,90 @@ class DocBlockUtility
             }
 
             // trim whitespace and remove leading asterisk
-            $info = trim(preg_replace('/^(\*\s+?)/', '', $matches[1]));
+            $info = trim(preg_replace(self::REGEX_REMOVE_LEADING_ASTERISK, '', trim($matches[1])));
 
-            // add to description if does not start with '@'
-            if ($info[0] !== '@') {
+            // add to description if info not start with a tag marked for skipping (annotation, phpDoc tag)
+            $addInfo = true;
+
+            foreach (self::DESCRIPTION_SKIP_TAGS as $skipTag) {
+                if (substr($info, 0, strlen($skipTag)) === $skipTag) {
+                    $addInfo = false;
+                }
+            }
+
+            if ($addInfo) {
                 $description[] = $info;
-
-                continue;
             }
         }
 
         return implode("\n", $description);
     }
 
-    public function getAssertions($reflectionProperty)
+    public function getConstraints($reflectionProperty)
     {
+        $constraints = [];
+
         $annotations = $this->reader->getPropertyAnnotations($reflectionProperty);
+
+        foreach ($annotations as $annotation) {
+            $constraints[] = $annotation;
+        }
+
+        return $constraints;
+    }
+
+    public function getConstraint($reflectionProperty, $constraintClass, $getFromAll = true)
+    {
+        if (
+            ($constraint = $this->reader->getPropertyAnnotation($reflectionProperty, $constraintClass)) &&
+            $constraint instanceof Constraint
+        ) {
+            return $constraint;
+        }
+
+        if (!$getFromAll) {
+            return;
+        }
+
+        if (
+            ($allConstraint = $this->getConstraintFromAll($reflectionProperty, $constraintClass)) &&
+            $allConstraint instanceof Constraint
+        ) {
+            return $allConstraint;
+        }
+    }
+
+    public function hasConstraint($reflectionProperty, $constraintClass)
+    {
+        return (bool) $this->getConstraint($reflectionProperty, $constraintClass);
+    }
+
+    public function getRequiredConstraints($reflectionProperty)
+    {
+        $constraints = [];
+
+        $annotations = $this->reader->getPropertyAnnotations($reflectionProperty);
+
+        foreach ($annotations as $annotation) {
+            if ($annotation instanceof NotBlank || $annotation instanceof NotNull) {
+                $constraints[] = $annotation;
+            }
+        }
+
+        return $constraints;
+    }
+
+    public function getConstraintFromAll($reflectionProperty, $constraintClass)
+    {
+        if (!($allConstraint = $this->getConstraint($reflectionProperty, All::class, false))) {
+            return;
+        }
+
+        foreach ($allConstraint->constraints as $constraint) {
+            if ($constraint instanceof $constraintClass) {
+                return $constraint;
+            }
+        }
     }
 
     public function getVar(string $docComment)

@@ -17,7 +17,7 @@ class ApiRegex extends Constraint
     public $message = "Param '{{ param }}' must match the following regex format: '{{ regex }}'.";
 
     /**
-     * @var array
+     * @var string
      */
     public $pattern;
 
