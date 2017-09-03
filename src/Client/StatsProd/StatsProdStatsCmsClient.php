@@ -19,9 +19,17 @@ class StatsProdStatsCmsClient extends AbstractStatsProdClient
 {
     /**
      * {@inheritdoc}
+     */
+    public static function getClientId(): string
+    {
+        return 'stats_prod.stats_cms';
+    }
+
+    /**
+     * {@inheritdoc}
      * @throws \InvalidArgumentException if request is not the proper type
      */
-    public function request(NbaApiRequestInterface $request, array $config = [])
+    public function request(NbaApiRequestInterface $request, array $config = []): NbaApiResponse
     {
         if (!$request instanceof AbstractStatsProdStatsCmsRequest) {
             throw new \InvalidArgumentException('Request must be of type AbstractStatsProdStatsCmsRequest');
@@ -78,6 +86,6 @@ class StatsProdStatsCmsClient extends AbstractStatsProdClient
      */
     public function getRotowirePlayers(RotowirePlayersRequest $request, array $config = [])
     {
-        return $this->request($request, $config);
+        return $this->request($request, array_merge(['timeout' => 30], $config));
     }
 }

@@ -30,7 +30,7 @@ class BaseClientTestCase extends TestCase
     public function testAllRequests()
     {
         $requestMethods = $this->getRequestMethods(get_class($this->client));
-$start = true;
+
         foreach ($requestMethods as $requestMethod) {
             $className   = $requestMethod['class']->getName();
             $requestName = $requestMethod['name'];
@@ -38,10 +38,7 @@ $start = true;
             if (in_array($requestName, $this->getWhitelistedRequestMethods())) {
                 continue;
             }
-if ($requestName == 'getTeamVsPlayer') {
-                $start = true;
-}
-if (!$start) { continue; }
+
             dump("Testing $requestName of $className");
 
             /** @var AbstractNbaApiRequest $request */

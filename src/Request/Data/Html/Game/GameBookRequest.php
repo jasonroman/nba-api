@@ -26,10 +26,10 @@ class GameBookRequest extends AbstractDataHtmlRequest
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Date()
+     * @Assert\Type("\DateTime")
      * @Assert\Range(min = GameDateParam::START_DATE_PRE_SEASON_2010)
      *
-     * @var \DateTime|string if string, format is YYYY-MM-DD
+     * @var \DateTime
      */
     public $gameDate;
 

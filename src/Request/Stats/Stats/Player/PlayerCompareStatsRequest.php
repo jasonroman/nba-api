@@ -105,7 +105,7 @@ class PlayerCompareStatsRequest extends AbstractStatsStatsRequest
     public $poRound;
 
     /**
-     * @Assert\Count(min = 5, max = 5)
+     * @Assert\Count(max = 5)
      * @Assert\All({
      *     @Assert\NotBlank(),
      *     @Assert\Type("int"),
@@ -149,16 +149,16 @@ class PlayerCompareStatsRequest extends AbstractStatsStatsRequest
     public $seasonSegment;
 
     /**
-     * @Assert\Date()
+     * @Assert\Type("\DateTime")
      *
-     * @var \DateTime|string if string, format is YYYY-MM-DD
+     * @var \DateTime
      */
     public $dateFrom;
 
     /**
-     * @Assert\Date()
+     * @Assert\Type("\DateTime")
      *
-     * @var \DateTime|string if string, format is YYYY-MM-DD
+     * @var \DateTime
      */
     public $dateTo;
 
@@ -238,7 +238,7 @@ class PlayerCompareStatsRequest extends AbstractStatsStatsRequest
     public $lastNGames;
 
     /**
-     * @Assert\Count(min = 5, max = 5)
+     * @Assert\Count(max = 5)
      * @Assert\All({
      *     @Assert\NotBlank(),
      *     @Assert\Type("int"),

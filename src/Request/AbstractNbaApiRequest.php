@@ -23,6 +23,13 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
         self::PLACEHOLDER_START.'\K[^'.self::PLACEHOLDER_END.']*(?='.self::PLACEHOLDER_END.')'.
     '/m';
 
+    public function getClientId()
+    {
+        $client = static::CLIENT;
+
+        return $client::getClientId();
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -50,6 +57,18 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
         }
 
         return static::DEFAULT_RESPONSE_TYPE;
+    }
+
+    public function getFullEndpoint(): string
+    {
+        $queryString = $this->getQueryString();
+
+        return sprintf(
+            '%s%s%s',
+            self::getBaseUri(),
+            $this->getEndpoint(),
+            ($queryString) ? '/?'.$queryString : ''
+        );
     }
 
     /**
@@ -165,7 +184,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
             $propertyName = $property->getName();
 
             // use the property if it was passed in to this method
-            if (isset($array[$propertyName])) {
+            if (array_key_exists($propertyName, $array)) {
                 $request->$propertyName = $array[$propertyName];
 
                 continue;
@@ -240,7 +259,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
         // this is the plural of the method name; as in getDefaultValue() calls getDefaultValues() here
         $requestValues = $request->{$methodName.'s'}();
 
-        if (isset($requestValues[$propertyName])) {
+        if (array_key_exists($propertyName, $requestValues)) {
             return $requestValues[$propertyName];
         }
 
@@ -394,7 +413,6 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
             'regex'         => $propertyUtility->getRegex(),
             'range'         => $propertyUtility->getRange(),
             'count'         => $propertyUtility->getCount(),
-            'date'          => $propertyUtility->getDate(),
             'uuid'          => $propertyUtility->getUuid(),
         ];
     }

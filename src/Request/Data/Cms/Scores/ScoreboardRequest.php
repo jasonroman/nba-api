@@ -15,10 +15,10 @@ class ScoreboardRequest extends AbstractDataCmsRequest
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Date()
+     * @Assert\Type("\DateTime")
      * @Assert\Range(min = GameDateParam::MIN_DATE)
      *
-     * @var \DateTime|string if string, format is YYYY-MM-DD
+     * @var \DateTime
      */
     public $gameDate;
 }

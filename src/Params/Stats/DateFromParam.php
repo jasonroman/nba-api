@@ -22,13 +22,4 @@ class DateFromParam extends AbstractStatsParam
 
         return $dateTime->format(self::DATE_FORMAT);
     }
-
-    /**
-     * {@inheritdoc}
-     * @return \DateTime
-     */
-    public static function getDefaultValue(): \DateTime
-    {
-        return new \DateTime();
-    }
 }

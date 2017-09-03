@@ -17,6 +17,10 @@ use JasonRoman\NbaApi\Response\ResponseType;
  */
 abstract class AbstractClient
 {
+    const BASE_NAMESPACE  = 'JasonRoman\NbaApi\Client';
+    const ABSTRACT_PREFIX = 'Abstract';
+    const REQUEST_SUFFIX  = 'Client';
+
     const TIMEOUT         = 10;
     const CONNECT_TIMEOUT = 3;
 
@@ -57,9 +61,14 @@ abstract class AbstractClient
     protected $validator;
 
     /**
+     * @return string
+     */
+    abstract public static function getClientId(): string;
+
+    /**
      * @return array
      */
-    abstract protected function getHeaders();
+    abstract protected function getHeaders(): array;
 
     /**
      * Create the guzzle client from the child class's config/headers, and any overridden parameters.
@@ -97,15 +106,15 @@ abstract class AbstractClient
      * @return NbaApiResponse
      * @throws \Exception if validation fails
      */
-    public function request(NbaApiRequestInterface $request, array $config = [])
+    public function request(NbaApiRequestInterface $request, array $config = []): NbaApiResponse
     {
         // validate the request if specified, and throw an exception if invalid
         if ($this->validateRequest) {
             $violations = $this->validator->validate($request);
 
-           // if (count($violations)) {
-            //    throw new \Exception((string) $violations);
-          //  }
+            if (count($violations)) {
+                throw new \Exception((string) $violations);
+            }
         }
 
         // convert all request parameters to string before sending the data
@@ -124,17 +133,9 @@ abstract class AbstractClient
                 ['query' => $request->getQueryParams()],
                 $config,
                 $acceptHeadersExtra,
+                // for testing purposes
                 ['on_stats' => function (TransferStats $stats) {
-                    //dump($stats->getRequest());
-                    /*dump($stats->getEffectiveUri());
-                    dump($stats->getTransferTime());
-                    dump($stats->getHandlerStats());
-                    dump($stats->getRequest());
-                    dump($stats->getResponse());
-
-                    if ($stats->hasResponse()) {
-                        dump($stats->getResponse()->getStatusCode());
-                    }*/
+                    // dump($stats->getResponse());
                 }]
             )
         );
@@ -147,7 +148,7 @@ abstract class AbstractClient
      * @return NbaApiResponse
      * @throws ClientException
      */
-    public function apiRequest($method, $uri, array $options = [])
+    public function apiRequest($method, $uri, array $options = []): NbaApiResponse
     {
         $response = $this->guzzle->request($method, $uri, $options);
 
@@ -158,7 +159,7 @@ abstract class AbstractClient
      * @param ResponseInterface $response
      * @return NbaApiResponse
      */
-    public function responseWrapper(ResponseInterface $response)
+    public function responseWrapper(ResponseInterface $response): NbaApiResponse
     {
         return new NbaApiResponse($response);
     }

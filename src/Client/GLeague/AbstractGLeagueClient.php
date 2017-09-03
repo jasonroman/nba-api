@@ -5,12 +5,14 @@ namespace JasonRoman\NbaApi\Client\GLeague;
 use JasonRoman\NbaApi\Client\AbstractClient;
 use JasonRoman\NbaApi\Request\GLeague\AbstractGLeagueRequest;
 use JasonRoman\NbaApi\Request\NbaApiRequestInterface;
+use JasonRoman\NbaApi\Response\NbaApiResponse;
 
 abstract class AbstractGLeagueClient extends AbstractClient
 {
     const PROTOCOL    = 'http://';
     const BASE_DOMAIN = 'gleague.nba.com';
     const BASE_URI    = self::PROTOCOL.self::BASE_DOMAIN;
+    const SHORT_NAME  = 'gleague';
 
     const CONFIG = [
         'base_uri'        => self::BASE_URI,
@@ -21,7 +23,7 @@ abstract class AbstractGLeagueClient extends AbstractClient
     /**
      * {@inheritdoc}
      */
-    protected function getHeaders()
+    protected function getHeaders(): array
     {
         return self::DEFAULT_HEADERS;
     }
@@ -30,7 +32,7 @@ abstract class AbstractGLeagueClient extends AbstractClient
      * {@inheritdoc}
      * @throws \InvalidArgumentException if request is not the proper type
      */
-    public function request(NbaApiRequestInterface $request, array $config = [])
+    public function request(NbaApiRequestInterface $request, array $config = []): NbaApiResponse
     {
         if (!$request instanceof AbstractGLeagueRequest) {
             throw new \InvalidArgumentException('Request must be of type AbstractGLeagueRequest');

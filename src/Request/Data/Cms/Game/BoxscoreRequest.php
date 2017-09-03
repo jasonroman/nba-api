@@ -17,10 +17,10 @@ class BoxscoreRequest extends AbstractDataCmsRequest
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Date()
+     * @Assert\Type("\DateTime")
      * @Assert\Range(min = GameDateParam::CMS_MIN_DATE)
      *
-     * @var \DateTime|string if string, format is YYYY-MM-DD
+     * @var \DateTime
      */
     public $gameDate;
 

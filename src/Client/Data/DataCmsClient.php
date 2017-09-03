@@ -33,9 +33,17 @@ class DataCmsClient extends AbstractDataClient
 {
     /**
      * {@inheritdoc}
+     */
+    public static function getClientId(): string
+    {
+        return 'data.cms';
+    }
+
+    /**
+     * {@inheritdoc}
      * @throws \InvalidArgumentException if request is not the proper type
      */
-    public function request(NbaApiRequestInterface $request, array $config = [])
+    public function request(NbaApiRequestInterface $request, array $config = []): NbaApiResponse
     {
         if (!$request instanceof AbstractDataCmsRequest) {
             throw new \InvalidArgumentException('Request must be of type AbstractDataCmsRequest');

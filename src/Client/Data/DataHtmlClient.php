@@ -12,6 +12,14 @@ use JasonRoman\NbaApi\Response\NbaApiResponse;
 class DataHtmlClient extends AbstractDataClient
 {
     /**
+     * {@inheritdoc}
+     */
+    public static function getClientId(): string
+    {
+        return 'data.html';
+    }
+
+    /**
      * @param GameBookRequest $request
      * @param array $config
      * @return NbaApiResponse

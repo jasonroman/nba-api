@@ -151,14 +151,6 @@ class RequestPropertyUtility
         }
     }
 
-    public function getDate()
-    {
-        /** @var Date $constraint */
-        if ($constraint = $this->docBlockUtility->getConstraint($this->property, Date::class)) {
-            return self::DATE_CONSTRAINT_VALUE;
-        }
-    }
-
     public function getUuid()
     {
         /** @var Uuid $constraint */

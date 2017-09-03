@@ -106,16 +106,16 @@ class TeamShotsStatsRequest extends AbstractStatsStatsRequest
     public $seasonSegment;
 
     /**
-     * @Assert\Date()
+     * @Assert\Type("\DateTime")
      *
-     * @var \DateTime|string if string, format is YYYY-MM-DD
+     * @var \DateTime
      */
     public $dateFrom;
 
     /**
-     * @Assert\Date()
+     * @Assert\Type("\DateTime")
      *
-     * @var \DateTime|string if string, format is YYYY-MM-DD
+     * @var \DateTime
      */
     public $dateTo;
 

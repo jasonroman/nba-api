@@ -125,16 +125,16 @@ class PlayerShotChartDetailRequest extends AbstractStatsStatsRequest
     public $seasonSegment;
 
     /**
-     * @Assert\Date()
+     * @Assert\Type("\DateTime")
      *
-     * @var \DateTime|string if string, format is YYYY-MM-DD
+     * @var \DateTime
      */
     public $dateFrom;
 
     /**
-     * @Assert\Date()
+     * @Assert\Type("\DateTime")
      *
-     * @var \DateTime|string if string, format is YYYY-MM-DD
+     * @var \DateTime
      */
     public $dateTo;
 
@@ -309,15 +309,6 @@ class PlayerShotChartDetailRequest extends AbstractStatsStatsRequest
             'clutchTime'  => null,
             'aheadBehind' => null,
             'pointDiff'   => null,
-        ]);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getExampleValues(): array
-    {
-        return array_merge(parent::getExampleValues(), [
             'startPeriod' => StartPeriodParam::MIN_ALT,
             'endPeriod'   => EndPeriodParam::MAX_ALT,
         ]);

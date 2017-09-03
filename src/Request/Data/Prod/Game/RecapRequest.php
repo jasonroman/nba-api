@@ -17,7 +17,7 @@ class RecapRequest extends AbstractDataProdRequest
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Date()
+     * @Assert\Type("\DateTime")
      * @Assert\Range(min = GameDateParam::START_DATE_PRE_SEASON_2014)
      *
      * @var \DateTime

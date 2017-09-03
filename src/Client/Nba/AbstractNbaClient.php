@@ -5,10 +5,12 @@ namespace JasonRoman\NbaApi\Client\Nba;
 use JasonRoman\NbaApi\Client\AbstractClient;
 use JasonRoman\NbaApi\Request\Nba\AbstractNbaRequest;
 use JasonRoman\NbaApi\Request\NbaApiRequestInterface;
+use JasonRoman\NbaApi\Response\NbaApiResponse;
 
 abstract class AbstractNbaClient extends AbstractClient
 {
-    const BASE_URI = 'http://www.nba.com';
+    const BASE_URI   = 'http://www.nba.com';
+    const SHORT_NAME = 'nba';
 
     const HEADERS = [
         'Origin' => 'http://www.nba.net',
@@ -24,7 +26,7 @@ abstract class AbstractNbaClient extends AbstractClient
     /**
      * {@inheritdoc}
      */
-    protected function getHeaders()
+    protected function getHeaders(): array
     {
         return array_merge(self::DEFAULT_HEADERS, self::HEADERS);
     }
@@ -33,7 +35,7 @@ abstract class AbstractNbaClient extends AbstractClient
      * {@inheritdoc}
      * @throws \InvalidArgumentException if request is not the proper type
      */
-    public function request(NbaApiRequestInterface $request, array $config = [])
+    public function request(NbaApiRequestInterface $request, array $config = []): NbaApiResponse
     {
         if (!$request instanceof AbstractNbaRequest) {
             throw new \InvalidArgumentException('Request must be of type AbstractNbaRequest');

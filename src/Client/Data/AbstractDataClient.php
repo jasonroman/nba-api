@@ -5,10 +5,11 @@ namespace JasonRoman\NbaApi\Client\Data;
 use JasonRoman\NbaApi\Client\AbstractClient;
 use JasonRoman\NbaApi\Request\Data\AbstractDataRequest;
 use JasonRoman\NbaApi\Request\NbaApiRequestInterface;
+use JasonRoman\NbaApi\Response\NbaApiResponse;
 
 abstract class AbstractDataClient extends AbstractClient
 {
-    // it appears data.nba.com could also be used;
+    // it appears data.nba.com can also be used
     const BASE_URI = 'http://data.nba.net';
 
     const HEADERS = [
@@ -25,7 +26,7 @@ abstract class AbstractDataClient extends AbstractClient
     /**
      * {@inheritdoc}
      */
-    protected function getHeaders()
+    protected function getHeaders(): array
     {
         return array_merge(self::DEFAULT_HEADERS, self::HEADERS);
     }
@@ -34,7 +35,7 @@ abstract class AbstractDataClient extends AbstractClient
      * {@inheritdoc}
      * @throws \InvalidArgumentException if request is not the proper type
      */
-    public function request(NbaApiRequestInterface $request, array $config = [])
+    public function request(NbaApiRequestInterface $request, array $config = []): NbaApiResponse
     {
         if (!$request instanceof AbstractDataRequest) {
             throw new \InvalidArgumentException('Request must be of type AbstractDataRequest');

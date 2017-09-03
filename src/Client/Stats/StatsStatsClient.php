@@ -117,9 +117,17 @@ class StatsStatsClient extends AbstractStatsClient
 {
     /**
      * {@inheritdoc}
+     */
+    public static function getClientId(): string
+    {
+        return 'stats.stats';
+    }
+
+    /**
+     * {@inheritdoc}
      * @throws \InvalidArgumentException if request is not the proper type
      */
-    public function request(NbaApiRequestInterface $request, array $config = [])
+    public function request(NbaApiRequestInterface $request, array $config = []): NbaApiResponse
     {
         if (!$request instanceof AbstractStatsStatsRequest) {
             throw new \InvalidArgumentException('Request must be of type AbstractStatsStatsRequest');

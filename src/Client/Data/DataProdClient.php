@@ -45,6 +45,14 @@ use JasonRoman\NbaApi\Response\NbaApiResponse;
 class DataProdClient extends AbstractDataClient
 {
     /**
+     * {@inheritdoc}
+     */
+    public static function getClientId(): string
+    {
+        return 'data.prod';
+    }
+
+    /**
      * @param DraftPickRequest $request
      * @param array $config
      * @return NbaApiResponse

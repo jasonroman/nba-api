@@ -5,7 +5,6 @@ namespace JasonRoman\NbaApi\Request\Stats\Stats;
 use JasonRoman\NbaApi\Client\Stats\StatsStatsClient;
 use JasonRoman\NbaApi\Params\Stats\ContextMeasureParam;
 use JasonRoman\NbaApi\Params\Stats\GameScopeParam;
-use JasonRoman\NbaApi\Params\Stats\PerModeParam;
 use JasonRoman\NbaApi\Params\Stats\PlayerOrTeamParam;
 use JasonRoman\NbaApi\Params\Stats\PlayerScopeParam;
 use JasonRoman\NbaApi\Params\Stats\ShotRangeParam;
@@ -18,6 +17,9 @@ abstract class AbstractStatsStatsRequest extends AbstractStatsRequest
 {
     const CLIENT = StatsStatsClient::class;
 
+    /**
+     * {@inheritdoc}
+     */
     public function getDefaultValues(): array
     {
         return array_merge(parent::getDefaultValues(), [

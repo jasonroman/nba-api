@@ -23,6 +23,14 @@ use JasonRoman\NbaApi\Response\NbaApiResponse;
 class DataMobileTeamsClient extends AbstractDataClient
 {
     /**
+     * {@inheritdoc}
+     */
+    public static function getClientId(): string
+    {
+        return 'data.mobile_teams';
+    }
+
+    /**
      * @param FullPlayByPlayRequest $request
      * @param array $config
      * @return NbaApiResponse

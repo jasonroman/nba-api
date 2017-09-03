@@ -14,6 +14,14 @@ use JasonRoman\NbaApi\Response\NbaApiResponse;
 class DataGameExperienceClient extends AbstractDataClient
 {
     /**
+     * {@inheritdoc}
+     */
+    public static function getClientId(): string
+    {
+        return 'data.game_experience';
+    }
+
+    /**
      * @param BrandsRequest $request
      * @param array $config
      * @return NbaApiResponse
