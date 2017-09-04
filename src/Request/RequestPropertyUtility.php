@@ -136,7 +136,7 @@ class RequestPropertyUtility
     {
         /** @var Type $constraint */
         if ($constraint = $this->docBlockUtility->getConstraint($this->property, Type::class)) {
-            return $constraint->type;
+            return $constraint->type.($this->isArray() ? '[]' : '');
         }
     }
 
