@@ -8,8 +8,14 @@ use JasonRoman\NbaApi\Response\ResponseType;
 
 abstract class AbstractStatsProdRequest extends AbstractNbaApiRequest
 {
-    const BASE_URI = AbstractStatsProdClient::BASE_URI;
+    const BASE_URI = 'http://stats-prod.nba.com';
 
-    // default response type for most requests - override for non-JSON requests
-    const DEFAULT_RESPONSE_TYPE = ResponseType::JSON;
+    const HEADERS = [
+        'Origin' => 'http://stats-prod.nba.com',
+        'Host'   => 'stats-prod.nba.com',
+    ];
+
+    const CONFIG = [
+        'base_uri' => self::BASE_URI,
+    ];
 }

@@ -11,8 +11,16 @@ use JasonRoman\NbaApi\Response\ResponseType;
  */
 abstract class AbstractGLeagueRequest extends AbstractNbaApiRequest
 {
-    const BASE_URI = AbstractGLeagueClient::BASE_URI;
+    const PROTOCOL    = 'http://';
+    const BASE_DOMAIN = 'gleague.nba.com';
+    const BASE_URI    = self::PROTOCOL.self::BASE_DOMAIN;
 
-    // default response type for most requests - override for non-JSON requests
-    const DEFAULT_RESPONSE_TYPE = ResponseType::JSON;
+    const HEADERS = [
+        'Origin' => 'http://gleague.nba.com',
+        'Host'   => 'gleague.nba.com',
+    ];
+
+    const CONFIG = [
+        'base_uri' => self::BASE_URI,
+    ];
 }

@@ -114,7 +114,7 @@ class RequestHelper
                     foreach ($this->getFqcnRequestNames($domainName, $sectionName, $categoryName) as $fqcnRequestName) {
                         $allRequests[$domainName][$sectionName][$categoryName][$fqcnRequestName::getRequestName()] = [
                             'fqcn'        => $fqcnRequestName,
-                            'requestName' => $fqcnRequestName::getRequestName(),
+        /* hadoken =EO)) */ 'requestName' => $fqcnRequestName::getRequestName(),
                             'shortName'   => $fqcnRequestName::getRequestClassShortName(),
                         ];
                     }
@@ -123,6 +123,23 @@ class RequestHelper
         }
 
         return $allRequests;
+    }
+
+    public function getAllRequestClasses()
+    {
+        $allRequestClasses = [];
+
+        foreach ($this->getDomainNames() as $domainName) {
+            foreach ($this->getSectionNames($domainName) as $sectionName) {
+                foreach ($this->getCategoryNames($domainName, $sectionName) as $categoryName) {
+                    foreach ($this->getFqcnRequestNames($domainName, $sectionName, $categoryName) as $fqcnRequestName) {
+                        $allRequestClasses[] = $fqcnRequestName;
+                    }
+                }
+            }
+        }
+
+        return $allRequestClasses;
     }
 
     public function getRequestInfo($domain, $section, $category, $requestName)

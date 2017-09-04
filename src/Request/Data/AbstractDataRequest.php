@@ -11,8 +11,15 @@ use JasonRoman\NbaApi\Response\ResponseType;
  */
 abstract class AbstractDataRequest extends AbstractNbaApiRequest
 {
-    const BASE_URI = AbstractDataClient::BASE_URI;
+    // it appears data.nba.com can also be used
+    const BASE_URI = 'http://data.nba.net';
 
-    // default response type for most requests - override for non-JSON requests
-    const DEFAULT_RESPONSE_TYPE = ResponseType::JSON;
+    const HEADERS = [
+        'Origin' => 'http://data.nba.net',
+        'Host'   => 'data.nba.net',
+    ];
+
+    const CONFIG = [
+        'base_uri' => self::BASE_URI,
+    ];
 }

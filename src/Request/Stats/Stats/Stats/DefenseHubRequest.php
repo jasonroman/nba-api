@@ -10,11 +10,17 @@ use JasonRoman\NbaApi\Params\Stats\GameScopeParam;
 use JasonRoman\NbaApi\Params\Stats\PlayerOrTeamParam;
 use JasonRoman\NbaApi\Params\Stats\PlayerScopeParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
+use JasonRoman\NbaApi\Request\Stats\AbstractStatsRequest;
 use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 
 class DefenseHubRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/defensehub';
+
+    const CONFIG = [
+        'base_uri' => AbstractStatsRequest::BASE_URI,
+        'timeout'  => 60,
+    ];
 
     /**
      * @Assert\NotBlank()

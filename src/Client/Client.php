@@ -13,37 +13,13 @@ use JasonRoman\NbaApi\Response\NbaApiResponse;
 use JasonRoman\NbaApi\Response\ResponseType;
 
 /**
- * Abstract class that other API clients can extend from.
+ * Main Client class that processes requests.
  */
-abstract class AbstractClient
+class Client
 {
     const BASE_NAMESPACE  = 'JasonRoman\NbaApi\Client';
     const ABSTRACT_PREFIX = 'Abstract';
     const REQUEST_SUFFIX  = 'Client';
-
-    const TIMEOUT         = 10;
-    const CONNECT_TIMEOUT = 3;
-
-    const DEFAULT_HEADERS = [
-        // required headers
-        'User-Agent'      =>
-            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '.
-            'AppleWebKit/537.36 (KHTML, like Gecko) '.
-            'Chrome/58.0.3029.110 '.
-            'Safari/537.36',
-        'Origin'          => 'http://stats.nba.com',
-        // this will be overridden by the response type of the individual request
-        'Accept'          => 'application/json',
-        // optional headers that might help prevent timeouts
-        'DNT'             => '1',
-        'Accept-Language' => 'en-US,en;q=0.8,af;q=0.6',
-        'Accept-Encoding' => 'gzip, deflate, sdch',
-        'Host'            => 'stats.nba.com',
-        'Referer'         => 'http://stats.nba.com',
-        'Content-Type'    => 'application/json',
-        'Connection'      => 'keep-alive',
-        'Cache-Control'   => 'no-cache, no-store, must-revalidate',
-    ];
 
     /**
      * @var GuzzleClient
@@ -59,16 +35,6 @@ abstract class AbstractClient
      * @var ValidatorBuilderInterface
      */
     protected $validator;
-
-    /**
-     * @return string
-     */
-    abstract public static function getClientId(): string;
-
-    /**
-     * @return array
-     */
-    abstract protected function getHeaders(): array;
 
     /**
      * Create the guzzle client from the child class's config/headers, and any overridden parameters.
@@ -92,12 +58,7 @@ abstract class AbstractClient
             "JasonRoman\NbaApi\Constraints , '/home/vagrant/dev/projects/nbasense/vendor/jasonroman/nba-stats-api/src1'
         ]);*/
 
-
-        $this->guzzle = new GuzzleClient(array_merge(
-            static::CONFIG,
-            ['headers' => $this->getHeaders()],
-            $config
-        ));
+        $this->guzzle = new GuzzleClient($config);
     }
 
     /**
@@ -117,25 +78,70 @@ abstract class AbstractClient
             }
         }
 
-        // convert all request parameters to string before sending the data
-        $request->convertParamsToString();
+        // clone and convert all request parameters to string before sending the data
+        // this is done so that the original request object is not modified in any way
+        $apiRequest = clone $request;
+        $apiRequest->convertParamsToString();
 
         // override the default application/json accept headers based on the response type
-        $acceptHeadersExtra = (in_array($request->getResponseType(), ResponseType::TYPES))
-            ? ['headers' => ['Accept' => ResponseType::ACCEPT_HEADERS[$request->getResponseType()]]]
+        $acceptHeadersExtra = (in_array($apiRequest->getResponseType(), ResponseType::TYPES))
+            ? [
+                'Accept' => ResponseType::ACCEPT_HEADERS[$apiRequest->getResponseType()],
+                'Content-Type' => ResponseType::ACCEPT_HEADERS[$apiRequest->getResponseType()],
+            ]
             : [];
+        /*dump($apiRequest->getHeaders());
+        dump($acceptHeadersExtra);
+        /*dump($apiRequest->getMethod());
+        dump($apiRequest->getEndpoint());
+        dump($apiRequest->getQueryParams());
+        dump($apiRequest->getResponseTYpe());
+dump(array_merge(
+    $apiRequest->getHeaders(),
+    $acceptHeadersExtra
+));
+dump(            array_merge(
+    ['query' => $apiRequest->getQueryParams()],
+    ['headers' => array_merge(
+        $apiRequest->getHeaders(),
+        $acceptHeadersExtra
+    )],
+    $apiRequest->getConfig(),
+    $config,
+    // for testing purposes
+    ['on_stats' => function (TransferStats $stats) {
+        // dump($stats->getResponse());
+    }]
+));*/
+//dump($apiRequest->getConfig());
 
         // return the response from the Guzzle request
         return $this->apiRequest(
-            $request->getMethod(),
-            $request->getEndpoint(),
+            $apiRequest->getMethod(),
+            $apiRequest->getEndpoint(),
             array_merge(
-                ['query' => $request->getQueryParams()],
-                $config,
-                $acceptHeadersExtra,
+                ['query' => $apiRequest->getQueryParams()],
+                ['headers' => array_merge(
+                    $apiRequest->getHeaders(),
+                    $acceptHeadersExtra
+                )],
+                array_merge(
+                    $apiRequest->getConfig(),
+                    $config
+                ),
                 // for testing purposes
                 ['on_stats' => function (TransferStats $stats) {
-                    // dump($stats->getResponse());
+                    //dump($stats->getRequest());
+                    /*dump($stats->getEffectiveUri());
+                    dump($stats->getTransferTime());
+                    dump($stats->getHandlerStats());
+                    dump($stats->getRequest());
+                    dump($stats->getResponse());*/
+                    //dump((string) $stats->getResponse()->getBody());
+
+                    /*if ($stats->hasResponse()) {
+                        dump($stats->getResponse()->getStatusCode());
+                    }*/
                 }]
             )
         );

@@ -11,8 +11,16 @@ use JasonRoman\NbaApi\Response\ResponseType;
  */
 abstract class AbstractNbaRequest extends AbstractNbaApiRequest
 {
-    const BASE_URI = AbstractNbaClient::BASE_URI;
+    const BASE_URI = 'http://www.nba.com';
 
-    // default response type for most requests - override for non-XML requests
     const DEFAULT_RESPONSE_TYPE = ResponseType::XML;
+
+    const HEADERS = [
+        'Origin' => 'http://www.nba.net',
+        'Host'   => 'www.nba.net',
+    ];
+
+    const CONFIG = [
+        'base_uri' => self::BASE_URI,
+    ];
 }

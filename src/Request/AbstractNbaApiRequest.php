@@ -3,6 +3,7 @@
 namespace JasonRoman\NbaApi\Request;
 
 use JasonRoman\NbaApi\Params\AbstractParam;
+use JasonRoman\NbaApi\Response\ResponseType;
 
 abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
 {
@@ -23,11 +24,57 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
         self::PLACEHOLDER_START.'\K[^'.self::PLACEHOLDER_END.']*(?='.self::PLACEHOLDER_END.')'.
     '/m';
 
-    public function getClientId()
-    {
-        $client = static::CLIENT;
+    const TIMEOUT         = 10;
+    const CONNECT_TIMEOUT = 3;
 
-        return $client::getClientId();
+    const DEFAULT_CONFIG = [
+        'timeout'         => self::TIMEOUT,
+        'connect_timeout' => self::CONNECT_TIMEOUT,
+    ];
+
+    const DEFAULT_HEADERS = [
+        // required headers
+        'User-Agent'      =>
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '.
+            'AppleWebKit/537.36 (KHTML, like Gecko) '.
+            'Chrome/58.0.3029.110 '.
+            'Safari/537.36',
+        'Origin'          => 'http://stats.nba.com',
+        // this will be overridden by the response type of the individual request
+        'Accept'          => 'application/json',
+        // optional headers that might help prevent timeouts
+        'DNT'             => '1',
+        'Accept-Language' => 'en-US,en;q=0.8,af;q=0.6',
+        'Accept-Encoding' => 'gzip, deflate, sdch',
+        'Host'            => 'stats.nba.com',
+        'Referer'         => 'http://stats.nba.com',
+        'Content-Type'    => 'application/json',
+        'Connection'      => 'keep-alive',
+        'Cache-Control'   => 'no-cache, no-store, must-revalidate',
+    ];
+
+    const DEFAULT_RESPONSE_TYPE = ResponseType::JSON;
+
+    /**
+     * @return array
+     */
+    public function getConfig(): array
+    {
+        return array_merge(
+            self::DEFAULT_CONFIG,
+            (defined('static::CONFIG') && is_array(static::CONFIG)) ? static::CONFIG : []
+        );
+    }
+
+    /**
+     * @return array
+     */
+    public function getHeaders(): array
+    {
+        return array_merge(
+            self::DEFAULT_HEADERS,
+            (defined('static::HEADERS') && is_array(static::HEADERS)) ? static::HEADERS : []
+        );
     }
 
     /**

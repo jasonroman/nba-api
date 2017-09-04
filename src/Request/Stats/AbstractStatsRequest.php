@@ -8,10 +8,11 @@ use JasonRoman\NbaApi\Response\ResponseType;
 
 abstract class AbstractStatsRequest extends AbstractNbaApiRequest
 {
-    const BASE_URI = AbstractStatsClient::BASE_URI;
+    const BASE_URI = 'http://stats.nba.com';
 
-    // default response type for most requests - override for non-JSON requests
-    const DEFAULT_RESPONSE_TYPE = ResponseType::JSON;
+    const CONFIG = [
+        'base_uri' => self::BASE_URI,
+    ];
 
     /**
      * Note - it appears the following links are currently broken:
