@@ -8,11 +8,11 @@ use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
 use JasonRoman\NbaApi\Params\TeamIdParam;
 
 /**
- * Get the schedule of a team for a given season. Same as other request except uses team id, available from 2016.
+ * Get players on a team for a given season. Same as other request except uses team id, available from 2016.
  */
-class TeamScheduleRequest extends AbstractDataProdRequest
+class TeamRosterByIdRequest extends AbstractDataProdRequest
 {
-    const ENDPOINT = '/prod/v1/{year}/teams/{teamId}/schedule.json';
+    const ENDPOINT = '/prod/v1/{year}/teams/{teamId}/roster.json';
 
     /**
      * @Assert\NotBlank()

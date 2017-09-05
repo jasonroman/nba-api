@@ -8,16 +8,16 @@ use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
 use JasonRoman\NbaApi\Params\TeamSlugParam;
 
 /**
- * Get the schedule of a team for a given season. Available from 2015. Includes scores if the game has been played.
+ * Get statistical leaders of a team for a given season. Available from 2015.
  */
-class TeamSchedule2015Request extends AbstractDataProdRequest
+class TeamLeadersBySlugRequest extends AbstractDataProdRequest
 {
-    const ENDPOINT = '/prod/v1/{year}/teams/{teamSlug}/schedule.json';
+    const ENDPOINT = '/prod/v1/{year}/teams/{teamSlug}/leaders.json';
 
     /**
      * @Assert\NotBlank()
      * @Assert\Type("int")
-     * @Assert\Range(min = 2015)
+     * @Assert\Range(min = 2015, max = 2015)
      *
      * @var int
      */

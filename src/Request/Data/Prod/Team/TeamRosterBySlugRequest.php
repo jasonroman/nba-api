@@ -8,9 +8,9 @@ use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
 use JasonRoman\NbaApi\Params\TeamSlugParam;
 
 /**
- * Get players on a team for a given season. Available for 2015.
+ * Get players on a team for a given season. Available from 2015.
  */
-class TeamRoster2015Request extends AbstractDataProdRequest
+class TeamRosterBySlugRequest extends AbstractDataProdRequest
 {
     const ENDPOINT = '/prod/v1/{year}/teams/{teamSlug}/roster.json';
 

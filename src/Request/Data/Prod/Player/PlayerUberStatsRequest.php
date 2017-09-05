@@ -11,7 +11,7 @@ use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
  */
 class PlayerUberStatsRequest extends AbstractDataProdRequest
 {
-    const ENDPOINT = '/prod/v1/{year}/players/{playerId}_profile.json';
+    const ENDPOINT = '/prod/v1/{year}/players/{playerId}_uber_stats.json';
 
     /**
      * @Assert\NotBlank()
