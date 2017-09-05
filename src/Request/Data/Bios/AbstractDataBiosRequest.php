@@ -2,7 +2,6 @@
 
 namespace JasonRoman\NbaApi\Request\Data\Bios;
 
-use JasonRoman\NbaApi\Client\Data\DataBiosClient;
 use JasonRoman\NbaApi\Request\Data\AbstractDataRequest;
 
 /**
@@ -10,5 +9,4 @@ use JasonRoman\NbaApi\Request\Data\AbstractDataRequest;
  */
 abstract class AbstractDataBiosRequest extends AbstractDataRequest
 {
-    const CLIENT = DataBiosClient::class;
 }

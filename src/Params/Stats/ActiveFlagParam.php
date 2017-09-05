@@ -13,7 +13,7 @@ class ActiveFlagParam extends AbstractStatsParam
     /**
      * {@inheritdoc}
      */
-    public static function getStringValue($value) : string
+    public static function getStringValue($value): string
     {
         return ($value) ? self::YES : self::NO;
     }

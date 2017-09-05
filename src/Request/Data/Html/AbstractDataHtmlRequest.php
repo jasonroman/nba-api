@@ -2,7 +2,6 @@
 
 namespace JasonRoman\NbaApi\Request\Data\Html;
 
-use JasonRoman\NbaApi\Client\Data\DataHtmlClient;
 use JasonRoman\NbaApi\Request\Data\AbstractDataRequest;
 
 /**
@@ -10,5 +9,4 @@ use JasonRoman\NbaApi\Request\Data\AbstractDataRequest;
  */
 abstract class AbstractDataHtmlRequest extends AbstractDataRequest
 {
-    const CLIENT = DataHtmlClient::class;
 }

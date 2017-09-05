@@ -2,7 +2,6 @@
 
 namespace JasonRoman\NbaApi\Request\Api;
 
-use JasonRoman\NbaApi\Client\Api\AbstractApiClient;
 use JasonRoman\NbaApi\Request\AbstractNbaApiRequest;
 use JasonRoman\NbaApi\Response\ResponseType;
 

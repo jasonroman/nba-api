@@ -4,7 +4,7 @@ namespace JasonRoman\NbaApi\Params\Stats;
 
 /**
  * Country. Does not appear to be case-sensitive.
- * @todo possibly maintain a more full list later
+ * @todo maintain a more full list later
  */
 class CountryParam extends AbstractStatsParam
 {

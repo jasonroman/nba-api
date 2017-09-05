@@ -1,11 +1,13 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace JasonRoman\NbaApi\Tests\Integration\Client;
 
-use JasonRoman\NbaApi\Client\Client;
-use JasonRoman\NbaApi\Request\RequestHelper;
 use PHPUnit\Framework\TestCase;
-use JasonRoman\NbaApi\Client\AbstractNbaClient;
+use JasonRoman\NbaApi\Client\Client;
+use JasonRoman\NbaApi\Request\Data\Html\Game\GameBookRequest as DataHtmlGameBookRequest;
+use JasonRoman\NbaApi\Request\Data\Prod\Game\GameBookRequest as DataProdGameBookRequest;
+use JasonRoman\NbaApi\Request\Nba\Wsc\Video\VideoRequest as NbaWscVideoRequest;
+use JasonRoman\NbaApi\Request\RequestsHelper;
 use JasonRoman\NbaApi\Request\Stats\Stats\AllStar\AllStarBallotPredictorRequest;
 use JasonRoman\NbaApi\Response\NbaApiResponse;
 
@@ -33,38 +35,6 @@ class ClientAllRequestsTest extends TestCase
     protected function tearDown()
     {
         unset($this->client);
-    }
-
-    /**
-     * Return a list of request classes that should not be tested globally;
-     * For example:
-     *  - when a PDF is returned by an endpoint
-     *  - when only XML is returned by an endpoint
-     *  - when an endpoint may be valid (all star ballot predictor) but does not return results in off-season
-     *
-     * @return array
-     */
-    protected function getWhitelistedRequestClasses()
-    {
-        return [
-            AllStarBallotPredictorRequest::class,
-            \JasonRoman\NbaApi\Request\Data\Html\Game\GameBookRequest::class,
-            \JasonRoman\NbaApi\Request\Data\Prod\Game\GameBookRequest::class,
-            \JasonRoman\NbaApi\Request\Nba\Wsc\Video\VideoRequest::class,
-        ];
-    }
-    /**
-     * @param string $key
-     * @param $value
-     * @return mixed
-     */
-    protected function toValue(string $key, $value)
-    {
-        if (stripos($key, 'date') !== false && !$value instanceof \DateTime) {
-            return new \DateTime($value);
-        }
-
-        return $value;
     }
 
     /**
@@ -103,8 +73,8 @@ class ClientAllRequestsTest extends TestCase
      */
     public function testAllRequests()
     {
-        $requestHelper  = new RequestHelper();
-        $requestClasses = $requestHelper->getAllRequestClasses();
+        $requestsHelper = new RequestsHelper();
+        $requestClasses = $requestsHelper->getAllRequestClasses();
 
         foreach ($requestClasses as $requestClass) {
             if (in_array($requestClass, $this->getWhitelistedRequestClasses())) {
@@ -132,9 +102,31 @@ class ClientAllRequestsTest extends TestCase
         $this->assertTrue(true);
     }
 
-    public function atestGetNbaWscVideo()
+    public function testGetDataHtmlGameBook()
     {
-        $request  = \JasonRoman\NbaApi\Request\Nba\Wsc\Video\VideoRequest::fromArrayWithExamples();
+        $request  = DataHtmlGameBookRequest::fromArrayWithExamples();
+        $response = $this->client->request($request);
+
+        $this->assertInstanceOf(NbaApiResponse::class, $response);
+        $this->assertSame(200, $response->getResponse()->getStatusCode());
+
+        $this->assertTrue($response->getResponse()->getHeader('Content-Type') === ['application/pdf']);
+    }
+
+    public function testGetDataProdGameBook()
+    {
+        $request  = DataProdGameBookRequest::fromArrayWithExamples();
+        $response = $this->client->request($request);
+
+        $this->assertInstanceOf(NbaApiResponse::class, $response);
+        $this->assertSame(200, $response->getResponse()->getStatusCode());
+
+        $this->assertTrue($response->getResponse()->getHeader('Content-Type') === ['application/pdf']);
+    }
+
+    public function testGetNbaWscVideo()
+    {
+        $request  = NbaWscVideoRequest::fromArrayWithExamples();
         $response = $this->client->request($request);
 
         $this->assertInstanceOf(NbaApiResponse::class, $response);
@@ -146,25 +138,22 @@ class ClientAllRequestsTest extends TestCase
         );
     }
 
-    public function atestGetDataHtmlGameBook()
+    /**
+     * Return a list of request classes that should not be tested globally;
+     * For example:
+     *  - when a PDF is returned by an endpoint
+     *  - when only XML is returned by an endpoint
+     *  - when an endpoint may be valid (all star ballot predictor) but does not return results in off-season
+     *
+     * @return array
+     */
+    protected function getWhitelistedRequestClasses()
     {
-        $request  = \JasonRoman\NbaApi\Request\Data\Html\Game\GameBookRequest::fromArrayWithExamples();
-        $response = $this->client->request($request);
-
-        $this->assertInstanceOf(NbaApiResponse::class, $response);
-        $this->assertSame(200, $response->getResponse()->getStatusCode());
-
-        $this->assertTrue($response->getResponse()->getHeader('Content-Type') === ['application/pdf']);
-    }
-
-    public function atestGetDataProdGameBook()
-    {
-        $request  = \JasonRoman\NbaApi\Request\Data\Prod\Game\GameBookRequest::fromArrayWithExamples();
-        $response = $this->client->request($request);
-
-        $this->assertInstanceOf(NbaApiResponse::class, $response);
-        $this->assertSame(200, $response->getResponse()->getStatusCode());
-
-        $this->assertTrue($response->getResponse()->getHeader('Content-Type') === ['application/pdf']);
+        return [
+            AllStarBallotPredictorRequest::class,
+            DataHtmlGameBookRequest::class,
+            DataProdGameBookRequest::class,
+            NbaWscVideoRequest::class,
+        ];
     }
 }

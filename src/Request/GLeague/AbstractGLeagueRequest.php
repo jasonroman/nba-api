@@ -2,9 +2,7 @@
 
 namespace JasonRoman\NbaApi\Request\GLeague;
 
-use JasonRoman\NbaApi\Client\GLeague\AbstractGLeagueClient;
 use JasonRoman\NbaApi\Request\AbstractNbaApiRequest;
-use JasonRoman\NbaApi\Response\ResponseType;
 
 /**
  * Base class which any GLeague requests must extend from.

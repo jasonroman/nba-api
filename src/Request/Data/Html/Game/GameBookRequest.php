@@ -4,7 +4,6 @@ namespace JasonRoman\NbaApi\Request\Data\Html\Game;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
-use JasonRoman\NbaApi\Params\Data\GameDateParam;
 use JasonRoman\NbaApi\Params\GameIdParam;
 use JasonRoman\NbaApi\Request\Data\Html\AbstractDataHtmlRequest;
 
@@ -27,7 +26,6 @@ class GameBookRequest extends AbstractDataHtmlRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("\DateTime")
-     * @Assert\Range(min = GameDateParam::START_DATE_PRE_SEASON_2010)
      *
      * @var \DateTime
      */

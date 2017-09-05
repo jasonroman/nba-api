@@ -26,7 +26,7 @@ class SeasonIdParam extends AbstractParam
      * @param int $prefix
      * @return string
      */
-    public static function fromYearAndPrefix(int $year, int $prefix) : string
+    public static function fromYearAndPrefix(int $year, int $prefix): string
     {
         if (!in_array($prefix, self::SEASON_ID_PREFIXES)) {
             throw new \InvalidArgumentException('Season id prefix is invalid');
@@ -41,7 +41,7 @@ class SeasonIdParam extends AbstractParam
      * @param int $prefix
      * @return string
      */
-    public static function currentSeasonId(int $prefix) : string
+    public static function currentSeasonId(int $prefix): string
     {
         // if August or earlier, the season started from the previous year
         return self::fromYearAndPrefix(SeasonParam::currentSeasonStartYear(), $prefix);

@@ -2,8 +2,25 @@
 
 namespace JasonRoman\NbaApi\Request;
 
+/**
+ * Base request interface for the NBA API.
+ */
 interface NbaApiRequestInterface
 {
+    /**
+     * Get the Guzzle config - take the default and merge in the request-specific config.
+     *
+     * @return array
+     */
+    public function getConfig(): array;
+
+    /**
+     * Get the Guzzle headers - take the default and merge in the request-specific config.
+     *
+     * @return array
+     */
+    public function getHeaders(): array;
+
     /**
      * Get the HTTP request method.
      *
@@ -24,6 +41,13 @@ interface NbaApiRequestInterface
      * @return string
      */
     public function getResponseType(): string;
+
+    /**
+     * Retrieve the endpoint variables in the URL that get added to the base URL.
+     *
+     * @return string[]
+     */
+    public function getEndpointVars(): array;
 
     /**
      * Retrieve the endpoint in the URL that gets added to the base URL.
@@ -61,7 +85,9 @@ interface NbaApiRequestInterface
     public function getExampleValues(): array;
 
     /**
-     * Convert params from an array to the proper request class.
+     * Convert params from an array to the proper request class. If set to use example values, this will use
+     * example values and default values (examples take precedence). This is mainly a convenience so that a
+     * a completely valid request can be generated without passing a single parameter.
      *
      * @param array $array
      * @param bool $useExampleValues

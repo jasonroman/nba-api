@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Constraints;
 
@@ -36,7 +36,8 @@ class ApiRegexValidator extends ConstraintValidator
             $this->context->buildViolation($constraint->message)
                 ->setParameter('{{ param }}', $this->context->getPropertyName())
                 ->setParameter('{{ regex }}', $constraint->pattern)
-                ->addViolation();
+                ->addViolation()
+            ;
         }
     }
 }

@@ -2,6 +2,9 @@
 
 namespace JasonRoman\NbaApi\Response;
 
+/**
+ * Class for basic information about Guzzle response types.
+ */
 class ResponseType
 {
     const JSON = 'json';

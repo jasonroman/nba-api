@@ -2,7 +2,6 @@
 
 namespace JasonRoman\NbaApi\Request\Nba;
 
-use JasonRoman\NbaApi\Client\Nba\AbstractNbaClient;
 use JasonRoman\NbaApi\Request\AbstractNbaApiRequest;
 use JasonRoman\NbaApi\Response\ResponseType;
 
@@ -16,8 +15,8 @@ abstract class AbstractNbaRequest extends AbstractNbaApiRequest
     const DEFAULT_RESPONSE_TYPE = ResponseType::XML;
 
     const HEADERS = [
-        'Origin' => 'http://www.nba.net',
-        'Host'   => 'www.nba.net',
+        'Origin' => 'http://www.nba.com',
+        'Host'   => 'www.nba.com',
     ];
 
     const CONFIG = [

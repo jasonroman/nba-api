@@ -2,7 +2,6 @@
 
 namespace JasonRoman\NbaApi\Request\Data\GameExperience;
 
-use JasonRoman\NbaApi\Client\Data\DataGameExperienceClient;
 use JasonRoman\NbaApi\Request\Data\AbstractDataRequest;
 
 /**
@@ -10,5 +9,4 @@ use JasonRoman\NbaApi\Request\Data\AbstractDataRequest;
  */
 abstract class AbstractDataGameExperienceRequest extends AbstractDataRequest
 {
-    const CLIENT = DataGameExperienceClient::class;
 }

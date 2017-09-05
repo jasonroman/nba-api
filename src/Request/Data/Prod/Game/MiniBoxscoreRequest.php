@@ -4,7 +4,6 @@ namespace JasonRoman\NbaApi\Request\Data\Prod\Game;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
-use JasonRoman\NbaApi\Params\Data\GameDateParam;
 use JasonRoman\NbaApi\Params\GameIdParam;
 use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
 
@@ -18,7 +17,6 @@ class MiniBoxscoreRequest extends AbstractDataProdRequest
     /**
      * @Assert\NotBlank()
      * @Assert\Type("\DateTime")
-     * @Assert\Range(min = GameDateParam::MIN_DATE)
      *
      * @var \DateTime
      */

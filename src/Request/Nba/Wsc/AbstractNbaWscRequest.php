@@ -2,7 +2,6 @@
 
 namespace JasonRoman\NbaApi\Request\Nba\Wsc;
 
-use JasonRoman\NbaApi\Client\Nba\NbaWscClient;
 use JasonRoman\NbaApi\Request\Nba\AbstractNbaRequest;
 
 /**
@@ -10,5 +9,4 @@ use JasonRoman\NbaApi\Request\Nba\AbstractNbaRequest;
  */
 abstract class AbstractNbaWscRequest extends AbstractNbaRequest
 {
-    const CLIENT = NbaWscClient::class;
 }

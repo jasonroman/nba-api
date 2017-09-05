@@ -2,7 +2,6 @@
 
 namespace JasonRoman\NbaApi\Request\GLeague\Api;
 
-use JasonRoman\NbaApi\Client\GLeague\GLeagueApiClient;
 use JasonRoman\NbaApi\Request\GLeague\AbstractGLeagueRequest;
 
 /**
@@ -10,5 +9,4 @@ use JasonRoman\NbaApi\Request\GLeague\AbstractGLeagueRequest;
  */
 abstract class AbstractGLeagueApiRequest extends AbstractGLeagueRequest
 {
-    const CLIENT = GLeagueApiClient::class;
 }

@@ -1,11 +1,11 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Constraints;
 
 use Symfony\Component\Validator\Constraint;
 
 /**
- * Custom Choice constraint based on Symfony constraint.
+ * Custom Choice constraint based on Symfony constraint. Used to display the available choices in the error message.
  *
  * @Annotation
  */

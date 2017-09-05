@@ -5,11 +5,16 @@ namespace JasonRoman\NbaApi\Request;
 use JasonRoman\NbaApi\Params\AbstractParam;
 use JasonRoman\NbaApi\Response\ResponseType;
 
+/**
+ * Base request class that all NBA API requests must extend. This contains all functionality necessary to
+ * send a request to the client and retrieve any specific information about a request.
+ */
 abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
 {
-    const BASE_NAMESPACE = 'JasonRoman\NbaApi\Request';
+    const BASE_NAMESPACE = __NAMESPACE__;
     const REQUEST_SUFFIX = 'Request';
 
+    // functions used to retrieve specific parameter values
     const PARAM_DEFAULT_METHOD     = 'getDefaultValue';
     const PARAM_EXAMPLE_METHOD     = 'getExampleValue';
     const CONVERT_TO_STRING_METHOD = 'getStringValue';
@@ -24,6 +29,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
         self::PLACEHOLDER_START.'\K[^'.self::PLACEHOLDER_END.']*(?='.self::PLACEHOLDER_END.')'.
     '/m';
 
+    // default time to wait for responses from the API
     const TIMEOUT         = 10;
     const CONNECT_TIMEOUT = 3;
 
@@ -56,7 +62,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
     const DEFAULT_RESPONSE_TYPE = ResponseType::JSON;
 
     /**
-     * @return array
+     * {@inheritdoc}
      */
     public function getConfig(): array
     {
@@ -67,7 +73,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
     }
 
     /**
-     * @return array
+     * {@inheritdoc}
      */
     public function getHeaders(): array
     {
@@ -106,18 +112,6 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
         return static::DEFAULT_RESPONSE_TYPE;
     }
 
-    public function getFullEndpoint(): string
-    {
-        $queryString = $this->getQueryString();
-
-        return sprintf(
-            '%s%s%s',
-            self::getBaseUri(),
-            $this->getEndpoint(),
-            ($queryString) ? '/?'.$queryString : ''
-        );
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -142,9 +136,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
     }
 
     /**
-     * Retrieve the endpoint variables in the URL that get added to the base URL.
-     *
-     * @return string[]
+     * {@inheritdoc}
      */
     public function getEndpointVars(): array
     {
@@ -181,16 +173,6 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
     }
 
     /**
-     * Retrieve the query param keys, which are all params minus any that occur as placeholders in the endpoint.
-     *
-     * @return string[]
-     */
-    public function getQueryParamKeys(): array
-    {
-        return array_keys($this->getQueryParams());
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function getDefaultValues(): array
@@ -209,15 +191,15 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
     /**
      * {@inheritdoc}
      */
-    public static function fromArray(array $array = [], bool $useExampleValues = false) : NbaApiRequestInterface
+    public static function fromArray(array $array = [], bool $useExampleValues = false): NbaApiRequestInterface
     {
-        $calledClass = get_called_class();
+        $calledClass = static::class;
 
         /** @var AbstractNbaApiRequest $request */
         $request = new $calledClass;
 
         // get all public properties of the request
-        $publicProperties = (new \ReflectionObject($request))->getProperties(\ReflectionProperty::IS_PUBLIC);
+        $publicProperties = $request->getPublicProperties();
 
         /**
          * loop through each public property of the class and set the value according to the following priority;
@@ -252,12 +234,36 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
     }
 
     /**
-     * Wrapper that calls fromArray() with $useExampleValues set to true
+     * {@inheritdoc}
+     */
+    public function toArray(): array
+    {
+        return (array) $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function convertParamsToString()
+    {
+        // get the reflection class and all public properties of the class
+        $publicProperties = $this->getPublicProperties();
+
+        // loop through each public property of the class and convert the value to string
+        foreach ($publicProperties as $property) {
+            $propertyName = $property->getName();
+
+            $this->$propertyName = $this->convertParamToString($propertyName);
+        }
+    }
+
+    /**
+     * Wrapper that calls fromArray() with $useExampleValues set to true.
      *
      * @param array $array
      * @return NbaApiRequestInterface
      */
-    public static function fromArrayWithExamples(array $array = []) : NbaApiRequestInterface
+    public static function fromArrayWithExamples(array $array = []): NbaApiRequestInterface
     {
         return self::fromArray($array, true);
     }
@@ -340,30 +346,6 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function toArray(): array
-    {
-        return (array) $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function convertParamsToString()
-    {
-        // get the reflection class and all public properties of the class
-        $publicProperties = (new \ReflectionObject($this))->getProperties(\ReflectionProperty::IS_PUBLIC);
-
-        // loop through each public property of the class and convert the value to string
-        foreach ($publicProperties as $property) {
-            $propertyName = $property->getName();
-
-            $this->$propertyName = $this->convertParamToString($propertyName);
-        }
-    }
-
-    /**
      * Get the string value of a parameter according to the priority, stopping when a value is converted.
      * Note that each param class does not have to specifically define this function; it rolls up to the base class.
      *
@@ -374,7 +356,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
      *
      * @param string $propertyName
      */
-    public function convertParamToString($propertyName)
+    protected function convertParamToString($propertyName)
     {
         // use the property if it exists in the getDefaultValue() method of the Request Type -> Param class
         // for example, for a Data request, this looks in JasonRoman\NbaApi\Params\Data\<Property>Param
@@ -401,10 +383,28 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
     /**
      * The following functions are all helper functions that get various properties/meta information about a request.
      * All requests in this library have a domain, section, and category which can be determined from the namespace.
+     * These could probably all be moved out to their own class, or a class that takes in the request.
      */
 
     /**
-     * Get the base endpoint for display - the base url plus the main endpoint.
+     * Get the full URL endpoint with all parameters and placeholders.
+     *
+     * @return string
+     */
+    public function getFullUrl(): string
+    {
+        $queryString = $this->getQueryString();
+
+        return sprintf(
+            '%s%s%s',
+            self::getBaseUri(),
+            $this->getEndpoint(),
+            ($queryString) ? '/?'.$queryString : ''
+        );
+    }
+
+    /**
+     * Get the base endpoint for display - the base url plus the main endpoint - placeholders show as {placeholder}.
      *
      * @return string
      */
@@ -413,6 +413,11 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
         return static::BASE_URI.static::ENDPOINT;
     }
 
+    /**
+     * Get all public properties of the request as reflection properties.
+     *
+     * @return \ReflectionProperty[]
+     */
     public function getPublicProperties(): array
     {
         $reflectionClass = new \ReflectionClass($this);
@@ -420,18 +425,27 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
         return $reflectionClass->getProperties(\ReflectionProperty::IS_PUBLIC);
     }
 
+    /**
+     * Get all parameter names, which are simply the names of the public properties.
+     *
+     * @return array
+     */
     public function getParamNames(): array
     {
         $names = [];
 
         foreach ($this->getPublicProperties() as $param) {
-            /** @var \ReflectionProperty $param */
             $names[] = $param->getName();
         }
 
         return $names;
     }
 
+    /**
+     * Get the meta information for all parameters.
+     *
+     * @return array
+     */
     public function getParamsInfo(): array
     {
         $paramsInfo = [];
@@ -443,6 +457,12 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
         return $paramsInfo;
     }
 
+    /**
+     * Get the meta information for a single parameter.
+     *
+     * @param string $paramName
+     * @return array
+     */
     public function getParamInfo($paramName)
     {
         $propertyUtility = new RequestPropertyUtility($this, $paramName);
@@ -465,9 +485,8 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
     }
 
     /**
-     * Get the namespace left over after removing the base namespace.  All request namespaces should be in this format:
-     *
-     * self::BASE_NAMESPACE\<Domain>\<Section>\<Category>
+     * Get the namespace and request left after removing the base namespace. All results should be in this format:
+     *  self::BASE_NAMESPACE\<Domain>\<Section>\<Category>\<Request>
      *
      * @return string
      * @throws \Exception if the request does not have the base namespace
@@ -482,7 +501,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
     }
 
     /**
-     * Get the namespace parts as an array after removing the base namespace.
+     * Get the namespace and request parts as an array after removing the base namespace.
      *
      * @return array
      */
@@ -540,11 +559,6 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
         return substr(self::getMainNamespaceAndRequestParts()[3], 0, -strlen(self::REQUEST_SUFFIX));
     }
 
-    public static function getClassShortName($class): string
-    {
-        return (new \ReflectionClass($class))->getShortName();
-    }
-
     /**
      * Get the 'short name' of the request class - the class name without namespaces.
      *
@@ -555,34 +569,55 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
         return self::getClassShortName(static::class);
     }
 
-    public static function getFqcn(): string
+    /**
+     * Get a class's reflection short name.
+     *
+     * @param string$class
+     * @return string
+     */
+    public static function getClassShortName($class): string
     {
-        return get_called_class();
+        return (new \ReflectionClass($class))->getShortName();
     }
 
+    /**
+     * Get the request's fully-qualified class name.
+     *
+     * @return string
+     */
+    public static function getFqcn(): string
+    {
+        return static::class;
+    }
+
+    /**
+     * Get the Guzzle base URI.
+     *
+     * @return string
+     */
     public static function getBaseUri(): string
     {
         return static::BASE_URI;
     }
 
-    public static function getClient(): string
-    {
-        return static::CLIENT;
-    }
-
-    public static function getClientClassShortName(): string
-    {
-        return self::getClassShortName(static::CLIENT);
-    }
-
+    /**
+     * Get the default response type.
+     *
+     * @return string
+     */
     public static function getDefaultResponseType(): string
     {
         return static::DEFAULT_RESPONSE_TYPE;
     }
 
+    /**
+     * Get the request namespace.
+     *
+     * @return string
+     */
     public static function getNamespace(): string
     {
-        $reflector = new \ReflectionClass(get_called_class());
+        $reflector = new \ReflectionClass(static::class);
 
         return $reflector->getNamespaceName();
     }

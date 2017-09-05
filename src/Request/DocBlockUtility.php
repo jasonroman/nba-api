@@ -1,13 +1,14 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Request;
 
 use Doctrine\Common\Annotations\AnnotationReader;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Constraints\All;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\NotNull;
 
+/**
+ * Class to help retrieve information from a doc block (description, var type, constraints).
+ */
 class DocBlockUtility
 {
     const REGEX_SPLIT_BY_NEWLINE        = "/\\r\\n|\\r|\\n/";
@@ -32,12 +33,13 @@ class DocBlockUtility
         $this->reader = new AnnotationReader();
     }
 
-    public function getPropertyAnnotations($reflectionProperty)
-    {
-        return $this->reader->getPropertyAnnotations($reflectionProperty);
-    }
-
-    public function getDescription(string $docComment)
+    /**
+     * Get the description from a doc comment; new lines are split by "\n".
+     *
+     * @param string $docComment
+     * @return string
+     */
+    public function getDescription(string $docComment): string
     {
         $description = [];
 
@@ -68,19 +70,31 @@ class DocBlockUtility
         return implode("\n", $description);
     }
 
-    public function getConstraints($reflectionProperty)
+    /**
+     * Get the @var of a doc comment.
+     *
+     * @param string $docComment
+     * @return string
+     */
+    public function getVar(string $docComment): string
     {
-        $constraints = [];
+        preg_match(self::REGEX_VAR_PATTERN, $docComment, $matches);
 
-        $annotations = $this->reader->getPropertyAnnotations($reflectionProperty);
-
-        foreach ($annotations as $annotation) {
-            $constraints[] = $annotation;
+        if ($matches) {
+            return $matches[1];
         }
 
-        return $constraints;
+        return '';
     }
 
+    /**
+     * Retrieve a specific constraint of a property ; defaults to retrieving from the All constraint if that exists.
+     *
+     * @param $reflectionProperty
+     * @param $constraintClass
+     * @param bool $getFromAll whether to search an All constraint of the property
+     * @return Constraint|null
+     */
     public function getConstraint($reflectionProperty, $constraintClass, $getFromAll = true)
     {
         if (
@@ -90,6 +104,7 @@ class DocBlockUtility
             return $constraint;
         }
 
+        // if not found, and not searching the All Constraint, return
         if (!$getFromAll) {
             return;
         }
@@ -102,28 +117,16 @@ class DocBlockUtility
         }
     }
 
-    public function hasConstraint($reflectionProperty, $constraintClass)
+    /**
+     * Retrieve a specific Symfony Constraint from within a Symfony All Constraint.
+     *
+     * @param \ReflectionProperty$reflectionProperty
+     * @param string $constraintClass
+     * @return Constraint|null
+     */
+    public function getConstraintFromAll(\ReflectionProperty $reflectionProperty, $constraintClass)
     {
-        return (bool) $this->getConstraint($reflectionProperty, $constraintClass);
-    }
-
-    public function getRequiredConstraints($reflectionProperty)
-    {
-        $constraints = [];
-
-        $annotations = $this->reader->getPropertyAnnotations($reflectionProperty);
-
-        foreach ($annotations as $annotation) {
-            if ($annotation instanceof NotBlank || $annotation instanceof NotNull) {
-                $constraints[] = $annotation;
-            }
-        }
-
-        return $constraints;
-    }
-
-    public function getConstraintFromAll($reflectionProperty, $constraintClass)
-    {
+        /** @var All $allConstraint */
         if (!($allConstraint = $this->getConstraint($reflectionProperty, All::class, false))) {
             return;
         }
@@ -133,16 +136,5 @@ class DocBlockUtility
                 return $constraint;
             }
         }
-    }
-
-    public function getVar(string $docComment)
-    {
-        preg_match(self::REGEX_VAR_PATTERN, $docComment, $matches);
-
-        if ($matches) {
-            return $matches[1];
-        }
-
-        return '';
     }
 }

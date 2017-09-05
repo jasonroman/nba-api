@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace JasonRoman\NbaApi\Constraints;
 
@@ -42,7 +42,7 @@ class ApiChoiceValidator extends ConstraintValidator
      * @param array $choices
      * @return string
      */
-    private function choicesToString(array $choices) : string
+    private function choicesToString(array $choices): string
     {
         return sprintf("'%s'", implode("','", $choices));
     }

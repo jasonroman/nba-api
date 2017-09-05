@@ -13,8 +13,6 @@ class ArticleRequest extends AbstractApiLeagueRequest
     const ENDPOINT = '/0/league/article/{articleId}';
 
     /**
-     * Test something else.
-     *
      * @Assert\NotBlank()
      * @Assert\Type("string")
      * @Assert\Uuid(strict = false)

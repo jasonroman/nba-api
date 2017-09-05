@@ -16,7 +16,7 @@ class SeasonParam extends AbstractParam
      * @return string
      * @throws \InvalidArgumentException
      */
-    public static function fromYear(int $year) : string
+    public static function fromYear(int $year): string
     {
         if (preg_match(SeasonYearParam::FORMAT, (string) $year) !== 1) {
             throw new \InvalidArgumentException(sprintf('Year must be in %s format', self::FORMAT));

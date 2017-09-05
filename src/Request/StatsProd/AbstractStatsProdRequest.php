@@ -2,9 +2,7 @@
 
 namespace JasonRoman\NbaApi\Request\StatsProd;
 
-use JasonRoman\NbaApi\Client\StatsProd\AbstractStatsProdClient;
 use JasonRoman\NbaApi\Request\AbstractNbaApiRequest;
-use JasonRoman\NbaApi\Response\ResponseType;
 
 abstract class AbstractStatsProdRequest extends AbstractNbaApiRequest
 {

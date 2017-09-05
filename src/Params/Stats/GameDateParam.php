@@ -13,7 +13,7 @@ class GameDateParam extends AbstractStatsParam
      * @param \DateTime|mixed $dateTime
      * @return string
      */
-    public static function getStringValue($dateTime) : string
+    public static function getStringValue($dateTime): string
     {
         // until a mixed type is supported for type-hints, check the value here
         if (!$dateTime instanceof \DateTime) {

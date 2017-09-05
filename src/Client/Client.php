@@ -8,7 +8,7 @@ use GuzzleHttp\TransferStats;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\ValidatorBuilderInterface;
-use JasonRoman\NbaApi\Request\NbaApiRequestInterface;
+use JasonRoman\NbaApi\Request\AbstractNbaApiRequest;
 use JasonRoman\NbaApi\Response\NbaApiResponse;
 use JasonRoman\NbaApi\Response\ResponseType;
 
@@ -17,10 +17,6 @@ use JasonRoman\NbaApi\Response\ResponseType;
  */
 class Client
 {
-    const BASE_NAMESPACE  = 'JasonRoman\NbaApi\Client';
-    const ABSTRACT_PREFIX = 'Abstract';
-    const REQUEST_SUFFIX  = 'Client';
-
     /**
      * @var GuzzleClient
      */
@@ -54,20 +50,20 @@ class Client
         );*/
 
         /*AnnotationRegistry::registerAutoloadNamespaces([
-            "Symfony\Component\Validator\Constraints" => '/home/vagrant/dev/projects/nbasense/vendor/symfony/symfony/src1',
-            "JasonRoman\NbaApi\Constraints , '/home/vagrant/dev/projects/nbasense/vendor/jasonroman/nba-stats-api/src1'
+            "Symfony\Component\Validator\Constraints" => '/home/vagrant/dev/projects/nbasense/vendor/symfony/symfony/src',
+            "JasonRoman\NbaApi\Constraints => '/home/vagrant/dev/projects/nbasense/vendor/jasonroman/nba-stats-api/src'
         ]);*/
 
         $this->guzzle = new GuzzleClient($config);
     }
 
     /**
-     * @param NbaApiRequestInterface $request
+     * @param AbstractNbaApiRequest $request
      * @param array $config
      * @return NbaApiResponse
      * @throws \Exception if validation fails
      */
-    public function request(NbaApiRequestInterface $request, array $config = []): NbaApiResponse
+    public function request(AbstractNbaApiRequest $request, array $config = []): NbaApiResponse
     {
         // validate the request if specified, and throw an exception if invalid
         if ($this->validateRequest) {
@@ -85,35 +81,8 @@ class Client
 
         // override the default application/json accept headers based on the response type
         $acceptHeadersExtra = (in_array($apiRequest->getResponseType(), ResponseType::TYPES))
-            ? [
-                'Accept' => ResponseType::ACCEPT_HEADERS[$apiRequest->getResponseType()],
-                'Content-Type' => ResponseType::ACCEPT_HEADERS[$apiRequest->getResponseType()],
-            ]
+            ? ['Accept' => ResponseType::ACCEPT_HEADERS[$apiRequest->getResponseType()]]
             : [];
-        /*dump($apiRequest->getHeaders());
-        dump($acceptHeadersExtra);
-        /*dump($apiRequest->getMethod());
-        dump($apiRequest->getEndpoint());
-        dump($apiRequest->getQueryParams());
-        dump($apiRequest->getResponseTYpe());
-dump(array_merge(
-    $apiRequest->getHeaders(),
-    $acceptHeadersExtra
-));
-dump(            array_merge(
-    ['query' => $apiRequest->getQueryParams()],
-    ['headers' => array_merge(
-        $apiRequest->getHeaders(),
-        $acceptHeadersExtra
-    )],
-    $apiRequest->getConfig(),
-    $config,
-    // for testing purposes
-    ['on_stats' => function (TransferStats $stats) {
-        // dump($stats->getResponse());
-    }]
-));*/
-//dump($apiRequest->getConfig());
 
         // return the response from the Guzzle request
         return $this->apiRequest(
@@ -121,27 +90,11 @@ dump(            array_merge(
             $apiRequest->getEndpoint(),
             array_merge(
                 ['query' => $apiRequest->getQueryParams()],
-                ['headers' => array_merge(
-                    $apiRequest->getHeaders(),
-                    $acceptHeadersExtra
-                )],
-                array_merge(
-                    $apiRequest->getConfig(),
-                    $config
-                ),
+                ['headers' => array_merge($apiRequest->getHeaders(), $acceptHeadersExtra)],
+                array_merge($apiRequest->getConfig(), $config),
                 // for testing purposes
                 ['on_stats' => function (TransferStats $stats) {
                     //dump($stats->getRequest());
-                    /*dump($stats->getEffectiveUri());
-                    dump($stats->getTransferTime());
-                    dump($stats->getHandlerStats());
-                    dump($stats->getRequest());
-                    dump($stats->getResponse());*/
-                    //dump((string) $stats->getResponse()->getBody());
-
-                    /*if ($stats->hasResponse()) {
-                        dump($stats->getResponse()->getStatusCode());
-                    }*/
                 }]
             )
         );

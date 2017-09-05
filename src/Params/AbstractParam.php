@@ -32,7 +32,7 @@ class AbstractParam
      * @param mixed $value
      * @return string
      */
-    public static function getStringValue($value) : string
+    public static function getStringValue($value): string
     {
         if ($value instanceof \DateTime) {
             return $value->format('Y-m-d');
@@ -49,7 +49,7 @@ class AbstractParam
      * @param string $paramName
      * @return mixed|null
      */
-    public static function getRequestTypeParamClassFqcn(string $requestType, string $paramName) : string
+    public static function getRequestTypeParamClassFqcn(string $requestType, string $paramName): string
     {
         return __NAMESPACE__.'\\'.$requestType.'\\'.ucfirst($paramName).self::PARAM_SUFFIX;
     }
@@ -61,7 +61,7 @@ class AbstractParam
      * @param string $paramName
      * @return mixed|null
      */
-    public static function getParamClassFqcn(string $paramName) : string
+    public static function getParamClassFqcn(string $paramName): string
     {
         return __NAMESPACE__.'\\'.ucfirst($paramName).self::PARAM_SUFFIX;
     }
