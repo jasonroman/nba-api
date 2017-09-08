@@ -477,11 +477,11 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
      */
     public static function getMainNamespaceAndRequest(): string
     {
-        if (substr(static::class, 0, strlen(self::BASE_NAMESPACE)) !== self::BASE_NAMESPACE) {
-            throw new \Exception('Request must have root namespace of '.self::BASE_NAMESPACE);
+        if (substr(static::class, 0, strlen(static::BASE_NAMESPACE)) !== static::BASE_NAMESPACE) {
+            throw new \Exception('Request must have root namespace of '.static::BASE_NAMESPACE);
         }
 
-        return substr(static::class, strlen(self::BASE_NAMESPACE) + 1);
+        return substr(static::class, strlen(static::BASE_NAMESPACE) + 1);
     }
 
     /**
@@ -536,11 +536,11 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
      */
     public static function getRequestName(): string
     {
-        if (substr(static::class, -strlen(self::REQUEST_SUFFIX)) !== self::REQUEST_SUFFIX) {
-            throw new \Exception('Request class name must end with '.self::REQUEST_SUFFIX);
+        if (substr(static::class, -strlen(static::REQUEST_SUFFIX)) !== static::REQUEST_SUFFIX) {
+            throw new \Exception('Request class name must end with '.static::REQUEST_SUFFIX);
         }
 
-        return substr(self::getMainNamespaceAndRequestParts()[3], 0, -strlen(self::REQUEST_SUFFIX));
+        return substr(self::getMainNamespaceAndRequestParts()[3], 0, -strlen(static::REQUEST_SUFFIX));
     }
 
     /**

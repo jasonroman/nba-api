@@ -65,13 +65,33 @@ class RequestPropertyUtility
     }
 
     /**
+     * Get the default value.
+     *
+     * @return mixed
+     */
+    public function getDefaultValue()
+    {
+        return AbstractNbaApiRequest::getDefaultValue($this->request, $this->propertyName);
+    }
+
+    /**
+     * Get the example value.
+     *
+     * @return mixed
+     */
+    public function getExampleValue()
+    {
+        return AbstractNbaApiRequest::getExampleValue($this->request, $this->propertyName);
+    }
+
+    /**
      * Get the default value as a string.
      *
      * @return string
      */
-    public function getDefaultValue(): string
+    public function getDefaultValueAsString(): string
     {
-        return $this->getStringOutput(AbstractNbaApiRequest::getDefaultValue($this->request, $this->propertyName));
+        return $this->getStringOutput($this->getDefaultValue());
     }
 
     /**
@@ -79,28 +99,9 @@ class RequestPropertyUtility
      *
      * @return string
      */
-    public function getExampleValue(): string
+    public function getExampleValueAsString(): string
     {
-        return $this->getStringOutput(AbstractNbaApiRequest::getExampleValue($this->request, $this->propertyName));
-    }
-
-    /**
-     * Get string output based on the value.
-     *
-     * @param mixed $value
-     * @return string
-     */
-    public function getStringOutput($value): string
-    {
-        if ($value instanceof \DateTime) {
-            return $value->format('Y-m-d');
-        } elseif (is_bool($value)) {
-            return $value ? 'true' : 'false';
-        } elseif (is_array($value)) {
-            return implode(', ', $value);
-        }
-
-        return (string) $value;
+        return $this->getStringOutput($this->getExampleValue());
     }
 
     /**
@@ -228,5 +229,24 @@ class RequestPropertyUtility
                 'max' => $constraint->max,
             ];
         }
+    }
+
+    /**
+     * Get string output based on the value.
+     *
+     * @param mixed $value
+     * @return string
+     */
+    protected function getStringOutput($value): string
+    {
+        if ($value instanceof \DateTime) {
+            return $value->format('Y-m-d');
+        } elseif (is_bool($value)) {
+            return $value ? 'true' : 'false';
+        } elseif (is_array($value)) {
+            return implode(', ', $value);
+        }
+
+        return (string) $value;
     }
 }
