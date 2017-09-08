@@ -129,7 +129,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
                 throw new \Exception(sprintf("Missing class member value '%s' for request", $endpointVar));
             }
 
-            $endpoint = str_replace('{'.$endpointVar.'}', $this->$endpointVar, $endpoint);
+            $endpoint = str_replace('{'.$endpointVar.'}', $this->convertParamToString($endpointVar), $endpoint);
         }
 
         return $endpoint;
@@ -157,7 +157,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
 
         foreach ($this->toArray() as $key => $value) {
             if (!in_array($key, $endpointVars)) {
-                $queryParams[$key] = $value;
+                $queryParams[$key] = $this->convertParamToString($key);
             }
         }
 
@@ -239,22 +239,6 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
     public function toArray(): array
     {
         return (array) $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function convertParamsToString()
-    {
-        // get the reflection class and all public properties of the class
-        $publicProperties = $this->getPublicProperties();
-
-        // loop through each public property of the class and convert the value to string
-        foreach ($publicProperties as $property) {
-            $propertyName = $property->getName();
-
-            $this->$propertyName = $this->convertParamToString($propertyName);
-        }
     }
 
     /**

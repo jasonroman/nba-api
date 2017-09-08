@@ -90,12 +90,12 @@ class DocBlockUtility
     /**
      * Retrieve a specific constraint of a property ; defaults to retrieving from the All constraint if that exists.
      *
-     * @param $reflectionProperty
-     * @param $constraintClass
+     * @param \ReflectionProperty $reflectionProperty
+     * @param string $constraintClass
      * @param bool $getFromAll whether to search an All constraint of the property
      * @return Constraint|null
      */
-    public function getConstraint($reflectionProperty, $constraintClass, $getFromAll = true)
+    public function getConstraint(\ReflectionProperty $reflectionProperty, $constraintClass, $getFromAll = true)
     {
         if (
             ($constraint = $this->reader->getPropertyAnnotation($reflectionProperty, $constraintClass)) &&

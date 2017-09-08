@@ -5,6 +5,7 @@ namespace JasonRoman\NbaApi\Constraints;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\ConstraintDefinitionException;
+use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
 /**
  * Custom Validator class based on Symfony Choice validator.
@@ -23,7 +24,7 @@ class ApiChoiceValidator extends ConstraintValidator
         }
 
         if (!is_array($constraint->choices)) {
-            throw new ConstraintDefinitionException('The constraint ApiChoice must have "choices" specified');
+            throw new ConstraintDefinitionException('The ApiChoice constraint must specify "choices" as an array');
         }
 
         if (null === $value) {

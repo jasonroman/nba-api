@@ -11,6 +11,8 @@ use Symfony\Component\Validator\Constraint;
  */
 class ApiRegex extends Constraint
 {
+    const DEFAULT_OPTION = 'pattern';
+
     /**
      * @var string
      */
@@ -26,7 +28,7 @@ class ApiRegex extends Constraint
      */
     public function getDefaultOption()
     {
-        return 'pattern';
+        return self::DEFAULT_OPTION;
     }
 
     /**
@@ -34,6 +36,6 @@ class ApiRegex extends Constraint
      */
     public function getRequiredOptions()
     {
-        return ['pattern'];
+        return [self::DEFAULT_OPTION];
     }
 }

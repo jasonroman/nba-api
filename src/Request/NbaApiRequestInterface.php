@@ -101,9 +101,4 @@ interface NbaApiRequestInterface
      * @return array
      */
     public function toArray(): array;
-
-    /**
-     * Convert all request parameters to a string.
-     */
-    public function convertParamsToString();
 }

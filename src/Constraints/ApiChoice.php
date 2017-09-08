@@ -11,6 +11,8 @@ use Symfony\Component\Validator\Constraint;
  */
 class ApiChoice extends Constraint
 {
+    const DEFAULT_OPTION = 'choices';
+
     /**
      * @var string
      */
@@ -26,7 +28,7 @@ class ApiChoice extends Constraint
      */
     public function getDefaultOption()
     {
-        return 'choices';
+        return self::DEFAULT_OPTION;
     }
 
     /**
@@ -34,6 +36,6 @@ class ApiChoice extends Constraint
      */
     public function getRequiredOptions()
     {
-        return ['choices'];
+        return [self::DEFAULT_OPTION];
     }
 }

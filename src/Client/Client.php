@@ -7,6 +7,7 @@ use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\TransferStats;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Validator\Validation;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Validator\ValidatorBuilderInterface;
 use JasonRoman\NbaApi\Request\AbstractNbaApiRequest;
 use JasonRoman\NbaApi\Response\NbaApiResponse;
@@ -38,11 +39,16 @@ class Client
      *
      * @param array $config any additional Guzzle configuration that overrides any defaults
      * @param bool $validateRequest whether to validate requests with the Symfony Validator
+     * @param GuzzleClient|null $guzzle if specified, overrides the default client that would be created
+     * @param ValidatorInterface|null $validator if specified, overrides the default validator that would be created
      */
-    public function __construct(array $config = [], $validateRequest = true)
-    {
+    public function __construct(
+        array $config = [],
+        $validateRequest = true,
+        GuzzleClient $guzzle = null,
+        ValidatorInterface $validator = null
+    ) {
         $this->validateRequest = $validateRequest;
-        $this->validator       = Validation::createValidatorBuilder()->enableAnnotationMapping()->getValidator();
 
         /*AnnotationRegistry::registerAutoloadNamespace(
             "Symfony\Component\Validator\Constraints",
@@ -54,7 +60,10 @@ class Client
             "JasonRoman\NbaApi\Constraints => '/home/vagrant/dev/projects/nbasense/vendor/jasonroman/nba-stats-api/src'
         ]);*/
 
-        $this->guzzle = new GuzzleClient($config);
+        $this->validator = $validator
+            ?? Validation::createValidatorBuilder()->enableAnnotationMapping()->getValidator();
+
+        $this->guzzle = $guzzle ?? new GuzzleClient($config);
     }
 
     /**
@@ -74,24 +83,19 @@ class Client
             }
         }
 
-        // clone and convert all request parameters to string before sending the data
-        // this is done so that the original request object is not modified in any way
-        $apiRequest = clone $request;
-        $apiRequest->convertParamsToString();
-
         // override the default application/json accept headers based on the response type
-        $acceptHeadersExtra = (in_array($apiRequest->getResponseType(), ResponseType::TYPES))
-            ? ['Accept' => ResponseType::ACCEPT_HEADERS[$apiRequest->getResponseType()]]
+        $acceptHeadersExtra = (in_array($request->getResponseType(), ResponseType::TYPES))
+            ? ['Accept' => ResponseType::ACCEPT_HEADERS[$request->getResponseType()]]
             : [];
 
         // return the response from the Guzzle request
         return $this->apiRequest(
-            $apiRequest->getMethod(),
-            $apiRequest->getEndpoint(),
+            $request->getMethod(),
+            $request->getEndpoint(),
             array_merge(
-                ['query' => $apiRequest->getQueryParams()],
-                ['headers' => array_merge($apiRequest->getHeaders(), $acceptHeadersExtra)],
-                array_merge($apiRequest->getConfig(), $config),
+                ['query' => $request->getQueryParams()],
+                ['headers' => array_merge($request->getHeaders(), $acceptHeadersExtra)],
+                array_merge($request->getConfig(), $config),
                 // for testing purposes
                 ['on_stats' => function (TransferStats $stats) {
                     //dump($stats->getRequest());
@@ -115,15 +119,6 @@ class Client
     }
 
     /**
-     * @param ResponseInterface $response
-     * @return NbaApiResponse
-     */
-    public function responseWrapper(ResponseInterface $response): NbaApiResponse
-    {
-        return new NbaApiResponse($response);
-    }
-
-    /**
      * Get whether the request is to be validated.
      *
      * @return bool
@@ -144,5 +139,14 @@ class Client
         $this->validateRequest = $validateRequest;
 
         return $this;
+    }
+
+    /**
+     * @param ResponseInterface $response
+     * @return NbaApiResponse
+     */
+    protected function responseWrapper(ResponseInterface $response): NbaApiResponse
+    {
+        return new NbaApiResponse($response);
     }
 }
