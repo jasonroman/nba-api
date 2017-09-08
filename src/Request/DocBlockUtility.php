@@ -14,7 +14,7 @@ class DocBlockUtility
     const REGEX_SPLIT_BY_NEWLINE        = "/\\r\\n|\\r|\\n/";
     const REGEX_LINE_HAS_CONTENT        = '/^(?=\s+?\*[^\/])(.+)/';
     const REGEX_REMOVE_LEADING_ASTERISK = '/^(\*\s+?)/';
-    const REGEX_VAR_PATTERN             = '/@var (\w+)\b/';
+    const REGEX_VAR_PATTERN             = '/@var (.+)\b/';
 
     // 'tags' to skip when returning the description (if the line starts with the tag, skip it)
     const DESCRIPTION_SKIP_TAGS = [

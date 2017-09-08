@@ -50,7 +50,7 @@ class NbaApiResponse implements NbaApiResponseInterface
      *
      * @return \stdClass|array
      */
-    public function getObjectsFromJson()
+    public function getObjectPropertiesFromJson()
     {
         return $this->getFromJson(false);
     }
@@ -68,7 +68,7 @@ class NbaApiResponse implements NbaApiResponseInterface
      */
     public function getXml()
     {
-        return simplexml_load_string($this->response->getBody());
+        return simplexml_load_string((string) $this->response->getBody());
     }
 
     /**
