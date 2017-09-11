@@ -34,7 +34,7 @@ class RecapRequest extends AbstractDataProdRequest
     /**
      * {@inheritdoc}
      */
-    public function getExampleValues(): array
+    public static function getExampleValues(): array
     {
         return [
             'gameDate' => new \DateTime('2015-02-01'),

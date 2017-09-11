@@ -84,7 +84,7 @@ class DraftHistoryRequest extends AbstractStatsStatsRequest
     /**
      * {@inheritdoc}
      */
-    public function getExampleValues(): array
+    public static function getExampleValues(): array
     {
         return array_merge(parent::getExampleValues(), [
             'season' => 2016,

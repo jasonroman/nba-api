@@ -97,7 +97,7 @@ class LeagueGameLogRequest extends AbstractStatsStatsRequest
     /**
      * {@inheritdoc}
      */
-    public function getExampleValues(): array
+    public static function getExampleValues(): array
     {
         return array_merge(parent::getExampleValues(), [
             'playerOrTeam' => PlayerOrTeamParam::PLAYER_ABBREV,

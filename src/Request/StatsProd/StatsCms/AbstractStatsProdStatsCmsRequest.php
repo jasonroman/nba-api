@@ -10,7 +10,7 @@ abstract class AbstractStatsProdStatsCmsRequest extends AbstractStatsProdRequest
     /**
      * {@inheritdoc}
      */
-    public function getExampleValues(): array
+    public static function getExampleValues(): array
     {
         return array_merge(parent::getExampleValues(), [
             'season' => 2015,

@@ -302,7 +302,7 @@ class PlayerShotChartDetailRequest extends AbstractStatsStatsRequest
     /**
      * {@inheritdoc}
      */
-    public function getDefaultValues(): array
+    public static function getDefaultValues(): array
     {
         // for some reason none of these are required, so do not set them
         return array_merge(parent::getDefaultValues(), [

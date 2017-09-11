@@ -319,7 +319,7 @@ class PlayersVsPlayersRequest extends AbstractStatsStatsRequest
     /**
      * {@inheritdoc}
      */
-    public function getDefaultValues(): array
+    public static function getDefaultValues(): array
     {
         return array_merge(parent::getDefaultValues(), [
             'playerId2'   => PlayerIdParam::NONE,
@@ -336,7 +336,7 @@ class PlayersVsPlayersRequest extends AbstractStatsStatsRequest
     /**
      * {@inheritdoc}
      */
-    public function getExampleValues(): array
+    public static function getExampleValues(): array
     {
         return array_merge(parent::getExampleValues(), [
             'playerTeamId' => TeamIdParam::GOLDEN_STATE_WARRIORS,

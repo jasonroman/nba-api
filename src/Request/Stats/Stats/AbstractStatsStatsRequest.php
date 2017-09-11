@@ -17,7 +17,7 @@ abstract class AbstractStatsStatsRequest extends AbstractStatsRequest
     /**
      * {@inheritdoc}
      */
-    public function getDefaultValues(): array
+    public static function getDefaultValues(): array
     {
         return array_merge(parent::getDefaultValues(), [
             'dayOffset'    => 0,
@@ -28,7 +28,7 @@ abstract class AbstractStatsStatsRequest extends AbstractStatsRequest
     /**
      * {@inheritdoc}
      */
-    public function getExampleValues(): array
+    public static function getExampleValues(): array
     {
         return array_merge(parent::getExampleValues(), [
             'season'         => '2015-16',

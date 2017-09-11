@@ -333,7 +333,7 @@ class TeamAndPlayerVsPlayersRequest extends AbstractStatsStatsRequest
     /**
      * {@inheritdoc}
      */
-    public function getDefaultValues(): array
+    public static function getDefaultValues(): array
     {
         return array_merge(parent::getExampleValues(), [
             'playerId1'   => 2544,
@@ -351,7 +351,7 @@ class TeamAndPlayerVsPlayersRequest extends AbstractStatsStatsRequest
     /**
      * {@inheritdoc}
      */
-    public function getExampleValues(): array
+    public static function getExampleValues(): array
     {
         return array_merge(parent::getExampleValues(), [
             'vsTeamId'    => TeamIdParam::GOLDEN_STATE_WARRIORS,

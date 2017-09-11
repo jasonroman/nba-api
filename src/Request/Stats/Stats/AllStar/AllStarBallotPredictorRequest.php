@@ -111,7 +111,7 @@ class AllStarBallotPredictorRequest extends AbstractStatsStatsRequest
     /**
      * {@inheritdoc}
      */
-    public function getDefaultValues(): array
+    public static function getDefaultValues(): array
     {
         return array_merge(parent::getDefaultValues(), [
             'westPlayer1' => 201939,

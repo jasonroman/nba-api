@@ -23,7 +23,7 @@ class BoxScoreBreakdownRequest extends AbstractStatsWidgetsRequest
     /**
      * {@inheritdoc}
      */
-    public function getExampleValues(): array
+    public static function getExampleValues(): array
     {
         return [
             'gameDateYmd' => new \DateTime('2017-01-01'),

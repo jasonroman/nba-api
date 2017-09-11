@@ -24,7 +24,7 @@ class DraftPickRequest extends AbstractDataProdRequest
     /**
      * {@inheritdoc}
      */
-    public function getExampleValues(): array
+    public static function getExampleValues(): array
     {
         return [
             'year' => 2017,

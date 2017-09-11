@@ -19,7 +19,7 @@ class VideoRequest extends AbstractNbaWscRequest
     /**
      * {@inheritdoc}
      */
-    public function getExampleValues(): array
+    public static function getExampleValues(): array
     {
         return [
             'videoId' => '087a6075-00fc-187d-3f9b-10023abe58a3',

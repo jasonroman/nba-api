@@ -213,7 +213,7 @@ class PlayerVsPlayerRequest extends AbstractStatsStatsRequest
     /**
      * {@inheritdoc}
      */
-    public function getExampleValues(): array
+    public static function getExampleValues(): array
     {
         return array_merge(parent::getExampleValues(), [
             'vsPlayerId' => 2544,

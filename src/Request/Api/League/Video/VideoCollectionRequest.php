@@ -26,7 +26,7 @@ class VideoCollectionRequest extends AbstractApiLeagueRequest
     /**
      * {@inheritdoc}
      */
-    public function getExampleValues(): array
+    public static function getExampleValues(): array
     {
         return [
             'collectionId' => '47b76848-028b-4536-9c9c-37379d209639',

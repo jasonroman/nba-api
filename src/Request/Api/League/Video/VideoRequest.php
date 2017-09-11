@@ -35,7 +35,7 @@ class VideoRequest extends AbstractApiLeagueRequest
     /**
      * {@inheritdoc}
      */
-    public function getExampleValues(): array
+    public static function getExampleValues(): array
     {
         return [
             'games' => GameIdParam::getExampleValue(),

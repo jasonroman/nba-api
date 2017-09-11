@@ -209,7 +209,7 @@ class PlayerGameLogsStatsRequest extends AbstractStatsStatsRequest
     /**
      * {@inheritdoc}
      */
-    public function getDefaultValues(): array
+    public static function getDefaultValues(): array
     {
         // naturally this one request uses a different name than 'opponentTeamId'
         return array_merge(parent::getDefaultValues(), [

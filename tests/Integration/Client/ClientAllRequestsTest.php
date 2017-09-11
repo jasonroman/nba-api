@@ -95,7 +95,7 @@ class ClientAllRequestsTest extends TestCase
             $this->assertJson((string) $response->getResponse()->getBody());
             $this->assertInternalType('array', $response->getArrayFromJson());
             $this->assertInternalType('object', $response->getObjectFromJson());
-            $this->assertTrue(is_array($response->getObjectsFromJson()) || is_object($response->getObjectsFromJson()));
+            $this->assertTrue(is_array($response->getObjectPropertiesFromJson()) || is_object($response->getObjectPropertiesFromJson()));
 
             usleep(500000);
         }
