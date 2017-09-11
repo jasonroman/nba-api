@@ -2,6 +2,8 @@
 
 namespace JasonRoman\NbaApi\Params;
 
+use JasonRoman\NbaApi\Request\RequestPropertyUtility;
+
 class AbstractParam
 {
     const PARAM_SUFFIX = 'Param';
@@ -28,17 +30,14 @@ class AbstractParam
 
     /**
      * Override this method in individual param classes to provide a way to convert the param value to a string.
+     * Otherwise, the default conversion is taken from the RequestPropertyUtility class.
      *
      * @param mixed $value
      * @return string
      */
     public static function getStringValue($value): string
     {
-        if ($value instanceof \DateTime) {
-            return $value->format('Y-m-d');
-        }
-
-        return (string) $value;
+        return RequestPropertyUtility::getStringValue($value);
     }
 
     /**
@@ -51,7 +50,7 @@ class AbstractParam
      */
     public static function getRequestTypeParamClassFqcn(string $requestType, string $paramName): string
     {
-        return __NAMESPACE__.'\\'.$requestType.'\\'.ucfirst($paramName).self::PARAM_SUFFIX;
+        return __NAMESPACE__.'\\'.$requestType.'\\'.ucfirst($paramName).static::PARAM_SUFFIX;
     }
 
     /**
@@ -63,6 +62,6 @@ class AbstractParam
      */
     public static function getParamClassFqcn(string $paramName): string
     {
-        return __NAMESPACE__.'\\'.ucfirst($paramName).self::PARAM_SUFFIX;
+        return __NAMESPACE__.'\\'.ucfirst($paramName).static::PARAM_SUFFIX;
     }
 }

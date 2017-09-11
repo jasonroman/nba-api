@@ -3,14 +3,14 @@
 namespace JasonRoman\NbaApi\Tests\Unit\Request\Fixtures;
 
 use JasonRoman\NbaApi\Constraints as ApiAssert;
-use JasonRoman\NbaApi\Request\AbstractNbaApiRequest;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class TestRequest extends AbstractNbaApiRequest
+class TestRequest extends AbstractTestRequest
 {
-    const BASE_NAMESPACE = __NAMESPACE__;
-    const TEST_REGEX     = '/test/';
-    const OPTIONS        = [1, 2, 3];
+    const ENDPOINT = 'stats/{bool}/test/{test}/{bool}/request.json';
+
+    const REGEX = '/test/';
+    const OPTIONS    = [1, 2, 3];
 
     /**
      * Here is
@@ -19,7 +19,7 @@ class TestRequest extends AbstractNbaApiRequest
      *
      * @Assert\NotBlank()
      * @Assert\Type("\DateTime")
-     * @ApiAssert\ApiRegex(TestRequest::TEST_REGEX)
+     * @ApiAssert\ApiRegex(TestRequest::REGEX)
      *
      * @var \DateTime
      */
@@ -73,7 +73,7 @@ class TestRequest extends AbstractNbaApiRequest
     public $notNull;
 
     /**
-     * @ApiAssert\ApiRegex(TestRequest::TEST_REGEX)
+     * @ApiAssert\ApiRegex(TestRequest::REGEX)
      *
      * @var \DateTime
      */
@@ -123,10 +123,12 @@ class TestRequest extends AbstractNbaApiRequest
     public $noUuid;
     public $noCount;
 
+    public $format;
+
     /**
      * {@inheritdoc}
      */
-    public function getDefaultValues(): array
+    public static function getDefaultValues(): array
     {
         return [
             'test'     => 1,
@@ -139,7 +141,7 @@ class TestRequest extends AbstractNbaApiRequest
     /**
      * {@inheritdoc}
      */
-    public function getExampleValues(): array
+    public static function getExampleValues(): array
     {
         return [
             'test'          => 5,

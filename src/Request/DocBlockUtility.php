@@ -36,11 +36,12 @@ class DocBlockUtility
     /**
      * Get the description from a doc comment; new lines are split by "\n".
      *
-     * @param string $docComment
+     * @param string $docComment cannot type-hint, if empty getDocComment() returns false even though it says string
      * @return string
      */
-    public function getDescription(string $docComment): string
+    public function getDescription($docComment): string
     {
+        $docComment  = (string) $docComment;
         $description = [];
 
         // split at each line
@@ -73,11 +74,13 @@ class DocBlockUtility
     /**
      * Get the @var of a doc comment.
      *
-     * @param string $docComment
+     * @param string $docComment cannot type-hint, if empty getDocComment() returns false even though it says string
      * @return string
      */
-    public function getVar(string $docComment): string
+    public function getVar($docComment): string
     {
+        $docComment = (string) $docComment;
+
         preg_match(self::REGEX_VAR_PATTERN, $docComment, $matches);
 
         if ($matches) {

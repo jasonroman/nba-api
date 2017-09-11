@@ -75,14 +75,14 @@ interface NbaApiRequestInterface
      *
      * @return array
      */
-    public function getDefaultValues(): array;
+    public static function getDefaultValues(): array;
 
     /**
      * Get the example parameter values for this request.
      *
      * @return array
      */
-    public function getExampleValues(): array;
+    public static function getExampleValues(): array;
 
     /**
      * Convert params from an array to the proper request class. If set to use example values, this will use

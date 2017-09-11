@@ -113,9 +113,9 @@ class RequestPropertyUtilityTest extends TestCase
     public function dataProviderForTestIsRequired()
     {
         return [
-            ['test', true],
+            ['notBlank', true],
+            ['notNull', true],
             ['noDescription', false],
-            ['noVar', true],
             ['all', true],
         ];
     }
@@ -165,7 +165,7 @@ class RequestPropertyUtilityTest extends TestCase
     public function testGetRegex()
     {
         $rpu = new RequestPropertyUtility(new TestRequest(), 'regex');
-        $this->assertSame(TestRequest::TEST_REGEX, $rpu->getRegex());
+        $this->assertSame(TestRequest::REGEX, $rpu->getRegex());
     }
 
     public function testGetRegexNull()

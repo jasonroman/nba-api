@@ -81,7 +81,9 @@ class ClientAllRequestsTest extends TestCase
                 continue;
             }
 
-            dump("Testing $requestClass");
+            if (function_exists('dump')) {
+                dump("Testing $requestClass");
+            };
 
             /** @var AbstractNbaApiRequest $request */
             $request  = $requestClass::fromArrayWithExamples();

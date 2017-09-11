@@ -82,7 +82,7 @@ class DocBlockUtilityTest extends TestCase
         /** @var ApiRegex $regexConstraint */
         $regexConstraint = $this->docBlockUtility->getConstraint($property, ApiRegex::class);
         $this->assertInstanceOf(ApiRegex::class, $regexConstraint);
-        $this->assertSame(TestRequest::TEST_REGEX, $regexConstraint->pattern);
+        $this->assertSame(TestRequest::REGEX, $regexConstraint->pattern);
     }
 
     public function testGetConstraintSingleNotFound()

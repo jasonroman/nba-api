@@ -201,7 +201,7 @@ class RequestsHelper
                         $allRequests[$domainName][$sectionName][$categoryName][$fqcnRequestName::getRequestName()] = [
                             'fqcn'        => $fqcnRequestName,
         /* hadoken -=EO) */ 'requestName' => $fqcnRequestName::getRequestName(),
-                            'shortName'   => $fqcnRequestName::getRequestClassShortName(),
+                            'shortName'   => $fqcnRequestName::getShortName(),
                         ];
                     }
                 }

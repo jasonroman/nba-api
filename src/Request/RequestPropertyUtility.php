@@ -17,6 +17,8 @@ use JasonRoman\NbaApi\Constraints\ApiRegex;
  */
 class RequestPropertyUtility
 {
+    const DEFAULT_DATETIME_FORMAT = 'Y-m-d';
+
     const ARRAY_PREFIX                     = 'Array of ';
     const DATE_CONSTRAINT_VALUE            = '\DateTime or string in YYYY-MM-DD format';
     const UUID_CONSTRAINT_STRICT_VALUE     = 'UUID (Strict RFC 4122)';
@@ -71,7 +73,7 @@ class RequestPropertyUtility
      */
     public function getDefaultValue()
     {
-        return AbstractNbaApiRequest::getDefaultValue($this->request, $this->propertyName);
+        return $this->request::getDefaultValue($this->propertyName);
     }
 
     /**
@@ -81,7 +83,7 @@ class RequestPropertyUtility
      */
     public function getExampleValue()
     {
-        return AbstractNbaApiRequest::getExampleValue($this->request, $this->propertyName);
+        return $this->request::getExampleValue($this->propertyName);
     }
 
     /**
@@ -91,7 +93,7 @@ class RequestPropertyUtility
      */
     public function getDefaultValueAsString(): string
     {
-        return $this->getStringOutput($this->getDefaultValue());
+        return self::getStringValue($this->getDefaultValue());
     }
 
     /**
@@ -101,7 +103,7 @@ class RequestPropertyUtility
      */
     public function getExampleValueAsString(): string
     {
-        return $this->getStringOutput($this->getExampleValue());
+        return self::getStringValue($this->getExampleValue());
     }
 
     /**
@@ -237,10 +239,10 @@ class RequestPropertyUtility
      * @param mixed $value
      * @return string
      */
-    protected function getStringOutput($value): string
+    public static function getStringValue($value): string
     {
         if ($value instanceof \DateTime) {
-            return $value->format('Y-m-d');
+            return $value->format(self::DEFAULT_DATETIME_FORMAT);
         } elseif (is_bool($value)) {
             return $value ? 'true' : 'false';
         } elseif (is_array($value)) {
