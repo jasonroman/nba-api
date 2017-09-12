@@ -2,7 +2,7 @@
 
 namespace JasonRoman\NbaApi\Tests\Unit\Request\Fixtures;
 
-use JasonRoman\NbaApi\Tests\Unit\Param\AbstractUnitParam;
+use JasonRoman\NbaApi\Tests\Unit\Params\Fixtures\AbstractUnitParam;
 
 class TestOverrideRequest extends AbstractTestRequest
 {

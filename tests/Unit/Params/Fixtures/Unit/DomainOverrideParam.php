@@ -1,11 +1,13 @@
 <?php
 
-namespace JasonRoman\NbaApi\Tests\Unit\Param;
+namespace JasonRoman\NbaApi\Tests\Unit\Params\Fixtures\Unit;
 
-class OverrideParam extends AbstractUnitParam
+use JasonRoman\NbaApi\Tests\Unit\Params\Fixtures\AbstractUnitParam;
+
+class DomainOverrideParam extends AbstractUnitParam
 {
-    const DEFAULT = 'base_default_override';
-    const EXAMPLE = 'base_example_override';
+    const DEFAULT = 'domain_default_override';
+    const EXAMPLE = 'domain_example_override';
 
     /**
      * {@inheritdoc}

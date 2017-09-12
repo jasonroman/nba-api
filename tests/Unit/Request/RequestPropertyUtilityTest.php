@@ -2,6 +2,7 @@
 
 namespace JasonRoman\NbaApi\Tests\Unit\Request;
 
+use GuzzleHttp\Psr7\Request;
 use JasonRoman\NbaApi\Request\RequestPropertyUtility;
 use JasonRoman\NbaApi\Tests\Unit\Request\Fixtures\TestRequest;
 use PHPUnit\Framework\TestCase;
@@ -244,5 +245,35 @@ class RequestPropertyUtilityTest extends TestCase
     {
         $rpu = new RequestPropertyUtility(new TestRequest(), 'noCount');
         $this->assertNull($rpu->getCount());
+    }
+
+    /**
+     * @return array
+     */
+    public function dataProviderForTestGetStringValue()
+    {
+        return [
+            [new \DateTime(), (new \DateTime)->format(RequestPropertyUtility::DEFAULT_DATETIME_FORMAT)],
+            [true, 'true'],
+            [false, 'false'],
+            [[1, 2, 3], '1, 2, 3'],
+            [['1', '2', '3'], "1, 2, 3"],
+            [1, '1'],
+            ['test', 'test'],
+        ];
+    }
+
+    /**
+     * @dataProvider dataProviderForTestGetStringValue
+     *
+     * @param mixed $value
+     * @param string $expected
+     */
+    public function testGetStringValue($value, $expected)
+    {
+        $stringValue = RequestPropertyUtility::getStringValue($value);
+
+        $this->assertInternalType('string', $stringValue);
+        $this->assertSame($expected, $stringValue);
     }
 }

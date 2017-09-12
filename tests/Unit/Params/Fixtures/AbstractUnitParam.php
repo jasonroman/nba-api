@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Tests\Unit\Param;
+namespace JasonRoman\NbaApi\Tests\Unit\Params\Fixtures;
 
 use JasonRoman\NbaApi\Params\AbstractParam as MainAbstractParam;
 
@@ -14,7 +14,7 @@ class AbstractUnitParam extends MainAbstractParam
      * @param string $paramName
      * @return mixed|null
      */
-    public static function getRequestTypeParamClassFqcn(string $requestType, string $paramName): string
+    public static function getRequestTypeParamClass(string $requestType, string $paramName): string
     {
         return __NAMESPACE__.'\\'.$requestType.'\\'.ucfirst($paramName).static::PARAM_SUFFIX;
     }
@@ -26,7 +26,7 @@ class AbstractUnitParam extends MainAbstractParam
      * @param string $paramName
      * @return mixed|null
      */
-    public static function getParamClassFqcn(string $paramName): string
+    public static function getParamClass(string $paramName): string
     {
         return __NAMESPACE__.'\\'.ucfirst($paramName).static::PARAM_SUFFIX;
     }

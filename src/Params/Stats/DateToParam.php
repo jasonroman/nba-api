@@ -2,6 +2,8 @@
 
 namespace JasonRoman\NbaApi\Params\Stats;
 
+use JasonRoman\NbaApi\Request\RequestPropertyUtility;
+
 class DateToParam extends AbstractStatsParam
 {
     const FORMAT      = '/^\d{2}\/\d{2}\/\d{4}$/';
@@ -17,7 +19,7 @@ class DateToParam extends AbstractStatsParam
     {
         // until a mixed type is supported for type-hints, check the value here
         if (!$dateTime instanceof \DateTime) {
-            return parent::getStringValue($dateTime);
+            return RequestPropertyUtility::getStringValue($dateTime);
         }
 
         return $dateTime->format(self::DATE_FORMAT);

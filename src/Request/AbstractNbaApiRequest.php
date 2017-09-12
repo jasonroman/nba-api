@@ -311,9 +311,9 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
 
         // use the property if it exists in the $methodName() method of the Request Type -> Param class
         // for example, for a Data request, this looks in JasonRoman\NbaApi\Params\Data\<Property>Param
-        $requestTypeFqcn = $abstractParamClass::getRequestTypeParamClassFqcn($requestClass::getDomain(), $propertyName);
+        $requestTypeFqcn = $abstractParamClass::getRequestTypeParamClass($requestClass::getDomain(), $propertyName);
 
-        // make sure the class exists and is an AbstractUnitParam type
+        // make sure the class exists and is an AbstractParam type
         if (class_exists($requestTypeFqcn) && is_subclass_of($requestTypeFqcn, $abstractParamClass)) {
             $requestTypeValue = $requestTypeFqcn::$methodName();
 
@@ -325,9 +325,9 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
 
         // use the property if it exists in the $methodName() method of the base Param class
         // for example, this looks in JasonRoman\NbaApi\Params\<Property>Param
-        $paramFqcn = $abstractParamClass::getParamClassFqcn($propertyName);
+        $paramFqcn = $abstractParamClass::getParamClass($propertyName);
 
-        // make sure the class exists and is an AbstractUnitParam type
+        // make sure the class exists and is an AbstractParam type
         if (class_exists($paramFqcn) && is_subclass_of($paramFqcn, $abstractParamClass)) {
             $value = $paramFqcn::$methodName();
 
@@ -585,7 +585,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
      * Priority:
      *  1. use the getStringValue() method of the corresponding Request Type -> Param class
      *  2. use the getStringValue() method of the corresponding global Param class
-     *  3. call the general AbstractUnitParam::getStringValue() method
+     *  3. call the general RequestPropertyUtility::getStringValue() method
      *
      * @param string $propertyName
      */
@@ -593,23 +593,23 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
     {
         // use the property if it exists in the getDefaultValue() method of the Request Type -> Param class
         // for example, for a Data request, this looks in JasonRoman\NbaApi\Params\Data\<Property>Param
-        $requestTypeFqcn = AbstractParam::getRequestTypeParamClassFqcn($this->getRequestType(), $propertyName);
+        $requestTypeFqcn = AbstractParam::getRequestTypeParamClass($this->getRequestType(), $propertyName);
 
-        // make sure the class exists and is an AbstractUnitParam type
+        // make sure the class exists and is an AbstractParam type
         if (class_exists($requestTypeFqcn) && is_subclass_of($requestTypeFqcn, AbstractParam::class)) {
             return $requestTypeFqcn::{static::CONVERT_TO_STRING_METHOD}($this->$propertyName);
         }
 
         // use the property if it exists in the getDefaultValue() method of the base Param class
         // for example, for a Data request, this looks in JasonRoman\NbaApi\Params\<Property>Param
-        $paramFqcn = AbstractParam::getParamClassFqcn($propertyName);
+        $paramFqcn = AbstractParam::getParamClass($propertyName);
 
-        // make sure the class exists and is an AbstractUnitParam type
+        // make sure the class exists and is an AbstractParam type
         if (class_exists($paramFqcn) && is_subclass_of($paramFqcn, AbstractParam::class)) {
             return $paramFqcn::{static::CONVERT_TO_STRING_METHOD}($this->$propertyName);
         }
 
         // if got here, no specific param class exists, so just cast to string
-        return AbstractParam::{static::CONVERT_TO_STRING_METHOD}($this->$propertyName);
+        return RequestPropertyUtility::{static::CONVERT_TO_STRING_METHOD}($this->$propertyName);
     }
 }
