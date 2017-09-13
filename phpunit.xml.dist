@@ -12,6 +12,7 @@
             <directory>.</directory>
             <exclude>
                 <directory>./tests</directory>
+                <directory>./vendor</directory>
                 <file>./src/Request/Stats/Stats/AllStar/AllStarBallotPredictorRequest.php</file>
             </exclude>
         </whitelist>
