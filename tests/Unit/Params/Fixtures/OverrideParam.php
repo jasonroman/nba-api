@@ -8,6 +8,15 @@ class OverrideParam extends AbstractUnitParam
     const EXAMPLE = 'base_example_override';
 
     /**
+     * @param mixed $value
+     * @return string
+     */
+    public static function getStringValue($value): string
+    {
+        return (string) $value .'_and_some_extra';
+    }
+
+    /**
      * {@inheritdoc}
      * @return string
      */

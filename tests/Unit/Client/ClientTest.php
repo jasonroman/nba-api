@@ -59,30 +59,86 @@ class ClientAllRequestsTest extends TestCase
         $this->validator
             ->expects($this->once())
             ->method('validate')
-            ->willReturn('some violations');
+            ->willReturn('some violations')
+        ;
 
-        $response = $this->client->request($nbaApiRequest);
-        $this->assertInstanceOf(NbaApiResponse::class, $response);
+        $this->assertInstanceOf(NbaApiResponse::class, $this->client->request($nbaApiRequest));
     }
 
-    public function testRequest()
+    public function testRequestInvalidNoValidationCheck()
     {
-        $nbaApiRequest = $this->getMockBuilder('JasonRoman\NbaApi\Request\AbstractNbaApiRequest')->getMock();
+        $client = new Client([], false, $this->guzzle, null);
 
-        $this->validator
-            ->expects($this->once())
-            ->method('validate')
-            ->willReturn(null);
+        $nbaApiRequest = $this->getMockBuilder('JasonRoman\NbaApi\Request\AbstractNbaApiRequest')->getMock();
 
         $guzzleResponse = $this->getMockBuilder('Psr\Http\Message\ResponseInterface')->getMock();
 
         $this->guzzle
             ->expects($this->once())
             ->method('request')
-            ->willReturn($guzzleResponse);
+            ->willReturn($guzzleResponse)
+        ;
 
-        $response = $this->client->request($nbaApiRequest);
-        $this->assertInstanceOf(NbaApiResponse::class, $response);
+        // normally returns array, but just need value to check against (string) cast
+        $this->validator
+            ->expects($this->never())
+            ->method('validate')
+        ;
+
+        $this->assertInstanceOf(NbaApiResponse::class, $client->request($nbaApiRequest));
+    }
+
+    public function testRequest()
+    {
+        $nbaApiRequest = $this->getMockBuilder('JasonRoman\NbaApi\Request\AbstractNbaApiRequest')->getMock();
+
+        $nbaApiRequest
+            ->expects($this->once())
+            ->method('getResponseType')
+        ;
+
+        $this->validator
+            ->expects($this->once())
+            ->method('validate')
+            ->willReturn(null)
+        ;
+
+        $guzzleResponse = $this->getMockBuilder('Psr\Http\Message\ResponseInterface')->getMock();
+
+        $this->guzzle
+            ->expects($this->once())
+            ->method('request')
+            ->willReturn($guzzleResponse)
+        ;
+
+        $this->assertInstanceOf(NbaApiResponse::class, $this->client->request($nbaApiRequest));
+    }
+
+    public function testRequestOtherAcceptHeaders()
+    {
+        $nbaApiRequest = $this->getMockBuilder('JasonRoman\NbaApi\Request\AbstractNbaApiRequest')->getMock();
+
+        $nbaApiRequest
+            ->expects($this->exactly(2))
+            ->method('getResponseType')
+            ->willReturn('xml')
+        ;
+
+        $this->validator
+            ->expects($this->once())
+            ->method('validate')
+            ->willReturn(null)
+        ;
+
+        $guzzleResponse = $this->getMockBuilder('Psr\Http\Message\ResponseInterface')->getMock();
+
+        $this->guzzle
+            ->expects($this->once())
+            ->method('request')
+            ->willReturn($guzzleResponse)
+        ;
+
+        $this->assertInstanceOf(NbaApiResponse::class, $this->client->request($nbaApiRequest));
     }
 
     public function testApiRequest()
@@ -92,7 +148,8 @@ class ClientAllRequestsTest extends TestCase
         $this->guzzle
             ->expects($this->once())
             ->method('request')
-            ->willReturn($guzzleResponse);
+            ->willReturn($guzzleResponse)
+        ;
 
         $response = $this->client->apiRequest('GET', '/test');
 

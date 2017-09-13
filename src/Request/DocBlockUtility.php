@@ -79,9 +79,7 @@ class DocBlockUtility
      */
     public function getVar($docComment): string
     {
-        $docComment = (string) $docComment;
-
-        preg_match(self::REGEX_VAR_PATTERN, $docComment, $matches);
+        preg_match(self::REGEX_VAR_PATTERN, (string) $docComment, $matches);
 
         if ($matches) {
             return $matches[1];

@@ -56,4 +56,9 @@ class GameDateParamTest extends TestCase
     {
         $this->assertSame($expected, GameDateParam::getStringValue($dateTime));
     }
+
+    public function testGetDefaultValue()
+    {
+        $this->assertEquals(new \DateTime(), GameDateParam::getDefaultValue());
+    }
 }

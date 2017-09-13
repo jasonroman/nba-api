@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit colors="true" bootstrap="vendor/autoload.php">
+    <testsuites>
+        <testsuite name="Test Coverage">
+            <directory>./tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory>.</directory>
+            <exclude>
+                <directory>./tests</directory>
+                <file>./src/Request/Stats/Stats/AllStar/AllStarBallotPredictorRequest.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>

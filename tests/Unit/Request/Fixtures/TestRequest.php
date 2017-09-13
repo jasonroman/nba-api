@@ -124,6 +124,7 @@ class TestRequest extends AbstractTestRequest
     public $noCount;
 
     public $format;
+    public $noDocBlock;
 
     /**
      * {@inheritdoc}

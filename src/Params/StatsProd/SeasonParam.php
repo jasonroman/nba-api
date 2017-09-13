@@ -2,6 +2,7 @@
 
 namespace JasonRoman\NbaApi\Params\StatsProd;
 
+use JasonRoman\NbaApi\Params\SeasonParam as BaseSeasonParam;
 use JasonRoman\NbaApi\Params\SeasonYearParam;
 
 class SeasonParam extends SeasonYearParam
@@ -12,6 +13,6 @@ class SeasonParam extends SeasonYearParam
      */
     public static function getDefaultValue(): int
     {
-        return SeasonParam::currentSeasonStartYear();
+        return BaseSeasonParam::currentSeasonStartYear();
     }
 }

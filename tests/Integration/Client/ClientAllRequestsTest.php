@@ -101,7 +101,7 @@ class ClientAllRequestsTest extends TestCase
             );
 
             // sleep to avoid sending too many requests and have the NBA servers stop sending valid responses
-            usleep(500000);
+            usleep(250000);
         }
 
         // in case all tests are skipped, this will not give a warning about a risky test

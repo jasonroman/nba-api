@@ -63,8 +63,9 @@ class DocBlockUtilityTest extends TestCase
 
     public function testGetVarNotExists()
     {
-        $property = new \ReflectionProperty(TestRequest::class, 'noVar');
-        $this->assertSame('', $this->docBlockUtility->getDescription($property->getDocComment()));
+        $property = new \ReflectionProperty(TestRequest::class, 'noDocBlock');
+
+        $this->assertSame('', $this->docBlockUtility->getVar($property->getDocComment()));
     }
 
     public function testGetConstraintSingle()

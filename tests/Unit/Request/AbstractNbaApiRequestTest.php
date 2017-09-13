@@ -12,6 +12,8 @@ use JasonRoman\NbaApi\Tests\Unit\Request\Fixtures\AbstractTestRequest;
 use JasonRoman\NbaApi\Tests\Unit\Request\Fixtures\Extra\TestBadNamespaceRequest;
 use JasonRoman\NbaApi\Tests\Unit\Request\Fixtures\TestBadRootNamespaceRequest;
 use JasonRoman\NbaApi\Tests\Unit\Request\Fixtures\TestBaseUriRequest;
+use JasonRoman\NbaApi\Tests\Unit\Request\Fixtures\TestConfigRequest;
+use JasonRoman\NbaApi\Tests\Unit\Request\Fixtures\TestHeadersRequest;
 use JasonRoman\NbaApi\Tests\Unit\Request\Fixtures\TestOverrideRequest;
 use JasonRoman\NbaApi\Tests\Unit\Request\Fixtures\TestRequest;
 use JasonRoman\NbaApi\Tests\Unit\Request\Fixtures\TestRequestBadSuffix;
@@ -21,6 +23,56 @@ use PHPUnit\Framework\TestCase;
 
 class AbstractNbaApiRequestTest extends TestCase
 {
+    public function testGetConfigBase()
+    {
+        $request = new TestRequest();
+
+        $this->assertSame(AbstractNbaApiRequest::DEFAULT_CONFIG, $request->getConfig());
+    }
+
+    public function testGetConfigOverride()
+    {
+        $request = new TestConfigRequest();
+
+        $config = $request->getConfig();
+
+        $this->assertSame(TestConfigRequest::CONFIG['timeout'], $config['timeout']);
+        $this->assertSame(AbstractNbaApiRequest::CONNECT_TIMEOUT, $config['connect_timeout']);
+
+        $this->assertArrayHasKey('something_else', $config);
+        $this->assertSame(TestConfigRequest::CONFIG['something_else'], $config['something_else']);
+    }
+
+    public function testGetHeaders()
+    {
+        $request = new TestRequest();
+
+        $this->assertSame(AbstractNbaApiRequest::DEFAULT_HEADERS, $request->getHeaders());
+    }
+
+    public function testGetHeadersOverride()
+    {
+        $request = new TestHeadersRequest();
+
+        $headers = $request->getHeaders();
+
+        $this->assertSame(AbstractNbaApiRequest::DEFAULT_HEADERS['User-Agent'], $headers['User-Agent']);
+        $this->assertSame(AbstractNbaApiRequest::DEFAULT_HEADERS['Origin'], $headers['Origin']);
+        $this->assertSame(AbstractNbaApiRequest::DEFAULT_HEADERS['DNT'], $headers['DNT']);
+        $this->assertSame(AbstractNbaApiRequest::DEFAULT_HEADERS['Accept-Language'], $headers['Accept-Language']);
+        $this->assertSame(AbstractNbaApiRequest::DEFAULT_HEADERS['Accept-Encoding'], $headers['Accept-Encoding']);
+        $this->assertSame(AbstractNbaApiRequest::DEFAULT_HEADERS['Referer'], $headers['Referer']);
+        $this->assertSame(AbstractNbaApiRequest::DEFAULT_HEADERS['Content-Type'], $headers['Content-Type']);
+        $this->assertSame(AbstractNbaApiRequest::DEFAULT_HEADERS['Connection'], $headers['Connection']);
+        $this->assertSame(AbstractNbaApiRequest::DEFAULT_HEADERS['Cache-Control'], $headers['Cache-Control']);
+
+        $this->assertSame(TestHeadersRequest::HEADERS['Accept'], $headers['Accept']);
+        $this->assertSame(TestHeadersRequest::HEADERS['Host'], $headers['Host']);
+
+        $this->assertArrayHasKey('X-Other', $headers);
+        $this->assertSame(TestHeadersRequest::HEADERS['X-Other'], $headers['X-Other']);
+    }
+
     public function testGetMethod()
     {
         $request = new TestRequest();
@@ -82,6 +134,19 @@ class AbstractNbaApiRequestTest extends TestCase
         $request->test = new \DateTime();
 
         $request->getEndpoint();
+    }
+
+    public function testGetEndpointOverride()
+    {
+        $request = new TestOverrideRequest();
+
+        $request->override       = 'override';
+        $request->domainOverride = 'domainOverride';
+
+        $this->assertSame(
+            '/some/override_and_some_extra/and/domainOverride_and_some_domain_extra.json',
+            $request->getEndpoint()
+        );
     }
 
     public function testGetEndpointVarsNoDuplicates()

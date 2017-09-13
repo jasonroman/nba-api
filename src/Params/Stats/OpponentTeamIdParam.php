@@ -16,4 +16,13 @@ class OpponentTeamIdParam extends TeamIdParam
     {
         return self::MIN_ALL;
     }
+
+    /**
+     * {@inheritdoc}
+     * @return int
+     */
+    public static function getExampleValue(): int
+    {
+        return self::MIN_ALL;
+    }
 }
