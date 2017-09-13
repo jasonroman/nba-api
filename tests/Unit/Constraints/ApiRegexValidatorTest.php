@@ -2,10 +2,10 @@
 
 namespace JasonRoman\NbaApi\Tests\Unit\Constraints;
 
-use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
 use JasonRoman\NbaApi\Constraints\ApiChoice;
 use JasonRoman\NbaApi\Constraints\ApiRegex;
 use JasonRoman\NbaApi\Constraints\ApiRegexValidator;
+use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
 
 /**
  * Unit tests for the ApiRegexValidator validator.

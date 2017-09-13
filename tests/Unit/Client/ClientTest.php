@@ -3,10 +3,10 @@
 namespace JasonRoman\NbaApi\Tests\Unit\Client;
 
 use GuzzleHttp\Client as GuzzleClient;
-use PHPUnit\Framework\TestCase;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 use JasonRoman\NbaApi\Client\Client;
 use JasonRoman\NbaApi\Response\NbaApiResponse;
+use PHPUnit\Framework\TestCase;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * Unit tests for the Client class.

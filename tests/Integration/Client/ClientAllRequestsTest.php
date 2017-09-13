@@ -2,7 +2,6 @@
 
 namespace JasonRoman\NbaApi\Tests\Integration\Client;
 
-use PHPUnit\Framework\TestCase;
 use JasonRoman\NbaApi\Client\Client;
 use JasonRoman\NbaApi\Request\Data\Html\Game\GameBookRequest as DataHtmlGameBookRequest;
 use JasonRoman\NbaApi\Request\Data\Prod\Game\GameBookRequest as DataProdGameBookRequest;
@@ -10,6 +9,7 @@ use JasonRoman\NbaApi\Request\Nba\Wsc\Video\VideoRequest as NbaWscVideoRequest;
 use JasonRoman\NbaApi\Request\RequestsHelper;
 use JasonRoman\NbaApi\Request\Stats\Stats\AllStar\AllStarBallotPredictorRequest;
 use JasonRoman\NbaApi\Response\NbaApiResponse;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test that all requests return valid; does not test specific data in the requests.

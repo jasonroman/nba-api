@@ -2,8 +2,8 @@
 
 namespace JasonRoman\NbaApi\Tests\Unit\Constraints;
 
-use PHPUnit\Framework\TestCase;
 use JasonRoman\NbaApi\Constraints\ApiRegex;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit tests for the ApiRegex constraint.

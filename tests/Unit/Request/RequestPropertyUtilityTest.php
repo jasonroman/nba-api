@@ -2,7 +2,6 @@
 
 namespace JasonRoman\NbaApi\Tests\Unit\Request;
 
-use GuzzleHttp\Psr7\Request;
 use JasonRoman\NbaApi\Request\RequestPropertyUtility;
 use JasonRoman\NbaApi\Tests\Unit\Request\Fixtures\TestRequest;
 use PHPUnit\Framework\TestCase;
@@ -16,6 +15,9 @@ class RequestPropertyUtilityTest extends TestCase
         $this->assertSame("Here is\na description.", $rpu->getDescription());
     }
 
+    /**
+     * @return array
+     */
     public function dataProviderForTestGetDefaultValue()
     {
         return [
@@ -43,6 +45,9 @@ class RequestPropertyUtilityTest extends TestCase
             : $this->assertEquals($expected, $defaultValue);
     }
 
+    /**
+     * @return array
+     */
     public function dataProviderForTestGetDefaultValueAsString()
     {
         return [
@@ -66,6 +71,9 @@ class RequestPropertyUtilityTest extends TestCase
         $this->assertSame($expected, $rpu->getDefaultValueAsString());
     }
 
+    /**
+     * @return array
+     */
     public function dataProviderForTestGetExampleValue()
     {
         return [
@@ -88,6 +96,9 @@ class RequestPropertyUtilityTest extends TestCase
         $this->assertSame($expected, $rpu->getExampleValue());
     }
 
+    /**
+     * @return array
+     */
     public function dataProviderForTestGetExampleValueAsString()
     {
         return [
@@ -110,7 +121,9 @@ class RequestPropertyUtilityTest extends TestCase
         $this->assertSame((string) $expected, $rpu->getExampleValueAsString());
     }
 
-
+    /**
+     * @return array
+     */
     public function dataProviderForTestIsRequired()
     {
         return [

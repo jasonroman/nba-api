@@ -5,7 +5,6 @@ namespace JasonRoman\NbaApi\Tests\Unit\Response;
 use GuzzleHttp\Psr7\Response;
 use JasonRoman\NbaApi\Response\NbaApiResponse;
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\ResponseInterface;
 
 class NbaApiResponseTest extends TestCase
 {
