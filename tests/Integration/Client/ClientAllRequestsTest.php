@@ -82,7 +82,7 @@ class ClientAllRequestsTest extends TestCase
             }
 
             if (function_exists('dump')) {
-                dump("Testing $requestClass");
+                dump('Testing '.$requestClass);
             };
 
             /** @var AbstractNbaApiRequest $request */
@@ -95,8 +95,12 @@ class ClientAllRequestsTest extends TestCase
             $this->assertJson((string) $response->getResponse()->getBody());
             $this->assertInternalType('array', $response->getArrayFromJson());
             $this->assertInternalType('object', $response->getObjectFromJson());
-            $this->assertTrue(is_array($response->getObjectPropertiesFromJson()) || is_object($response->getObjectPropertiesFromJson()));
+            $this->assertTrue(
+                is_array($response->getObjectPropertiesFromJson()) ||
+                is_object($response->getObjectPropertiesFromJson())
+            );
 
+            // sleep to avoid sending too many requests and have the NBA servers stop sending valid responses
             usleep(500000);
         }
 

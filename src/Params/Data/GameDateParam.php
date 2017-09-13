@@ -16,12 +16,17 @@ class GameDateParam extends AbstractDataParam
      */
     public static function getStringValue($dateTime): string
     {
-        // until a mixed type is supported for type-hints, check the value here
-        if (!$dateTime instanceof \DateTime) {
-            return (new \DateTime($dateTime))->format(self::DATE_FORMAT);
+        // do not return anything if no value was specified
+        if (!$dateTime) {
+            return '';
         }
 
-        return $dateTime->format(self::DATE_FORMAT);
+        // until a mixed type is supported for type-hints, check the value here
+        if (!$dateTime instanceof \DateTime) {
+            return (new \DateTime($dateTime))->format(static::DATE_FORMAT);
+        }
+
+        return $dateTime->format(static::DATE_FORMAT);
     }
 
     /**

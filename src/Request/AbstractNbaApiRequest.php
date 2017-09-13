@@ -588,28 +588,37 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
      *  3. call the general RequestPropertyUtility::getStringValue() method
      *
      * @param string $propertyName
+     * @return string
      */
     protected function convertParamValueToString($propertyName)
     {
         // use the property if it exists in the getDefaultValue() method of the Request Type -> Param class
         // for example, for a Data request, this looks in JasonRoman\NbaApi\Params\Data\<Property>Param
-        $requestTypeFqcn = AbstractParam::getRequestTypeParamClass($this->getRequestType(), $propertyName);
+        $requestTypeClass = AbstractParam::getRequestTypeParamClass($this->getRequestType(), $propertyName);
 
         // make sure the class exists and is an AbstractParam type
-        if (class_exists($requestTypeFqcn) && is_subclass_of($requestTypeFqcn, AbstractParam::class)) {
-            return $requestTypeFqcn::{static::CONVERT_TO_STRING_METHOD}($this->$propertyName);
+        if (
+            class_exists($requestTypeClass) &&
+            is_subclass_of($requestTypeClass, AbstractParam::class) &&
+            method_exists($requestTypeClass, static::CONVERT_TO_STRING_METHOD)
+        ) {
+            return $requestTypeClass::{static::CONVERT_TO_STRING_METHOD}($this->$propertyName);
         }
 
         // use the property if it exists in the getDefaultValue() method of the base Param class
         // for example, for a Data request, this looks in JasonRoman\NbaApi\Params\<Property>Param
-        $paramFqcn = AbstractParam::getParamClass($propertyName);
+        $paramClass = AbstractParam::getParamClass($propertyName);
 
         // make sure the class exists and is an AbstractParam type
-        if (class_exists($paramFqcn) && is_subclass_of($paramFqcn, AbstractParam::class)) {
-            return $paramFqcn::{static::CONVERT_TO_STRING_METHOD}($this->$propertyName);
+        if (
+            class_exists($paramClass) &&
+            is_subclass_of($paramClass, AbstractParam::class) &&
+            method_exists($paramClass, static::CONVERT_TO_STRING_METHOD)
+        ) {
+            return $paramClass::{static::CONVERT_TO_STRING_METHOD}($this->$propertyName);
         }
 
         // if got here, no specific param class exists, so just cast to string
-        return RequestPropertyUtility::{static::CONVERT_TO_STRING_METHOD}($this->$propertyName);
+        return RequestPropertyUtility::getStringValue($this->$propertyName);
     }
 }

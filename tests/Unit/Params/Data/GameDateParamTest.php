@@ -18,16 +18,17 @@ class GameDateParamTest extends TestCase
             ['1947-12-31', '19471231'],
             ['today', (new \DateTime())->format(GameDateParam::DATE_FORMAT)],
             ['yesterday', (new \DateTime('yesterday'))->format(GameDateParam::DATE_FORMAT)],
+            [null, ''],
         ];
     }
 
     /**
      * @dataProvider dataProviderForTestGetStringValueFromString
      *
-     * @param string $dateTime
+     * @param string|null $dateTime
      * @param string $expected
      */
-    public function testGetStringValueFromString(string $dateTime, string $expected)
+    public function testGetStringValueFromString($dateTime, string $expected)
     {
         $this->assertSame($expected, GameDateParam::getStringValue($dateTime));
     }

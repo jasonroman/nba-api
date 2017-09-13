@@ -18,16 +18,17 @@ class AbstractDateTest extends TestCase
             ['1947-12-31', '12/31/1947'],
             ['today', (new \DateTime())->format(AbstractDateParam::DATE_FORMAT)],
             ['yesterday', (new \DateTime('yesterday'))->format(AbstractDateParam::DATE_FORMAT)],
+            [null, ''],
         ];
     }
 
     /**
      * @dataProvider dataProviderForTestGetStringValueFromString
      *
-     * @param string $dateTime
+     * @param string|null $dateTime
      * @param string $expected
      */
-    public function testGetStringValueFromString(string $dateTime, string $expected)
+    public function testGetStringValueFromString($dateTime, string $expected)
     {
         $this->assertSame($expected, AbstractDateParam::getStringValue($dateTime));
     }
