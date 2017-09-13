@@ -7,6 +7,6 @@ use JasonRoman\NbaApi\Params\AbstractParam;
 /**
  * Base class which any Stats API-specific parameters must extend from.
  */
-class AbstractStatsParam extends AbstractParam
+abstract class AbstractStatsParam extends AbstractParam
 {
 }

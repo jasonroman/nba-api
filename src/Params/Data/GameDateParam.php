@@ -11,7 +11,7 @@ class GameDateParam extends AbstractDataParam
     /**
      * Take a \DateTime value and convert it to the string date format that the API expects.
      *
-     * @param \DateTime|mixed $dateTime
+     * @param \DateTime|string $dateTime
      * @return string
      */
     public static function getStringValue($dateTime): string

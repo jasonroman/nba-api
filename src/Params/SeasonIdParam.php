@@ -28,8 +28,8 @@ class SeasonIdParam extends AbstractParam
      */
     public static function fromYearAndPrefix(int $year, int $prefix): string
     {
-        if (!in_array($prefix, self::SEASON_ID_PREFIXES)) {
-            throw new \InvalidArgumentException('Season id prefix is invalid');
+        if (!in_array($prefix, self::PREFIXES)) {
+            throw new \InvalidArgumentException('Season ID prefix is invalid');
         }
 
         return (string) $prefix.(string) $year;
@@ -43,20 +43,6 @@ class SeasonIdParam extends AbstractParam
      */
     public static function currentSeasonId(int $prefix): string
     {
-        // if August or earlier, the season started from the previous year
         return self::fromYearAndPrefix(SeasonParam::currentSeasonStartYear(), $prefix);
-    }
-
-    /**
-     * Get the current season's year in format YYYY.
-     *
-     * @return int
-     */
-    public static function currentSeasonStartYear(): int
-    {
-        // if earlier than July, the season started from the previous year; summer league counts as the next season
-        // NBA has a gap, where it considered a season ending on the last day of the NBA finals
-        // but the season start is October 1st; might want to handle this more specifically in the future
-        return (date('n') < 7) ? (int) (date('Y') - 1) : (int) date('Y');
     }
 }

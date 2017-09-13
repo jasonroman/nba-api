@@ -5,9 +5,9 @@ namespace JasonRoman\NbaApi\Tests\Unit\Params;
 use JasonRoman\NbaApi\Params\AbstractParam;
 use JasonRoman\NbaApi\Params\Data\GameDateParam as DataGameDateParam;
 use JasonRoman\NbaApi\Params\FormatParam;
+use JasonRoman\NbaApi\Params\SeasonParam;
 use JasonRoman\NbaApi\Params\Stats\GameDateParam as StatsGameDateParam;
 use JasonRoman\NbaApi\Params\StatsProd\SeasonParam as StatsProdSeasonParam;
-use JasonRoman\NbaApi\Params\SeasonParam;
 use PHPUnit\Framework\TestCase;
 
 class AbstractParamTest extends TestCase

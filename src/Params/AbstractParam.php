@@ -2,7 +2,7 @@
 
 namespace JasonRoman\NbaApi\Params;
 
-class AbstractParam
+abstract class AbstractParam
 {
     const BASE_NAMESPACE = __NAMESPACE__;
     const PARAM_SUFFIX   = 'Param';

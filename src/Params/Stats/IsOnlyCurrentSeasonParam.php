@@ -5,15 +5,6 @@ namespace JasonRoman\NbaApi\Params\Stats;
 class IsOnlyCurrentSeasonParam extends AbstractStatsParam
 {
     /**
-     * {@inheritdoc}
-     * @return int
-     */
-    public static function getDefaultValue(): bool
-    {
-        return true;
-    }
-
-    /**
      * Convert the boolean value to string.
      *
      * @param bool $value
@@ -22,5 +13,14 @@ class IsOnlyCurrentSeasonParam extends AbstractStatsParam
     public static function getStringValue($value): string
     {
         return (string) (int) $value;
+    }
+
+    /**
+     * {@inheritdoc}
+     * @return int
+     */
+    public static function getDefaultValue(): bool
+    {
+        return true;
     }
 }

@@ -18,8 +18,9 @@ class SeasonParam extends AbstractParam
      */
     public static function fromYear(int $year): string
     {
+        // note this checks SeasonYearParam::FORMAT (YYYY), not self::FORMAT
         if (preg_match(SeasonYearParam::FORMAT, (string) $year) !== 1) {
-            throw new \InvalidArgumentException(sprintf('Year must be in %s format', self::FORMAT));
+            throw new \InvalidArgumentException('Year must be an integer in YYYY format');
         }
 
         return $year.'-'.substr((string) ($year + 1), -2);
@@ -43,10 +44,10 @@ class SeasonParam extends AbstractParam
      */
     public static function currentSeasonStartYear(): int
     {
-        // if September or earlier, the season started from the previous year
+        // if earlier than July, the season started from the previous year; summer league counts as the next season
         // NBA has a gap, where it considered a season ending on the last day of the NBA finals
         // but the season start is October 1st; might want to handle this more specifically in the future
-        return (date('n') < 10) ?  (int) (date('Y') - 1) : (int) date('Y');
+        return (date('n') < 7) ? (int) (date('Y') - 1) : (int) date('Y');
     }
 
     /**
