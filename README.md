@@ -1,4 +1,4 @@
-# nba-stats-api
-PHP Library to access the NBA Stats API
+# nba-api
+PHP Library to request data from various endpoints on NBA websites
 
 ** WORK IN PROGRESS **

@@ -1,6 +1,6 @@
 {
-    "name": "jasonroman/nba-stats-api",
-    "description": "PHP library to access the NBA Stats API",
+    "name": "jasonroman/nba-api",
+    "description": "PHP Library to request data from various endpoints on NBA websites",
     "type": "library",
     "require": {
         "php": "^7.0",
