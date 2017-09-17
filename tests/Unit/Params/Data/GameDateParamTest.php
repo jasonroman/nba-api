@@ -59,6 +59,10 @@ class GameDateParamTest extends TestCase
 
     public function testGetDefaultValue()
     {
-        $this->assertEquals(new \DateTime(), GameDateParam::getDefaultValue());
+        // PHP 7.1 uses microseconds, specify format here without for comparison
+        $this->assertEquals(
+            (new \DateTime())->format('Y-m-d H:i:s'),
+            GameDateParam::getDefaultValue()->format('Y-m-d H:i:s')
+        );
     }
 }
