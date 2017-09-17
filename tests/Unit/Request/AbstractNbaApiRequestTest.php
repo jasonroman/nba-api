@@ -5,7 +5,7 @@ namespace JasonRoman\NbaApi\Tests\Unit\Request;
 use JasonRoman\NbaApi\Request\AbstractNbaApiRequest;
 use JasonRoman\NbaApi\Request\RequestPropertyUtility;
 use JasonRoman\NbaApi\Response\ResponseType;
-use JasonRoman\NbaApi\Tests\Integration\Client\FixturesUnit\TestOtherNamespaceRequest;
+use JasonRoman\NbaApi\Tests\Functional\Client\FixturesUnit\TestOtherNamespaceRequest;
 use JasonRoman\NbaApi\Tests\Unit\Params\Fixtures\OverrideParam;
 use JasonRoman\NbaApi\Tests\Unit\Params\Fixtures\Unit\DomainOverrideParam;
 use JasonRoman\NbaApi\Tests\Unit\Request\Fixtures\AbstractTestRequest;
@@ -519,7 +519,7 @@ class AbstractNbaApiRequestTest extends TestCase
             TestSimpleRequest::getMainNamespaceAndRequest()
         );
         $this->assertSame(
-            'Integration\Client\FixturesUnit\TestOtherNamespaceRequest',
+            'Functional\Client\FixturesUnit\TestOtherNamespaceRequest',
             TestOtherNamespaceRequest::getMainNamespaceAndRequest()
         );
     }
@@ -554,7 +554,7 @@ class AbstractNbaApiRequestTest extends TestCase
     {
         $this->assertSame('Unit', AbstractTestRequest::getDomain());
         $this->assertSame('Unit', TestRequest::getDomain());
-        $this->assertSame('Integration', TestOtherNamespaceRequest::getDomain());
+        $this->assertSame('Functional', TestOtherNamespaceRequest::getDomain());
     }
 
     public function testGetSection()

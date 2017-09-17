@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Tests\Integration\Client\FixturesUnit;
+namespace JasonRoman\NbaApi\Tests\Functional\Client\FixturesUnit;
 
 use JasonRoman\NbaApi\Tests\Unit\Request\Fixtures\AbstractTestRequest;
 

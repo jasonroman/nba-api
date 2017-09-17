@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace JasonRoman\NbaApi\Tests\Integration\Client;
+namespace JasonRoman\NbaApi\Tests\Functional\Client;
 
 use JasonRoman\NbaApi\Client\Client;
 use JasonRoman\NbaApi\Request\Data\Html\Game\GameBookRequest as DataHtmlGameBookRequest;
