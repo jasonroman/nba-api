@@ -2,6 +2,7 @@
 
 namespace JasonRoman\NbaApi\Client;
 
+use Doctrine\Common\Annotations\AnnotationRegistry;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\TransferStats;
@@ -48,22 +49,17 @@ class Client
         GuzzleClient $guzzle = null,
         ValidatorInterface $validator = null
     ) {
+        // this is required so that annotations can be used for validation
+        AnnotationRegistry::registerLoader('class_exists');
+
         $this->validateRequest = $validateRequest;
 
-        /*AnnotationRegistry::registerAutoloadNamespace(
-            "Symfony\Component\Validator\Constraints",
-            '/home/vagrant/dev/projects/nbasense/vendor/symfony/symfony/src'
-        );*/
+        // initialize a new Guzzle client if one was not passed in
+        $this->guzzle = $guzzle ?? new GuzzleClient($config);
 
-        /*AnnotationRegistry::registerAutoloadNamespaces([
-            "Symfony\Component\Validator\Constraints" => '/home/vagrant/dev/projects/nbasense/vendor/symfony/symfony/src',
-            "JasonRoman\NbaApi\Constraints => '/home/vagrant/dev/projects/nbasense/vendor/jasonroman/nba-stats-api/src'
-        ]);*/
-
+        // initialize the validator if one was not passed in
         $this->validator = $validator
             ?? Validation::createValidatorBuilder()->enableAnnotationMapping()->getValidator();
-
-        $this->guzzle = $guzzle ?? new GuzzleClient($config);
     }
 
     /**
