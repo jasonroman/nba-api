@@ -430,19 +430,21 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
         $propertyUtility = new RequestPropertyUtility($this, $paramName);
 
         return [
-            'is_required'   => $propertyUtility->isRequired(),
-            'is_array'      => $propertyUtility->isArray(),
-            'is_not_blank'  => $propertyUtility->getNotBlank(),
-            'is_not_null'   => $propertyUtility->getNotNull(),
-            'description'   => $propertyUtility->getDescription(),
-            'type'          => $propertyUtility->getType(),
-            'default_value' => $propertyUtility->getDefaultValueAsString(),
-            'example_value' => $propertyUtility->getExampleValueAsString(),
-            'choices'       => $propertyUtility->getChoices(),
-            'regex'         => $propertyUtility->getRegex(),
-            'range'         => $propertyUtility->getRange(),
-            'count'         => $propertyUtility->getCount(),
-            'uuid'          => $propertyUtility->getUuid(),
+            'is_required'          => $propertyUtility->isRequired(),
+            'is_array'             => $propertyUtility->isArray(),
+            'is_not_blank'         => $propertyUtility->getNotBlank(),
+            'is_not_null'          => $propertyUtility->getNotNull(),
+            'description'          => $propertyUtility->getDescription(),
+            'type'                 => $propertyUtility->getType(),
+            'default_value'        => $propertyUtility->getDefaultValue(),
+            'example_value'        => $propertyUtility->getExampleValue(),
+            'default_value_string' => $propertyUtility->getDefaultValueAsString(),
+            'example_value_string' => $propertyUtility->getExampleValueAsString(),
+            'choices'              => $propertyUtility->getChoices(),
+            'regex'                => $propertyUtility->getRegex(),
+            'range'                => $propertyUtility->getRange(),
+            'count'                => $propertyUtility->getCount(),
+            'uuid'                 => $propertyUtility->getUuid(),
         ];
     }
 
