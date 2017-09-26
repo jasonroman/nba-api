@@ -440,6 +440,8 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
             'example_value'        => $propertyUtility->getExampleValue(),
             'default_value_string' => $propertyUtility->getDefaultValueAsString(),
             'example_value_string' => $propertyUtility->getExampleValueAsString(),
+            'default_value_code'   => $propertyUtility->getDefaultValueAsCode(),
+            'example_value_code'   => $propertyUtility->getExampleValueAsCode(),
             'choices'              => $propertyUtility->getChoices(),
             'regex'                => $propertyUtility->getRegex(),
             'range'                => $propertyUtility->getRange(),

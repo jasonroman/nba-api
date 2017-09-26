@@ -107,6 +107,26 @@ class RequestPropertyUtility
     }
 
     /**
+     * Get the default value as a string for showing code.
+     *
+     * @return string
+     */
+    public function getDefaultValueAsCode(): string
+    {
+        return self::getStringValueAsCode($this->getDefaultValue());
+    }
+
+    /**
+     * Get the example value as a string for showing code.
+     *
+     * @return string
+     */
+    public function getExampleValueAsCode(): string
+    {
+        return self::getStringValueAsCode($this->getExampleValue());
+    }
+
+    /**
      * Get whether the param is required.
      *
      * @return bool
@@ -246,9 +266,32 @@ class RequestPropertyUtility
         } elseif (is_bool($value)) {
             return $value ? 'true' : 'false';
         } elseif (is_array($value)) {
-            return implode(', ', $value);
+            return implode(', ', array_map('self::getStringValue', $value));
         }
 
         return (string) $value;
+    }
+
+    /**
+     * Get string display output for showing code based on the value.
+     *
+     * @param mixed $value
+     * @return string
+     */
+    public static function getStringValueAsCode($value): string
+    {
+        if ($value instanceof \DateTime) {
+            return "new \DateTime('".$value->format(self::DEFAULT_DATETIME_FORMAT)."')";
+        } elseif (is_bool($value)) {
+            return $value ? 'true' : 'false';
+        } elseif (is_array($value)) {
+            return '['.implode(', ', array_map('self::getStringValueAsCode', $value)).']';
+        } elseif (is_null($value)) {
+            return 'null';
+        } elseif (is_int($value) || is_float($value)) {
+            return (string) $value;
+        }
+
+        return "'".(string) $value."'";
     }
 }

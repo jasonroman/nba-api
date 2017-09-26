@@ -74,6 +74,32 @@ class RequestPropertyUtilityTest extends TestCase
     /**
      * @return array
      */
+    public function dataProviderForTestGetDefaultValueAsCode()
+    {
+        return [
+            ['test', '1'],
+            ['noDescription', 'null'],
+            ['noVar', "'default'"],
+            ['bool', 'true'],
+            ['dateTime', "new \DateTime('2017-01-01')"],
+        ];
+    }
+
+    /**
+     * @dataProvider dataProviderForTestGetDefaultValueAsCode
+     *
+     * @param string $property
+     * @param mixed $expected
+     */
+    public function testGetDefaultValueAsCode(string $property, $expected)
+    {
+        $rpu = new RequestPropertyUtility(new TestRequest(), $property);
+        $this->assertSame($expected, $rpu->getDefaultValueAsCode());
+    }
+
+    /**
+     * @return array
+     */
     public function dataProviderForTestGetExampleValue()
     {
         return [
@@ -119,6 +145,31 @@ class RequestPropertyUtilityTest extends TestCase
     {
         $rpu = new RequestPropertyUtility(new TestRequest(), $property);
         $this->assertSame((string) $expected, $rpu->getExampleValueAsString());
+    }
+
+    /**
+     * @return array
+     */
+    public function dataProviderForTestGetExampleValueAsCode()
+    {
+        return [
+            ['test', '5'],
+            ['noDescription', '[1, 2, 3, 4, 5]'],
+            ['noVar', 'null'],
+            ['bool', 'false'],
+        ];
+    }
+
+    /**
+     * @dataProvider dataProviderForTestGetExampleValueAsCode
+     *
+     * @param string $property
+     * @param mixed $expected
+     */
+    public function testGetExampleValueAsCode(string $property, $expected)
+    {
+        $rpu = new RequestPropertyUtility(new TestRequest(), $property);
+        $this->assertSame($expected, $rpu->getExampleValueAsCode());
     }
 
     /**
@@ -266,7 +317,7 @@ class RequestPropertyUtilityTest extends TestCase
     public function dataProviderForTestGetStringValue()
     {
         return [
-            [new \DateTime(), (new \DateTime)->format(RequestPropertyUtility::DEFAULT_DATETIME_FORMAT)],
+            [new \DateTime(), (new \DateTime())->format(RequestPropertyUtility::DEFAULT_DATETIME_FORMAT)],
             [true, 'true'],
             [false, 'false'],
             [[1, 2, 3], '1, 2, 3'],
@@ -285,6 +336,40 @@ class RequestPropertyUtilityTest extends TestCase
     public function testGetStringValue($value, $expected)
     {
         $stringValue = RequestPropertyUtility::getStringValue($value);
+
+        $this->assertInternalType('string', $stringValue);
+        $this->assertSame($expected, $stringValue);
+    }
+
+    /**
+     * @return array
+     */
+    public function dataProviderForTestGetStringValueAsCode()
+    {
+        return [
+            [
+                new \DateTime(),
+                "new \DateTime('".(new \DateTime())->format(RequestPropertyUtility::DEFAULT_DATETIME_FORMAT)."')"
+            ],
+            [true, 'true'],
+            [false, 'false'],
+            [[1, 2, 3], '[1, 2, 3]'],
+            [[1, '2', true, new \DateTime('2017-08-08')], "[1, '2', true, new \DateTime('2017-08-08')]"],
+            [['1', '2', '3'], "['1', '2', '3']"],
+            [1, '1'],
+            ['test', "'test'"],
+        ];
+    }
+
+    /**
+     * @dataProvider dataProviderForTestGetStringValueAsCode
+     *
+     * @param mixed $value
+     * @param string $expected
+     */
+    public function testGetStringValueAsCode($value, $expected)
+    {
+        $stringValue = RequestPropertyUtility::getStringValueAsCode($value);
 
         $this->assertInternalType('string', $stringValue);
         $this->assertSame($expected, $stringValue);
