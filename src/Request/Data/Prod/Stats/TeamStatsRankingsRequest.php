@@ -2,8 +2,8 @@
 
 namespace JasonRoman\NbaApi\Request\Data\Prod\Stats;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Get team rankings for various stats for a season. This includes preseason, regular season, and playoffs.

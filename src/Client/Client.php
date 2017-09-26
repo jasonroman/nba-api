@@ -6,13 +6,13 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\TransferStats;
+use JasonRoman\NbaApi\Request\AbstractNbaApiRequest;
+use JasonRoman\NbaApi\Response\NbaApiResponse;
+use JasonRoman\NbaApi\Response\ResponseType;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Validator\ValidatorBuilderInterface;
-use JasonRoman\NbaApi\Request\AbstractNbaApiRequest;
-use JasonRoman\NbaApi\Response\NbaApiResponse;
-use JasonRoman\NbaApi\Response\ResponseType;
 
 /**
  * Main Client class that processes requests.

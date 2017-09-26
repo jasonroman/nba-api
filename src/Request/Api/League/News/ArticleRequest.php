@@ -2,8 +2,8 @@
 
 namespace JasonRoman\NbaApi\Request\Api\League\News;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Request\Api\League\AbstractApiLeagueRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Retrieve a specific article.

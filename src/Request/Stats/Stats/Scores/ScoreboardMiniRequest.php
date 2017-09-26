@@ -2,10 +2,10 @@
 
 namespace JasonRoman\NbaApi\Request\Stats\Stats\Scores;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
 use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Get the old version of the scoreboard for a day. This seems to require header 'Referer: http://stats.nba.com/scores/'

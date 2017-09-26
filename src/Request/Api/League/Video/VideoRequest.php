@@ -2,10 +2,10 @@
 
 namespace JasonRoman\NbaApi\Request\Api\League\Video;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\GameIdParam;
 use JasonRoman\NbaApi\Request\Api\League\AbstractApiLeagueRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Retrieve videos for a specific game, or just in general. If in general, just gets top X videos for nba.com.

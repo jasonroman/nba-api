@@ -2,7 +2,6 @@
 
 namespace JasonRoman\NbaApi\Request\StatsProd\StatsCms\Players;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\StatsProd\CategoryParam;
 use JasonRoman\NbaApi\Params\StatsProd\LimitParam;
@@ -10,6 +9,7 @@ use JasonRoman\NbaApi\Params\StatsProd\NamesParam;
 use JasonRoman\NbaApi\Params\StatsProd\SeasonParam;
 use JasonRoman\NbaApi\Params\StatsProd\SeasonTypeParam;
 use JasonRoman\NbaApi\Request\StatsProd\StatsCms\AbstractStatsProdStatsCmsRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Get teams synergy stats for a particular category.

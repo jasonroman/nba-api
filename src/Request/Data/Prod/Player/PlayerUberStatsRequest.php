@@ -2,9 +2,9 @@
 
 namespace JasonRoman\NbaApi\Request\Data\Prod\Player;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Params\PlayerIdParam;
 use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * This does not seem to return any actual data besides keys.

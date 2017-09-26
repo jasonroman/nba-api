@@ -2,7 +2,6 @@
 
 namespace JasonRoman\NbaApi\Request\Stats\Stats\Stats;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
 use JasonRoman\NbaApi\Params\SeasonParam;
@@ -12,6 +11,7 @@ use JasonRoman\NbaApi\Params\Stats\PlayerScopeParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Request\Stats\AbstractStatsRequest;
 use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class DefenseHubRequest extends AbstractStatsStatsRequest
 {

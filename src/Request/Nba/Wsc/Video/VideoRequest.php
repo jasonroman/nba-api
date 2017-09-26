@@ -2,8 +2,8 @@
 
 namespace JasonRoman\NbaApi\Request\Nba\Wsc\Video;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Request\Nba\Wsc\AbstractNbaWscRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class VideoRequest extends AbstractNbaWscRequest
 {

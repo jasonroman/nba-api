@@ -2,10 +2,10 @@
 
 namespace JasonRoman\NbaApi\Request\Data\Html\Game;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\GameIdParam;
 use JasonRoman\NbaApi\Request\Data\Html\AbstractDataHtmlRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Get the game book PDF of a game. Valid from 2010-2011 preseason and later. Use this over the other gamebook endpoint..

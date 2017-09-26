@@ -2,8 +2,8 @@
 
 namespace JasonRoman\NbaApi\Request\Data\Prod\Playoffs;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Get the playoff brackets for a season.

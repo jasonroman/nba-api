@@ -2,9 +2,9 @@
 
 namespace JasonRoman\NbaApi\Request\Data\Prod\Player;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Params\PlayerIdParam;
 use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Get basic stats and game information for a player. Appears to only show the last 3 games the player played in.

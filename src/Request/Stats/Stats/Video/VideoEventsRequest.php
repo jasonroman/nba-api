@@ -2,11 +2,11 @@
 
 namespace JasonRoman\NbaApi\Request\Stats\Stats\Video;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
-use JasonRoman\NbaApi\Params\GameIdParam;
 use JasonRoman\NbaApi\Params\GameEventIdParam;
+use JasonRoman\NbaApi\Params\GameIdParam;
 use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Get details about a game event; namely the UUID that can be used in Nba\Wsc\Video\VideoRequest to get more details.

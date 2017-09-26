@@ -2,10 +2,10 @@
 
 namespace JasonRoman\NbaApi\Request\Data\Prod\Game;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\GameIdParam;
 use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Get the game book PDF of a game. Some games are missing. Use the other game book request for more reliability.

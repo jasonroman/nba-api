@@ -2,10 +2,10 @@
 
 namespace JasonRoman\NbaApi\Request\Stats\Stats\Game;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\GameIdParam;
 use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class BoxScorePlayerTrackingRequest extends AbstractStatsStatsRequest
 {

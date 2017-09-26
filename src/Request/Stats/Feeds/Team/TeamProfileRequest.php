@@ -2,9 +2,9 @@
 
 namespace JasonRoman\NbaApi\Request\Stats\Feeds\Team;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Request\Stats\Feeds\AbstractStatsFeedsRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class TeamProfileRequest extends AbstractStatsFeedsRequest
 {

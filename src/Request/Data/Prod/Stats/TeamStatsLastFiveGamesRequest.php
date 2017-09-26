@@ -2,8 +2,8 @@
 
 namespace JasonRoman\NbaApi\Request\Data\Prod\Stats;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Get stats for each team for their last 5 games. Appears to only work for 2015.

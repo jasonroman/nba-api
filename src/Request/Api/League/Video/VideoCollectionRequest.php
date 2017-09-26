@@ -2,8 +2,8 @@
 
 namespace JasonRoman\NbaApi\Request\Api\League\Video;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Request\Api\League\AbstractApiLeagueRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Retrieve a collection of videos and their information/ids. Collection id appears to be tied to specific

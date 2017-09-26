@@ -2,8 +2,8 @@
 
 namespace JasonRoman\NbaApi\Request\Stats\Widgets\Games;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Request\Stats\Widgets\AbstractStatsWidgetsRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Get the box score breakdown of all games scheduled for a given day. No scores; just the teams, times, and summary.

@@ -2,6 +2,8 @@
 
 namespace JasonRoman\NbaApi\Request;
 
+use JasonRoman\NbaApi\Constraints\ApiChoice;
+use JasonRoman\NbaApi\Constraints\ApiRegex;
 use Symfony\Component\Validator\Constraints\All;
 use Symfony\Component\Validator\Constraints\Count;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -9,8 +11,6 @@ use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\Validator\Constraints\Range;
 use Symfony\Component\Validator\Constraints\Type;
 use Symfony\Component\Validator\Constraints\Uuid;
-use JasonRoman\NbaApi\Constraints\ApiChoice;
-use JasonRoman\NbaApi\Constraints\ApiRegex;
 
 /**
  * Class to retrieve information about a particular property (parameter) of a request.

@@ -2,8 +2,8 @@
 
 namespace JasonRoman\NbaApi\Request\Data\Cms\Standings;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Request\Data\Cms\AbstractDataCmsRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Get the full standings used by the CMS.

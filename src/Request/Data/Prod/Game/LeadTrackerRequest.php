@@ -2,10 +2,10 @@
 
 namespace JasonRoman\NbaApi\Request\Data\Prod\Game;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\GameIdParam;
 use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Get the tracking of which team is in the lead of a specific period of a game, and by how many points.

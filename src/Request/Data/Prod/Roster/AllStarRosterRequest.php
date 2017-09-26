@@ -2,8 +2,8 @@
 
 namespace JasonRoman\NbaApi\Request\Data\Prod\Roster;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Get the All-Star rosters. This includes additional teams like USA vs. World (formerly Rookies vs. Sophomores).

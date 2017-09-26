@@ -2,9 +2,9 @@
 
 namespace JasonRoman\NbaApi\Request\Data\Bios\Player;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Params\PlayerIdParam;
 use JasonRoman\NbaApi\Request\Data\Bios\AbstractDataBiosRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Get the player overall bio.

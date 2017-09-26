@@ -2,10 +2,10 @@
 
 namespace JasonRoman\NbaApi\Request\Data\Prod\Game;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\GameIdParam;
 use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Get the recap article for a game. Valid from 2014-2015 preseason and possibly later.

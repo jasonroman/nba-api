@@ -3,7 +3,6 @@
 namespace JasonRoman\NbaApi\Request\Api;
 
 use JasonRoman\NbaApi\Request\AbstractNbaApiRequest;
-use JasonRoman\NbaApi\Response\ResponseType;
 
 /**
  * Base class which any Api requests must extend from (from api.nba.net)

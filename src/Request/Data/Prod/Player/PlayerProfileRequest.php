@@ -2,9 +2,9 @@
 
 namespace JasonRoman\NbaApi\Request\Data\Prod\Player;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Params\PlayerIdParam;
 use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Get current player information and basic regular season stats for all of the player's seasons.

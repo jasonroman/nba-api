@@ -2,9 +2,9 @@
 
 namespace JasonRoman\NbaApi\Request\Stats\Stats\Player;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Params\PlayerIdParam;
 use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class PlayerAwardsRequest extends AbstractStatsStatsRequest
 {

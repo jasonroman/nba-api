@@ -2,9 +2,9 @@
 
 namespace JasonRoman\NbaApi\Request\Stats\Stats\AllStar;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Params\PlayerIdParam;
 use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * This appears to error, possibly just when it is not the regular season.

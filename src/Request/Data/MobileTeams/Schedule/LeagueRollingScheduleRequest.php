@@ -2,12 +2,12 @@
 
 namespace JasonRoman\NbaApi\Request\Data\MobileTeams\Schedule;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\Data\LeagueSlugParam;
 use JasonRoman\NbaApi\Params\FormatParam;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
 use JasonRoman\NbaApi\Request\Data\MobileTeams\AbstractDataMobileTeamsRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Get the league rolling schedule for a given season (includes preseason for NBA).

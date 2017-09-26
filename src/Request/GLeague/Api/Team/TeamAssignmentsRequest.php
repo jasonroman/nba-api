@@ -2,12 +2,12 @@
 
 namespace JasonRoman\NbaApi\Request\GLeague\Api\Team;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\GLeague\SubdomainTeamSlugParam;
 use JasonRoman\NbaApi\Params\SeasonParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Request\GLeague\Api\AbstractGLeagueApiRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class TeamAssignmentsRequest extends AbstractGLeagueApiRequest
 {

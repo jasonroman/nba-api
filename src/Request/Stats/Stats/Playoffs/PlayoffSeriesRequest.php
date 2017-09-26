@@ -2,12 +2,12 @@
 
 namespace JasonRoman\NbaApi\Request\Stats\Stats\Playoffs;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
 use JasonRoman\NbaApi\Params\SeasonParam;
 use JasonRoman\NbaApi\Params\Stats\PlayoffSeriesIdParam;
 use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class PlayoffSeriesRequest extends AbstractStatsStatsRequest
 {

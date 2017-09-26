@@ -2,11 +2,11 @@
 
 namespace JasonRoman\NbaApi\Request\Stats\Stats\GLeague;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\SeasonParam;
 use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class GLeaguePredictorRequest extends AbstractStatsStatsRequest
 {

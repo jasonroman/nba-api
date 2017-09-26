@@ -2,7 +2,6 @@
 
 namespace JasonRoman\NbaApi\Request\Stats\Stats\Homepage;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\LeagueIdParam;
 use JasonRoman\NbaApi\Params\SeasonParam;
@@ -13,6 +12,7 @@ use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\Stats\StatTypeParam;
 use JasonRoman\NbaApi\Request\Stats\AbstractStatsRequest;
 use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class HomepageRequest extends AbstractStatsStatsRequest
 {

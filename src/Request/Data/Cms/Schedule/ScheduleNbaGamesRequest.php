@@ -2,10 +2,8 @@
 
 namespace JasonRoman\NbaApi\Request\Data\Cms\Schedule;
 
-use Symfony\Component\Validator\Constraints as Assert;
-use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Request\Data\Cms\AbstractDataCmsRequest;
-use JasonRoman\NbaApi\Params\TeamSlugParam;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Get the schedule of NBA games for a season. No parameters ; 2015-16 shows postseason, 2016-17 shows regular season.

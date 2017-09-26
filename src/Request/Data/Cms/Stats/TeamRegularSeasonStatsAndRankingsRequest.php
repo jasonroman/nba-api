@@ -2,10 +2,10 @@
 
 namespace JasonRoman\NbaApi\Request\Data\Cms\Stats;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\TeamSlugParam;
 use JasonRoman\NbaApi\Request\Data\Cms\AbstractDataCmsRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Get team regular season overall stats and rankings.

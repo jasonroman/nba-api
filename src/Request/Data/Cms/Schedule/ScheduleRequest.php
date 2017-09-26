@@ -2,10 +2,10 @@
 
 namespace JasonRoman\NbaApi\Request\Data\Cms\Schedule;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
-use JasonRoman\NbaApi\Request\Data\Cms\AbstractDataCmsRequest;
 use JasonRoman\NbaApi\Params\TeamSlugParam;
+use JasonRoman\NbaApi\Request\Data\Cms\AbstractDataCmsRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Get a team's schedule - preseason, regular season, and playoffs.
