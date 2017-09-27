@@ -6,8 +6,6 @@ use JasonRoman\NbaApi\Params\TeamIdParam;
 
 class OpponentTeamIdParam extends TeamIdParam
 {
-    const LABEL = 'Opponent Team ID';
-
     /**
      * {@inheritdoc}
      * @return int
