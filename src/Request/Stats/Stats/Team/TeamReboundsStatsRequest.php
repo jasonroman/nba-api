@@ -20,9 +20,6 @@ use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @link http://stats.nba.com/team/#!/{teamId}/rebounds-dash/
- */
 class TeamReboundsStatsRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/teamdashptreb';

@@ -18,9 +18,6 @@ use JasonRoman\NbaApi\Params\TeamIdParam;
 use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @link http://stats.nba.com/team/#!/{teamId}/passes-dash/
- */
 class TeamPassesStatsRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/teamdashptpass';
