@@ -11,7 +11,7 @@ use Symfony\Component\Finder\Finder;
 class RequestsHelper
 {
     /**
-     * Get the base names from a Finder result, dropping an optional suffix (typically for filenames).
+     * Get the base names alphabetically from a Finder result, dropping an optional suffix (typically for filenames).
      *
      * @param Finder $finder
      * @param string $suffix
@@ -25,6 +25,8 @@ class RequestsHelper
             /** @var \SplFileInfo $splFileInfo */
             $names[] = $splFileInfo->getBasename($suffix);
         }
+
+        sort($names);
 
         return $names;
     }
