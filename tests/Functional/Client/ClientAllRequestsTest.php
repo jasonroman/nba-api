@@ -85,9 +85,17 @@ class ClientAllRequestsTest extends TestCase
                 dump('Testing '.$requestClass);
             };
 
-            /** @var AbstractNbaApiRequest $request */
-            $request  = $requestClass::fromArrayWithExamples();
-            $response = $this->client->request($request);
+            $request = $requestClass::fromArrayWithExamples();
+
+            try {
+                $response = $this->client->request($request);
+            } catch (\Exception $e) {
+                if (function_exists('dump')) {
+                    dump('Did not receive a response: '.$e->getMessage());
+                };
+
+                continue;
+            }
 
             $this->assertInstanceOf(NbaApiResponse::class, $response);
             $this->assertSame(200, $response->getResponse()->getStatusCode());
