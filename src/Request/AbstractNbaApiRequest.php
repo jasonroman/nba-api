@@ -47,11 +47,11 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
         'User-Agent'      =>
             'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '.
             'AppleWebKit/537.36 (KHTML, like Gecko) '.
-            'Chrome/58.0.3029.110 '.
+            'Chrome/61.0.3163.100 '.
             'Safari/537.36',
         'Origin'          => 'http://stats.nba.com',
         // this will be overridden by the response type of the individual request
-        'Accept'          => 'application/json',
+        'Accept'          => 'application/json, text/plain, */*',
         // optional headers that might help prevent timeouts
         'DNT'             => '1',
         'Accept-Language' => 'en-US,en;q=0.8,af;q=0.6',

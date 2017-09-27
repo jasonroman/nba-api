@@ -12,6 +12,11 @@ abstract class AbstractStatsRequest extends AbstractNbaApiRequest
         'base_uri' => self::BASE_URI,
     ];
 
+    const HEADERS = [
+        'x-nba-stats-origin' => 'stats',
+        'x-nba-stats-token'  => 'true',
+    ];
+
     /**
      * Note - it appears the following links are currently broken:
      *
