@@ -87,6 +87,8 @@ class ClientAllRequestsTest extends TestCase
 
             $request = $requestClass::fromArrayWithExamples();
 
+            // sometimes requests can timeout due to the NBA blocking some IPs from accessing stats.nba.com/stats ;
+            // in that case simply note the error and continue to test the remaining requests
             try {
                 $response = $this->client->request($request);
             } catch (\Exception $e) {
