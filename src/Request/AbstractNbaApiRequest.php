@@ -346,6 +346,8 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
      * All requests in this library have a domain, section, and category which can be determined from the namespace.
      * These could probably all be moved out to their own class, or a class that takes in the request. For now many
      * of the functions are static for information that can be retrieved based on the request class itself.
+     *
+     * This is used by nbasense.com in generating the documentation for this library and providing additional site features.
      */
 
     /**
@@ -448,6 +450,22 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
             'count'                => $propertyUtility->getCount(),
             'uuid'                 => $propertyUtility->getUuid(),
         ];
+    }
+
+    /**
+     * Get the parameters, converting the values to the code equivalent.
+     *
+     * @return array
+     */
+    public function getParamsAsCode(): array
+    {
+        $paramsAsCode = [];
+
+        foreach ($this->getParamNames() as $paramName) {
+            $paramsAsCode[$paramName] = RequestPropertyUtility::getStringValueAsCode($this->$paramName);
+        }
+
+        return $paramsAsCode;
     }
 
     /**

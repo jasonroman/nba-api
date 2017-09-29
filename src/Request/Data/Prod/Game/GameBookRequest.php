@@ -5,6 +5,7 @@ namespace JasonRoman\NbaApi\Request\Data\Prod\Game;
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\GameIdParam;
 use JasonRoman\NbaApi\Request\Data\Prod\AbstractDataProdRequest;
+use JasonRoman\NbaApi\Response\ResponseType;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -14,6 +15,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 class GameBookRequest extends AbstractDataProdRequest
 {
     const ENDPOINT = '/prod/v1/{gameDate}/{gameId}_Book.pdf';
+
+    const DEFAULT_RESPONSE_TYPE = ResponseType::PDF;
 
     /**
      * @Assert\NotBlank()

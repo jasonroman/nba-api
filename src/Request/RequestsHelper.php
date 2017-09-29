@@ -6,7 +6,7 @@ use Symfony\Component\Finder\Finder;
 
 /**
  * Class to help retrieve class information about requests found in this library.
- * This is used to help generate the documentation for this library that nbasense.com provides.
+ * This is used by nbasense.com in generating the documentation for this library and providing additional site features.
  */
 class RequestsHelper
 {

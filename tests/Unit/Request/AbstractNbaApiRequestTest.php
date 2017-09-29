@@ -12,6 +12,7 @@ use JasonRoman\NbaApi\Tests\Unit\Request\Fixtures\AbstractTestRequest;
 use JasonRoman\NbaApi\Tests\Unit\Request\Fixtures\Extra\TestBadNamespaceRequest;
 use JasonRoman\NbaApi\Tests\Unit\Request\Fixtures\TestBadRootNamespaceRequest;
 use JasonRoman\NbaApi\Tests\Unit\Request\Fixtures\TestBaseUriRequest;
+use JasonRoman\NbaApi\Tests\Unit\Request\Fixtures\TestCodeRequest;
 use JasonRoman\NbaApi\Tests\Unit\Request\Fixtures\TestConfigRequest;
 use JasonRoman\NbaApi\Tests\Unit\Request\Fixtures\TestHeadersRequest;
 use JasonRoman\NbaApi\Tests\Unit\Request\Fixtures\TestOverrideRequest;
@@ -276,7 +277,7 @@ class AbstractNbaApiRequestTest extends TestCase
 
     public function testToArray()
     {
-        $request = new TestSimpleRequest();
+        $request       = new TestSimpleRequest();
         $request->test = 'some value';
 
         $this->assertSame(['test' => 'some value', 'queryParam' => null], $request->toArray());
@@ -311,17 +312,17 @@ class AbstractNbaApiRequestTest extends TestCase
 
     public function testFromArrayAliasToFromArrayWithExamples()
     {
-        $requestFromArray = TestRequest::fromArray([], true);
+        $requestFromArray             = TestRequest::fromArray([], true);
         $requestFromArrayWithExamples = TestRequest::fromArrayWithExamples();
 
         $this->assertEquals($requestFromArray, $requestFromArrayWithExamples);
 
-        $requestResponseTypeFromArray = TestResponseTypeRequest::fromArray([], true);
+        $requestResponseTypeFromArray             = TestResponseTypeRequest::fromArray([], true);
         $requestResponseTypeFromArrayWithExamples = TestResponseTypeRequest::fromArrayWithExamples();
 
         $this->assertEquals($requestResponseTypeFromArray, $requestResponseTypeFromArrayWithExamples);
 
-        $requestSimpleFromArray = TestSimpleRequest::fromArray([], true);
+        $requestSimpleFromArray             = TestSimpleRequest::fromArray([], true);
         $requestSimpleFromArrayWithExamples = TestSimpleRequest::fromArrayWithExamples();
 
         $this->assertEquals($requestSimpleFromArray, $requestSimpleFromArrayWithExamples);
@@ -397,7 +398,7 @@ class AbstractNbaApiRequestTest extends TestCase
     {
         $request = new TestSimpleRequest();
 
-        $request->test = 'test';
+        $request->test       = 'test';
         $request->queryParam = 3;
 
         $this->assertSame(
@@ -510,6 +511,28 @@ class AbstractNbaApiRequestTest extends TestCase
 
         $uuidNotStrict = $request->getParamInfo('uuidNotStrict');
         $this->assertSame(RequestPropertyUtility::UUID_CONSTRAINT_NON_STRICT_VALUE, $uuidNotStrict['uuid']);
+    }
+
+    public function testGetParamsAsCode()
+    {
+        // test default/example values and also setting an override
+        $request = TestCodeRequest::fromArrayWithExamples([
+            'string' => 'test',
+        ]);
+
+        $this->assertSame(
+            [
+                'dateTime' => "new \DateTime('2017-09-29')",
+                'boolTrue' => 'true',
+                'boolFalse' => 'false',
+                'array' => "[1, '2', false]",
+                'null' => 'null',
+                'int' => '5',
+                'float' => '5.5',
+                'string' => "'test'",
+            ],
+            $request->getParamsAsCode()
+        );
     }
 
     public function testGetMainNamespaceAndRequest()

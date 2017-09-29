@@ -3,11 +3,14 @@
 namespace JasonRoman\NbaApi\Request\Nba\Wsc\Video;
 
 use JasonRoman\NbaApi\Request\Nba\Wsc\AbstractNbaWscRequest;
+use JasonRoman\NbaApi\Response\ResponseType;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class VideoRequest extends AbstractNbaWscRequest
 {
     const ENDPOINT = '/video/wsc/league/{videoId}.xml';
+
+    const DEFAULT_RESPONSE_TYPE = ResponseType::XML;
 
     /**
      * @Assert\NotBlank()
