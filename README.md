@@ -1,7 +1,7 @@
 # NBA API Library
 [![Build Status](https://travis-ci.org/jasonroman/nba-api.svg?branch=master)](https://travis-ci.org/jasonroman/nba-api)
 
-This is a PHP library used to access data across various endpoints on NBA websites.  The full documentation can be found at [http://nbasense.com/nba-api/](http://nbasense.com/nba-api/).  This contains installation instructions, usage examples, and runnable/filterable reporting on all endpoints.
+This is a PHP library used to access data across various endpoints on NBA websites. The full documentation can be found at [http://nbasense.com/nba-api/](http://nbasense.com/nba-api/).  This contains installation instructions, usage examples, and runnable/filterable reporting on all endpoints.
 
 ### Troubleshooting
 

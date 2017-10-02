@@ -25,17 +25,19 @@ class NbaApiResponse implements NbaApiResponseInterface
     }
 
     /**
+     * Convert a JSON response to an array or an object.
+     *
      * @param bool $toArray
      * @return object|array
      * @throws \InvalidArgumentException
      */
     public function getFromJson(bool $toArray = false)
     {
-        return GuzzleHttp\json_decode($this->response->getBody(), $toArray);
+        return GuzzleHttp\json_decode($this->getResponseBody(), $toArray);
     }
 
     /**
-     * This hard-casts the returned JSON to an object.
+     * Convert a JSON response to an object via explicit type-casting.
      *
      * @return \stdClass
      */
@@ -45,8 +47,8 @@ class NbaApiResponse implements NbaApiResponseInterface
     }
 
     /**
-     * This may return an array if there are no key/value stores, however this recursively converts all
-     * sub-arrays to objects as well. Use the appropriate functions as you see fit.
+     * Convert a JSON response to an object. This may return an array if there are no key/value stores,
+     * however this recursively converts all sub-arrays to objects as well.
      *
      * @return \stdClass|array
      */
@@ -56,6 +58,8 @@ class NbaApiResponse implements NbaApiResponseInterface
     }
 
     /**
+     * Convert a JSON response to an array.
+     *
      * @return array
      */
     public function getArrayFromJson(): array
@@ -64,18 +68,32 @@ class NbaApiResponse implements NbaApiResponseInterface
     }
 
     /**
+     * Convert an XML response to a \SimpleXMLElement object.
+     *
      * @return \SimpleXMLElement|false
      */
     public function getXml()
     {
-        return simplexml_load_string((string) $this->response->getBody());
+        return simplexml_load_string($this->getResponseBody());
     }
 
     /**
+     * Retrieve the Guzzle response object.
+     *
      * @return ResponseInterface
      */
     public function getResponse()
     {
         return $this->response;
+    }
+
+    /**
+     * Retrieve the response body from Guzzle. Casts to string instead of returning the GuzzleHttp\Psr7\Stream object.
+     *
+     * @return string
+     */
+    public function getResponseBody()
+    {
+        return (string) $this->response->getBody();
     }
 }

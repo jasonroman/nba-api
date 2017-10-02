@@ -146,4 +146,22 @@ class NbaApiResponseTest extends TestCase
         $this->assertSame('myxml', $xml->getName());
         $this->assertEquals(new \SimpleXMLElement($xmlString), $xml);
     }
+
+    public function testGetResponse()
+    {
+        $guzzleResponse = new Response(200, [], json_encode(['property1' => 'value1', 'property2' => 'value2']));
+        $response       = new NbaApiResponse($guzzleResponse);
+
+        $this->assertSame($guzzleResponse, $response->getResponse());
+    }
+
+    public function testGetResponseBody()
+    {
+        $responseBody = 'some string';
+
+        $guzzleResponse = new Response(200, [], $responseBody);
+        $response       = new NbaApiResponse($guzzleResponse);
+
+        $this->assertSame($responseBody, $response->getResponseBody());
+    }
 }
