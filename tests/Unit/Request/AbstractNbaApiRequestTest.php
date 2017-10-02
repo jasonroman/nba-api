@@ -520,16 +520,18 @@ class AbstractNbaApiRequestTest extends TestCase
             'string' => 'test',
         ]);
 
-        $this->assertSame(
+        $this->assertEquals(
             [
-                'dateTime' => "new \DateTime('2017-09-29')",
-                'boolTrue' => 'true',
+                'dateTime'  => "new \DateTime('".
+                    (new \DateTime())->format(RequestPropertyUtility::DEFAULT_DATETIME_FORMAT).
+                "')",
+                'boolTrue'  => 'true',
                 'boolFalse' => 'false',
-                'array' => "[1, '2', false]",
-                'null' => 'null',
-                'int' => '5',
-                'float' => '5.5',
-                'string' => "'test'",
+                'array'     => "[1, '2']",
+                'null'      => 'null',
+                'int'       => '5',
+                'float'     => '5.5',
+                'string'    => "'test'",
             ],
             $request->getParamsAsCode()
         );
