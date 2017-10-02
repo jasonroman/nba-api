@@ -358,6 +358,7 @@ class RequestPropertyUtilityTest extends TestCase
             [['1', '2', '3'], "['1', '2', '3']"],
             [1, '1'],
             ['test', "'test'"],
+            [[1, '2', null, 3, null], "[1, '2', 3]"]
         ];
     }
 

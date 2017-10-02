@@ -285,7 +285,7 @@ class RequestPropertyUtility
         } elseif (is_bool($value)) {
             return $value ? 'true' : 'false';
         } elseif (is_array($value)) {
-            return '['.implode(', ', array_map('self::getStringValueAsCode', $value)).']';
+            return '['.implode(', ', array_map('self::getStringValueAsCode', array_filter($value))).']';
         } elseif (is_null($value)) {
             return 'null';
         } elseif (is_int($value) || is_float($value)) {

@@ -105,9 +105,8 @@ class PlayerCompareStatsRequest extends AbstractStatsStatsRequest
     public $poRound;
 
     /**
-     * @Assert\Count(max = 5)
+     * @Assert\Count(min = 1, max = 5)
      * @Assert\All({
-     *     @Assert\NotBlank(),
      *     @Assert\Type("int"),
      *     @Assert\Range(min = PlayerIdParam::MIN, max = PlayerIdParam::MAX)
      * })
@@ -238,9 +237,8 @@ class PlayerCompareStatsRequest extends AbstractStatsStatsRequest
     public $lastNGames;
 
     /**
-     * @Assert\Count(max = 5)
+     * @Assert\Count(min = 1, max = 5)
      * @Assert\All({
-     *     @Assert\NotBlank(),
      *     @Assert\Type("int"),
      *     @Assert\Range(min = PlayerIdParam::MIN, max = PlayerIdParam::MAX)
      * })

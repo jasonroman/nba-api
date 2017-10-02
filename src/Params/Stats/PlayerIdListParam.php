@@ -15,6 +15,7 @@ class PlayerIdListParam extends AbstractStatsParam
             return '';
         }
 
-        return implode(',', $value);
+        // filter out null values so the query string does not look like "1,2,..."
+        return implode(',', array_filter($value));
     }
 }
