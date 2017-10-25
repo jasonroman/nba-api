@@ -10,6 +10,7 @@ abstract class AbstractStatsRequest extends AbstractNbaApiRequest
 
     const CONFIG = [
         'base_uri' => self::BASE_URI,
+        'timeout'  => 30,
     ];
 
     const HEADERS = [

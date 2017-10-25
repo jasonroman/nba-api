@@ -10,18 +10,12 @@ use JasonRoman\NbaApi\Params\Stats\PlayerOrTeamParam;
 use JasonRoman\NbaApi\Params\Stats\PlayerScopeParam;
 use JasonRoman\NbaApi\Params\Stats\SeasonTypeParam;
 use JasonRoman\NbaApi\Params\Stats\StatTypeParam;
-use JasonRoman\NbaApi\Request\Stats\AbstractStatsRequest;
 use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class HomepageRequest extends AbstractStatsStatsRequest
 {
     const ENDPOINT = '/stats/homepagev2';
-
-    const CONFIG = [
-        'base_uri' => AbstractStatsRequest::BASE_URI,
-        'timeout' => 30,
-    ];
 
     /**
      * @Assert\NotBlank()

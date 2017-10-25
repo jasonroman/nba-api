@@ -69,7 +69,7 @@ class ClientAllRequestsTest extends TestCase
     }
 
     /**
-     * Tests all public requests
+     * Tests all public requests.
      */
     public function testAllRequests()
     {
