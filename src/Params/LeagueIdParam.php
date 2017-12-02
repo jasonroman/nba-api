@@ -21,6 +21,16 @@ class LeagueIdParam extends AbstractParam
         self::G_LEAGUE,
     ];
 
+    const OPTIONS_ALL = [
+        self::NBA,
+        self::ABA,
+        self::WNBA,
+        self::SUMMER_ORLANDO,
+        self::SUMMER_VEGAS,
+        self::SUMMER_UTAH,
+        self::G_LEAGUE,
+    ];
+
     const OPTIONS_NBA = [
         self::NBA,
     ];

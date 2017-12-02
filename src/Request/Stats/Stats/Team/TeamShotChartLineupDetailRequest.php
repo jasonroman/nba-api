@@ -23,7 +23,7 @@ use JasonRoman\NbaApi\Request\Stats\Stats\AbstractStatsStatsRequest;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * This appears to not be publicly available on the stats nba website.
+ * This appears to not be publicly available on the stats nba website but the endpoint still works.
  */
 class TeamShotChartLineupDetailRequest extends AbstractStatsStatsRequest
 {
@@ -195,7 +195,7 @@ class TeamShotChartLineupDetailRequest extends AbstractStatsStatsRequest
     /**
      * @Assert\NotBlank
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(ContextMeasureParam::OPTIONS)
+     * @ApiAssert\ApiChoice(ContextMeasureParam::OPTIONS_SHOT_CHART_LINEUP_DETAIL)
      *
      * @var string
      */

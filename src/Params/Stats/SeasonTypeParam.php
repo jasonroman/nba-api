@@ -23,6 +23,13 @@ class SeasonTypeParam extends AbstractStatsParam
         self::ALL_STAR,
     ];
 
+    const OPTIONS_WITH_ALL_STAR_ALT = [
+        self::PRE_SEASON,
+        self::REGULAR_SEASON,
+        self::PLAYOFFS,
+        self::ALL_STAR_ALT,
+    ];
+
     const OPTIONS_WITH_BOTH_ALL_STAR = [
         self::PRE_SEASON,
         self::REGULAR_SEASON,

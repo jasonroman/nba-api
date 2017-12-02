@@ -139,6 +139,6 @@ class TeamIdParam extends AbstractParam
      */
     public static function getExampleValue()
     {
-        return self::DETROIT_PISTONS;
+        return self::HOUSTON_ROCKETS;
     }
 }

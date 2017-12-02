@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonRoman\NbaApi\Request\Stats\Stats\Player;
+namespace JasonRoman\NbaApi\Request\Stats\Stats\Video;
 
 use JasonRoman\NbaApi\Constraints as ApiAssert;
 use JasonRoman\NbaApi\Params\GameIdParam;
@@ -34,9 +34,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * This appears to no longer be publicly available on the stats nba website but the endpoint still works.
  */
-class PlayerShotChartDetailRequest extends AbstractStatsStatsRequest
+class VideoDetailsRequest extends AbstractStatsStatsRequest
 {
-    const ENDPOINT = '/stats/shotchartdetail';
+    const ENDPOINT = '/stats/videodetails';
 
     /**
      * @Assert\NotBlank()
@@ -48,6 +48,7 @@ class PlayerShotChartDetailRequest extends AbstractStatsStatsRequest
     public $leagueId;
 
     /**
+     * @Assert\NotBlank()
      * @Assert\Type("string")
      * @ApiAssert\ApiRegex(SeasonParam::FORMAT)
      *
@@ -173,16 +174,6 @@ class PlayerShotChartDetailRequest extends AbstractStatsStatsRequest
     public $position;
 
     /**
-     * This appears to error if actually passing in any value, and does not show on the 'parameters' in the result.
-     *
-     * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(PlayerPositionParam::OPTIONS_FULL)
-     *
-     * @var string
-     */
-    public $playerPosition;
-
-    /**
      * @Assert\Type("string")
      * @ApiAssert\ApiRegex(SeasonParam::FORMAT)
      *
@@ -292,7 +283,7 @@ class PlayerShotChartDetailRequest extends AbstractStatsStatsRequest
     /**
      * @Assert\NotBlank
      * @Assert\Type("string")
-     * @ApiAssert\ApiChoice(ContextMeasureParam::OPTIONS_SHOT_CHART_DETAIL)
+     * @ApiAssert\ApiChoice(ContextMeasureParam::OPTIONS_VIDEO_DETAILS)
      *
      * @var string
      */
@@ -310,6 +301,20 @@ class PlayerShotChartDetailRequest extends AbstractStatsStatsRequest
             'pointDiff'   => null,
             'startPeriod' => StartPeriodParam::MIN_ALT,
             'endPeriod'   => EndPeriodParam::MAX_ALT,
+        ]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function getExampleValues(): array
+    {
+        // set to null to have actual results returned
+        return array_merge(parent::getExampleValues(), [
+            'gameId'         => null,
+            'teamId'         => TeamIdParam::HOUSTON_ROCKETS,
+            'season'         => '2016-17',
+            'contextMeasure' => 'FG3M',
         ]);
     }
 }
