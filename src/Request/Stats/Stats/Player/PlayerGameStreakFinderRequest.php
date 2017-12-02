@@ -26,9 +26,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * Note that for comparison values, 'gt' means >= while 'lt' means < while 'btr' means > and 'wrs' means <
  */
-class PlayerStreakFinderRequest extends AbstractStatsStatsRequest
+class PlayerGameStreakFinderRequest extends AbstractStatsStatsRequest
 {
-    const ENDPOINT = '/stats/teamgamestreakfinder';
+    const ENDPOINT = '/stats/playergamestreakfinder';
 
     /**
      * @Assert\Type("int")

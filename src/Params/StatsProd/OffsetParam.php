@@ -2,12 +2,9 @@
 
 namespace JasonRoman\NbaApi\Params\StatsProd;
 
-class LimitParam extends AbstractStatsProdParam
+class OffsetParam extends AbstractStatsProdParam
 {
-    const MIN = 1;
-    const MAX = 500;
-
-    const DEFAULT = 10;
+    const MIN = 0;
 
     /**
      * {@inheritdoc}
@@ -15,6 +12,6 @@ class LimitParam extends AbstractStatsProdParam
      */
     public static function getDefaultValue(): int
     {
-        return self::DEFAULT;
+        return self::MIN;
     }
 }

@@ -3,6 +3,8 @@
 namespace JasonRoman\NbaApi\Request\StatsProd\StatsCms\Rotowire;
 
 use JasonRoman\NbaApi\Params\PlayerIdParam;
+use JasonRoman\NbaApi\Params\StatsProd\LimitParam;
+use JasonRoman\NbaApi\Params\StatsProd\OffsetParam;
 use JasonRoman\NbaApi\Request\StatsProd\StatsCms\AbstractStatsProdStatsCmsRequest;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -11,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class RotowirePlayerRequest extends AbstractStatsProdStatsCmsRequest
 {
-    const ENDPOINT = '/wp-json/statscms/v1/rotowire/player/';
+    const ENDPOINT = '/wp-json/statscms/v1/rotowire/player';
 
     /**
      * @Assert\NotBlank()
@@ -21,4 +23,20 @@ class RotowirePlayerRequest extends AbstractStatsProdStatsCmsRequest
      * @var int
      */
     public $playerId;
+
+    /**
+     * @Assert\Type("int")
+     * @Assert\Range(min = LimitParam::MIN)
+     *
+     * @var string
+     */
+    public $limit;
+
+    /**
+     * @Assert\Type("int")
+     * @Assert\Range(min = OffsetParam::MIN)
+     *
+     * @var string
+     */
+    public $offset;
 }

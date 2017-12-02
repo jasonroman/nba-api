@@ -35,6 +35,11 @@ class LeagueIdParam extends AbstractParam
         self::NBA,
     ];
 
+    const OPTIONS_NBA_G_LEAGUE = [
+        self::NBA,
+        self::G_LEAGUE,
+    ];
+
     const OPTIONS_NBA_SUMMER = [
         self::NBA,
         self::SUMMER_ORLANDO,
@@ -53,8 +58,12 @@ class LeagueIdParam extends AbstractParam
         self::G_LEAGUE,
     ];
 
-    const OPTIONS_NBA_G_LEAGUE = [
+    const OPTIONS_NBA_WNBA_SUMMER_G_LEAGUE = [
         self::NBA,
+        self::WNBA,
+        self::SUMMER_ORLANDO,
+        self::SUMMER_VEGAS,
+        self::SUMMER_UTAH,
         self::G_LEAGUE,
     ];
 
