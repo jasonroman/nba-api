@@ -38,6 +38,7 @@ abstract class AbstractNbaApiRequest implements NbaApiRequestInterface
     const CONNECT_TIMEOUT = 3;
 
     const DEFAULT_CONFIG = [
+        'verify'          => false,
         'timeout'         => self::TIMEOUT,
         'connect_timeout' => self::CONNECT_TIMEOUT,
     ];
